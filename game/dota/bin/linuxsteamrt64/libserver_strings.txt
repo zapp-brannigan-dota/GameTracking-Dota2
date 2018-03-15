@@ -2655,8 +2655,9 @@ $|LA;X
 (%g %g %g)
 (%g %g)
 (%g,%g,%g) (%g,%g,%g)
+(%hKI
 (%s::)
-(%xKI
+(%{%>
 ()+-*/
 (*%s*), 
 (*MARK) must have an argument
@@ -3011,7 +3012,7 @@ $|LA;X
 +++ %s: 
 +++ %s[%d]: 
 ++CLoopModeGame::SetWorldSession
-+AXD;-
++AXD;-u
 +C$Hc
 +C$Lc
 +CClientMsg_DevPaletteVisibilityChangedEvent
@@ -3265,11 +3266,12 @@ $|LA;X
 -use_tier3_bundle
 -vscriptdebug
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
+.%*UE
 .%0*llu
-.%:UE
 .%llu
-.-ssS
-.-ySE
+.-csS
+.-iSE
+.-tET
 ...done!
 ../../public/appframework/tier1app.h
 ../../public/appframework/tier2app.h
@@ -3303,12 +3305,11 @@ $|LA;X
 ../public/tier2/fieldpath.h
 ..\content
 .0z&u$
-.5+^K
-.5,@"
-.54TE
-.5Ysq
-.=@^K
-.=I{I
+.5$TE
+.5Iwq
+.5y1 
+.=0^K
+.=9{I
 .@,wqH
 .@T{`
 .Apoint_simple_obstruction
@@ -27758,7 +27759,6 @@ CDOTA_SuggestionManager::GetSuggestedItems: Error setting feature_b.
 CDOTA_SuggestionManager::GetSuggestedItems: Error setting feature_c.
 CDOTA_SuggestionManager::GetSuggestedItems: Error setting feature_d.
 CDOTA_SuggestionManager::GetSuggestedItems: Error setting feature_e.
-CDOTA_SuggestionManager::GetSuggestedItems: Error setting feature_f.
 CDOTA_SuggestionManager::GetSuggestedItems: Error setting output_node0.
 CDOTA_SuggestionManager::GetSuggestedLanes: Error running: %s
 CDOTA_SuggestionManager::GetSuggestedLanes: Error setting output_node0.
@@ -31358,10 +31358,9 @@ D9!u"
 D9't$H
 D9't,H
 D9(t'I
-D9-CS9
+D9-SO9
 D90t[A
 D92tY1
-D95uz
 D9:t%H
 D9D$4B
 D9D$4H
@@ -31401,43 +31400,41 @@ D:{ t=H
 D; tyHc@
 D;!t{Hc
 D;"tgC
-D;%'_;
-D;%,h;
-D;%0m;
-D;%<|;
-D;%=U
-D;%F45
-D;%Ky;
-D;%O7;
-D;%Yx;
-D;%^s:
-D;%r{;
-D;%sN;
-D;%vO;
-D;%}h
+D;%-K;
+D;%7[;
+D;%<d;
+D;%@i;
+D;%Lx;
+D;%MU
+D;%V45
+D;%[u;
+D;%_3;
+D;%it;
+D;%ns:
 D;'t{
 D;'t{Hc
 D;'}#H
 D;(t)
-D;- b;
-D;--	
-D;-/L@
-D;-6n;
-D;-734
-D;-GM;
-D;-bO
-D;-eT
-D;-h34
+D;- T;
+D;--\;
+D;-0^;
+D;-?H@
+D;-Fj;
+D;-G/4
+D;-WI;
+D;-uT
+D;-x/4
 D;.~3L
 D;/rbA
 D;0t-H
 D;0t]H
+D;5	4
+D;5&0D
 D;7tnH
 D;:r;;Z
 D;:tPH
-D;=	\;
-D;=S25
-D;=[A
+D;=c25
+D;=kA
 D;G Lc
 D;G@t5H
 D;X,}
@@ -36043,7 +36040,7 @@ H90t%A
 H90t/H
 H92tPH
 H9:tx
-H9=BR8
+H9=RN8
 H9C t
 H9C(t
 H9D$(
@@ -36073,137 +36070,140 @@ H;1t!
 H;1ta
 H;2u$
 H;3t2H
+H;5!-
 H;7t)H
 H;:t(f
 H;:t}
 H;:u 
-H;= ]M
-H;=!sy
-H;=";
-H;=%<i
-H;=%ez
-H;=(s
-H;=)1D
-H;=)6^
+H;=	G
+H;=	Ji
+H;=	UN
+H;=	j
+H;= "=
+H;= +
+H;= 6J
+H;= K
+H;= LK
+H;=!Z|
+H;=!]
+H;=!cP
+H;=!{J
+H;=#l6
+H;=)N
+H;=)f$
 H;=){
-H;=+(~
-H;=+5j
-H;=+6j
-H;=+>R
-H;=,bN
-H;=-ny
-H;=-{b
-H;=.7
-H;=0	2
-H;=0H
-H;=0M
-H;=0R
-H;=0S
-H;=0]
-H;=0]H
-H;=0hM
-H;=0kH
-H;=1UG
-H;=2X
-H;=3/~
-H;=3qZ
-H;=5x9
-H;=6cP
-H;=9"I
-H;=9+i
-H;=9P
-H;=;'~
-H;=;N
-H;=;f$
-H;=>5
-H;=@Z
-H;=@f
-H;=A%W
-H;=C'I
-H;=CE_
-H;=CM_
-H;=C}
-H;=D#K
-H;=E[y
-H;=Ge=
-H;=H;
-H;=IPG
-H;=IU|
-H;=IoC
-H;=I|
-H;=JRM
-H;=Js
-H;=K I
-H;=K1D
-H;=N3
-H;=Ng
-H;=OP|
-H;=P.M
-H;=P6H
-H;=P<%
-H;=PP
-H;=PT
-H;=QB|
-H;=RbN
-H;=S@
-H;=S}E
-H;=U9W
-H;=Ufp
-H;=Ww=
-H;=Y<
-H;=YRv
-H;=YW+
-H;=Y^p
-H;=Z'R
-H;=["I
-H;=[mZ
-H;=\cP
-H;=]Hy
-H;=^1
-H;=^x9
-H;=`	4
-H;=`EN
-H;=`ZD
-H;=`r
-H;=`|
-H;=a0i
-H;=c$~
-H;=cC_
-H;=co
-H;=c~Z
-H;=e)y
-H;=g`#
-H;=gg#
-H;=he=
-H;=i(
-H;=iRJ
-H;=iUD
-H;=j#K
-H;=j;
-H;=k#~
-H;=koC
-H;=myy
-H;=n/
-H;=p 
-H;=p.
-H;=pAD
-H;=pN
-H;=pS
-H;=pdH
-H;=sJ_
-H;=tg
-H;=u;d
-H;=wf
-H;=xbN
-H;=yL=
-H;=yM
-H;=y}
-H;=z1R
-H;={"~
-H;={<
-H;={U5
-H;={W+
-H;=~-
+H;=*dP
+H;=+7j
+H;=+G
+H;=+UN
+H;=+zZ
+H;=.#K
+H;=.5
+H;=0]M
+H;=1sy
+H;=2;
+H;=5<i
+H;=5ez
+H;=8s
+H;=91D
+H;=96^
+H;=9{
+H;=;(~
+H;=;5j
+H;=;6j
+H;=;>R
+H;=<bN
+H;==ny
+H;=={b
+H;=>3
+H;=@	2
+H;=@H
+H;=@I
+H;=@N
+H;=@S
+H;=@]
+H;=@]H
+H;=@hM
+H;=@kH
+H;=AUG
+H;=BT
+H;=C/~
+H;=CqZ
+H;=Ex9
+H;=FcP
+H;=I"I
+H;=I+i
+H;=IP
+H;=K'~
+H;=KN
+H;=Kf$
+H;=N1
+H;=PV
+H;=Pf
+H;=Q%W
+H;=S'I
+H;=SE_
+H;=SM_
+H;=S}
+H;=T#K
+H;=U[y
+H;=We=
+H;=X;
+H;=YPG
+H;=YU|
+H;=YoC
+H;=Y|
+H;=ZRM
+H;=Zs
+H;=[ I
+H;=[1D
+H;=^/
+H;=^g
+H;=`.M
+H;=`6H
+H;=`<%
+H;=`L
+H;=`T
+H;=aB|
+H;=bbN
+H;=c@
+H;=c}E
+H;=e9W
+H;=efp
+H;=gw=
+H;=i<
+H;=iRv
+H;=iW+
+H;=i^p
+H;=j'R
+H;=k"I
+H;=kmZ
+H;=lcP
+H;=mHy
+H;=n-
+H;=nx9
+H;=pEN
+H;=pZD
+H;=pn
+H;=p|
+H;=q0i
+H;=s$~
+H;=sC_
+H;=so
+H;=s~Z
+H;=u)y
+H;=w`#
+H;=wg#
+H;=xe=
+H;=y(
+H;=yRJ
+H;=yUD
+H;=z#K
+H;=z;
+H;={#~
+H;={oC
+H;=}yy
+H;=~+
 H;B0u
 H;C r
 H;C@H
@@ -36350,10 +36350,10 @@ HaticsType_None
 Have Entity say string, and teamOnly or not
 Have we received the post match signout message that includes reward information
 HaveAllPlayersJoined
-Hc5L|
 Hc5Q[
+Hc5\x
 Hc9A9
-Hc=W]9
+Hc=g]9
 Hc@ H
 Hc@$H
 Hc@0M
@@ -39337,6 +39337,7 @@ L9b@u
 L9kPfD
 L9|$HJ
 L:$Hc
+L;% _
 L;(tHL
 L;(tTH
 L;0t!A
@@ -39485,7 +39486,7 @@ Lc!D;a
 Lc#D9b
 Lc#D;c
 Lc#E9
-Lc%Us:
+Lc%es:
 Lc&D;f
 Lc'D;g
 Lc'E)
@@ -39493,8 +39494,8 @@ Lc(D;h
 Lc)D;i
 Lc+D;k
 Lc+Ic
-Lc-834
-Lc-c34
+Lc-H/4
+Lc-s/4
 Lc.D;n
 Lc/D;o
 Lc/E)
@@ -39509,7 +39510,7 @@ Lc7E9
 Lc8D;x
 Lc9D;y
 Lc;D;{
-Lc=J25
+Lc=Z25
 Lc?D9
 Lc?E)
 Lc@`L9
@@ -49076,15 +49077,14 @@ Writing kdTree with %d triangles
 Wrong alignment %d
 X D;s
 X HcC 
-X% bC
-X%c~)
-X%waC
-X%|6!
+X%gaC
+X%l:!
 X(9Y(
 X(;X8
+X-e	G
 X2:jH
-X5G;I
-X=6P<
+X57;I
+X=&T<
 X@Hc@0E1
 X@TA;U<
 X@TIc
@@ -49122,13 +49122,14 @@ Xd$ D
 XfA9D]
 Xg8Hc
 XxHc@t
-Y%H(D
+Y%8,D
+Y%poK
 Y(E9^(A
-Y-2lB
-Y-@ZL
-Y53%#
-Y5lVg
-Y=HPg
+Y-"pB
+Y-roK
+Y5#%#
+Y5\Vg
+Y=8Pg
 Y?[A\]
 Y@modifier_luna_moon_glaive
 YAxis
@@ -49274,13 +49275,14 @@ ZY[A\]
 \$pMc^pA
 \$xIcD$pL
 \%03o
-\%HPx
-\%Rg9
-\-!@9
-\-N7*
-\-mg9
+\%8Tx
+\%bc9
+\-1<9
+\->7*
+\-}c9
+\-~?L
 \;C@|
-\=BUm
+\=2Ym
 \@TfA
 \C not allowed in lookbehind assertion
 \D$LL
@@ -49319,7 +49321,7 @@ ZY[A\]
 ]`[A\A]A^]
 ]hIcE`L
 ^ t+H
-^%XY;
+^%H];
 ^8D9+
 ^8U)zj
 ^@TA]A^]
@@ -49770,7 +49772,7 @@ _xIcGpL
 `hHc@d
 `pt L
 `|D;%
-`|D;%[
+`|D;%k
 `|D;c
 a numbered reference must not be zero
 a t/L
@@ -50594,6 +50596,7 @@ bRemovePositiveBuffs
 bRemoveStuns
 bReplaceExisting
 bRespawnPenalty
+bReturnOldValues
 bRunningEnterExit
 bSellable
 bSkipAdjustingPosition
@@ -53831,6 +53834,7 @@ fA;_n
 fAttackTimeRemaining
 fC9L7
 fD9	u
+fD9%$
 fD9/t0H
 fD91u|
 fD9cV
@@ -55379,7 +55383,7 @@ huskar_burning_spear
 huskar_inner_vitality
 huskar_life_break
 h|D;-
-h|D;-.J@
+h|D;->F@
 h|E;l$
 i = %d, area = %p, cost = %0.2f, heuristic = %0.2f, total cost = %0.2f, path length = %0.2f
 i >= 0
@@ -72004,12 +72008,12 @@ t$tE+t$pE
 t%Mc4$E;t$
 t%[A\A]A^]
 t%[A\]
-t&D:5U%
+t&D:5e!
 t&Hcq
 t&IcD$
 t&[A\]
 t'D9h,t
-t'D;->[
+t'D;-N[
 t'D;5
 t'HcC
 t'HcCH
@@ -72055,12 +72059,12 @@ t([A\A]A^]
 t([A\]
 t(f92t=H
 t)D:u
-t)D;-0*
+t)D;-@*
 t)HcC(
 t)Lc+D;k
 t)fD9
 t*<*u
-t*D;%I
+t*D;%Y
 t*HcC
 t*HcE
 t*HcK
@@ -72074,10 +72078,10 @@ t*Mc,$H
 t*Mc>
 t*[A9
 t*fA9
-t+;5L9
+t+;5\9
 t+<\u
 t+D9s
-t+D;%J^
+t+D;%Z^
 t+Hc4
 t+Hc{HH
 t+Hc{LH
@@ -72103,7 +72107,7 @@ t-Hc9I
 t-Mc4$E;t$
 t-rex
 t.D9p
-t.D:%?
+t.D:%O
 t.D;5
 t.H9w(t8H9w0tBH9w8tLH9w@t
 t.Lc#I
@@ -72187,7 +72191,7 @@ tBLc}
 tBMc,$E;l$
 tBMc4$E;t$
 tCD;B
-tCLc%D45
+tCLc%T45
 tDD9I
 tE[A\A]A^]
 tEfD;R
@@ -72206,7 +72210,7 @@ tL[A\]
 tMLcm
 tNHcE
 tO[A\A]A^]
-tP95=H
+tP95MD
 tPIcH8I
 tR="{
 tRI;]
@@ -72639,6 +72643,7 @@ tower_status
 tower_test
 tower_vulnerable_in_lane
 tps_used
+tqHc@
 trHcO
 trMc,$A
 tr_TR
@@ -72799,7 +72804,6 @@ twofactor_enabled
 txA;\$ I
 txLc:I
 txn_id
-tyHc@
 tyHcC
 tyHcI
 tyHcO
@@ -73665,7 +73669,7 @@ write@@GLIBC_2.2.5
 writeback_queue
 wrong submessage type
 x tZI
-x";=/
+x";=?
 x";w8}
 x#Hcs
 x$McM E;M0tkI
@@ -73687,7 +73691,7 @@ x7Hcw
 x8D;p
 x8Lcc D;c0
 x8uwH
-x:;=l
+x:;=|
 x:Hcw
 x?HcK
 xC;whI
@@ -74043,7 +74047,7 @@ z}u{I
 }3fA;\$~w+H
 }3fA;]nw,L
 }4A9|$4
-}5D;-q
+}5D;-
 }6;C$
 }8A9|$8
 }8f9Cnr2H
@@ -74126,7 +74130,7 @@ z}u{I
 ~4Mcg
 ~79ZP
 ~8D;c@}2E
-~<Lc%
+~<Lc%M
 ~?HcH
 ~@E;~PD
 ~AVAUL
