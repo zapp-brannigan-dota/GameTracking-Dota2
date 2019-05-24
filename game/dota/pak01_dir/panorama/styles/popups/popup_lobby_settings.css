@@ -246,7 +246,7 @@ Label
 
 .TournamentLobby .AdvancedSettingsColumn
 {
-	height: 490px;
+	height: 450px;
 }
 
 .AdvancedSettingsColumn DropDown
@@ -257,6 +257,11 @@ Label
 .AdvancedSettingsColumn DropDown:not(:enabled) Label
 {
     opacity: 0.0;
+}
+
+.AdvancedSettingsColumn DropDown#DotaTVDelayDropdown:not(:enabled) Label
+{
+    opacity: 1.0;
 }
 
 .AdvancedSettingsColumn DropDownMenu
@@ -350,6 +355,11 @@ DropDownMenu
 #GameModeDropdownDropdownMenu, #ServerLocationDropdownDropdownMenu
 {
 	width: 350px;
+}
+
+#GameModeDropdownDropDownMenu
+{
+	max-height: 600px;
 }
 
 .ButtonFooter

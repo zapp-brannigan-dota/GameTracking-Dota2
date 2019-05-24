@@ -138,6 +138,7 @@
 	SoundSystem
 	{
 		"DisableSteamAudio" "1"
+		"DefaultWindowsXAudio" "1"
 	}
 
 	ToolsEnvironment
@@ -167,6 +168,8 @@
 		"UnitsFiles"			"scripts/npc/npc_units.txt; scripts/npc/npc_units_custom.txt; scripts/npc/npc_heroes.txt"
 		"ItemsFiles"			"scripts/npc/items.txt; scripts/npc/npc_items_custom.txt"
 		"OverlayBoxSize"		"16"
+		"TileGridBlendOrderBGRA"	"1"
+		"TileGridBlendDefaultColor"	"0 255 0"
 	}
 
 	MaterialEditor
@@ -193,5 +196,14 @@
 	{
 		"Tools"			"Dota:Forward"
 		"EnvMapBake"	"Dota"
+	}
+	
+	RenderSystem
+	{
+		// rendersystemvulkan setting that determines how many partitions scenesystem places
+		// in each job. The higher the number, the more work per command buffer. Vulkan has higher 
+		// cost per command buffer than software contexts so settings this higher reduces 
+		// overall number of command buffers.
+		"VulkanSceneSystemJobCost"		"2"
 	}
 }

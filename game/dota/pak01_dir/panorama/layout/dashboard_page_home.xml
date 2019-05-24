@@ -1,11 +1,10 @@
 <root>
 	<styles>
-	<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-	<include src="s2r://panorama/styles/dashboard_page_shared.vcss_c" />
-	<include src="s2r://panorama/styles/dashboard_page_home.vcss_c" />
-	<include src="s2r://panorama/styles/feed.vcss_c" />
-    <include src="s2r://panorama/styles/friend_menu.vcss_c" />
-    <include src="s2r://panorama/styles/friend_menu_home.vcss_c" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/dashboard_page_shared.vcss_c" />
+		<include src="s2r://panorama/styles/dashboard_page_home.vcss_c" />
+		<include src="s2r://panorama/styles/friend_menu.vcss_c" />
+		<include src="s2r://panorama/styles/friend_menu_home.vcss_c" />
 	</styles>
 
 	<Panel class="DashboardPage">
@@ -19,7 +18,7 @@
 			<Panel id="CurrentPlayersContainer" class="StatLineContainer">
 				<Label class="StatLineNumber" text="#DOTA_CurrentPlayers"/>
 				<Label text="#DOTA_CurrentPlayersLabel"/>
-			</Panel>		
+			</Panel>
 			<Panel class="StatLineContainer">
 				<Label class="StatLineNumber" text="#DOTA_CurrentTime"/>
 			</Panel>
@@ -39,84 +38,10 @@
 					<DOTAProfileCard id="ProfileCard" class="FixedSize"/>
 				</Panel>
 
-				<Panel id="HomePlusContainer">
-					<DOTAPlusProfileCard id="PlusProfileCard" class="FixedSize"/>
-				</Panel>
+				<DOTAHomePageEvents id="HomeEvents" />
 
-				<Panel id="HomeBattlePassContainer" onactivate="DOTAFrontPageBattlePassClick();">
-					<Panel id="HomeBattlePassHeader" class="TodayPageHeader">
-						<Panel id="PopoutArrow" class="DemoArrow" />
-						<Panel class="LeftRightFlow">
-							<Label id="BattlePassHeaderTitle" text="#DOTA_BattlePass_WindowTitle" />
-							<!--<Panel class="FillWidth"/>
-							<DOTAViolator class="BattlePassViolator" name="winter_2016_predictions_added">
-								<Label text="#DOTA_New"/>
-							</DOTAViolator>-->
-						</Panel>
-					</Panel>
-					
-					<Panel id ="CompendiumPanel">
-						
-						<Panel id="UnclaimedRewards">
-							<TextButton class="UnclaimedCount Singular TI6BrightButton" text="#DOTA_Home_BattlePass_Unclaimed_Singular" />
-							<TextButton class="UnclaimedCount Plural TI6BrightButton" text="#DOTA_Home_BattlePass_Unclaimed_Plural" />
-							<Label class="UnclaimedDescription" text="#DOTA_Home_BattlePass_UnclaimedDescription"/>
-						</Panel>
-						
-						<Panel id="PreviewContainer">
-							<Label text="#DOTA_Home_BattlePass_NotOwned"/>
-							<Button id="PreviewButton" class="BattlePassBrightButton"><Label text="#DOTA_Home_BattlePass_NotOwned_Button"/></Button>
-						</Panel>
-							
-						<Panel id="ActivateContainer">
-							<Label text="#DOTA_Home_BattlePass_NeedsActivate"/>
-							<Button id="ActivateButton" class="BattlePassBrightButton"><Label text="#DOTA_Home_BattlePass_NeedsActivate_Button"/></Button>
-						</Panel>
-						
-						<Panel id="LevelContainer">
-							<Panel id="LevelProgress">
-								<ProgressBar id="LevelProgressBar"/>
-								<Label text="DOTA_Event_LevelPts"/>
-							</Panel>
-							<Label id="EventExpired" text="#DOTA_Compendium_EventEnds_Profile"/>
-							<Panel id="BattleLevelContainer" class="LeftRightFlow">
-								<Label id="BattleLevelLabel" text="#DOTA_Event_Level" />
-								<Panel id="BattleLevelCircle">
-									<Label id="BattleLevelNumber" text="{d:r:event_level}" />
-								</Panel>
-							</Panel>
-						</Panel>
-						
-						<Panel id="WeeklyGameContainer">
-							<Panel id="Match3" class="MatchNode"><Panel class="MatchNodeCenter"/></Panel>
-							<Panel id="Match2" class="MatchNode"><Panel class="MatchNodeCenter"/></Panel>
-							<Panel id="Match1" class="MatchNode"><Panel class="MatchNodeCenter"/></Panel>
-							<Button id="WGPlay" class="BattlePassBrightButton" onactivate="DOTAPlaySlarkGame()"><Label text="#dota_dashboard_start_playing"/></Button>
-							<Panel id="WGInfo" onmouseout="UIHideTextTooltip()"/>
-							<Panel id="GameDetailsContainer">
-								<Label text="#DOTA_International2017_WeeklyGame_HowToPlayTitle"/>
-								<Label id="WGTimeLeft" text="#DOTA_International2017_WeeklyGame_TimeLeft"/>
-							</Panel>
-						</Panel>
-					</Panel>
-				</Panel>
-
-				<Panel id ="PurchasePointsPanel">
-					<Button id="PurchasePointsButton" class="PopupButton Green" onactivate="DOTAPurchaseEventLevels( EVENT_ID_INTERNATIONAL_2017 )">
-						<Panel class="LeftRightFlow HorizontalCenter">
-							<Panel class="PointsIcon"/>
-							<Label text="#DOTA_Home_BattlePass_PurchaseLevels" html="true"/>
-						</Panel>
-					</Button>
-					<Button id="PurchaseBPButton" class="PopupButton Green" onactivate="DOTAShowBPInternational2017PurchasePage( false )">
-						<Panel class="LeftRightFlow HorizontalCenter">
-							<Label text="#DOTA_Home_BattlePass_PurchaseBP"/>
-						</Panel>
-					</Button>
-				</Panel>
-				
 				<Panel id="HomeFriendMenuContainer">
-					<Panel id="HomeFriendsHeader" class="TodayPageHeader" onactivate="ToggleStyle( RightColumn, FeedExpanded );">
+					<Panel id="HomeFriendsHeader" class="TodayPageHeader">
 						<Button class="ControlIconButton" id="AddFriendMain" onmouseover="UIShowTextTooltip( #DOTA_Friends_Add_Friend_Tooltip )" onmouseout="UIHideTextTooltip()" onactivate="DOTAShowAddFriendByAccountID();" />
 						<ToggleButton id="FilterToggleButton" onmouseover="UIShowTextTooltip( #DOTA_Friends_FriendFilter_Tooltip )" onmouseout="UIHideTextTooltip()" onactivate="DOTAFriendsFilterToggled();" />
 						<Panel class="LeftRightFlow">
@@ -130,7 +55,7 @@
 								<Panel id="OpenPartyIcon"/>
 								<Label id="ReadyToPlayTitle" text="#DOTA_Friends_Ready_To_Play" />
 							</Panel>
-						</Panel>  						
+						</Panel>
 						<DOTAActiveFriends id="ActiveFriends" />
 					</Panel>
 					<Panel class="HomeFriendsListContainer">
@@ -138,32 +63,28 @@
 					</Panel>
 				</Panel>
 			</Panel>
-			
+
 			<Panel id="RightColumn">
+
 				<DOTAFrontpageContents id="FrontpageContents" />
 
 				<Panel id="BottomLeftSection">
 					<Panel class="StatusAndFriendFeed TopBottomFlow">
-						<!-- 					<Button id="FeedHeaderContainer" class="ButtonBevel" onactivate="ToggleStyle( RightColumn, FeedExpanded );">
-						<Label class="FeedHeader" text="#DOTA_Feed_Title"/>
-						<Button id="RefreshFeed" class="ControlIconButton RefreshButton" />
-					</Button> -->
 						<Panel id="StatusContainer">
 							<TextEntry id="StatusTextEntry" maxchars="100" placeholder="#DOTA_Feed_Say_Something" oninputsubmit="DOTAHomePagePostSocialFeedMessage()" />
 							<Button id="StatusSubmit" onactivate="DOTAHomePagePostSocialFeedMessage()" >
 								<Panel id="StatusSubmitIcon"/>
 							</Button>
 						</Panel>
-						<Panel id="FriendsFeed" />
+						<DOTAFeed id="FriendsFeed" />
 					</Panel>
 					<Panel id="ChatContainerBackground"/>
 				</Panel>
+
 			</Panel>
-	  
+
 		</Panel>
 
-
-		
 	</Panel>
 
 </root>

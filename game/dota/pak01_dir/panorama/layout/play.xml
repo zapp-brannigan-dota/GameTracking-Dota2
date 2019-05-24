@@ -1,32 +1,13 @@
 <root>	
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/battle_pass/current_battle_pass.vcss_c" />
 		<include src="s2r://panorama/styles/play.vcss_c" />
 	</styles>
 
-	<script>
-		var OnStartFindingMatch = function()
-		{
-			$.DispatchEvent( 'DOTAGlobalSceneFireEntityInput', 'BackgroundMapStatus', 'find_match_status', 'start', 1 );
-			$.DispatchEvent( 'DOTAGlobalSceneFireEntityInput', 'BackgroundMap', 'find_match_status_lightning', 'start', 1 );
-		};
-
-		var OnEndFindingMatch = function()
-		{
-			$.DispatchEvent( 'DOTAGlobalSceneFireEntityInput', 'BackgroundMapStatus', 'find_match_status', 'stop', 1 );
-			$.DispatchEvent( 'DOTAGlobalSceneFireEntityInput', 'BackgroundMap', 'find_match_status_lightning', 'stop', 1 );
-		};
-		
-		var GoToBattlePass = function()
-		{
-			$.DispatchEvent( 'DOTAFrontPageBattlePassClick' );
-			$.DispatchEvent( 'DOTAPlayPanelCloseButtonClicked', true );
-		};
-		
-		var Nothing = function() { };
-	</script>
-
-	<DOTAPlay hittest="false" onfindmatchstart="OnStartFindingMatch()" onfindmatchend="OnEndFindingMatch()">
+	<DOTAPlay hittest="false" 
+						onfindmatchstart="DOTAGlobalSceneFireEntityInput( 'BackgroundMapStatus', 'find_match_status', 'start', 1 ); DOTAGlobalSceneFireEntityInput( 'BackgroundMap', 'find_match_status_lightning', 'start', 1 );" 
+						onfindmatchend="DOTAGlobalSceneFireEntityInput( 'BackgroundMapStatus', 'find_match_status', 'stop', 1 ); DOTAGlobalSceneFireEntityInput( 'BackgroundMap', 'find_match_status_lightning', 'stop', 1 );">
 
 		<Panel id="FXSearching"  hittest="false">
 			<DOTAScenePanel id="FXSearchingParticles" hittest="false" camera="camera_1" map="scenes/play_searching" particleonly="true"/>
@@ -34,10 +15,6 @@
 
 		<Panel id="PlaySlideOut" oncancel="DOTAPlayPanelCloseButtonClicked(false)">
 			<Button id="BackgroundClickCatcher" hittest="true" onactivate="DOTAClosePlayTab()" />
-
-			<Panel id="CustomGameDetails">
-				<!-- Filled in dynamically -->
-			</Panel>
 
 			<Panel id="PlaySlideOutBackground">
 				<Panel class="PlayTabBackgroundImage"/>
@@ -61,13 +38,14 @@
 
 			<DOTAWeekendTourneySetup id="WeekendTourneySetup"/>
 
-			<Panel id="PlaySlideOutContent" class="TopBottomFlow" onactivate="Nothing();">
+			<Panel id="PlaySlideOutContent" class="TopBottomFlow" acceptsinput="true">
 
 				<Button id="WeekendTourneyButton" class="LobbyButton" onactivate="DOTAWeekendTourneyStartSetup();">
 					<Panel class="FullWidth">
 						<Panel class="PrivateLobbyButtonIcon"/>
 						<Panel id="BattleCupRegularSeasonContainer" class="FullWidth LeftRightFlow">
 							<Label text="#WeekendTourneyStatus_Title"/>
+							<Panel class="FillWidth" />
 							<DOTABattleCupVictoryIcon override-streak="1" />
 						</Panel>
 						<Panel id="ChampionsCupContainer" class="FullWidth LeftRightFlow">
@@ -77,26 +55,38 @@
 					</Panel>
 					<WeekendTourneyStatusPanel id="WeekendTourneyStatus" />
 				</Button>
+				
+				<!--<Panel id="LobbiesSection">
+					<Label id="LobbiesTitle" text="#dota_play_lobbies_section" />
+					<Panel id="LobbyOptions">
+						<TextButton id="CreateNewLobbyButton" text="#dota_play_create_lobby" onactivate="DOTACreateLobby()" />
+						<TextButton id="BrowseLobbiesButton" text="#dota_play_browse_lobbies" onactivate="DOTAOpenLobbySelector()" />
+					</Panel>
+				</Panel>-->
 
-				<Button id="PrivateLobbyButton" class="LobbyButton" onactivate="DOTAOpenLobbySelector()">
-					<Panel class="PrivateLobbyButtonIcon"/>
-					<Label text="#dota_play_lobby_games"/>
-				</Button>
-				<Button id="CreateLobbyShortcutButton" class="LobbyButton" onactivate="DOTACreateLobby()">
-					<Panel class="PrivateLobbyButtonIcon"/>
-					<Label text="#DOTA_Create_Lobby"/>
-				</Button>
-				<Panel class="Lobbydivider Divider" />
-				<Panel id="CustomGamesSection" class="PlayTabSection TopBottomFlow">
-					<RadioButton id="GameStyle_CustomGames" class="GameStyle" group="GameStyleTabGroup" text="{s:active_event_custom_game}" onactivate="DOTAPlaySectionRadioChecked( 4 )" />
-					<Panel id="CustomGamesSectionContent" class="TopBottomFlow">
+				<Panel id="LobbiesSection" class="PlayTabSection TopBottomFlow">
+					<RadioButton id="GameStyle_Lobbies" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_lobbies_section" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_LOBBIES )" />
+					<Panel id="LobbiesSectionContent" class="TopBottomFlow">
 						<Panel class="Divider" />
-						<Label text="#dota_play_custom_game_desc" />
+						<Panel id="LobbyOptions">
+							<Button id="CreateNewLobbyButton" onactivate="DOTACreateLobby()">
+								<Panel class="LobbyOptionCenter">
+									<Panel class="LobbyOptionIcon" />
+									<Label text="#dota_play_create_lobby" />
+								</Panel>
+							</Button>
+							<Button id="BrowseLobbiesButton"  onactivate="DOTAOpenLobbySelector()">
+								<Panel class="LobbyOptionCenter">
+									<Panel class="LobbyOptionIcon" />
+									<Label text="#dota_play_browse_lobbies" />
+								</Panel>
+							</Button>
+						</Panel>
 					</Panel>
 				</Panel>
-				<Label class="ViolatorTag" text="#DOTA_Special_Event"/>
+				
 				<Panel id="PracticeBotsSection" class="PlayTabSection TopBottomFlow">
-					<RadioButton id="GameStyle_PracticeBots" class="GameStyle" group="GameStyleTabGroup" selected="true" text="#dota_play_practice_with_bots" onactivate="DOTAPlaySectionRadioChecked( 3 )" />
+					<RadioButton id="GameStyle_PracticeBots" class="GameStyle" group="GameStyleTabGroup" selected="true" text="#dota_play_practice_with_bots" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_PRACTICE_BOTS )" />
 					<Panel id="PracticeBotsSectionContent" class="TopBottomFlow">
 						<Panel class="Divider" />
 						<Panel class="LeftRightFlow HorizontalCenter">
@@ -138,7 +128,7 @@
 				</Panel>
 
 				<Panel id="1v1Section" class="PlayTabSection TopBottomFlow">
-					<RadioButton id="GameStyle_1v1" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_practice_1v1_playtab" onactivate="DOTAPlaySectionRadioChecked( 2 )" />
+					<RadioButton id="GameStyle_1v1" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_practice_1v1_playtab" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_1v1 )" />
 					<Panel id="1v1SectionContent" class="TopBottomFlow">
 						<Panel class="Divider" />
 						<Panel class="TopBottomFlow">
@@ -147,13 +137,98 @@
 						</Panel>
 					</Panel>
 				</Panel>
+				
+				<Panel id="CustomGamesSection" class="PlayTabSection TopBottomFlow BattlePassSection">
+					<Button id="GameStyle_CustomGames" class="GameStyle LeftRightFlow" group="GameStyleTabGroup" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_CUSTOM_GAMES );">
+						<Panel class="CustomGameBackgroundImage" />
+						<Label class="CustomGameName" text="{s:active_event_custom_game}"/>
+						<!--<Label class="CustomGameSubtitle" text="#DOTA_Frostivus2018_Dates" />-->
+					</Button>
+					<Panel id="CustomGamesSectionContent" class="TopBottomFlow">Cu
+						<Panel class="Divider" />
+						
+						<!-- Not used for Frostivus 2018 -->
+					</Panel>
+				</Panel>
+
+				<Panel id="CoachesChallengeSection" class="PlayTabSection BattlePassSection TopBottomFlow">
+					<RadioButton id="GameStyle_CoachesChallenge" class="GameStyle" group="GameStyleTabGroup" text="Coach's Challenge" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_COACHES_CHALLENGE )">
+						<Panel class="FillWidth" />
+						<Panel class="GameStyleIcons">
+							<Panel class="BattlePassSectionIcon" />
+						</Panel>
+					</RadioButton>
+					<Panel id="CoachesChallengeSectionContent" class="TopBottomFlow">
+						<Panel class="Divider" />
+						<Panel class="TopBottomFlow">
+
+							<Panel id="CoachRatingHeader">
+								<Panel id="CoachesChallengeDetails">
+									<Label class="CoachesChallengeInstructions" text="#DOTA_CoachesChallenge_Instructions" />
+									<TextButton id="CoachLearn" class="BattlePassDarkLink" text="#DOTA_LearnMore" onactivate="DOTAShowBPInternational2019CoachesChallengePage(); DOTAHidePlayTab();" />
+								</Panel>
+								<Panel class="FillWidth" />
+								<Panel id="CoachRatingContainer">
+									<DOTACoachRatingProgress id="CoachRating" />
+									<Label id="CoachRatingLabel" text="#DOTA_CoachesChallenge_CoachRating" />
+								</Panel>
+							</Panel>
+						</Panel>
+
+					</Panel>
+				</Panel>
+
+				<Panel id="MutationSection" class="PlayTabSection BattlePassSection TopBottomFlow">
+					<RadioButton id="GameStyle_Mutation" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_mutation" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_MUTATION )">
+						<Panel class="BattlePassSectionIcon" />
+					</RadioButton>
+					<Panel id="MutationSectionContent" class="TopBottomFlow">
+						<Panel class="Divider" />
+						<Panel class="TopBottomFlow">
+							<Label text="#dota_play_mutation_desc" group="mutation_options" selected="true" />
+							<Label text="#dota_play_mutation_current" group="mutation_options" selected="true" id="CurrentMutation"/>
+							<Panel class="Mutation" id="Mutation0">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation1">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation2">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation3">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation4">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation5">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation6">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation7">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation8">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="Mutation" id="Mutation9">
+								<Label text="{s:mutation_name}"/>
+							</Panel>
+							<Panel class="TimeRemaining">
+								<Label text="#dota_play_mutation_time_new"/>
+								<Label text="#dota_play_mutation_time_remaining" class="Numbers"/>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
 
 				<Panel id="SeasonalRankedSection" class="PlayTabSection TopBottomFlow SeasonalRankedTransfer">
-					<Panel id="SeasonalRankedSectionHeader">
-						<RadioButton id="GameStyle_SeasonalRanked" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_seasonal_ranked_match" onactivate="DOTAPlaySectionRadioChecked( 5 )">
-							<Image id="SeasonalRankedLocked" src="s2r://panorama/images/control_icons/battlepass_logo_png.vtex" />
-						</RadioButton>
-					</Panel>
+					<RadioButton id="GameStyle_SeasonalRanked" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_seasonal_ranked_match" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_RANKED )">
+						<Image id="SeasonalRankedLocked" src="s2r://panorama/images/control_icons/battlepass_logo_png.vtex" />
+					</RadioButton>
 					<Panel id="SeasonalRankedSectionContent_Locked" class="TopBottomFlow">
 						<Panel class="Divider" />
 						<Panel class="SeasonalRankedMMRSection">
@@ -189,12 +264,53 @@
 						<TextButton id="SeasonalRankedLeaderboardsButton" text="#seasonal_ranked_leaderboards_button" onactivate="DOTAShowSeasonalRankedLeaderboardsPopup()" />
 					</Panel>
 				</Panel>
-				<Panel id="RankedSection" class="PlayTabSection TopBottomFlow">
-					<Panel id="RankedSectionHeader">
-						<RadioButton id="GameStyle_Ranked" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_ranked_match" onactivate="DOTAPlaySectionRadioChecked( 1 )">
-							<Image id="RankedLocked" src="s2r://panorama/images/control_icons/lock_small_png.vtex" />
-						</RadioButton>
+
+				<Panel id="RankedLaneSelectionSection" class="PlayTabSection TopBottomFlow BattlePassSection">
+					<RadioButton id="GameStyle_RankedLaneSelection" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_ranked_lane_selection_match" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_RANKED_LANE_SELECTION )">
+						<Panel class="FillWidth" />
+						<Panel class="GameStyleIcons">
+							<Panel class="DotaPlusIconSmall DotaPlusSectionIcon" />
+							<Panel class="BattlePassSectionIcon" />
+						</Panel>
+					</RadioButton>
+					<Panel id="RankedLaneSelectionSectionContent_Locked" class="TopBottomFlow">
+						<Panel class="Divider" />
+						<Panel class="RankedLaneSelectionMMRSection">
+							<Label text="#ranked_lane_selection_locked_explain_plus" class="SectionHeaderLabel" html="true" />
+						</Panel>
 					</Panel>
+					<Panel id="RankedLaneCalibrationSection" class="RankedMMRSection">
+						<Panel class="TopBottomFlow">
+							<Label class="RankTierSoloCalibrating" text="#ranked_mmr_solo_calibration_games"/>
+							<Label class="RankTierPartyCalibrating" text="#ranked_mmr_party_calibration_games"/>
+						</Panel>
+					</Panel>
+					<Panel id="RankedLaneSelectionSectionContent" class="TopBottomFlow">
+						<Panel class="Divider" />
+						<Panel id="RankedLaneSelectionHeader">
+							<Label text="#DOTA_LaneSelectionDescription" />
+							<Panel id="RankTierContainer2" class="RankTierContainer">
+								<DOTAScenePanel class="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
+								<Panel id="RankTier" class="RankTierImage"/>
+								<Panel id="RankPips" class="RankPipImage" />
+								<Label id="RankLeaderboard" class="RankLeaderboardLabel" text="{d:leaderboard_rank}" />
+							</Panel>
+						</Panel>
+
+						<DropDown id="RankedLaneSelectionDD" disabled="true">
+							<Label id="LaneNone" text="#DOTA_LaneSelectionNone"> </Label>
+							<Label id="LaneOther" text="#DOTA_LaneSelectionOther"> <Label class="WaitLabel" text="#DOTA_LaneSelection_FasterQueue"/> </Label>
+							<Label id="LaneOff" text="#DOTA_LaneSelectionOfflane"><Label class="WaitLabel" text="#DOTA_LaneSelection_FasterQueue"/></Label>
+							<Label id="LaneSafe" text="#DOTA_LaneSelectionSafelane"></Label>
+							<Label id="LaneMid" text="#DOTA_LaneSelectionMidlane"></Label>
+						</DropDown>						
+					</Panel>
+				</Panel>
+
+				<Panel id="RankedSection" class="PlayTabSection TopBottomFlow">
+					<RadioButton id="GameStyle_Ranked" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_ranked_match" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_RANKED )">
+						<Image id="RankedLocked" src="s2r://panorama/images/control_icons/lock_small_png.vtex" />
+					</RadioButton>
 					<Panel id="RankedSectionContent_Locked" class="TopBottomFlow">
 						<Panel class="Divider" />
 						<Panel class="RankedMMRSection">
@@ -203,8 +319,9 @@
 					</Panel>
 					<Panel id="RankedSectionContent" class="TopBottomFlow">
 						<Panel id="RankedCalibrationSection" class="RankedMMRSection">
-							<Panel class="LeftRightFlow">
-								<Label id="RankTierCalibrating" text="#ranked_calibration_games"/>
+							<Panel class="TopBottomFlow">
+								<Label class="RankTierSoloCalibrating" text="#ranked_mmr_solo_calibration_games"/>
+								<Label class="RankTierPartyCalibrating" text="#ranked_mmr_party_calibration_games"/>
 							</Panel>
 						</Panel>
 						<Panel class="Divider" />						
@@ -234,8 +351,15 @@
 								<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_Ranked_AllDraft" text="#game_mode_lobby_name_22" selected="true" onmouseover="UIShowTextTooltipStyled( #game_mode_22_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( true )" onmouseout="UIHideTextTooltip()" />
 								<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_Ranked_CaptainsMode" text="#game_mode_2" onmouseover="UIShowTextTooltipStyled( #game_mode_2_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( true )" onmouseout="UIHideTextTooltip()" />
 								<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_Ranked_RandomDraft" text="#game_mode_3" onmouseover="UIShowTextTooltipStyled( #game_mode_3_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( true )" onmouseout="UIHideTextTooltip()" />
+								<Panel id="ChallengeModeContainer">
+									<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_ChallengeMode" disabled="true" text="#TI8_ChallengeMode_ButtonLabel" onmouseover="UIShowTextTooltipStyled( #TI8_ChallengeMode_Desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( true )" onmouseout="UIHideTextTooltip()" />
+									<Panel id="ChallengeModeTokens">
+										<Image src="s2r://panorama/images/compendium/international2018/challenge_mode_token_png.vtex"/>
+										<Label text="#TI8_ChallengeMode_TokenLabel" />
+									</Panel>
+								</Panel>
 							</Panel>
-							<Panel id="RankTierContainer">
+							<Panel id="RankTierContainer" class="RankTierContainer">
 								<DOTAScenePanel id="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
 								<Panel id="RankTier" class="RankTierImage"/>
 								<Panel id="RankPips" class="RankPipImage" />
@@ -247,33 +371,16 @@
 				</Panel>
 
 				<Panel id="GameModeSection" class="PlayTabSection">
-					<Panel class="SectionHeader">
-						<RadioButton id="GameStyle_Normal" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_normal_match" onactivate="DOTAPlaySectionRadioChecked( 0 )" />
-					</Panel>
+					<RadioButton id="GameStyle_Normal" class="GameStyle" group="GameStyleTabGroup" text="#dota_play_normal_match" onactivate="DOTAPlaySectionRadioChecked( PLAY_TAB_SECTION_NORMAL )" />
 					<Panel id="NormalSectionContent">
 						<Panel class="Divider" />
 						<Panel id="UnrankedGameModes" class="TopBottomFlow">
 							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AllPick" text="#game_mode_1" onmouseover="UIShowTextTooltipStyled( #game_mode_1_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_Turbo" text="#game_mode_23" onmouseover="UIShowTextTooltipStyled( #game_mode_23_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false ); DOTAAcknowledgeViolator( 'turbo_added' )" onmouseout="UIHideTextTooltip()">
-								<DOTAViolator class="GameModeViolator" name="turbo_added">
-									<Label text="#DOTA_New"/>
-								</DOTAViolator>
-							</ToggleButton>
-
+							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_Turbo" text="#game_mode_23" onmouseover="UIShowTextTooltipStyled( #game_mode_23_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false );" onmouseout="UIHideTextTooltip()" />
 							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_SingleDraft" text="#game_mode_4" onmouseover="UIShowTextTooltipStyled( #game_mode_4_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
-
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AbilityDraft" text="#game_mode_18" onmouseover="UIShowTextTooltipStyled( #game_mode_18_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" >
-								<DOTAViolator class="SmallGameModeViolator" name="turbo_added">
-									<Label text="#DOTA_ViolatorUpdated"/>
-								</DOTAViolator>
-							</ToggleButton>
-
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AllRandom" text="#game_mode_5"  onmouseover="UIShowTextTooltipStyled( #game_mode_5_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()"/>
 							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_RandomDraft" text="#game_mode_3" onmouseover="UIShowTextTooltipStyled( #game_mode_3_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_CaptainsMode" text="#game_mode_2" onmouseover="UIShowTextTooltipStyled( #game_mode_2_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_CaptainsDraft" text="#game_mode_16" onmouseover="UIShowTextTooltipStyled( #game_mode_16_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
-							<!-- <ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_LimitedHeroes" text="#game_mode_13" onmouseover="UIShowTextTooltipStyled( #game_mode_13_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" /> -->
-							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_LeastPlayed" text="#game_mode_12" onmouseover="UIShowTextTooltipStyled( #game_mode_12_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
+							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AllRandom" text="#game_mode_5"  onmouseover="UIShowTextTooltipStyled( #game_mode_5_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()"/>
+							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AbilityDraft" text="#game_mode_18" onmouseover="UIShowTextTooltipStyled( #game_mode_18_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
 							<ToggleButton class="CheckBox GameModeCheckBox" id="GameMode_AllRandomDeathMatch" text="#game_mode_20" onmouseover="UIShowTextTooltipStyled( #game_mode_20_desc, GameModeTooltip )" onactivate="DOTAGameModeToggled( false )" onmouseout="UIHideTextTooltip()" />
 						</Panel>
 					</Panel>

@@ -12,6 +12,14 @@
 
 @define HeroTransitionDuration: 0.46s;
 
+/* Styling for Event Game types are split into separate files for ease of maintenance */
+@import url("file://{resources}/styles/dashboard_page_post_game_dark_moon.css");
+@import url("file://{resources}/styles/dashboard_page_post_game_siltbreaker.css");
+@import url("file://{resources}/styles/dashboard_page_post_game_frostivus_2017.css");
+@import url("file://{resources}/styles/dashboard_page_post_game_underhollow.css");
+@import url("file://{resources}/styles/dashboard_page_post_game_frostivus_2018.css");
+
+
 DOTAPostGame
 {
 	width: 100%;
@@ -135,35 +143,108 @@ DOTAPostGame.MatchDataLoaded #ContainerLoaded
 #HeaderRow
 {
 	width: 1392px;
-	//margin-top: -23px;
+	height: 72px;
+	margin-top: 100px;
+	padding-right: 32px;
 	horizontal-align: center;
+}
+
+.ProgressVisible #HeaderRow
+{
+	visibility: visible;
+}
+
+#HeaderRowControls
+{
+	horizontal-align: right;
+	vertical-align: bottom;
+	flow-children: right;
 }
 
 #CloseButton
 {
 	horizontal-align: right;
-	margin-right: 32px;
-	margin-top: -4px;
+	margin-left: 16px;
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+
+	opacity: 0.0;
+}
+
+.ShowingJustFinishedMatch:not(.ProgressVisible) #CloseButton
+{
+	opacity: 1.0;
+}
+
+#HideProgressButton
+{
+	width: 24px;
+	height: 24px;
+
+	vertical-align: middle;
+	margin-right: 12px;
+
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+
+	background-image: url("s2r://panorama/images/control_icons/arrow_left_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	wash-color: #768e8d;
 
 	visibility: collapse;
 }
 
-.ShowingJustFinishedMatch #CloseButton
+.ProgressVisible.ViewingProgressSummary #HideProgressButton
 {
 	visibility: visible;
 }
 
-#CloseButton Label
+#ProgressScreenButtons
 {
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	color: #768E8D;
+	flow-children: right;
+	horizontal-align: center;
+	padding-left: 6px;
+	vertical-align: middle;
 }
 
-#CloseButton:hover Label
+.ProgressScreenButton
 {
-	color: #ffffff;
+	width: 21px;
+	height: 21px;
+	margin-right: 8px;
+
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	wash-color: #768e8d;
 }
+
+.ProgressScreenButton:hover
+{
+	wash-color: #fff;
+}
+
+.ProgressScreenButton:active
+{
+	wash-color: #ccc;
+}
+
+.ProgressScreenButton.HeroBadgeProgress		{ background-image: url("s2r://panorama/images/control_icons/hero_progress_icon_png.vtex"); }
+.ProgressScreenButton.HeroRelicsProgress	{ background-image: url("s2r://panorama/images/control_icons/relic_progress_icon_png.vtex"); }
+.ProgressScreenButton.CavernsProgress		{ background-image: url("s2r://panorama/images/control_icons/bp2019_jungle_icon_png.vtex"); }
+.ProgressScreenButton.MVPProgress		{ background-image: url("s2r://panorama/images/control_icons/bp2019_mvp_icon_png.vtex"); }
+.ProgressScreenButton.BattlePassProgress	{ background-image: url("s2r://panorama/images/control_icons/battlepass_logo_grayscale_small_png.vtex"); }
+.ProgressScreenButton.RubickArcanaProgress	{ background-image: url("s2r://panorama/images/control_icons/rubick_arcana_post_game_progress_icon_png.vtex"); }
+.Season_NewBloom2019 .ProgressScreenButton.EventPointsProgress	{ background-image: url("s2r://panorama/images/control_icons/newbloom_2019_post_game_progress_icon_psd.vtex"); }
+.ProgressScreenButton.CoachRatingProgress	{ background-image: url("s2r://panorama/images/coaching/coach_icon_png.vtex"); }
+
 
 /* Details Selector (tabs) */
 
@@ -533,26 +614,26 @@ DOTAPostGame.EventGame #EventGameOverview
 	horizontal-align: center;
 }
 
-#NormalMatchPlayers					{ width: 1884px; }
-#NormalMatchPlayers.PermanentBuffs1 { width: 1992px; }
-#NormalMatchPlayers.PermanentBuffs2 { width: 1992px; }
-#NormalMatchPlayers.PermanentBuffs3 { width: 2042px; }
-#NormalMatchPlayers.PermanentBuffs4 { width: 2092px; }
-#NormalMatchPlayers.PermanentBuffs5 { width: 2142px; }
+#NormalMatchPlayers					{ width: 1700px; }
+#NormalMatchPlayers.PermanentBuffs1 { width: 1808px; }
+#NormalMatchPlayers.PermanentBuffs2 { width: 1808px; }
+#NormalMatchPlayers.PermanentBuffs3 { width: 1858px; }
+#NormalMatchPlayers.PermanentBuffs4 { width: 1908px; }
+#NormalMatchPlayers.PermanentBuffs5 { width: 1958px; }
 
-.GameModeAbilityDraft #NormalMatchPlayers				  { width: 2128px; }
-.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs1 { width: 2136px; }
-.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs2 { width: 2136px; }
-.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs3 { width: 2186px; }
-.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs4 { width: 2236px; }
-.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs5 { width: 2286px; }
+.GameModeAbilityDraft #NormalMatchPlayers				  { width: 1944px; }
+.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs1 { width: 1952px; }
+.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs2 { width: 1952px; }
+.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs3 { width: 2002px; }
+.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs4 { width: 2052px; }
+.GameModeAbilityDraft #NormalMatchPlayers.PermanentBuffs5 { width: 2102px; }
 
-.ShowMMRLegend #NormalMatchPlayers					{ width: 2024px; }
-.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs1	{ width: 2132px; }
-.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs2	{ width: 2132px; }
-.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs3	{ width: 2182px; }
-.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs4	{ width: 2232px; }
-.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs5	{ width: 2282px; }
+.ShowMMRLegend #NormalMatchPlayers					{ width: 1840px; }
+.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs1	{ width: 1948px; }
+.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs2	{ width: 1948px; }
+.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs3	{ width: 1998px; }
+.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs4	{ width: 2048px; }
+.ShowMMRLegend #NormalMatchPlayers.PermanentBuffs5	{ width: 2098px; }
 
 #RightColumn
 {
@@ -766,7 +847,7 @@ Panel.PlayerRowLegend
 .PlayerRowLegend Label
 {
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: thin;
 
 	color: #768e8dff;
@@ -902,9 +983,7 @@ Panel.PlayerRowLegend
 	color: #d84535;
 }
 
-.PlayerRowLegend .LegendHeroDamage,
-.PlayerRowLegend .LegendHeroHealing,
-.PlayerRowLegend .LegendTowerDamage
+.PlayerRowLegend .LegendHeroHealing
 {
 	text-align: right;
 	tooltip-arrow-position: 65% 50%;
@@ -1496,6 +1575,11 @@ DOTAPostGame.ReplayExistenceRequestedNotification #ReplayExistenceRequestedNotif
 	visibility: visible;
 }
 
+.UsedWorkshopGuide.RightExpanded .GuideContainer
+{
+	visibility: collapse;
+}
+
 .GuideContainer Label
 {
 	padding-top: 4px;
@@ -1669,7 +1753,7 @@ Panel.AbilityUpgradesRowLegend
 .AbilityUpgradesRowLegend Label
 {
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 18px;
 	color: #768E8D;
 }
 
@@ -2861,6 +2945,78 @@ Label.CommentText
 	horizontal-align: left;
 }
 
+.OverviewCoaches
+{
+	margin-top: 107px;
+	visibility: collapse;
+	transition-property: opacity;
+	transition-duration: 0.3s;
+}
+.OverviewCoaches.HasCoaches
+{
+	visibility: visible;
+}
+
+
+.LeftExpanded #LeftCoaches,
+.RightExpanded #RightCoaches
+{
+	opacity: 0.0;
+}
+
+
+#LeftCoaches
+{
+	horizontal-align: left;
+	transform: translateX( 210px );
+}
+.AspectRatio16x10 #LeftCoaches
+{
+	transform: translateX( 96px );
+}
+.AspectRatio4x3 #LeftCoaches
+{
+	transform: translateX( 24px );
+}
+
+#RightCoaches
+{
+	horizontal-align: right;
+	transform: translateX( -210px );
+}
+.AspectRatio16x10 #RightCoaches
+{
+	transform: translateX( -96px );
+}
+.AspectRatio4x3 #RightCoaches
+{
+	transform: translateX( -23px );
+}
+
+.CoachesCarousel
+{
+	width: 76px;
+	margin-top: 24px;
+}
+
+.CoachesCarousel DOTAPostGameOverviewCoach
+{
+	opacity: 0.0;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.CoachesCarousel DOTAPostGameOverviewCoach.Focused
+{
+	opacity: 1.0;
+}
+
+.CoachesCarouselNav
+{
+	horizontal-align: center;
+}
+
 .OverviewHeroTeamContainer
 {
 	height: 860px;
@@ -2921,11 +3077,24 @@ Label.CommentText
 .AspectRatio4x3 #Hero3 { transform:  translateX( 434px ); }
 .AspectRatio4x3 #Hero4 { transform:  translateX( 562px ); }
 
-.AspectRatio16x10 #Hero128 { transform:  translateX( 48px ); }
-.AspectRatio16x10 #Hero129 { transform:  translateX( 176px ); }
-.AspectRatio16x10 #Hero130 { transform:  translateX( 304px ); }
-.AspectRatio16x10 #Hero131 { transform:  translateX( 432px ); }
-.AspectRatio16x10 #Hero132 { transform:  translateX( 560px ); }
+.AspectRatio4x3 #Hero128 { transform:  translateX( 48px ); }
+.AspectRatio4x3 #Hero129 { transform:  translateX( 176px ); }
+.AspectRatio4x3 #Hero130 { transform:  translateX( 304px ); }
+.AspectRatio4x3 #Hero131 { transform:  translateX( 432px ); }
+.AspectRatio4x3 #Hero132 { transform:  translateX( 560px ); }
+
+.AspectRatio4x3 .AnyCoachesInMatch #Hero0 { transform:  translateX( 102px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero1 { transform:  translateX( 219px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero2 { transform:  translateX( 336px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero3 { transform:  translateX( 453px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero4 { transform:  translateX( 570px ); }
+
+.AspectRatio4x3 .AnyCoachesInMatch #Hero128 { transform:  translateX( 31px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero129 { transform:  translateX( 148px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero130 { transform:  translateX( 265px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero131 { transform:  translateX( 382px ); }
+.AspectRatio4x3 .AnyCoachesInMatch #Hero132 { transform:  translateX( 499px ); }
+
 
 #Hero0.Collapsed,
 #Hero1.Collapsed,
@@ -2995,6 +3164,11 @@ Label.CommentText
 	transition-property:  opacity, width, height, transform, z-index;
 	transition-timing-function: ease-in-out, linear;
 	transition-duration: HeroTransitionDuration,  HeroTransitionDuration, HeroTransitionDuration, HeroTransitionDuration, 0s;
+}
+
+.AspectRatio4x3 .AnyCoachesInMatch .OverviewHeroContainer
+{
+	width: 120px;
 }
 
 .HeroCenterContent
@@ -3659,7 +3833,7 @@ DOTAPostGameOverviewHero.Expanded .OverviewHeroPlayerName
 	margin-bottom: 218px;
 	flow-children: down;
 	width: 100%;
-	height: 64px;
+	height: 160px;
 	background-color: gradient( linear, 0% 100%, 0% 0%, from( #000000f4 ), color-stop( 0.4, #000000d4  ), to( #00000000 ) );
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
@@ -3701,11 +3875,29 @@ DOTAPostGameOverviewHero.Expanded #HeroStatsFooter
 {
 	horizontal-align: center;
 	vertical-align: bottom;
-	horizontal-align: left;
+	horizontal-align: center;
 	margin-bottom: 6px;
+	flow-children: down;
 
 	width: 100px;
 	//border: 1px solid blue;
+}
+
+.OverviewStat
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#OverviewStatHeroBadge
+{
+	ui-scale: 60%;
+	horizontal-align: center;
+}
+
+#OverviewStatHeroBadge.NoTier
+{
+	visibility: collapse;
 }
 
 .StatLabel
@@ -4097,7 +4289,7 @@ DOTAPostGameOverviewHero.Expanded #MVPStarContainer
 
 .MVPStar
 {
-	background-image: url("s2r://panorama/images/control_icons/star_png.vtex");
+	background-image: url("s2r://panorama/images/control_icons/bp2019_mvp_icon_png.vtex");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: 100% 100%;
@@ -4136,7 +4328,7 @@ DOTAPostGameOverviewHero.Expanded #MVPStarContainer
 
 #OverviewHeroMVPButton
 {
-	background-image: url("s2r://panorama/images/control_icons/star_png.vtex");
+	background-image: url("s2r://panorama/images/control_icons/bp2019_mvp_icon_png.vtex");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: 60% 60%;
@@ -4231,7 +4423,32 @@ DOTAPostGameOverviewHero #OverviewHeroReportButton
 	visibility: collapse;
 }
 
-  DOTAPostGameOverviewHero.CanTip #OverviewHeroTipButton
+DOTAPostGameOverviewHero.CanTip #OverviewHeroTipButton
+{
+	visibility: visible;
+}
+
+DOTAPostGameOverviewHero #OverviewHeroFavoriteButton
+{
+	background-image: url("s2r://panorama/images/control_icons/party_finder_icon_add_png.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+	//transform: rotateZ( 180deg);
+
+	tooltip-position: top;
+	tooltip-body-position: 50% 0%;
+
+   	wash-color: #9862E9;
+
+	transition-property: background-color, wash-color, transform, opacity-mask, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
+
+	visibility: collapse;
+}
+
+DOTAPostGameOverviewHero.CanFavorite #OverviewHeroFavoriteButton
 {
 	visibility: visible;
 }
@@ -4268,25 +4485,26 @@ DOTAPostGameOverviewHero #OverviewHeroReportButton
 	visibility: collapse;
 }
 
+DOTAPostGameOverviewHero.CanCommend #OverviewHeroCommendButton
+{
+	visibility: visible;
+}
+
 #OverviewHeroReportButton:hover,
 #OverviewHeroCommendButton:hover,
+#OverviewHeroFavoriteButton:hover,
 #OverviewHeroTipButton:hover
-
 {
 	wash-color: #ffffff;
 	//border: 2px solid black;
 }
 
 #OverviewHeroReportButton:active,
-#OverviewHeroCommendButton:active
+#OverviewHeroCommendButton:active,
+#OverviewHeroFavoriteButton:active
 {
 	wash-color: #aaaaaa;
 	border: 3px solid black;
-}
-
-DOTAPostGameOverviewHero.CanCommend #OverviewHeroCommendButton
-{
-	visibility: visible;
 }
 
 DOTAPostGameOverviewHero .OverviewHeroInviteButton
@@ -5090,14 +5308,6 @@ DOTAPostGameSupportItemsItemEntry .ItemIcon
 	background-repeat: no-repeat;
 }
 
-.PicksTeamContainer Label.HeroWasBonus
-{
-	background-image: url("s2r://panorama/images/control_icons/bonus_hero_star_psd.vtex");
-	background-position: 41px 18px;
-	background-size: 15px 14px;
-	background-repeat: no-repeat;
-}
-
 #DetailsKillMatrix
 {
 	width: 475px;
@@ -5237,6 +5447,261 @@ DOTAPostGameKillMatrixRow.Victim_4_Active #VictimDeathCount4
 	visibility: visible;
 }
 
+
+/* DAMAGE RECEIVED */
+
+#DetailsDamageReceived
+{
+	width: 258px;
+	height: 100%;
+	padding-left: 0px;
+	flow-children: down;
+
+	visibility: collapse;
+}
+
+.HasDamageReceived #DetailsDamageReceived
+{
+	visibility: visible;
+}
+
+.DamageReceivedTeamContainer
+{
+	flow-children: down;
+}
+
+.DamageReceivedTeamContainer .PlayerRowContainer
+{
+	margin-bottom: 6px;
+}
+
+.StatRowHeight.DamageReceivedLegend
+{
+	padding-top: 9px;
+	width: 220px;
+	flow-children: down;
+	padding-bottom: 0px;
+}
+
+.DamageReceivedSubLegend
+{
+	padding-top: 1px;
+	width: 100%;
+}
+
+.DamageReceivedSubLegend Label.DamageReceivedSubTitlePre
+{
+	horizontal-align: left;
+	width: 50%;
+	text-align: center;
+}
+
+.DamageReceivedSubLegend Label.DamageReceivedSubTitlePost
+{
+	horizontal-align: right;
+	width: 50%;
+	text-align: center;
+}
+
+#DetailsDamageReceived .DamageReceivedTitle
+{
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+	color: #6D726B;
+	text-align: center;
+	horizontal-align: center;
+}
+
+#DamageReceivedPreValue,
+#DamageReceivedPostValue
+{
+	text-align: right;
+	margin-right: 30px;
+	width: 80px;
+	vertical-align: center;
+	color: baseText;
+}
+
+#DamageReceivedPostValue
+{
+	margin-right: 20px;
+}
+
+.PlayerRowContainer .InfoIcon
+{
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+/* DAMAGE DEALT */
+
+#DetailsDamageDealt
+{
+	width: 228px;
+	height: 100%;
+	padding-left: 0px;
+	flow-children: down;
+}
+
+.DamageDealtTeamContainer
+{
+	flow-children: down;
+}
+
+.DamageDealtTeamContainer .PlayerRowContainer
+{
+	margin-bottom: 6px;
+}
+
+.StatRowHeight.DamageDealtLegend
+{
+	padding-top: 9px;
+	width: 220px;
+	flow-children: down;
+	padding-bottom: 0px;
+}
+
+.DamageDealtSubLegend
+{
+	padding-top: 1px;
+	width: 100%;
+}
+
+.DamageDealtSubLegend Label.DamageDealtSubTitleHero
+{
+	horizontal-align: left;
+	width: 50%;
+	text-align: center;
+}
+
+.DamageDealtSubLegend Label.DamageDealtSubTitleBuilding
+{
+	horizontal-align: right;
+	width: 50%;
+	text-align: center;
+}
+
+#DetailsDamageDealt .DamageDealtTitle
+{
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+	color: #6D726B;
+	text-align: center;
+	horizontal-align: center;
+}
+
+#DamageDealtHeroValue,
+#DamageDealtBuildingValue
+{
+	text-align: right;
+	margin-right: 30px;
+	width: 80px;
+	vertical-align: center;
+	color: baseText;
+}
+
+
+/* DEATH STATS */
+
+#DetailsDeathStats
+{
+	width: 228px;
+	height: 100%;
+	padding-left: 0px;
+	flow-children: down;
+
+	visibility: collapse;
+}
+
+.HasDeathStats #DetailsDeathStats
+{
+	visibility: visible;
+}
+
+.DeathStatsTeamContainer
+{
+	flow-children: down;
+}
+
+.DeathStatsTeamContainer .PlayerRowContainer
+{
+	margin-bottom: 6px;
+}
+
+.StatRowHeight.DeathStatsLegend
+{
+	padding-top: 9px;
+	width: 210px;
+	flow-children: down;
+	padding-bottom: 0px;
+}
+
+.DeathStatsSubLegend
+{
+	flow-children: right;
+}
+
+.DeathStatsSubLegend Label.DeathStatsSubTitleGold,
+.DeathStatsSubLegend Label.DeathStatsSubTitleTime
+{
+	text-align: right;
+	padding-right: 30px;
+}
+
+.DeathStatsSubLegend Label.DeathStatsSubTitleGold
+{
+	width: 110px;
+	color: #C48103;
+}
+
+.DeathStatsSubLegend Label.DeathStatsSubTitleTime
+{
+	width: 100px;
+}
+
+#DetailsDeathStats .DeathStatsTitle
+{
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+	color: #6D726B;
+	text-align: center;
+	horizontal-align: center;
+}
+
+#DeathStatsTimeValue,
+#DeathStatsGoldValue
+{
+	text-align: right;
+	margin-right: 30px;
+	vertical-align: center;
+}
+
+#DeathStatsTimeValue
+{
+	width: 70px;
+}
+
+#DeathStatsGoldValue
+{
+	width: 80px;
+}
+
+#DeathStatsTimeValue
+{
+	color: baseText;
+}
+
+#DeathStatsGoldValue
+{
+	color: #E7BA01;
+}
+
+
+
+/* NO METADATA */
 
 #NoMetadataStats
 {
@@ -6144,7 +6609,7 @@ DOTAPostGameOverviewHero.Expanded #MainHeroImage
 {
 	vertical-align: bottom;
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: thin;
 
 	color: #768e8dff;
@@ -6183,16 +6648,30 @@ DOTAPostGameOverviewHero.Expanded #MainHeroImage
 
 .HeroIcon
 {
+	padding-bottom: 6px;
+	padding-top: 6px;
 	vertical-align: middle;
 }
 
-.HeroIcon DOTAHeroImage
+.HeroIcon #HeroImage
 {
 	background-color: #000000de;
 	width: 74px;
 	height: 42px;
 	vertical-align: middle;
 	border: 1px solid black;
+}
+
+.HeroIcon #HeroBadge
+{
+	ui-scale: 36%;
+	vertical-align: bottom;
+	transform: translateX( -6px ) translateY( 6px );
+}
+
+.HeroIcon #HeroBadge.NoTier
+{
+	visibility: collapse;
 }
 
 #PlayerAvatar
@@ -6822,19 +7301,7 @@ DOTAPostGameOverviewHero.Expanded #MainHeroImage
 	visibility: visible;
 }
 
-.HeroDamageColumn
-{
-	margin-left: 32px;
-	width: 60px;
-}
-
 .HeroHealingColumn
-{
-	margin-left: 32px;
-	width: 60px;
-}
-
-.TowerDamageColumn
 {
 	margin-left: 32px;
 	width: 60px;
@@ -6924,6 +7391,7 @@ DOTAPostGameOverviewHero.CanReport:hover #ButtonDrawer,
 DOTAPostGameOverviewHero.CanCommend:hover #ButtonDrawer,
 DOTAPostGameOverviewHero.CanTip:hover #ButtonDrawer,
 DOTAPostGameOverviewHero.CanVoteMVP:hover #ButtonDrawer,
+DOTAPostGameOverviewHero.CanFavorite:hover #ButtonDrawer,
 DOTAPostGameOverviewHero:hover #ButtonDrawer
 {
 	visibility: visible;
@@ -6956,7 +7424,7 @@ DOTAPostGameOverviewHero:hover #ButtonDrawer
 	vertical-align: center;
 }
 
-.OverviewHeroContainer.IsBot #PlayerName
+.OverviewHeroContainer.IsBot #PlayerName, .OverviewHeroContainer.IsBot #MVPVote
 {
 	visibility: collapse;
 }
@@ -7413,7 +7881,28 @@ DOTAPostGameOverviewHero.Expanded #HeroItemsContainer
 	visibility: collapse;
 }
 
-.IsBot .IndividualStatsContainer #PlayerName
+#MVPVote
+{
+	horizontal-align: center;
+	visibility: collapse;
+	background-image: url("s2r://panorama/images/hud/player_mvp_crown_png.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 27px;
+	height: 23px;
+	margin-top: 30px;
+	z-index: 10;
+
+	tooltip-position: right;
+	tooltip-body-position: 50% 50%;
+}
+
+.WasAwardedMVP #MVPVote
+{
+	visibility: visible;
+}
+
+.IsBot .IndividualStatsContainer #PlayerName, .IsBot .IndividualStatsContainer #MVPVote
 {
 	visibility: collapse;
 }
@@ -7430,9 +7919,9 @@ DOTAPostGameOverviewHero.Expanded #HeroItemsContainer
 
 .CrestIcon
 {
-	width: 20px;
-	height: 20px;
-	margin-top: -3px;
+	width: 21px;
+	height: 21px;
+	margin-top: 0px;
 	margin-bottom: -3px;
 	margin-left: -3px;
 	transform: translateY( 4px );
@@ -7541,11 +8030,6 @@ DOTAPostGameOverviewHeroContainer #RankTierContainer
 {
 	visibility: visible;
 }
-
-/* Styling for Event Game types are split into separate files for ease of maintenance */
-@import url("file://{resources}/styles/dashboard_page_post_game_dark_moon.css");
-@import url("file://{resources}/styles/dashboard_page_post_game_siltbreaker.css");
-@import url("file://{resources}/styles/dashboard_page_post_game_frostivus_2017.css");
 
 
 /* Basic Graphs Tab */
@@ -7675,6 +8159,7 @@ DOTAPostGameOverviewHeroContainer #RankTierContainer
 }
 
 .ProgressPending #ContainerDetails,
+.ProgressMVPVote #ContainerDetails,
 .ProgressVisible #ContainerDetails
 {
 	opacity: 0.0;

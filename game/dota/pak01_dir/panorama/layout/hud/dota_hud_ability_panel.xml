@@ -17,6 +17,13 @@
 				<DOTAScenePanel id="AutoCasting" map="scenes/hud/autocasting" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true"/>
 			</Panel>
 		</snippet>
+	
+		<snippet name="RubickArcanaContents">
+			<Panel>
+				<DOTAScenePanel id="RubickArcanaWillCastGreen" map="scenes/hud/rubickarcanagreen" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true"/>
+			</Panel>
+		</snippet>
+	
 	</snippets>
 	
 	<DOTAAbilityPanel hittest="false">
@@ -36,7 +43,7 @@
 					<Panel hittest="false" id="AutocastableBorder" />
 					<Panel id="AutoCastingContainer" hittest="false">
 						<!-- AutoCastingContents will be loaded here on-demand -->
-					</Panel>
+					</Panel>				
 					<Panel id="ButtonSize">
 						<DOTAAbilityButton id="AbilityButton" onmouseover="DOTAHUDAbilityShowTooltip()" onmouseout="DOTAHUDAbilityHideTooltip()">
 							<DOTAAbilityImage id="AbilityImage" />
@@ -52,12 +59,15 @@
 							</Panel>
 							<Panel id="ActiveAbility" hittest="false" />
 							<Panel id="InactiveOverlay" hittest="false" />
-							<Label id="Charges" text="{d:charge_count}" hittest="false" />
-							<Label id="AltCharges" text="{d:alt_charge_count}" hittest="false" />
+							<Label id="ItemCharges" text="{d:item_charge_count}" hittest="false" />
+							<Label id="ItemAltCharges" text="{d:item_alt_charge_count}" hittest="false" />
 						</DOTAAbilityButton>
 						<Panel hittest="false" id="ActiveAbilityBorder" />
 						<Panel hittest="false" id="PassiveAbilityBorder" />
 						<Panel hittest="false" id="AutocastableAbilityBorder" />
+						<Panel id="RubickArcanaContainer" hittest="false">
+							<!-- RubickArcanaContents will be loaded here on-demand -->
+						</Panel>							
 						<Panel hittest="false" id="GoldCostBG" />
 						<Label hittest="false" id="GoldCost" text="{d:gold_cost}" />
 						<Panel hittest="false" id="ManaCostBG" />
@@ -89,11 +99,16 @@
 						<Label id="CtrlText" text="#DOTA_Keybind_CTRL" hittest="false" />
 					</Panel>
 				</Panel>
+				<Label id="AbilityCharges" text="{d:ability_charge_count}" hittest="false" />
 			</Panel>
 			<Panel id="QueryLevelGradient" hittest="false"/>
 			<Panel hittest="false" id="AbilityLevelContainer" />
 		</Panel>
-		<Button id="InvokerSpellCard" hittest="true" class="Hidden" onactivate="DOTAToggleInvokerSpellCard()">
+		<Button id="InvokerSpellCardButton" hittest="true" class="Hidden" onactivate="DOTAToggleInvokerSpellCard()">
+			<Label id="SpellsLabel" text="#DOTA_InvokerSpellCard_Title"/>
+		</Button>
+		
+		<Button id="SpellCardButton" hittest="true" class="Hidden" onactivate="DOTAToggleSpellCard()">
 			<Label id="SpellsLabel" text="#DOTA_InvokerSpellCard_Title"/>
 		</Button>
 	</DOTAAbilityPanel>

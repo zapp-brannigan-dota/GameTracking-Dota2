@@ -1,6 +1,10 @@
  A __bss_start
  A _edata
  A _end
+ CBufferString::Concat(char const*, char const*, ...)
+ CBufferString::Insert(int, char const*, int, bool)
+ CBufferString::Purge(int)
+ CBufferString::Relinquish(CBufferString::EAllocationOption_t)
  CMemAllocSystemInitialize
  CThreadEvent::CThreadEvent(bool)
  CThreadEvent::Set()
@@ -189,13 +193,17 @@
  T luaopen_package
  T luaopen_string
  T luaopen_table
+ T operator delete(void*)
+ T operator delete[](void*)
+ T operator new(unsigned long)
+ T operator new[](unsigned long)
  ThreadGetCurrentId
- ThreadInterlockedExchange64
  ThreadSleep
  V_FixDoubleSlashes
  V_FixSlashes
  V_GetErrno
  V_IsAbsolutePath
+ V_PrettifyNum
  V_RemoveDotSlashes
  V_SetErrno
  V_StrTrim
@@ -212,28 +220,33 @@
  V_atan2f
  V_atanf
  V_atof
+ V_atofloat64
  V_atoi
  V_cosf
  V_expf
  V_fmodf
+ V_frexpf
  V_localeconv
  V_logf
  V_powf
- V_pretifynum
  V_qsort_s
+ V_sincosf
  V_sinf
  V_snprintf
- V_snwprintf
+ V_snwprintf_cch
  V_sscanf
  V_stricmp_fast
  V_stristr_fast(char const*, char const*)
  V_strlower_fast
+ V_strnchr
+ V_strnlen
  V_strtod
  V_strtoi64
  V_strtoui64
  V_strupper_fast
  V_swscanf
  V_tanf
+ V_tier0_strstr
  V_vsnprintf
  V_vsnprintfRet
  V_vsnprintfSize
@@ -254,7 +267,9 @@
  _V_StripExtension
  _V_StripLastDir
  _V_strncat
+ _V_strncmp
  _V_strncpy
+ _V_strnicmp_fast
  _V_strnistr_fast
  __cxa_atexit@@GLIBC_2.2.5
  __cxa_finalize@@GLIBC_2.2.5
@@ -262,6 +277,7 @@
  __cxa_guard_acquire@@CXXABI_1.3
  __cxa_guard_release@@CXXABI_1.3
  __cxa_pure_virtual@@CXXABI_1.3
+ __cxa_throw_bad_array_new_length@@CXXABI_1.3.8
  __errno_location@@GLIBC_2.2.5
  __gmon_start__
  __gxx_personality_v0@@CXXABI_1.3
@@ -333,13 +349,11 @@
  setsockopt@@GLIBC_2.2.5
  setvbuf@@GLIBC_2.2.5
  shutdown@@GLIBC_2.2.5
- sincosf@@GLIBC_2.2.5
  sinh@@GLIBC_2.2.5
  socket@@GLIBC_2.2.5
  sprintf@@GLIBC_2.2.5
  sqrtf@@GLIBC_2.2.5
  std::string::_Rep::_M_destroy(std::allocator<char> const&)@@GLIBCXX_3.4
- std::string::_Rep::_M_dispose(std::allocator<char> const&)@@GLIBCXX_3.4
  std::string::_Rep::_S_empty_rep_storage@@GLIBCXX_3.4
  std::string::append(char const*, unsigned long)@@GLIBCXX_3.4
  std::string::reserve(unsigned long)@@GLIBCXX_3.4
@@ -353,7 +367,6 @@
  strerror@@GLIBC_2.2.5
  strlen@@GLIBC_2.2.5
  strncpy@@GLIBC_2.2.5
- strnlen@@GLIBC_2.2.5
  strpbrk@@GLIBC_2.2.5
  strrchr@@GLIBC_2.2.5
  strstr@@GLIBC_2.2.5
@@ -361,10 +374,10 @@
  strtoul@@GLIBC_2.2.5
  tanh@@GLIBC_2.2.5
  tmpfile64@@GLIBC_2.2.5
- tolower@@GLIBC_2.2.5
  typeinfo for CThreadSyncObject
  ungetc@@GLIBC_2.2.5
  vtable for __cxxabiv1::__class_type_info@@CXXABI_1.3
  vtable for __cxxabiv1::__si_class_type_info@@CXXABI_1.3
  vtable for __cxxabiv1::__vmi_class_type_info@@CXXABI_1.3
+ wcscmp@@GLIBC_2.2.5
  wcslen@@GLIBC_2.2.5

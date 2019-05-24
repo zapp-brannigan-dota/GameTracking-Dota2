@@ -2,16 +2,16 @@
 
 #HeroMovie
 {
-	width: 95px;
-	height: 126px;
+	width: 190px;
+	height: 300px;
 	horizontal-align: right;
-	opacity-mask: url("s2r://panorama/images/masks/heroportraitfade1_psd.vtex") 1;
+	opacity-mask: url("s2r://panorama/images/masks/heroportraitfade2_psd.vtex") 1;
 	wash-color: #B94B3788;
 	
 	/* TI7 */
 	wash-color: #87EEFEa8;
 	
-	saturation: .8;
+	saturation: .9;
 }
 
 .ChallengeCompleted #HeroMovie
@@ -20,22 +20,61 @@
 	wash-color: #4B7DBD;
 }
 
-#HeroName
+.DailyHeroText
 {
-	/* color: #84ADD0; */
-
-	/* TI6 */
-	/* color: #F7B67F; */
-	
-	/* Fall 2016 */
-	color: #dff5a5;
-	
-	/* Winter 2017 */
-	color: #a5daf5;
-	
-	/* TI7 */
-	color: bp_color9;
+	color: #ffffff;
 
 	width: 120px;
 	text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.QuestDataNotPopulated #PreviewNameText
+{
+	visibility: visible;
+	width: 80%;
+	height: 120px;
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
+	font-size: 16px;
+	margin-top: 4px;
+}
+
+.QuestDataNotPopulated #HeroName, #PreviewNameText
+{
+	visibility: collapse;
+}
+
+.BigSideQuestBox #HeroMovie
+{
+	width: 160px;
+	height: 210px;
+	vertical-align: bottom;
+}
+
+.BigSideQuestBox #HeroName
+{
+	/*margin-top: 15px;*/
+	horizontal-align: left;
+	font-size: 24px;
+	font-weight: semi-bold;
+	margin-left: 15px;
+	margin-right: 15px;
+	line-height: 18px;
+	width: 100%;
+	height: 90px;
+	/*text-overflow: shrink;*/
+}
+
+ .BigSideQuestBox .ChallengeDesc
+ {
+	 font-size: 16px;
+	 color: #ffffff90;
+	 margin-left: 15px;
+ }
+
+.QuestDataNotPopulated.BigSideQuestBox .ChallengeDesc
+{
+	visibility: collapse;
 }

@@ -100,6 +100,8 @@
 	ambient_scale_night(float) : "Ambient Scale - Night" : "0" : "Ambient Nighttime scale."
 	shadow_color_day(color255) : "Shadow Color - Day" : "0 0 0" : "Shadow Daytime color."
 	shadow_color_night(color255) : "Shadow Color - Night" : "0 0 0" : "Shadow Nighttime color."
+	shadow_secondary_color_day(color255) : "Shadow Secondary Color - Day" : "0 0 0" : "Shadow Daytime color."
+	shadow_secondary_color_night(color255) : "Shadow Secondary Color - Night" : "0 0 0" : "Shadow Nighttime color."
 	shadow_scale_day(float) : "Shadow Scale - Day" : "0" : "Shadow Daytime scale."
 	shadow_scale_night(float) : "Shadow Scale - Night" : "0" : "Shadow Nighttime scale."
 	shadow_ground_scale_day(float) : "Shadow Ground Scale - Day" : "0" : "Shadow Daytime ground scale."
@@ -146,6 +148,7 @@
 
 	weather_type(choices) :"Client Weather Type" : -1 =
 	[
+		-2: "Dynamic Weather - On"
 		-1: "All - Always On"
 		0: "Default Weather Only"
 		1: "Snow Weather Only"
@@ -493,6 +496,12 @@
 	]
 	
 	show_in_fog(boolean) : "Show in Fog of War" : "0"
+
+	show_during_dynamic_weather(choices) :"Show only during dynamic weather" : 0 =
+	[
+		0: "No"
+		1: "Yes"
+	]
 ]
 
 @PointClass base(prop_dynamic_base, Targetname, teamnumber) studioprop() = prop_dynamic_clientside: 
@@ -705,6 +714,11 @@
 [
 ]
 
+@PointClass base(prop_dynamic_base, Targetname) studioprop() = ent_dota_promo: 
+	"[TOOLTIP NEEDS IMPROVEMENT] Promo Entity."
+[
+]
+
 @PointClass base(prop_dynamic_base, Targetname, dota_building, teamnumber) studioprop() = ent_dota_fountain: 
 	"The Fountain"
 [
@@ -898,13 +912,21 @@
 	activity_modifier(string) : "Activity Modifier" : "" : "An activity modifier to add to the unit to change its animations"
 
 	item_def0(integer) : "Wearable Item Def 0" : : "If set, specifies an item def to wear on the unit."
+	style_index0(integer) : "Style Index 0" : : "If set, specifies the style index for Wearable Item Def 0."
 	item_def1(integer) : "Wearable Item Def 1" : : "If set, specifies an item def to wear on the unit."
+	style_index1(integer) : "Style Index 1" : : "If set, specifies the style index for Wearable Item Def 1."
 	item_def2(integer) : "Wearable Item Def 2" : : "If set, specifies an item def to wear on the unit."
+	style_index2(integer) : "Style Index 2" : : "If set, specifies the style index for Wearable Item Def 2."
 	item_def3(integer) : "Wearable Item Def 3" : : "If set, specifies an item def to wear on the unit."
+	style_index3(integer) : "Style Index 3" : : "If set, specifies the style index for Wearable Item Def 3."
 	item_def4(integer) : "Wearable Item Def 4" : : "If set, specifies an item def to wear on the unit."
+	style_index4(integer) : "Style Index 4" : : "If set, specifies the style index for Wearable Item Def 4."
 	item_def5(integer) : "Wearable Item Def 5" : : "If set, specifies an item def to wear on the unit."
+	style_index5(integer) : "Style Index 5" : : "If set, specifies the style index for Wearable Item Def 5."
 	item_def6(integer) : "Wearable Item Def 6" : : "If set, specifies an item def to wear on the unit."
+	style_index6(integer) : "Style Index 6" : : "If set, specifies the style index for Wearable Item Def 6."
 	item_def7(integer) : "Wearable Item Def 7" : : "If set, specifies an item def to wear on the unit."
+	style_index7(integer) : "Style Index 7" : : "If set, specifies the style index for Wearable Item Def 7."
 ]
 
 
@@ -924,6 +946,7 @@
 	ambientscale1(float) : "Ambient Scale" : "1.0" : "This controls how much ambient there is."
 	ambientcolor2(color255) : "Shadow Color" : "24 24 24 1" : "This is the shadow color of the world."
 	ambientscale2(float) : "Shadow Scale" : "1.0" : "This controls how much shadow on entities there are."
+	ambientcolor3(color255) : "Shadow Secondary Color" : "24 24 24 1" : "This is the shadow color for downward facing surfaces."
 	groundscale(float) : "Shadow Ground Scale" : "1.0" : "This controls how much shadow on the ground there is."
 	
 	specularangles(angle) : "Specular Angle ( Y Z X )" : "90 0 0" : ""

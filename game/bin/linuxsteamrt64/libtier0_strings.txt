@@ -1,4 +1,6 @@
 	6RtcZO"
+	Message: %s
+	Title: %s
 	You must construct it with ORDERED_CONSTRUCT macro in the dependency resolution function.
        Sum (ms)            Avg Time/Frame (ms)     Avg Time/Call (ms)
   %10.3f %9.2f      %10.3f %6.2f      %10.3f %6.2f   %8d %6.2f
@@ -9,22 +11,27 @@
   ---------------------------------------------------- ----------- ----------- ----------- ------ ----------- ------ ----------- ----------- ----------- -----------
   Scope                                                      Calls Calls/Frame  Time+Child    Pct        Time    Pct   Avg/Frame    Avg/Call Avg-NoChild        Peak
  (DISABLED)
+ (including user space up to 63 bits)
  Avg Time/Frame (ms)
  [A\A]A^]
  [A\]
- []A\
+ bytes
  failed to dlopen "%s" error=%s
  failed to dlopen %s error=%s
+ tMv+@
 "></img>
 "E:#uIA
 #[A\A]A^]
-$A\A]A^]
 $ORIGIN
 $[A\A]A^]
 $[A\]
+%%.%if
 %%.%if%s
 %*s%ld
 %.0f pct of time accounted for
+%0*llx bytes at %0*llx is the largest open user-space VA region%s
+%0*llx bytes of %s at %0*llx%s
+%0*llx: address after highest user-space virtual region
 %8.4f / %9.2f:  %s
 %8.4f / %9.2f:  Writing profile data to '%s'
 %8.8x-%4.4x-%4.4x-%2.2x%2.2x-%2.2x%2.2x%2.2x%2.2x%2.2x%2.2x
@@ -44,15 +51,29 @@ $[A\]
 %s test: single thread push, multithread pop, %s
 %s test: single thread push/pop, in order... 
 %s test: single thread push/pop, interleaved... 
+%s total bytes in user-space regions (%s bytes in kernel-space regions)
 %s():
-%s.txt
 %s/source_engine_%u.lock
 %s: %s
 %s: Unable to get executable filename (%d byte buffer).
+%s: Unable to load SDL
+%s: added string size %d overflows (added to %d)
+%s: capacity request for %d can't be satisfied (max %d)
 %s: different number of names and flags
 %s: different number of names and pointers
+%s: invalid capacity %d requested
 %s: invalid flag byte count
+%s: invalid nBufferChars %d
+%s: invalid nByteIndex %d (string %d)
+%s: invalid nChars %d (index %d, string %d)
+%s: invalid nChars %d (string %d)
+%s: invalid nIndex %d (string %d)
+%s: invalid nNewChars %d
+%s: invalid nOldChars %d (string %d)
+%s: invalid nStart %d (string %d)
 %s: invalid pointer byte count
+%s: string format requested %d chars
+%s: string length overflows (is %d, adding %d)
 %s: unable to find %s in '%s'
 %s: unable to load '%s', error %d
 %zu %zu %zu %zu %zu %zu %zu
@@ -65,6 +86,7 @@ $[A\]
 &Atilde;
 &Auml;
 &Ccedil;
+&D;sxu
 &ETH;
 &Eacute;
 &Ecirc;
@@ -121,6 +143,8 @@ $[A\]
 &iquest;
 &iuml;
 &laquo;
+&ldquo;
+&lsquo;
 &macr;
 &mdash;
 &micro;
@@ -141,7 +165,9 @@ $[A\]
 &plusmn;
 &pound;
 &raquo;
+&rdquo;
 &reg;
+&rsquo;
 &sect;
 &shy;
 &sup1;
@@ -160,7 +186,7 @@ $[A\]
 &yen;
 &yuml;
 '%s' %s
-(%d) + %d bytes
+(Missing)
 ([A\A]A^A_]
 ([A\A]]
 ([]A\A]A^A_
@@ -168,7 +194,8 @@ $[A\]
 ***** OUT OF MEMORY! /+/ attempted allocation size: %llu ****
 ******** BEGIN VPROF REPORT ********
 ******** END VPROF REPORT ********
-*L;n s:H
+*-8`%
++[A\A]A^]
 +tPOu
 ,%03d
 ,/$`,
@@ -181,26 +208,35 @@ $[A\]
 -- Profile scopes sorted by time (including children) --
 -- Profile scopes sorted by time (without children) --
 -- Summary --
+-------------------------------------------
 --hint
 -?[`/?291?
--S"/=
+-HEAP WARNING: memory block at %p appears to be corrupt
 -allowmultiple
+-assertbreak
 -clearassertstate
 -debug_exitprocess
 -debugbreak
 -dedicated
 -emaildumps
 -etwprofile
+-force_dpi
 -ignorecontentasserts
+-inset_bottom
+-inset_left
+-inset_right
+-inset_top
 -mpi_worker
 -noassert
 -noautoargs
 -nocustomermachine
+-nohibernate
 -nowatchdog
 -oX"'
 -phased_window_create
 -profile
 -retail
+-start_resource_profiling
 -testmode
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
@@ -229,6 +265,7 @@ $[A\]
 .symtab
 .tbss
 .text
+.y;+X
 /e%s%s
 /etc/SUSE-release
 /etc/debian_release
@@ -242,15 +279,15 @@ $[A\]
 /proc/cpuinfo
 /proc/self/cmdline
 /proc/self/exe
+/proc/self/maps
 /proc/self/statm
 /proc/version
 /sys/devices/system/clocksource/clocksource0/current_clocksource
-/t'H9
-/tAD8
+/t,I9
+/t2D8
 /tmp/.steam-sem-names
 0'>0c*>
 0123456789ABCDEF
-0[A\A]A^]
 0[A\]
 0[]A\A]A^
 10CTestSuite
@@ -278,104 +315,116 @@ $[A\]
 22ILoggingResponsePolicy
 24BasicStatStructFieldDesc
 25CColorizedLoggingListener
+27CMiniDumpCommentBuilderBase
 28CStdMemAlloc_Data_StackStatsI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEELb0EE
 28CStdMemAlloc_Data_StackStatsI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEELb0EE
 28CallStackStatStructDescFuncs
 29CDefaultLoggingResponsePolicy
-5`4SM2F
 7CThread
+8/t+H
 8[A\A]A^A_]
 8[A\A]]
+8[A\Hc
 8[]A\A]A^A_
-956P#
-95mZ#
-9@tPA
 9CTestCase
 9IMemAlloc
 9ITestCase
+:/tGA
 ::<lambda_
 ::_CAssertFastInternal::AssertionFailed
 :>	Q>>
 :bD/b
 ;*3$"
-;=SZ#
-<$.t"L
-<$.t`L
-<+u)H
-<+u3M
-<+u4H
+<	upH
+<$.t 
+<$.t H
+<'tXE1
+<.t!D
 </h1>
 </pre>
-</t3E
-</t;L
-</tVE1
+</tUH
 </ul>
 <0tM<'
-<3/tVL
-<:t}H
+<2vOA
+<:t]H
 <;r$<
-<Rt<<Pt`<S
-<XuEH
+<Rt&<Pu
 <img src="
 <pre>
 >::operator ()
 ?/proc/self/status
 ?0,/1a,
+?A\E1
 ?Y(<un
-@Fv^k
+?t1E1
+?t8UH
+?t`UH
+?tpUH
+@CDynamicFunction: Closing library '%s' (%p)
+@MiniDumpExceptionHandler() is undefined for this platform
+A9D$\
 A>}?E>
 ATSA9
-ATSE1
+ATSHc
 ATSfH
-ATSt^
-ATUSH
+ATSt 
+ATStpH
+AUAT1
 AUATA
-AUATD
+AUATE
 AUATI
 AUATL
 AUATS
 AUATS1
 AUATSH
-AUATUSH
 AVAUA
-AVAUAT
 AVAUATA
-AVAUATD
-AVAUATE1
 AVAUATI
+AVAUATL
 AVAUATS
+AVAUATSD
 AVAUATSH
-AVAUATUSH
 AVAUD
 AVAUE1
-AVAUH
 AVAUI
 AVAUL
 AVAUM
 AWAVA
 AWAVAUA
 AWAVAUATA
-AWAVAUATE
+AWAVAUATH
 AWAVAUATI
-AWAVAUATLc
+AWAVAUATL
 AWAVAUATS
+AWAVAUATSD
 AWAVAUATSH
+AWAVAUATSRH
 AWAVAUATUSH
+AWAVAUD
 AWAVAUE1
 AWAVAUI
 AWAVAUL
-AWAVAUMc
-AWAVE1
+AWAVAULc
+AWAVE
 AWAVI
 AWAVL
 AWAVM
+AXAYE
 A\A]A^A_]
 A\A]A^]
+A\A]A^]H
 A\A]]
+A\]Hi
+A]A^A_]
+A^A_]
 AbortMessage({
 AddRef
 AllocTag
+AllocateEvent
 Always Ignore
+AppendConcat
+AppendConcatV
+AppendFormatV
 AppendMiniProfilerToList
 Assert
 AssertMsg_ConditionFailed
@@ -388,22 +437,22 @@ Assertion Failure: %s (%d)
 AssertionFailureListenerMiniDumpContext_t
 AuthenticAMD
 Average %.2f fps, %.2f ms per frame
-B09C0
+B I9@ @
+B@[A\A]A^]
 Bad node link detected
 BinaryProperties_GetValue
+BlibSDL2-2.0.so.0
 Break
 BroadcastAssertionMiniDumpContext_t
 BuiltDebug
-C tiI
 C0A9D$
-C0A9E
 C0H;S8v
 C8[A\]
-CDynamicFunction: Closing library '%s' (%p)
 CDynamicFunction: Loading library '%s' (%p)
 CDynamicFunction: Lookup of '%s' in '%s': %p
 CLoggingSystem::AllocTag overflowed!
 CMemAllocSystemInitialize
+CMiniDumpComment encountered an error while generating the comment
 COM_TimestampedLog
 CPU_MHZ
 CTSList
@@ -412,12 +461,17 @@ CTSQueue corruption
 CThreadMultiWaitEvent
 CThreadMultiWaitSemaphore
 CXXABI_1.3
+CXXABI_1.3.8
 Called Resume() on a thread that is not suspended!
+Cannot flush timstamped event log with no listener!
+Cannot register two timestamped event listeners!
+Capture
 CatchAndWriteMiniDump
 CatchAndWriteMiniDumpEx
 CatchAndWriteMiniDumpExForVoidPtrFn
 CatchAndWriteMiniDumpExReturnsInt
 CatchAndWriteMiniDumpForVoidPtrFn
+Cdbg.cpp
 Client Game
 Client Input/Output
 Client Physics
@@ -426,6 +480,7 @@ Client Simulation
 Client VScript
 Client_Animation
 CommandLine
+Comment unavailable. CMiniDumpComment encountered an error while generating the comment
 ConDMsg
 Corefile
 Couldn't window icon! %s
@@ -435,29 +490,31 @@ CreateInterface
 CreateSimpleProcess
 CreateSimpleThread
 D"A/oyu
-D$ H9
-D$ [I
+D$ E1
+D$ H9E
+D$ t%L
 D$(A\]
-D$(E1
-D$8H9
+D$(H9
+D$7@I
 D$8I9
-D$8L9
+D$@E1
+D$@H9
 D$@I9
-D$@L9
 D$pI;D$x
 D1gM[q
-D9c,u
+D;sxt:
+D;sxu
+DD/$=:
 DEBUG_EXITPROCESS
 DWARF_LOCAL_TRANSLATE
-D`eIDog|7
 DeclareCurrentThreadIsMainThread
 DevMsg
 DevWarning
 Developer
 DeveloperConsole
 DeveloperVerbose
+DkEF]
 DoAssertDialog: invalid Assert response returned from dialog/vxconsole - breaking to debugger
-E8[A\A]A^]
 ENABLE_ASSERT_DIALOG_PRINT
 ERROR: Alloc exceeded allocation limit /+/ %llu > %llu
 ERROR: HangWatchdogInternal_BeginScope() - Hang watchdog not implemented for this platform!
@@ -470,21 +527,26 @@ ERROR: HangWatchdog_Shutdown() - Hang watchdog not implemented for this platform
 ERROR: Virtual reservation exceeded limit /+/ %llu > %llu
 EarlyInit_Tier0
 EnGiQ
+EnsureAddedCapacity
+EnsureCapacity
 Error reading args file
 Exiting due to logging LR_ABORT request.
 Expr: %s
+F t2SH
+F t5SH
 F*?mmps
 FAIL: !IsEmpty()
 FAIL: !Validate()
 FAIL: Not all items popped
 File: %s
 FileSystem
+FlushBuffer
+Found Application AutoArgs file '%s'
 Frame Boundary
 FreeCommandLine
-G t,L
 G/	Ft
 G0A9D$
-GCC: (Ubuntu 4.8.1-2ubuntu1~12.04+steamrt2+srt1) 4.8.1
+GCC: (Ubuntu 5.4.0-7.really.6+steamrt1.1+srt1) 5.4.1 20160803
 GLIBCXX_3.4
 GLIBCXX_3.4.15
 GLIBC_2.11
@@ -507,37 +569,37 @@ GetDefaultMiniDumpHandler
 GetDefaultMiniDumpTypeFlags
 GetFileAndLineFromAddress
 GetHardwareClockReliably
+GetInsertPtr
 GetInstructionPointer
 GetLocalHostname
 GetModuleNameFromAddress
 GetNameFromOSType
 GetOSDetailString
 GetPlatformName
+GetReplacePtr
 GetSymbolNameFromAddress
 GetThreadedLoadLibraryFunc
 GetUnitTest
 GetWin32ConsoleCursorColumnIndex
-H)C H)C(
-H9*tgH
-H9=!.&
-H9B r4
-H9H w
-H9J s
-H9Z(tf
-H9w8v
+H)P(H
+H9C r$L
+H9P s
+H9x s
+H9z v
+H;*twH
+H;B v
 H;C0J
+H;G H
 H;J v
-H;P v
+H;Q tVL
 H;w0s
 H>*SL>
-HEAP WARNING: memory block at %p appears to be corrupt
 HEAP WARNING: memory block at %p is unexpectedly allocated
 HEAP WARNING: memory block at %p is unexpectedly free
 HEAP WARNING: memory block at %p is unexpectedly unrecognized
 HEAP WARNING: memory pointer %p is invalid
 H[A\A]A^A_]
 H[A\A]]
-H[]A\A]A^A_
 HangWatchdog
 HangWatchdogInternal_BeginScope
 HangWatchdogInternal_EndScope
@@ -546,14 +608,15 @@ HangWatchdog_Initialize
 HangWatchdog_SetHangImageRGBA
 HangWatchdog_SetMainThreadWindow
 HangWatchdog_Shutdown
-HcM te
-HcspD9
+HcCHH
+Hcs\I
 Heap: standard allocator
-I+D$hH
+I+D$h
 I1D$(A\]
-I9@ @
-I9\$(L
+I;\$(u
 IAssertionFailureListener::AssertionFailure()
+IMemAlloc::DumpStats: could not open output file %s
+IcL$pA9
 Ignore All Asserts
 Ignore For 24 Hours
 Ignore This File
@@ -565,20 +628,25 @@ Intentionally vague touch behavior for %p
 Interpolation
 InvokeMiniDumpHandler
 IterateCapturedStackAnnotations
+JSpsk
 JmpToAlternateStack
 Jobs/Coroutines
 K:SF2
 KM^bM
 KeyValuesSystem
-L)K L)K(
-L)s(A
-L9x s
-L9z H
+L$ H9
+L)H E
+L)h L)h(
+L)x L)x(
+L)x(L)x 
 L;h H
+L;n s>H
+L;x v
+L;z H
 LOADING
 LOG_GENERAL
+LS6 	
 LccpE9
-Lcs,E
 LengthOfMatchingPaths
 Line: %i
 Linux
@@ -648,8 +716,8 @@ MemFreeScratch
 MemZeroMemory
 MicroProfilerAddTS
 MiniDumpAdditionalStringData_t
+MiniDumpCommentEnsureOSDescription
 MiniDumpExceptionHandler
-MiniDumpExceptionHandler() is undefined for this platform
 MiniDumpRegisterForUnhandledExceptions
 MinidumpSetMiniDumpComment
 MinidumpUserStreamInfoAppend
@@ -659,20 +727,29 @@ Module %s is a debug build
 N11TSListTests8CListOpsE
 N11TSListTests8CTestOpsE
 N11TSListTests9CQueueOpsE
+NOTE: this is the total bytes of the regions above, not the growth since the old snapshot
 NO_GAME_ASSERT_DIALOG
 NO_RAISE_ON_ASSERT
 Networking
 No samples
 NoteAlloc
+OS memory stats:
+OS: %s
 OSTypesAreCompatible
 Ordered constructor wrapped type has no default constructor.
 Other VScript
 Out of logging channels.
 Out of thread ids. Decrease the number of threads or increase MAX_RECYCLEABLE_THREAD_IDS so we can recycle more
+P[A\A]]
 Parameter file '%s' not found, skipping...
 Particle Simulation
 Particle/Effect_Rendering
 Peak %.2f ms frame
+Peak resident virtual bytes: %s
+Peak total virtual bytes: %s
+Peak working set: %s
+PlatEnterHibernation()
+PlatExitHibernation()
 Plat_AlertUser
 Plat_AppendMiniDumpErrorString
 Plat_ApproximateProcessMemoryUsage
@@ -680,6 +757,7 @@ Plat_AttachDebuggerToProcess
 Plat_BeginWatchdogTimer
 Plat_ChangeCurrentFrame
 Plat_CheckSDL
+Plat_ClearClipboardText
 Plat_ClearMiniDumpErrorString
 Plat_CollectMiniDumpsForFatalErrors
 Plat_ConvertToLocalTime
@@ -689,6 +767,7 @@ Plat_CreateUUIDImpl
 Plat_CreateWindow
 Plat_CreateWindow:  Could not create SDL window: %s
 Plat_DebugPrint
+Plat_DebugPrintV
 Plat_DebugString
 Plat_DesktopNotify
 Plat_DestroyGameInstanceMutex
@@ -697,6 +776,8 @@ Plat_DisableIOBuffering
 Plat_EnableCustomerMachineMode
 Plat_EnableHeadlessMode
 Plat_EndWatchdogTimer
+Plat_EnterHibernation
+Plat_ExitHibernation
 Plat_ExitProcess
 Plat_FastVerifyHardwareKey
 Plat_FileExists
@@ -707,10 +788,13 @@ Plat_FlashWindow
 Plat_FloatTime
 Plat_GetCPUFrequency
 Plat_GetCPUUsage
+Plat_GetClipboardText
 Plat_GetClockStart
 Plat_GetComputerName
 Plat_GetCurrentDate
+Plat_GetCurrentDirectory
 Plat_GetCurrentFrame
+Plat_GetCurrentHibernationState
 Plat_GetCurrentRSS
 Plat_GetDPI
 Plat_GetDefaultMonitorIndex
@@ -719,6 +803,7 @@ Plat_GetDesktopResolution
 Plat_GetDocumentDirectory
 Plat_GetEnv
 Plat_GetExecutablePathUTF8
+Plat_GetFileType
 Plat_GetGlobalListRegistry
 Plat_GetLastGameInstanceMutex
 Plat_GetLocalTime
@@ -728,6 +813,7 @@ Plat_GetModuleFilename
 Plat_GetModuleInterfaceFactory
 Plat_GetModuleProcAddress
 Plat_GetMonitorBounds
+Plat_GetMonitorContentsScale
 Plat_GetMonitorIndexFromName
 Plat_GetMonitorName
 Plat_GetMonitorResolution
@@ -747,8 +833,11 @@ Plat_GetUserName
 Plat_GetWindowBounds
 Plat_GetWindowClientBounds
 Plat_GetWindowClientSize
+Plat_GetWindowContentsScale
 Plat_GetWindowMonitorIndex
+Plat_GetWindowSafeAreaInsets
 Plat_GlobalMemoryStatus
+Plat_HasClipboardText
 Plat_HasDefaultMonitorIndexChanged
 Plat_IgnoreContentAsserts
 Plat_InitializeCOM
@@ -769,6 +858,7 @@ Plat_IsWindowFocused
 Plat_IsWindowMinimized
 Plat_IsWindowVisible
 Plat_IsWindowsGameDVREnabled
+Plat_IsWindowsGameModeEnabled
 Plat_LoadInterface
 Plat_LoadModule
 Plat_LoadModuleRaw
@@ -776,6 +866,7 @@ Plat_LoadSDL
 Plat_MSTime
 Plat_MSTime64
 Plat_MessageBox
+Plat_MessageBox() called in headless mode:
 Plat_MicroSecTickDiff
 Plat_MicroSecTickDiffF
 Plat_MilliSecTickDiff
@@ -787,6 +878,7 @@ Plat_Printf
 Plat_PutEnv
 Plat_ReconfigureWindow
 Plat_RefreshDPI
+Plat_RegisterSignalHandler
 Plat_RelativeTickFrequency
 Plat_RelativeTicks
 Plat_ReleaseMouseCapture
@@ -796,6 +888,7 @@ Plat_RenameFile
 Plat_RequireSDL
 Plat_RestartCurrentProcess
 Plat_RunningWithDebugModules
+Plat_SafeRemoveFile
 Plat_ScreenToWindowCoords
 Plat_SecTickDiff
 Plat_SecTickDiffF
@@ -803,12 +896,14 @@ Plat_SetActiveWindow
 Plat_SetBenchmarkMode
 Plat_SetClipboardText
 Plat_SetCpuTimeIsReliable
+Plat_SetCurrentDirectory
 Plat_SetCurrentFrame
 Plat_SetDefaultMonitorIndex
 Plat_SetDesktopNotifyIconPath
 Plat_SetFileReadOnly
 Plat_SetForegroundWindow
 Plat_SetFullscreenMinimizeOnFocusLoss
+Plat_SetGlobalSafeAreaInsets
 Plat_SetIsConsoleApplication
 Plat_SetModuleFilename
 Plat_SetMouseCapture
@@ -853,9 +948,7 @@ Plat_VirtualFree
 Plat_VirtualProtect
 Plat_WindowToOsSpecificHandle
 Plat_WindowToScreenCoords
-Plat_chdir
 Plat_ctime
-Plat_getwd
 Plat_gmtime
 Plat_localtime
 Plat_timegm
@@ -867,22 +960,38 @@ PushPopThread
 PushThread
 Qkkbal
 Qt_GetCustomAllocators
+R%7@rv
 RD?4KF?=GH?9FJ?8HL?
 RegisterAssertionFailureListener
+RegisterHibernationListener
 RegisterKeyValuesSystem
 RegisterLoggingChannel
 Release
 ReleaseThreadHandle
 RemoveAssertionCallback
+RemoveAt
+RemoveAtUTF8
 RemoveMiniProfilerFromList
+ReplaceAt
 ReportProgress
+Resident virtual bytes: %s
 RestoreWin32ConsoleColor
+ReverseChars
 RunTSListTests
 RunTSQueueTests
 RunWithAlternateStack
+Running %s...
+S [A\]H
 S>T7W>
+SDL_AudioStreamAvailable
+SDL_AudioStreamClear
+SDL_AudioStreamFlush
+SDL_AudioStreamGet
+SDL_AudioStreamPut
+SDL_BuildAudioCVT
 SDL_ClearQueuedAudio
 SDL_CloseAudioDevice
+SDL_ConvertAudio
 SDL_CreateColorCursor
 SDL_CreateCursor
 SDL_CreateRGBSurface
@@ -891,6 +1000,7 @@ SDL_CreateWindow
 SDL_DestroyWindow
 SDL_DisableScreenSaver
 SDL_EnableScreenSaver
+SDL_FreeAudioStream
 SDL_FreeCursor
 SDL_FreeSurface
 SDL_GL_SetAttribute
@@ -951,6 +1061,7 @@ SDL_JoystickUpdate
 SDL_LoadBMP_RW
 SDL_MOUSE_FOCUS_CLICKTHROUGH
 SDL_MinimizeWindow
+SDL_NewAudioStream
 SDL_NumJoysticks
 SDL_OpenAudioDevice
 SDL_PauseAudioDevice
@@ -994,6 +1105,41 @@ SDL_getenv
 SDL_iconv_string
 SDL_setenv
 SDL_wcslen
+SIGABRT
+SIGALRM
+SIGBUS
+SIGCHLD
+SIGCLD
+SIGCONT
+SIGFPE
+SIGHUP
+SIGILL
+SIGINT
+SIGIO
+SIGIOT
+SIGKILL
+SIGPIPE
+SIGPOLL
+SIGPROF
+SIGPWR
+SIGQUIT
+SIGSEGV
+SIGSTKFLT
+SIGSTOP
+SIGSYS
+SIGTERM
+SIGTRAP
+SIGTSTP
+SIGTTIN
+SIGTTOU
+SIGUNUSED
+SIGURG
+SIGUSR1
+SIGUSR2
+SIGVTALRM
+SIGWINCH
+SIGXCPU
+SIGXFSZ
 STEAM_RUNTIME=0 LD_LIBRARY_PATH="$SYSTEM_LD_LIBRARY_PATH" PATH="$SYSTEM_PATH" /usr/bin/xdg-open
 STUB_GetStatStructName
 SendActionToAssertDialog
@@ -1007,10 +1153,13 @@ SetAssertionCallback
 SetAssertionPrompt
 SetCPUMonitoringInterval
 SetDefaultMiniDumpHandler
+SetListener
+SetPtr
 SetThreadedLoadLibraryFunc
 SetWin32ConsoleColor
 SetupWin32ConsoleIO
-Sound
+SoundMix
+SoundOperators
 StackMarkup_RestoreState
 StackMarkup_SaveState
 StackStats_DumpNamedInstance
@@ -1030,8 +1179,9 @@ StackTools_VerifyLoadedModuleMappings
 Steam
 Stop has been called on thread.
 Swap_Buffers
-T$8H)
-T$8H9
+T$8HcC
+T$8[H
+T$PJc
 TMPDIR
 TSList cannot hold more that %d nodes
 Test bucket %d has an invalid value %d
@@ -1052,7 +1202,6 @@ ThreadGetProcessPriority
 ThreadInMainThread
 ThreadInitOnceCall_Finish
 ThreadInitOnceCall_ShouldRun
-ThreadInterlockedExchange64
 ThreadIsProcessActive
 ThreadIsProcessIdActive
 ThreadJoin
@@ -1080,10 +1229,19 @@ Tier0GenericMiniDumpHandler_SetFilenamePrefix
 Tier0GenericMiniDumpHandler_SetGetAdditionalFileAttachmentCallback
 Tier0GenericMiniDumpHandler_SetOptions
 Tier0GenericMiniDumpHandler_SetPreHandlerCallback
+Timestamped event buffer overflow!
+TimestampedEvent
+TimestampedEventMsg
+TimestampedEventMsgV
+TimestampedEvent_RegisterListenerAndFlushBuffer
+ToLowerFast
+ToUpperFast
 Tools
+Total virtual bytes: %s
 TracerPid:
 TranslateStackInfo
 UCS-2
+UHcG\H
 UTF-8
 Unable to create event, error %d
 Unable to create semaphore, error %d
@@ -1093,7 +1251,9 @@ Unaccounted
 UnitTestCount
 UnitTestInstallTestCase
 Unknown
+UnknownOS
 UnregisterAssertionFailureListener
+UnregisterHibernationListener
 VALVE_DISABLE_CLOCK_SPEED_CALCULATION
 VALVE_TESTMODE
 VCRT_isalnum
@@ -1134,11 +1294,17 @@ V_IsFakePath
 V_IsMeanSpaceW
 V_IsValidDomainNameCharacter
 V_IsValidURLCharacter
+V_MakeAbsolutePathBuffer
 V_MakeAbsoluteVPKPathName
+V_MakeAbsoluteVPKPathNameBuffer
+V_MakeRelativePathBuffer
 V_ParseLine
 V_PathContainsPath
 V_PathNamesAreEquivalent
 V_PathsMatch
+V_PrettifyFloat
+V_PrettifyMem
+V_PrettifyNum
 V_RemoveDotSlashes
 V_SetErrno
 V_StrTrim
@@ -1182,8 +1348,9 @@ V_atan
 V_atan2
 V_atan2f
 V_atanf
-V_atod
 V_atof
+V_atofloat32
+V_atofloat64
 V_atoi
 V_atoi64
 V_atoui64
@@ -1248,29 +1415,34 @@ V_logf
 V_longjmp
 V_mkostemps
 V_mkstemps
+V_modf
+V_modff
 V_normalizeFloatString
 V_normalizeFloatWString
 V_pow
 V_powf
-V_pretifymem
-V_pretifynum
 V_qsort
 V_qsort_s
 V_rewind
 V_setjmp
 V_setvbuf
 V_sin
+V_sincos
+V_sincosf
 V_sinf
 V_sinh
 V_sinhf
 V_snprintf
-V_snwprintf
+V_snwprintf_bytes
+V_snwprintf_cch
 V_sscanf
 V_strchr32
 V_strcmp32
 V_stricmp_fast
 V_stricmp_fast_NegativeForUnequal
 V_strlower_fast
+V_strnchr
+V_strnlen
 V_strspn
 V_strstr32
 V_strtod
@@ -1298,6 +1470,15 @@ V_tier0_memmove
 V_tier0_memset
 V_tier0_sqrt
 V_tier0_sqrtf
+V_tier0_strchr
+V_tier0_strcmp
+V_tier0_strcpy
+V_tier0_strrchr
+V_tier0_strstr
+V_tier0_strtok_ts
+V_tier0_wcschr
+V_tier0_wcscmp
+V_tier0_wcscpy
 V_tmpnam
 V_towlower
 V_towlower32
@@ -1308,18 +1489,29 @@ V_vscprintf
 V_vsnprintf
 V_vsnprintfRet
 V_vsnprintfSize
-V_vsnwprintf
-V_vsnwprintfRet
+V_vsnwprintfRet_cch
+V_vsnwprintf_cch
 V_wcsicmp
-V_wcsnicmp
+V_wcsnicmp_cch
 V_wcstod
 V_wcstoi64
 V_wcstoui64
 ValidateStringFormatSpecifiers
+Virtual Memory %s Report for PID %u
+Virtual memory regions sorted by size:
+VmHWM
+VmPeak
+VmRSS
+VmSize
 VoidFnPtrLookup_Tier0
 WARNING: Large alloc of %llu bytes of memory (limit %llu)
 WARNING: Large virtual reservation of %llu bytes of memory (limit %llu)
+WARNING: there were errors during information capture, this report may be incomplete
 WARNING: total wall clock time was %.2f seconds, results may be invalid
+WARNING: truncated input line
+WARNING: unable to parse line: '%s'
+WARNING: zero-length line in maps
+WHHcT
 Warning
 Warning: Fell out of small block heap!
 WatchDog! Server took too long to process (probably infinite loop)
@@ -1328,6 +1520,7 @@ Windows 10
 Windows 2000
 Windows 2003
 Windows 2008
+Windows 2008 R2
 Windows 2012
 Windows 2012 R2
 Windows 3.11
@@ -1340,6 +1533,7 @@ Windows ME
 Windows NT
 Windows Vista
 Windows XP
+Working set: %s
 XA\A]A^A_]
 XS&Y+
 X[A\A]A^A_]
@@ -1357,10 +1551,11 @@ ZN17CThreadLocalScopeC2EP16ThreadHandle_t(bool)
 [1;31m%s
 [1;32m:%i:
 [1;33mASSERT: 
-[9x)bw
+[A\A]A
 [A\A]A^A_]
 [A\A]A^]
 [A\A]]
+[A\]H
 []A\A]
 []A\A]A^
 []A\A]A^A_
@@ -1368,10 +1563,9 @@ ZN17CThreadLocalScopeC2EP16ThreadHandle_t(bool)
 [img]
 [list]
 [url=
+\$@H9
 \D2%4
-\|4W\S
-]tK9]
-^ t+H
+^@E;l$\}SIc
 _AssertValidReadPtr
 _AssertValidReadWritePtr
 _AssertValidWritePtr
@@ -1396,7 +1590,6 @@ _V_ExtractFileExtension
 _V_ExtractFilePath
 _V_FileBase
 _V_FixupPathName
-_V_GetFirstDir
 _V_MakeAbsolutePath
 _V_MakeRelativePath
 _V_SetExtension
@@ -1411,10 +1604,12 @@ _V_StripExtension
 _V_StripLastDir
 _V_strcspn
 _V_strncat
+_V_strncmp
 _V_strncpy
+_V_strncpy32_bytes
 _V_strnicmp_fast
 _V_strnistr_fast
-_V_wcsncat
+_V_wcsncat_cch
 _V_wcsncpy_bytes
 _Warning_AlwaysSpewCallStack_Enable
 _Warning_AlwaysSpewCallStack_Length
@@ -1443,6 +1638,10 @@ _Z17LoggingSystem_Logi17LoggingSeverity_tRK14LeafCodeInfo_tPKcz
 _Z17V_UnicodeValidatePKc
 _Z17V_UnicodeValidatePKt
 _Z17V_UnicodeValidatePKw
+_Z20V_GetUTF8BytesNeededPKci
+_Z20V_GetUTF8BytesNeededPKti
+_Z20V_GetUTF8BytesNeededPKwi
+_Z20V_UnicodeCaseCollatePKcS0_i25EStringConvertErrorPolicy
 _Z20V_UnicodeCaseComparePKcS0_i25EStringConvertErrorPolicy
 _Z20V_UnicodeCaseComparePKtS0_i25EStringConvertErrorPolicy
 _Z20V_UnicodeCaseComparePKwS0_i25EStringConvertErrorPolicy
@@ -1459,6 +1658,10 @@ _Z23LoggingSystem_LogDirecti17LoggingSeverity_tRK14LeafCodeInfo_t5ColorPK17Loggi
 _Z23LoggingSystem_LogDirecti17LoggingSeverity_tRK14LeafCodeInfo_t5ColorPKc
 _Z23LoggingSystem_LogDirecti17LoggingSeverity_tRK14LeafCodeInfo_tPK17LoggingMetaData_tPKc
 _Z23LoggingSystem_LogDirecti17LoggingSeverity_tRK14LeafCodeInfo_tPKc
+_Z26V_UnicodeConvertAndCaseStrPKcPtiPS1_i25EStringConvertErrorPolicy
+_Z26V_UnicodeConvertAndCaseStrPKcPwiPS1_i25EStringConvertErrorPolicy
+_Z26V_UnicodeConvertAndCaseStrPKtPwiPS1_i25EStringConvertErrorPolicy
+_Z26V_UnicodeConvertAndCaseStrPKwPwiPS1_i25EStringConvertErrorPolicy
 _Z27V_UnicodeCaseStringInStringPKcS0_i25EStringConvertErrorPolicy
 _Z27V_UnicodeCaseStringInStringPKtS0_i25EStringConvertErrorPolicy
 _Z27V_UnicodeCaseStringInStringPKwS0_i25EStringConvertErrorPolicy
@@ -1500,7 +1703,64 @@ _ZN12CThreadEventC1EPKcbb
 _ZN12CThreadEventC1Eb
 _ZN12CThreadEventC2EPKcbb
 _ZN12CThreadEventC2Eb
+_ZN12CThreadFiberC1Em
+_ZN12CThreadFiberC2Em
 _ZN12CThreadMutex7TryLockEv
+_ZN13CBufferString10ExtendPathEPKcc
+_ZN13CBufferString10FixSlashesEc
+_ZN13CBufferString10RelinquishENS_19EAllocationOption_tE
+_ZN13CBufferString11ShortenPathEv
+_ZN13CBufferString11ToLowerFastEi
+_ZN13CBufferString11ToUpperFastEi
+_ZN13CBufferString12AppendConcatEPKcS1_z
+_ZN13CBufferString12AppendConcatEiPKPKcPKib
+_ZN13CBufferString12AppendFormatEPKcz
+_ZN13CBufferString12AppendRepeatEcib
+_ZN13CBufferString12EnsureLengthEibPi
+_ZN13CBufferString12GetInsertPtrEiibPi
+_ZN13CBufferString12RemoveAtUTF8Eii
+_ZN13CBufferString12ReverseCharsEii
+_ZN13CBufferString12SetExtensionEPKc
+_ZN13CBufferString13AppendConcatVEPKcS1_P13__va_list_tagb
+_ZN13CBufferString13AppendFormatVEPKcP13__va_list_tag
+_ZN13CBufferString13FixupPathNameEv
+_ZN13CBufferString13GetAllocCharsEii
+_ZN13CBufferString13GetReplacePtrEiiibPi
+_ZN13CBufferString14EnsureCapacityEiPPcbb
+_ZN13CBufferString14RemoveFilePathEv
+_ZN13CBufferString14RemoveFirstDirEPS_
+_ZN13CBufferString14RemoveTailUTF8Ei
+_ZN13CBufferString14StripExtensionEv
+_ZN13CBufferString15ComposeFileNameEPKcS1_c
+_ZN13CBufferString15ExtractFileBaseEPKc
+_ZN13CBufferString15ExtractFilePathEPKc
+_ZN13CBufferString15ExtractFirstDirEPKc
+_ZN13CBufferString15StrAppendFormatEPKcz
+_ZN13CBufferString16DefaultExtensionEPKc
+_ZN13CBufferString16MakeAbsolutePathEPKcS1_
+_ZN13CBufferString16MakeRelativePathEPKcS1_
+_ZN13CBufferString16RemoveDotSlashesEc
+_ZN13CBufferString16RemoveToFileBaseEv
+_ZN13CBufferString18StripTrailingSlashEv
+_ZN13CBufferString19EnsureAddedCapacityEiPPcbb
+_ZN13CBufferString19EnsureTrailingSlashEc
+_ZN13CBufferString20ExtractFileExtensionEPKc
+_ZN13CBufferString21EnsureOwnedAllocationENS_19EAllocationOption_tE
+_ZN13CBufferString21RemovePartialUTF8TailEb
+_ZN13CBufferString4SwapERS_
+_ZN13CBufferString5PurgeEi
+_ZN13CBufferString6ConcatEPKcS1_z
+_ZN13CBufferString6FormatEPKcz
+_ZN13CBufferString6InsertEiPKcib
+_ZN13CBufferString6SetPtrEPciibb
+_ZN13CBufferString7ReplaceEPKcS1_b
+_ZN13CBufferString7ReplaceEcc
+_ZN13CBufferString8RemoveAtEii
+_ZN13CBufferString9ConvertInEPKwib
+_ZN13CBufferString9ReplaceAtEiPKcib
+_ZN13CBufferString9ReplaceAtEiiPKcib
+_ZN13CBufferString9SetLengthEibPi
+_ZN13CBufferString9StrFormatEPKcz
 _ZN13CThreadRWLock11UnlockWriteEv
 _ZN13CThreadRWLock11WaitForReadEv
 _ZN13CThreadRWLock12LockForWriteEv
@@ -1520,9 +1780,6 @@ _ZN13CWorkerThread5ReplyEj
 _ZN13CWorkerThread8PeekCallEPj
 _ZN13CWorkerThreadC1Ev
 _ZN13CWorkerThreadC2Ev
-_ZN13CWorkerThreadD0Ev
-_ZN13CWorkerThreadD1Ev
-_ZN13CWorkerThreadD2Ev
 _ZN14CStackTop_Base12ChangeMarkerERK20CCallStackMarkerBase
 _ZN14CStackTop_Base13GetCurrentTopEb
 _ZN14CStackTop_BaseC1Ev
@@ -1543,6 +1800,19 @@ _ZN15CThreadSpinLockC1Ei
 _ZN15CThreadSpinLockC2Ei
 _ZN16CCallStackMarkerC1Eb
 _ZN16CCallStackMarkerC2Eb
+_ZN16CMiniDumpComment13AppendCommentEPKc
+_ZN16CMiniDumpComment14PrependCommentEPKc
+_ZN16CMiniDumpComment15AppendOSCommentEv
+_ZN16CMiniDumpComment15GetStartPointerEv
+_ZN16CMiniDumpComment17GetCurrentPointerEv
+_ZN16CMiniDumpComment17OnExceptionCaughtEv
+_ZN16CMiniDumpComment19EnsureOSDescriptionEv
+_ZN16CMiniDumpComment22AppendFormattedCommentEPKcz
+_ZN16CMiniDumpComment5ResetEv
+_ZN16CMiniDumpCommentC1Ei
+_ZN16CMiniDumpCommentC2Ei
+_ZN16CMiniDumpCommentD1Ev
+_ZN16CMiniDumpCommentD2Ev
 _ZN16CThreadFullMutex7ReleaseEv
 _ZN16CThreadFullMutexC1EbPKcbb
 _ZN16CThreadFullMutexC2EbPKcbb
@@ -1608,6 +1878,14 @@ _ZN22CThreadRWLock_FastRead25WaitForReadLockTransitionEj
 _ZN22CThreadRWLock_FastRead30HandleFirstWriteLockTransitionEv
 _ZN22CThreadRWLock_FastReadC1Ev
 _ZN22CThreadRWLock_FastReadC2Ev
+_ZN22CVirtualMemorySnapshot13IsEqualRegionEPKS_PKNS_8Region_tES1_S4_
+_ZN22CVirtualMemorySnapshot4DiffEPKS_S1_
+_ZN22CVirtualMemorySnapshot5PurgeEv
+_ZN22CVirtualMemorySnapshot7CaptureEv
+_ZN22CVirtualMemorySnapshotC1Ev
+_ZN22CVirtualMemorySnapshotC2Ev
+_ZN22CVirtualMemorySnapshotD1Ev
+_ZN22CVirtualMemorySnapshotD2Ev
 _ZN23CEventRWLock_DebuggableILb1EE17DuplicateReadLockER14CEventListNode
 _ZN23CEventRWLock_DebuggableILb1EE20DoesHaveAnyReadLocksER14CEventListNode
 _ZN23CEventRWLock_DebuggableILb1EE22AllocOrFreeReadLockMemEPNS0_17TrackedReadLock_tE
@@ -1630,6 +1908,12 @@ _ZN25CThreadMultiWaitSemaphoreC1Ev
 _ZN25CThreadMultiWaitSemaphoreC2Ev
 _ZN25CThreadMultiWaitSemaphoreD1Ev
 _ZN25CThreadMultiWaitSemaphoreD2Ev
+_ZN27CMiniDumpCommentBuilderBase21GetNextCommentBuilderEv
+_ZN27CMiniDumpCommentBuilderBaseC1Ev
+_ZN27CMiniDumpCommentBuilderBaseC2Ev
+_ZN27CMiniDumpCommentBuilderBaseD0Ev
+_ZN27CMiniDumpCommentBuilderBaseD1Ev
+_ZN27CMiniDumpCommentBuilderBaseD2Ev
 _ZN28CCallStackStatsGatherer_Base14STUB_LockEntryEj
 _ZN28CCallStackStatsGatherer_Base16STUB_UnlockEntryEj
 _ZN28CCallStackStatsGatherer_Base20GetSTUBFunctionTableEv
@@ -1664,11 +1948,14 @@ _ZN42CVirtualMachineCallStackTranslationEncoderC2EPKc
 _ZN42CVirtualMachineCallStackTranslationEncoderD1Ev
 _ZN42CVirtualMachineCallStackTranslationEncoderD2Ev
 _ZN6CFiber10FiberYieldEPFbPvES0_
+_ZN6CFiber15GetCurrentFiberEv
 _ZN6CFiber15IsReadyToResumeEv
+_ZN6CFiber15SetCurrentFiberEPS_
 _ZN6CFiber16AllocPooledFiberENS_13SizeBuckets_tEm
 _ZN6CFiber16InitStackContextEPvmbm
 _ZN6CFiber17RunInThreadMemoryEPFxPvES0_
 _ZN6CFiber19InternalSetFiberJobEPFvPvES0_mb
+_ZN6CFiber20ConstructThreadFiberEm
 _ZN6CFiber20WaitForJobCompletionER14CEventListNode
 _ZN6CFiber21ReachedZeroReferencesEv
 _ZN6CFiber22DetachFromStackContextEv
@@ -1737,10 +2024,17 @@ _ZN9CVProfileC2Ev
 _ZN9CVProfileD1Ev
 _ZN9CVProfileD2Ev
 _ZNK13CWorkerThread12GetCallParamEv
+_ZNK16CMiniDumpComment13GetEndPointerEv
+_ZNK16CMiniDumpComment15GetStartPointerEv
+_ZNK16CMiniDumpComment17GetCurrentPointerEv
+_ZNK16CMiniDumpComment22GetAvailableBufferSizeEv
 _ZNK16CThreadFullMutex9IsCreatorEv
 _ZNK17CThreadLocalScope18IsLocalThreadScopeEv
 _ZNK17CThreadSyncObjectntEv
 _ZNK20CCallStackMarkerBase35TestMarkerAgainstCapturedStackIndexEPKPKvii
+_ZNK22CVirtualMemorySnapshot24GetLargestUnmappedRegionEPyS0_y
+_ZNK22CVirtualMemorySnapshot25GetAddressAfterLastRegionEy
+_ZNK22CVirtualMemorySnapshot6ReportEi
 _ZNK22MiniDumpStandardData_t21HandlerQueueHeartBeatEv
 _ZNK28CCallStackStatsGatherer_Base22STUB_GetStatStructNameEv
 _ZNK28CCallStackStatsGatherer_Base22STUB_GetStatStructSizeEv
@@ -1755,6 +2049,8 @@ _ZNK9CVProfile14GetNumCountersEv
 _ZNK9CVProfile15GetCounterGroupEi
 _ZNK9CVProfile15GetCounterValueEi
 _ZNK9CVProfile22GetCounterNameAndValueEiRi
+_ZNSt8_Rb_treeIPKcSt4pairIKS1_yESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE16_M_insert_uniqueIS2_IS1_mEEES2_ISt17_Rb_tree_iteratorIS4_EbEOT_
+_ZNSt8_Rb_treeIPKcSt4pairIKS1_yESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 _ZNSt8__detail15_List_node_base7_M_hookEPS0_
 _ZNSt8__detail15_List_node_base7_M_hookEPS0_@@GLIBCXX_3.4.15
 _ZNSt8__detail15_List_node_base9_M_unhookEv
@@ -1845,6 +2141,8 @@ __cxa_rethrow
 __cxa_rethrow@@CXXABI_1.3
 __cxa_throw
 __cxa_throw@@CXXABI_1.3
+__cxa_throw_bad_array_new_length
+__cxa_throw_bad_array_new_length@@CXXABI_1.3.8
 __errno_location
 __errno_location@@GLIBC_2.2.5
 __fpclassify
@@ -1858,6 +2156,12 @@ __isnan
 __isnan@@GLIBC_2.2.5
 __longjmp_chk
 __longjmp_chk@@GLIBC_2.11
+__lxstat64
+__lxstat64@@GLIBC_2.2.5
+__memcpy_chk
+__memcpy_chk@@GLIBC_2.3.4
+__memset_chk
+__memset_chk@@GLIBC_2.3.4
 __printf_chk
 __printf_chk@@GLIBC_2.3.4
 __pthread_key_create
@@ -1868,8 +2172,8 @@ __sprintf_chk
 __sprintf_chk@@GLIBC_2.3.4
 __stack_chk_fail
 __stack_chk_fail@@GLIBC_2.4
-__strncat_chk
-__strncat_chk@@GLIBC_2.3.4
+__strcpy_chk
+__strcpy_chk@@GLIBC_2.3.4
 __tls_get_addr
 __tls_get_addr@@GLIBC_2.3
 __vfprintf_chk
@@ -1887,7 +2191,7 @@ _fini
 _init
 _m[-)
 _setjmp@@GLIBC_2.2.5
-`[A\]
+`=hG=
 a?y#c?sIe?
 abort@@GLIBC_2.2.5
 aco-nz
@@ -1895,13 +2199,14 @@ acos@@GLIBC_2.2.5
 acosf@@GLIBC_2.2.5
 alarm
 alarm@@GLIBC_2.2.5
+all_projects_common_code.cpp
 asctime
 asctime@@GLIBC_2.2.5
 asctime_r
 asctime_r@@GLIBC_2.2.5
 asin@@GLIBC_2.2.5
 asinf@@GLIBC_2.2.5
-assertioH
+assert_dialog.cpp
 atan2@@GLIBC_2.2.5
 atan2f@@GLIBC_2.2.5
 atan@@GLIBC_2.2.5
@@ -1909,16 +2214,19 @@ atanf@@GLIBC_2.2.5
 b i)*
 backtrace
 backtrace@@GLIBC_2.2.5
+buffer_string.cpp
 calloc
 calloc@@GLIBC_2.2.5
 ceil@@GLIBC_2.2.5
 ceilf@@GLIBC_2.2.5
+chdir
 chdir@@GLIBC_2.2.5
 chmod@@GLIBC_2.2.5
 clearerr@@GLIBC_2.2.5
 clock_gettime
 clock_gettime@@GLIBC_2.2.5
 close@@GLIBC_2.2.5
+commandline.cpp
 core id
 cos@@GLIBC_2.2.5
 cosf@@GLIBC_2.2.5
@@ -1926,9 +2234,15 @@ cosh@@GLIBC_2.2.5
 coshf@@GLIBC_2.2.5
 cpu MHz
 cpu.cpp
+cpu_usage.cpp
+cpumonitoring.cpp
+cputopology.cpp
+crtstuff.c
 ctime_r@@GLIBC_2.2.5
 dH34%(
 dH3<%(
+dbg.cpp
+debugdraw.cpp
 detailed
 distributed...
 dl_iterate_phdr
@@ -1943,7 +2257,12 @@ dlopen
 dlopen@@GLIBC_2.2.5
 dlsym
 dlsym@@GLIBC_2.2.5
+dwarf_symbols.cpp
+dynfunction.cpp
+eV5( 
+earlyinit_tier0.cpp
 error
+etwprof.cpp
 eventfd
 eventfd@@GLIBC_2.7
 execlp
@@ -1954,6 +2273,7 @@ exp2f@@GLIBC_2.2.5
 exp@@GLIBC_2.2.5
 expf@@GLIBC_2.2.5
 false
+fasttimer.cpp
 fchmod
 fchmod@@GLIBC_2.2.5
 fclose@@GLIBC_2.2.5
@@ -1970,6 +2290,7 @@ fffffff
 fflush@@GLIBC_2.2.5
 fgetc@@GLIBC_2.2.5
 fgets@@GLIBC_2.2.5
+fibertools.cpp
 fileno@@GLIBC_2.2.5
 floor@@GLIBC_2.2.5
 floorf@@GLIBC_2.2.5
@@ -2011,7 +2332,6 @@ g_bPlatCpuTimeIsReliable
 g_nMiniProfilerFrame
 g_nMiniProfilerGenericCounters
 g_pAssertMiniProfilers
-g_pCurrentFiberTL
 g_pFiberJobPool
 g_pGenericMicroProfilers
 g_pGlobalMiniProfilers
@@ -2019,8 +2339,8 @@ g_pLastMiniProfiler
 g_pMemAlloc
 g_pPerfTraceDepot
 g_pRootMiniProfiler
-g_pThreadLocalScope
 game/
+game\..\autoargs
 getcwd
 getcwd@@GLIBC_2.2.5
 getenv
@@ -2041,12 +2361,13 @@ gettimeofday
 gettimeofday@@GLIBC_2.2.5
 gmtime_r
 gmtime_r@@GLIBC_2.2.5
+hA\A]A^A_]
 h[A\A]A^A_]
+h[A\A]]
+hangwatchdogthread.cpp
+hibernate.cpp
 hypot@@GLIBC_2.2.5
-ignored_
-ignored_A
-ignored_H)
-ignored_fD
+ignored_assertions.txt
 int:transient:1
 isalnum@@GLIBC_2.2.5
 isalpha@@GLIBC_2.2.5
@@ -2058,16 +2379,17 @@ isspace@@GLIBC_2.2.5
 iswalnum@@GLIBC_2.2.5
 iswalpha@@GLIBC_2.2.5
 iswcntrl@@GLIBC_2.2.5
+iswdigit@@GLIBC_2.2.5
 iswlower@@GLIBC_2.2.5
 iswspace@@GLIBC_2.2.5
 iswupper@@GLIBC_2.2.5
 kill@@GLIBC_2.2.5
-k|d;fK
+k|d;F
+l$0E1
 l$PH9
 ld-linux-x86-64.so.2
 ldexp@@GLIBC_2.2.5
 ldexpf@@GLIBC_2.2.5
-libSDL2-2.0.so.0
 libc.so.6
 libdl.so.2
 libm.so.6
@@ -2094,19 +2416,30 @@ malloc
 malloc@@GLIBC_2.2.5
 malloc_usable_size
 malloc_usable_size@@GLIBC_2.2.5
+math_tables.cpp
+mem.cpp
+mem_helpers.cpp
 memcmp@@GLIBC_2.2.5
 memcpy@@GLIBC_2.14
+memdbg.cpp
 memmove@@GLIBC_2.2.5
+memprocessheap.cpp
 memset@@GLIBC_2.2.5
 memstats_%d.txt
 memstd.cpp
+memvirt.cpp
 message
+minidump.cpp
+minidumpcomment.cpp
+miniprofiler.cpp
 mkdir
 mkdir@@GLIBC_2.2.5
 mkostemps64
 mkostemps64@@GLIBC_2.11
 mmap64
 mmap64@@GLIBC_2.2.5
+modf@@GLIBC_2.2.5
+modff@@GLIBC_2.2.5
 mprotect
 mprotect@@GLIBC_2.2.5
 munmap
@@ -2118,21 +2451,22 @@ nexttoken
 no affinity...
 noicon
 notify-send
-ns.tH
-ns.tf
-ns.tfD
-o ATSH
 open(%s) failed
 open64@@GLIBC_2.2.5
 p?&quot;
 p[A\A]A^]
+p[A\A]]
 p[A\]
 pb>pAf>
 pclose
 pclose@@GLIBC_2.2.5
+perftrace.cpp
 physical id
 platform.cpp
+platform_com.cpp
+platform_posix.cpp
 platform_sdl.cpp
+platwindow.cpp
 poll@@GLIBC_2.2.5
 popen
 popen@@GLIBC_2.2.5
@@ -2141,6 +2475,7 @@ powf@@GLIBC_2.2.5
 prctl
 prctl@@GLIBC_2.2.5
 processor
+progressbar.cpp
 pthread_attr_destroy
 pthread_attr_destroy@@GLIBC_2.2.5
 pthread_attr_init
@@ -2200,15 +2535,17 @@ puts@@GLIBC_2.2.5
 qsort@@GLIBC_2.2.5
 qsort_r
 qsort_r@@GLIBC_2.8
+queue force advance
+queue max wait
 r""\\
+raise
+raise@@GLIBC_2.2.5
 rand@@GLIBC_2.2.5
 read@@GLIBC_2.2.5
 readlink
 readlink@@GLIBC_2.2.5
 realloc
 realloc@@GLIBC_2.2.5
-remove
-remove@@GLIBC_2.2.5
 rename
 rename@@GLIBC_2.2.5
 rewind@@GLIBC_2.2.5
@@ -2217,6 +2554,7 @@ rmdir@@GLIBC_2.2.5
 sVwES
 sched_setaffinity
 sched_setaffinity@@GLIBC_2.3.4
+security.cpp
 semctl
 semctl@@GLIBC_2.2.5
 semget
@@ -2233,29 +2571,31 @@ sigaddset
 sigaddset@@GLIBC_2.2.5
 sigemptyset
 sigemptyset@@GLIBC_2.2.5
-signal@@GLIBC_2.2.5
 sigprocmask
 sigprocmask@@GLIBC_2.2.5
 sin@@GLIBC_2.2.5
+sincos@@GLIBC_2.2.5
+sincosf@@GLIBC_2.2.5
 sinf@@GLIBC_2.2.5
 sinh@@GLIBC_2.2.5
 sinhf@@GLIBC_2.2.5
-snprintf@@GLIBC_2.2.5
 sqrt@@GLIBC_2.2.5
 sqrtf@@GLIBC_2.2.5
 srand
 srand@@GLIBC_2.2.5
 sscanf@@GLIBC_2.2.5
+stackcontext.cpp
+stackhelpers.cpp
+stackhelpers_virtualmachine_capture.cpp
+stackstats.cpp
+stacktools.cpp
 stderr@@GLIBC_2.2.5
 stdin@@GLIBC_2.2.5
 stdout@@GLIBC_2.2.5
 steam://openurl/
 steam://openurl_external/
-strchr
 strchr@@GLIBC_2.2.5
-strcmp
 strcmp@@GLIBC_2.2.5
-strcpy
 strcpy@@GLIBC_2.2.5
 strcspn@@GLIBC_2.2.5
 strerror
@@ -2265,14 +2605,15 @@ strlen@@GLIBC_2.2.5
 strncasecmp
 strncasecmp@@GLIBC_2.2.5
 strncat@@GLIBC_2.2.5
-strncmp
 strncmp@@GLIBC_2.2.5
 strncpy@@GLIBC_2.2.5
+strnlen@@GLIBC_2.2.5
 strspn@@GLIBC_2.2.5
-strstr
 strstr@@GLIBC_2.2.5
 strtod@@GLIBC_2.2.5
 strtok@@GLIBC_2.2.5
+strtok_r
+strtok_r@@GLIBC_2.2.5
 strtol
 strtol@@GLIBC_2.2.5
 strtoll
@@ -2283,49 +2624,62 @@ sysconf
 sysconf@@GLIBC_2.2.5
 system
 system@@GLIBC_2.2.5
-t![A\]
-t$@f.
-t$H9h
-t-L)c f.
-t.[A\A]A^]
-t/H;= 
-t3L;e
-t7<.u
-t@L90
-t]D;sptWH9
+systeminformation.cpp
+t	[A\A]A^]
+t	[A\]
+t H;0u
+t$0E1
+t$<,u
+t$@H9
+t$H;h
+t%<,u
+t&<,u
+t/<.u
+t/H;=h
+t1L;M
+t3L;(t)H
+tE</tA<\u
+tQ[A\A]A^]
+tYsHH
+t`H;N rZE
 taI9]
 tan@@GLIBC_2.2.5
 tanf@@GLIBC_2.2.5
 tanh@@GLIBC_2.2.5
 tanhf@@GLIBC_2.2.5
+tcxIA
+thIcG
 threadtools.cpp
+tiH;r
+tier0
+tier0_stdlib.cpp
 tier0_strtools.cpp
+tier0_unicode.cpp
+tier1_tables.cpp
 time@@GLIBC_2.2.5
 timegm@@GLIBC_2.2.5
 timestamped.log
-tixOA
-tkL;e
+tlD;sptfI
 tmpnam@@GLIBC_2.2.5
 tolower@@GLIBC_2.2.5
 toupper@@GLIBC_2.2.5
 towlower@@GLIBC_2.2.5
 towupper@@GLIBC_2.2.5
-ttIcG
-tzL9-
+tslist.cpp
 u	[A\]
-uU[A\A]A^]
+uG[A\]
 uname -mrsv
+unitlib.cpp
 unknown
-unknown_module
 unlink
 unlink@@GLIBC_2.2.5
-upHcCHH
 usleep
 usleep@@GLIBC_2.2.5
-vP<_tL
 vfscanf
 vfscanf@@GLIBC_2.2.5
-vpk:I
+vmem_utils.cpp
+vprof.cpp
+vprof_database.cpp
 vsscanf
 vsscanf@@GLIBC_2.2.5
 vswscanf
@@ -2334,10 +2688,14 @@ vtune
 waitpid
 waitpid@@GLIBC_2.2.5
 warning
-wcschr
 wcschr@@GLIBC_2.2.5
+wcscmp@@GLIBC_2.2.5
+wcscoll
+wcscoll@@GLIBC_2.2.5
+wcscpy@@GLIBC_2.2.5
 wcslen
 wcslen@@GLIBC_2.2.5
+wcsncat
 wcsncat@@GLIBC_2.2.5
 wcsncpy
 wcsncpy@@GLIBC_2.2.5
@@ -2346,16 +2704,17 @@ wcstoll
 wcstoll@@GLIBC_2.2.5
 wcstoull
 wcstoull@@GLIBC_2.2.5
+win32consoleio.cpp
 windows
 wn>Jj
 write@@GLIBC_2.2.5
 x[A\A]A^A_]
-z$u"f
+x[HcI
+z'.0eV
 z`%1Is}
 |  |  |  |  |  |  |  |  |  
 |  |  |  |  |  |  |  |  |  |  
 |  |  |  |  |  |  |  |  |  |  |  
 |  |  |  |  |  |  |  |  |  |  |  |  
 |  |  |  |  |  |  |  |  |  |  |  |  |  
-~"H9X
-~2D9e
+~GD9e

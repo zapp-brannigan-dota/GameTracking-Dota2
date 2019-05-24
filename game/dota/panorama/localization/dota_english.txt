@@ -126,17 +126,6 @@
 	"UI_abbreviation_hour"		"h"
 	"UI_abbreviation_minute"	"m"
 
-	"UI_ordinal_suffix_0"		"th"
-	"UI_ordinal_suffix_1"		"st"
-	"UI_ordinal_suffix_2"		"nd"
-	"UI_ordinal_suffix_3"		"rd"
-	"UI_ordinal_suffix_4"		"th"
-	"UI_ordinal_suffix_5"		"th"
-	"UI_ordinal_suffix_6"		"th"
-	"UI_ordinal_suffix_7"		"th"
-	"UI_ordinal_suffix_8"		"th"
-	"UI_ordinal_suffix_9"		"th"
-
 	"Unknown"					"Unknown"
 	"UI_Yes"		"Yes"
 	"UI_No"			"No"
@@ -153,6 +142,7 @@
 
 	"DOTA_TabName_Heroes"			"Heroes"
 	"DOTA_TabName_GlobalItems"		"Global Items"
+	"DOTA_TabName_PlusStats"		"Global Trends"
 	"DOTA_TabName_Armory"			"Armory"
 
 	"DOTA_TabName_Featured"			"Featured"
@@ -269,6 +259,7 @@
 	"DOTA_ProfileCard_StatTitle_Commends"		"Commends"
 	"DOTA_ProfileCard_StatTitle_GamesPlayed"	"Matches"
 	"DOTA_ProfileCard_StatTitle_FirstMatchDate"	"First Match"
+	"DOTA_ProfileCard_StatTitle_PreviousSeasonRank"	"Previous Rank"
 
 	"DOTA_ProfileCard_StatValue_Int"	"{d:stat_value}"
 	"DOTA_ProfileCard_StatValue_Date"	"{t:s:stat_value}"
@@ -308,7 +299,7 @@
 	"DOTA_ProfileCard_CoinsBalance"	"Coins Balance"
 	"DOTA_ProfileCard_WageredCoinsWon"	"Wagered Coins Won"
 
-	"DOTA_ProfileCard_BattlePassLevel"	"The International 2017 Battle Level"
+	"DOTA_ProfileCard_BattlePassLevel"	"The International 2018 Battle Level"
 	"DOTA_Plus_ProfileCard_PlusClaimTeaser"		"Claim your {d:weekly_currency_reward} shards"
 	"DOTA_Plus_ProfileCard_PlusMemberTeaser"			"Upgrade To Plus Today"
 	"DOTA_Plus_ProfileCard_Challenge_Title"		"Win 3 Games This Week"
@@ -517,7 +508,7 @@
 	"DOTA_AHC_InProgress"		"In Progress"
 	"DOTA_AHC_CurrentHeroAttempts"		"{s:current_hero_attempts} Attempts"
 	"DOTA_AHC_CurrentHeroAverage"		"World Average"
-	"DOTA_AHC_CurrentHeroAverageAttempts"		"{s:current_hero_average_attempts} Attempts"
+	"DOTA_AHC_CurrentHeroAverageAttempts"		"{f:1:current_hero_average_attempts} Attempts"
 	"DOTA_AHC_NextHero"		"Next Hero"
 	"DOTA_AHC_NextHeroName"		"{s:next_hero_name}"
 
@@ -535,7 +526,7 @@
 	"DOTA_AHC_BestFullChallengeValueNone"		"N/A"
 	"DOTA_AHC_BestFullChallengeValue"			"{d:best_full_challenge} Games"
 	"DOTA_AHC_FullChallengeAverage"				"Full Challenge World Average"
-	"DOTA_AHC_FullChallengeAverageValue"		"{s:full_challenge_average} Games"
+	"DOTA_AHC_FullChallengeAverageValue"		"{f:2:full_challenge_average} Games"
 	"DOTA_AHC_ChallengeReward"					"Challenge Reward"
 	"DOTA_AHC_ChallengeTrophyName"				"{s:challenge_trophy_name}"
 	"DOTA_AHC_ChallengeTrophyLevel"				"Level {d:challenge_trophy_level}"
@@ -753,6 +744,7 @@
 	"DOTA_GameMode_AllRandomDeathMatch"	"All Random Death Match"
 	"DOTA_GameMode_AllDraft"	"All Pick"
 	"DOTA_GameMode_Turbo"	"Turbo"
+	"DOTA_GameMode_Mutation"	"Mutation"
 
 	"DOTAAbilityDraft_Ultimates"		"Ultimates can be drafted anytime it is your turn.<br><br>Only one Ultimate Ability can be drafted. "
 	"DOTAAbilityDraft_Standard"			"Once drafted, a Standard Ability can be re-ordered by dragging the ability to another slot. <br><br> Certain Abilities are not compatible with Ability Draft Mode and will be replaced by a random Ability from another Hero."
@@ -788,6 +780,7 @@
 	"DOTA_GameMode_21"		"1v1 Mid"
 	"DOTA_GameMode_22"		"All Pick"
 	"DOTA_GameMode_23"		"Turbo"
+	"DOTA_GameMode_24"		"Mutation"
 
 	"DOTA_GameMode_19_Generic"	"Event Game"
 
@@ -901,7 +894,7 @@
 	"DOTA_AbilityTooltip_Lore" "{s:lore}"
 	"DOTA_AbilityTooltip_UpgradeLevel" "Next Upgrade at Hero Level {d:upgradelevel}"
 	"DOTA_AbilityTooltip_BuildHeader" "Ability Guide"
-	"DOTA_AbilityTooltip_BuildComment" "{s:buildcomment}"
+	"DOTA_AbilityTooltip_BuildComment" "{g:dota_filtered_string:buildcomment}"
 
 	"DOTA_PendingInvites" "Party Invites"
 	"DOTA_PendingInvitesTooltip_None" "No outstanding invites"
@@ -940,7 +933,7 @@
 	"DOTA_JoinChatChannel_PrivateJoinFailed"	"You do not have permission to join this Private Chat Channel."
 	"DOTA_JoinChatChannel_Kicked"	"You have been removed from private channel '{s:private_channel_name}'."
 
-	"DOTA_Chat_ChannelName"			"{s:channel_name}"
+	"DOTA_Chat_ChannelName"			"{g:dota_filtered_string:channel_name}"
 	"DOTA_Chat_ChannelMemberCount"	"{d:channel_member_count}"
 	"DOTA_Chat_ChannelMemberCount_Singular"	"1 Member"
 	"DOTA_Chat_ChannelMemberCount_Plural"	"{d:channel_member_count} Members"
@@ -984,11 +977,11 @@
 	"DOTA_ChatMessage_Hud"					"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\">{s:hero_badge_icon}{s:hero_icon}<span class=\"ChatTarget\">[{s:target}] <span class=\"ChatPersona\"><span class=\"{s:player_color_class}\">{s:event_crest}{s:battle_cup_icon}{s:persona}</span></span></span>: {g:dota_filtered_string:message}</span>"
 	"DOTA_ChatMessage_HudAll"				"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\">{s:hero_badge_icon}{s:hero_icon}<span class=\"ChatTarget\"> <span class=\"ChatPersona\"><span class=\"{s:player_color_class}\">{s:event_crest}{s:battle_cup_icon}{s:persona}</span></span></span>: {g:dota_filtered_string:message}</span>"
 	"DOTA_ChatMessage_HudTerse"				"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\">{g:dota_filtered_string:message}</span>"
-	"DOTA_ChatMessage_HudEmote"				"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\"><span class=\"ChatPersona\">{s:event_crest}{s:battle_cup_icon}{s:persona}</span> {g:dota_filtered_string:message}</span>"
+	"DOTA_ChatMessage_HudEmote"				"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\">{s:hero_badge_icon}{s:hero_icon}<span class=\"ChatPersona\">{s:event_crest}{s:battle_cup_icon}{s:persona}</span> {g:dota_filtered_string:message}</span>"
 	"DOTA_ChatMessage_HudOtherChannel"		"<span class=\"{s:target_class} {s:sender_class} {s:visitor_class}\"><span class=\"ChatTarget\">[{s:target}] <span class=\"ChatPersona\"><span class=\"{s:player_color_class}\">{s:event_crest}{s:battle_cup_icon}{s:persona}</span></span></span>: {g:dota_filtered_string:message}</span>"
 
-	"DOTA_ChatTarget_Format_Default"		"{s:target}"
-	"DOTA_ChatTarget_Prompt_Default"		"To ({s:target}):"
+	"DOTA_ChatTarget_Format_Default"		"{g:dota_filtered_string:target}"
+	"DOTA_ChatTarget_Prompt_Default"		"To ({g:dota_filtered_string:target}):"
 	"DOTA_ChatTarget_Format_Whisper"		"{s:persona}"
 	"DOTA_ChatTarget_Prompt_Whisper"		"To [{s:persona}]:"
 	"DOTA_ChatTarget_Prompt_CustomGame"		"To ({g:dota_custom_game_name:custom_game_id}):"
@@ -1196,6 +1189,11 @@
 
 	"DOTA_Chat_PartyMemberSeparator"	", "
 
+	"DOTA_Chat_PublicChannelHeader"		"Phone Number Not Registered"
+	"DOTA_Chat_PublicChannelNoPhone"	"You must have a phone number registered with Dota 2 to chat in public chat channels."
+	"DOTA_Chat_PublicChannelRegister"	"Register Phone"
+	"DOTA_Chat_PublicChannelCancel"		"Cancel"
+
 	"DOTA_Feature_Under_Construction_Title"	"Under Construction"
 	"DOTA_Feature_Under_Construction_Text"	"This feature is under construction and not yet available."
 	"DOTA_Treasure_Purchase_Under_Construction_Text"	"Purchases of treasures is not yet available, however purchases from the Dota store are supported. See item sets on the leftmost side of the available item set list."
@@ -1241,8 +1239,8 @@
 	"DOTA_LobbyInvite_Title"	"Lobby Invitation"
 	"DOTA_LobbyInvite_Description" "{g:dota_persona:inviter} has invited you to a lobby."
 	"DOTA_PartyJoinedLobby_Title"	"Joined Lobby"
-	"DOTA_PartyJoinedLobby_Generic"	"{s:party_leader} has moved you into a lobby."
-	"DOTA_PartyJoinedLobby_Custom"	"{s:party_leader} has moved you into a {s:custom_game} lobby."
+	"DOTA_PartyJoinedLobby_Generic"	"{g:dota_filtered_string:party_leader} has moved you into a lobby."
+	"DOTA_PartyJoinedLobby_Custom"	"{g:dota_filtered_string:party_leader} has moved you into a {s:custom_game} lobby."
 	"DOTA_PartyLeader"				"Party Leader"
 
 	"DOTA_LobbyKicked_Header"										"Kicked From Lobby"
@@ -1262,6 +1260,8 @@
 	"DOTA_PlayerContextMenu_AcceptFriendRequest"	"Accept Friend Request"
 	"DOTA_PlayerContextMenu_IgnoreFriendRequest"	"Ignore Friend Request"
 	"DOTA_PlayerContextMenu_Spectate"				"Watch Game"
+	"DOTA_PlayerContextMenu_Spectate_Live"			"<img class=\"DotaPlusSmallIcon\" src=\"file://{images}/dota_plus/dotaplus_logo_small.png\" />Watch Friend Live<img class=\"DotaPlusSmallIconCenter\" src=\"file://{images}/dota_plus/dotaplus_logo_small.png\" />"
+	"DOTA_PlayerContextMenu_Spectate_Live_Tooltip"	"Watch game with no spectator delay, but only from the perspective of your friend's team. Available exclusively to Dota Plus members."
 	"DOTA_PlayerContextMenu_ViewTournament"			"View Tournament Bracket"
 	"DOTA_PlayerContextMenu_InviteToLobby"			"Invite to Lobby"
 	"DOTA_PlayerContextMenu_SuggestInviteToLobby"	"Suggest Invite to Lobby"
@@ -1641,7 +1641,7 @@
 	"DOTA_Custom_Game_Downloading"			"Downloading..."
 	"DOTA_Custom_Game_Downloading_Percent"	"Downloading - {d:lobby_download_percent}%"
 	"DOTA_Custom_Game_Needs_Update"			"Needs Update"
-	"DOTA_Custom_Game_Play"					"Play {s:game_mode_name}"
+	"DOTA_Custom_Game_Play"					"Play {g:dota_filtered_string:game_mode_name}"
 	"DOTA_UI_Play"							"Play"
 	"DOTA_Custom_Game_Uninstall"			"Uninstall"
 	"DOTA_Custom_Game_Install"				"Install"
@@ -1649,7 +1649,7 @@
 	"DOTA_Custom_Game_Not_Installed"		"Not Installed"
 	"DOTA_Custom_Game_Connect"				"Join Lobby"
 	"DOTA_Custom_Game_FileSize"				"{d:file_size} MB"
-	"DOTA_Custom_Game_Name"					"{s:game_mode_name}"
+	"DOTA_Custom_Game_Name"					"{g:dota_filtered_string:game_mode_name}"
 	"DOTA_Custom_Game_Created_By"			"Created by <b>{g:dota_persona:author}</b>"
 	"DOTA_Custom_Game_Subscription"			"{s:subscriptions_count} Subscription"
 	"DOTA_Custom_Game_Subscriptions"		"{s:subscriptions_count} Subscriptions"
@@ -1657,7 +1657,7 @@
 	"DOTA_Custom_Game_Release_Date"			"Released"
 	"DOTA_Custom_Game_Playing_Now"			"{s:player_count} Playing now"
 	"DOTA_Custom_Game_Ratings_Count"		"({d:ratings_count})"
-	"DOTA_Custom_Game_Description"			"{s:game_description}"
+	"DOTA_Custom_Game_Description"			"{g:dota_filtered_string:game_description}"
 	"DOTA_Custom_Game_Update_Note_Title"	"{s:timestamp}"
 	"DOTA_Custom_Game_Screenshots"			"Screenshots"
 	"DOTA_Custom_Game_Map_Label"			"Map"
@@ -1777,16 +1777,16 @@
 	"DOTA_Custom_Lobby_List_Region_Header"		"Region"
 	"DOTA_Custom_Lobby_List_Connection_Header"	"Connection"
 	"DOTA_Custom_Lobby_List_Status_Header"		"Local Status"
-	"DOTA_Custom_Lobby_List_Game"			"{s:lobby_game}"
-	"DOTA_Custom_Lobby_List_Lobby_Name"		"{s:lobby_name}"
+	"DOTA_Custom_Lobby_List_Game"			"{g:dota_filtered_string:lobby_game}"
+	"DOTA_Custom_Lobby_List_Lobby_Name"		"{g:dota_filtered_string:lobby_name}"
 	"DOTA_Custom_Lobby_List_Players"		"{s:lobby_players} / {s:lobby_max_players}"
-	"DOTA_Custom_Lobby_List_Map"			"{s:lobby_map}"
+	"DOTA_Custom_Lobby_List_Map"			"{g:dota_filtered_string:lobby_map}"
 	"DOTA_Custom_Lobby_List_Region"			"{s:lobby_region}"
 	"DOTA_Custom_Lobby_List_Connection"		"..."
 	"DOTA_Custom_Lobby_List_Status"			"{s:lobby_status}"
 	"DOTA_Custom_Lobby_List_Connect"		"{s:connect_button_text}"
-	"DOTA_Custom_Lobby_Game_Name"			"{s:game_name}"
-	"DOTA_Custom_Lobby_Map_Name"			"Map: {s:map_name}"
+	"DOTA_Custom_Lobby_Game_Name"			"{g:dota_filtered_string:game_name}"
+	"DOTA_Custom_Lobby_Map_Name"			"Map: {g:dota_filtered_string:map_name}"
 	"DOTA_Custom_Lobby_Player_Count"		"Players: {d:player_count} / {d:max_player_count}"
 	"DOTA_Custom_Lobby_Player_Count_Short"	"{d:player_count} / {d:max_player_count}"
 	"DOTA_Custom_Lobby_Visibility"			"Lobby Visibility"
@@ -1961,6 +1961,7 @@
 	"DOTAArcanaVote_VotesRemaining"					"{d:arcana_votes_remaining}"
 	"DOTAArcanaVote_TotalVotes"						"{d:total_arcana_votes}"
 	"DOTAArcanaVote_VotesRemainingSubtitle"			"Weekly Votes"
+	"DOTAArcanaVote_VotesRemainingFull"				"{d:arcana_votes_remaining}/{d:total_arcana_votes} Weekly Votes"
 	"DOTAArcanaVote_TimeRemainingDay"				"{d:arcana_vote_time_remaining_day}"
 	"DOTAArcanaVote_TimeRemainingDayAbbrev"			"d"
 	"DOTAArcanaVote_TimeRemainingHour"				"{d:arcana_vote_time_remaining_hour}"
@@ -1968,6 +1969,14 @@
 	"DOTAArcanaVote_TimeRemainingMinute"			"{d:arcana_vote_time_remaining_minute}"
 	"DOTAArcanaVote_TimeRemainingMinuteAbbrev"		"m"
 	"DOTAArcanaVote_TimeRemainingSubtitle"			"Until Voting Round Ends"
+	"DOTAArcanaVote_TimeStartsDay"				"{d:arcana_vote_time_start_day}"
+	"DOTAArcanaVote_TimeStartsDayAbbrev"			"d"
+	"DOTAArcanaVote_TimeStartsHour"				"{d:arcana_vote_time_start_hour}"
+	"DOTAArcanaVote_TimeStartsHourAbbrev"		"h"
+	"DOTAArcanaVote_TimeStartsMinute"			"{d:arcana_vote_time_start_minute}"
+	"DOTAArcanaVote_TimeStartsMinuteAbbrev"		"m"
+	"DOTAArcanaVote_TimeUntilVotingStarts"		"Voting Starts In"
+
 	"DOTAArcanaVote_SubmitVotes"					"Submit Votes"
 	"DOTAArcanaVote_ViewBrackets"					"View Brackets"
 	"DOTAArcanaVote_ZoomRegion"						"Click a group to zoom in"
@@ -2048,6 +2057,10 @@
 	"DOTA_BattlePassLog_EventReward"				"Battle Pass Reward"
 	"DOTA_BattlePassLog_WeeklyGame"					"Won from Slark's Riptide Rumble"
 	"DOTA_BattlePassLog_ExploitCorrection"			"Exploit Correction"
+	"DOTA_BattlePassLog_HeroLevelCurve"				"Hero Level Curve Updated: {g:dota_hero_name:hero_id}"
+	"DOTA_BattlePassLog_SupportGrant"				"Customer Support Grant"
+	"DOTA_BattlePassLog_SuccessfulPrediction"		"Successful Pro Circuit Prediction for {g:dota_league_name:league_id}"
+	"DOTA_BattlePassLog_EventGameReward"			"Found in The Underhollow: Match ID <a href=\"event:UIPopupButtonClicked( DOTAShowMatchDetails({u:match_id}) )\">{u:match_id}</a>"
 
 	"DOTA_BattlePassLog_SiltbreakerReward_forest_1_Star"				"Siltbreaker: Howling Weald - 1 Star"
 	"DOTA_BattlePassLog_SiltbreakerReward_forest_2_Star"				"Siltbreaker: Howling Weald - 2 Stars"
@@ -2273,6 +2286,7 @@
 	"DOTA_WatchTournament_MatchDetails"				"Match Details"
 
 	"DOTA_Tournament_Major"						    "Major Championship"
+	"DOTA_Tournament_DPC"							"Dota Pro Circuit"
 	"DOTA_Tournament_Premium"						"Premium"
 	"DOTA_Tournament_Professional"					"Professional"
 	"DOTA_Tournament_Amateur"						"Amateur"
@@ -2358,6 +2372,8 @@
 
 	"dota_finding_match_generic"									"Normal Match"
 	"dota_finding_match_ranked"										"Ranked Match"
+	"dota_finding_match_ranked_challenge"							"Ranked Challenge Match"
+	"dota_finding_match_ranked_role_selection"						"Ranked Match with Roles"
 	"dota_finding_match_seasonal_ranked"							"International Ranked"
 	"dota_finding_match_bot"										"Bot Match"
 	"dota_finding_match_bot_passive"								"Bot Match ( Passive )"
@@ -2437,6 +2453,9 @@
 	"seasonal_ranked_transfer_confirmation_success"			"Successfully transferred your International Ranked MMR to your Ranked MMR."
 	"seasonal_ranked_transfer_confirmation_failure"			"Error when trying to transfer International Ranked MMR."
 
+	"ranked_lane_selection_locked_explain"		"Ranked Role Selection Matchmaking:<br /><br />Available exclusively to owners of the <a href=\"javascript:GoToBattlePass();\">International Battle Pass</a>, each participating player can select a role before matchmaking and the matchmaker will form a team with all the roles represented."
+
+
 	"event_custom_game_points_label"		"Current Points"
 	"event_custom_game_points"				"{d:active_event_custom_game_points}"
 	"event_custom_game_points_left_label"		"Points to Next Reward"
@@ -2473,16 +2492,27 @@
 
 	"dota_play_normal_match"					"Unranked"
 	"dota_play_ranked_match"					"Ranked"
+	"dota_play_ranked_lane_selection_match"		"Ranked Roles"
 	"dota_play_seasonal_ranked_match"			"International Ranked"
 	"dota_play_practice_1v1"					"Practice 1v1"
 	"dota_play_practice_with_bots"				"Practice with Bots"
 	"dota_play_lobby_games"						"View Lobbies"
+	"dota_play_lobbies_section"					"Custom Lobbies"
+	"dota_play_create_lobby"					"Create"
+	"dota_play_browse_lobbies"					"Browse"
 
 	"dota_play_practice_1v1_playtab"			"PRACTICE 1v1"
+	"dota_play_mutation"						"MUTATION"
 	"dota_play_event_custom_game"				"PRACTICE 1v1"
 
-	"dota_play_1v1_desc"											"Practice your solo midlane game against one other player.  Practice ends when one player dies twice or loses a tower."
+	"dota_play_1v1_desc"						"Practice your solo midlane game against one other player.  Practice ends when one player dies twice or loses a tower."
 	"dota_play_practice_1v1_party_warning"		"Parties are not allowed in 1v1 matchmaking"
+
+	"dota_play_mutation_desc"					"An Unranked Match with several rotating modifications to the game."
+	"dota_play_mutation_current"				"Current mutations:"
+	"dota_play_mutation_time_new"				"Time until new mutations: "
+	"dota_play_mutation_time_remaining"			"{i:mutations_hours} Hours, {i:mutations_minutes} Minutes"
+
 
 	"dota_play"									"Play Dota"
 	"dota_play_searching"						"Finding Match"
@@ -2502,7 +2532,7 @@
 	"dota_waiting_for_match_ready"				"Accepted ( {d:ready_up_accepted} / {d:ready_up_total} )"
 	"dota_play_returning_to_queue"				"Returning to Queue"
 
-	"dota_play_custom_game_desc"				"Compete across a variety of Frostivus Festival challenges in a gauntlet of madcap fun. With a wide pool of potential challenges to play, each match is different!"
+	"dota_play_custom_game_desc"				"Fight your way through hordes of enemies and other players as one of 8 teams of 3 players. Earn Battle Points by finding treasure or being the last team remaining!"
 
 	"dota_leaver_consequence_header_failure_to_reconnect"                "Failure to reconnect will result in the following consequences:"
 	"dota_leaver_consequence_header_leave_match"                         "Leaving this match will result in negative consequences"
@@ -2555,7 +2585,7 @@
 	"dota_all_chat_label"					"[ALL]"
 	"dota_all_chat_label_prefix"			"[ALL] "
 	"dota_chatwheel_unlock_level"			"Level {d:unlock_event_level}"
-	"dota_chatwheel_event_reward_title"		"Chat Wheel Sounds"
+	"dota_chatwheel_event_reward_title"		"Chat Wheel Items"
 	"dota_chatwheel_unlock_popup_title"		"You Unlocked New Chat Wheel Messages!"
 	"dota_chatwheel_customize"				"Customize Chat Wheel"
 
@@ -2669,12 +2699,15 @@
 	"dota_settings_inspectheroinworld"			"Showcase View"
 	"dota_settings_chat"						"Chat"
 	"dota_settings_phrases"						"Phrases"
-	"dota_settings_chatwheel_page"				"Customize Chat Wheel"
+	"dota_settings_chatwheel_page"				"Customize Chat Wheels"
 	"dota_settings_chatteam"					"Chat to Team"
 	"dota_settings_chatglobal"					"Chat to Everyone"
 	"dota_settings_chatvoice_party"				"Voice Chat ( PARTY )"
 	"dota_settings_chatvoice_team"				"Voice Chat ( TEAM )"
 	"dota_settings_chatwheel_show"				"Chat Wheel"
+	"dota_settings_chatwheel2_show"				"Chat Wheel #2"
+	"dota_settings_chatwheel_tab"				"Primary"
+	"dota_settings_chatwheel2_tab"				"Secondary"
 	"dota_settings_herochatwheel_show"			"Hero Chat Wheel"
 	"dota_settings_chat_ptt"					"Push To Talk"
 	"dota_settings_chat_openmic"				"Open Mic"
@@ -2868,6 +2901,8 @@
 	"dota_settings_particlequality_high"		"High"
 	"dota_settings_grassquality"				"Grass"
 	"dota_settings_tree_wind"					"Tree Wind"
+	"dota_settings_computeshader"				"Compute Shaders"
+	"dota_settings_computeshader_tooltip"		"Only supported on Vulkan and DirectX 11.\nCompute shaders improve performance under most configurations."
 	"dota_settings_fps_max"						"Maximum frames per second allowed"
 	"dota_settings_fps_max_tip"					"Extended values can be provided with the +fps_max launch option.\nValues out of range for the slider will disable the slider."
 	"dota_settings_mastervolume"				"Master Volume"
@@ -3109,9 +3144,9 @@
 	"DOTA_Lobby_BotDifficulty_bot_hard"		"Hard Bot"
 	"DOTA_Lobby_BotDifficulty_bot_unfair"	"Unfair Bot"
 
-	"dota_lobby_host"				"Lobby Host: {s:lobby_host_name}"
+	"dota_lobby_host"				"Lobby Host: {g:dota_filtered_string:lobby_host_name}"
 
-	"dota_lobby_title"				"{s:lobby_name}"
+	"dota_lobby_title"				"{g:dota_filtered_string:lobby_name}"
 	"dota_lobby_title_local_game"	"Local Lobby"
 	"dota_lobby_title_default"		"Lobby"
 
@@ -3203,7 +3238,7 @@
 	"DOTA_EquippedItem_Item"			"Item"
 
 	"DOTA_OwnedItemDetails_Rarity"		"{s:item_rarity}"
-	"DOTA_OwnedItemDetails_ItemName"	"{s:item_name}"
+	"DOTA_OwnedItemDetails_ItemName"	"{g:dota_filtered_string:item_name}"
 	"DOTA_OwnedItemDetails_DefaultSet"	"Default Set"
 	"DOTA_OwnedItemDetails_Style"		"{i:item_style_count} Style(s)"
 	"DOTA_OwnedItemDetails_BundleName"	"In Bundle \"{s:item_bundle}\""
@@ -3525,12 +3560,16 @@
 	"dota_match_result_lost"		"Lost"
 	"dota_match_result_none"		"???"
 
-	"dota_social_feed_loading"		"Loading..."
+	"dota_social_feed_loading"			"Loading..."
+	"dota_social_feed_comments_failed"	"Failed to load comments..."
+	"dota_social_feed_comment_placeholder"	"Write a comment..."
 
 	"DOTA_LoadingPlayerUnknown"			"-"
 	"DOTA_LoadingPlayerLoading"			"Loading..."
 	"DOTA_LoadingPlayerFullyConnected"	"Ready"
 	"DOTA_LoadingPlayerFailed"			"Failed"
+	"DOTA_LoadingBanPhase"	"Ban Phase"
+	"DOTA_LoadingPickPhase"	"All Pick"
 	"LoadingScreenTimer"				"{t:d:countdown_timer_seconds}"
 	"HeroSelectionTimer"				"{i:timer_seconds}"
 	"LoadingScreenGameMode"				"{s:game_mode}"
@@ -3566,6 +3605,7 @@
 	"DOTA_Armory_Category_Effigies"		"Effigies"
 	"DOTA_Armory_Category_EffigyBlocks"	"Effigy Blocks"
 	"DOTA_Armory_Category_EffigyReforgers"	"Effigy Reforgers"
+	"DOTA_Armory_Category_Creeps"		"Creeps"
 	"DOTA_Armory_Category_Interface"	"Interface"
 	"DOTA_Armory_Category_Emoticons"	"Emoticons"
 	"DOTA_Armory_Category_LoadingScreens"	"Loading Screens"
@@ -3582,7 +3622,7 @@
 	"DOTA_Armory_Category_All"			"All"
 	"DOTA_Armory_Category_AllNew"		"All ({d:armory_new_items})"
 	"DOTA_Armory_Category_Other"		"Other"
-	"DOTA_Armory_Category_Event"		"Frostivus 2017"
+	"DOTA_Armory_Category_Event"		"International 2018"
 	"DOTA_Armory_Category_Treasures"	"Treasures"
 	"DOTA_Armory_Category_Gifts"		"Gifts"
 	"DOTA_Armory_Category_Bundles"		"Bundles"
@@ -3745,6 +3785,7 @@
 
 	"dota_page_match_details_leave"		"Leave Match"
 	"dota_page_match_details_team_view"		"Back to Team View"
+	"dota_page_match_details_return_to_details"		"Return to Match Details"
 
 	"dota_page_match_details_radiant_kills"		"Radiant Heroes Killed"
 	"dota_page_match_details_dire_kills"		"Dire Heroes Killed"
@@ -3916,15 +3957,15 @@
 
 	"dota_page_match_details_replay_error_not_found"	"Replay not found on disk."
 
-	"DOTA_tooltip_econ_item_name"			"{s:item_name}"
-	"DOTA_tooltip_econ_item_description"	"{s:item_description}"
+	"DOTA_tooltip_econ_item_name"			"{g:dota_filtered_string:item_name}"
+	"DOTA_tooltip_econ_item_description"	"{g:dota_filtered_string:item_description}"
 	"DOTA_tooltip_econ_item_set"			"Part of: <font color='#dddddd'>{s:item_set}</font>"
 	"DOTA_tooltip_econ_item_rarity_label"	"Rarity: "
 	"DOTA_tooltip_econ_item_rarity"			"{s:item_rarity}"
 	"DOTA_tooltip_econ_item_slot"			"Slot: {s:item_slot}"
 	"DOTA_tooltip_econ_item_gifter"		 	"{g:dota_persona:gifter_name}"
 	"DOTA_tooltip_econ_item_gift_received_date"	"Received: {t:T:gift_received_date_time}"
-	"DOTA_tooltip_econ_item_gift_dedication"	"{s:gift_dedication}"
+	"DOTA_tooltip_econ_item_gift_dedication"	"{g:dota_filtered_string:gift_dedication}"
 	"DOTA_tooltip_econ_item_delete_restriction" "Not deletable"
 	"DOTA_tooltip_econ_item_expiry_restriction" "Expires: {t:T:expires_after_date_time} {t:s:expires_after_date_time}"
 	"DOTA_tooltip_econ_item_trade_restriction_permanent" "Not Tradeable or Marketable"
@@ -3989,7 +4030,7 @@
 	"DOTA_econ_item_details_autostyle_label"	"Active style will be determined by gameplay."
 	"DOTA_econ_item_details_gift_label" 	"Gift From:"
 	"DOTA_econ_item_details_original_item_name"	"{s:original_item_name}"
-	"DOTA_econ_item_details_item_name"			"{s:item_name}"
+	"DOTA_econ_item_details_item_name"			"{g:dota_filtered_string:item_name}"
 	"DOTA_econ_item_details_item_creation_date" 	"Released: {t:l:creation_date}"
 	"DOTA_econ_item_details_set_includes"		"Includes the following:"
 	"DOTA_econ_item_details_item_set"			"Part of: <font color='#dddddd'>{s:item_set}</font>"
@@ -3999,7 +4040,7 @@
 	"DOTA_econ_item_details_emoticon_text"	"{s:emoticon_text}"
 	"DOTA_econ_item_details_tool_header"	"Tool"
 	"DOTA_econ_item_details_apply_tool"		"{s:tool_use_name}"
-	"DOTA_econ_item_details_item_description"  "{s:item_description}"
+	"DOTA_econ_item_details_item_description"  "{g:dota_filtered_string:item_description}"
 	"DOTA_econ_item_details_item_uneditable_description"  "{s:item_uneditable_description}"
 	"DOTA_econ_item_details_auto_style_description" "The styles on this item will change automatically based on game state."
 	"DOTA_econ_item_details_gem_type"		"{s:gem_type}"
@@ -4219,6 +4260,8 @@
 	"DOTA_GlobalItems_Weather"	"Weather Effects"
 	"DOTA_GlobalItems_Emblem"		"Emblems"
 	"DOTA_GlobalItems_Terrain"	"Terrain"
+	"DOTA_GlobalItems_Radiant_Creeps" "Radiant Creeps"
+	"DOTA_GlobalItems_Dire_Creeps" "Dire Creeps"
 	"DOTA_GlobalItems_Interface"		"Interface"
 	"DOTA_GlobalItems_Emoticons"		"Emoticons"
 	"DOTA_GlobalItems_CursorPacks"		"Cursor Packs"
@@ -4308,6 +4351,10 @@
 
 	"DOTA_ChangeLog_TI7BracketPrediction"	"The International 2017 Bracket Predictions"
 
+	"DOTA_ChangeLog_PlayerCards"		"Player Cards Now Available"
+	"DOTA_ChangeLog_FavoriteTeam"		"Favorite Team Now Available"
+	"DOTA_ChangeLog_Predictions"		"Predictions Now Available"
+
 	"DOTA_GlobalLiveSpectatorChat_Title"			"New Feature - Global Live Spectator Chat"
 	"DOTA_GlobalLiveSpectatorChat_Details"			"You don't need to be at KeyArena to take in the The International alongside a crowd of thousands. In-game spectator chat now has increased capacity, and can support large numbers of viewers in a single channel. You may also access the spectator chat channel in the new Live Game tab in the dashboard chat window."
 
@@ -4358,6 +4405,7 @@
 	"DOTA_CraftingResult_InvalidItems"		"Failed: invalid items."
 	"DOTA_CraftingResult_InternalError"	"Failed: internal error."
 	"DOTA_CraftingResult_MissingLeague"	"Failed: you must own the compendium to use this recipe."
+	"DOTA_CraftingResult_MissingEvent"	"Failed: you must own the event to use this recipe."
 
 	"DOTA_Compendium_Coins_Increased" 	"Your Compendium Coins have Increased"
 	"DOTA_Compendium_Coin_Bank"			"{d:coin_bank}"
@@ -4390,12 +4438,15 @@
 	"DOTA_Treasure_HelpHeader"			"Each treasure contains {d:items_per_treasure} of these items"
 	"DOTA_Treasure_HelpHeaderPW"		"Current item available from this treasure"
 	"DOTA_Treasure_HelpHeaderPWNotPurchasable" "Not your current item from this treasure"
+	"DOTA_Treasure_HelpHeaderGrantsAll"	"Each treasure contains all of these items"
+
 	"DOTA_Treausre_HelpNoDupe"			"Until it's purchased and opened, you won't know which one you'll receive. If you buy more than one, you won't receive duplicates until you own one of each non-rare item."
 	"DOTA_Treasure_HelpDupe"			"Until it's purchased and opened, you won't know which one you'll receive. If you buy more than one, you may receive duplicates."
 	"DOTA_Treasure_HelpPW"				"After receiving this item, a different item from this treasure will become available.\n"
 	"DOTA_Treasure_HelpPWNotPurchasable" "{g:dota_item_name:peek_item_def} is currently available from this treasure.  After receiving it, another item from the treasure will become available."
 	"DOTA_Treasure_HelpRares"			"Also, if you're very lucky, in addition to the normal items you receive, you may also receive one of the rare bonus items."
 	"DOTA_Treasure_HelpRaresPW"			"Also, in addition to the normal items you receive, you may also receive one of the rare bonus items."
+	"DOTA_Treasure_HelpGrantAll"		"You will receive all of these items when you open this treasure."
 	"DOTA_Treasure_EventLevelsRequired"	"<span class=\"LevelAmount\">{d:event_levels_required} Levels</span> needed for next treasure"
 	"DOTA_Treasure_EventRequired"		"<span class=\"LevelAmount\">Level {d:event_reward_level}</span> Battle Pass reward"
 	"DOTA_Treasure_UnclaimedEventRewards_Singular"	"<span class=\"LevelAmount\">{d:unclaimed_event_rewards_count} Unclaimed</span> Battle Pass Treasure"
@@ -5377,6 +5428,7 @@
 
 	"DOTA_Popup_CardPack_Model_Winter2017"			"Winter 2017 Battle Pass"
 	"DOTA_Popup_CardPack_Model_TI7"					"International 2017 Battle Pass"
+	"DOTA_Popup_CardPack_Model_TI8"					"International 2018 Battle Pass"
 	"DOTA_Popup_CardPack_Model_PackCount"			"Premium Pack of Five"
 	"DOTA_Popup_CardPack_Model_MainTitle"			"Player Cards"
 	"DOTA_Popup_CardPack_Model_SubTitle"			"For use in <i>Fantasy</i> Challenge Game"
@@ -5395,7 +5447,7 @@
 	"DOTA_PlayerCardAngleFall2016"					"Fall 2016 Player Card"
 	"DOTA_PlayerCardsRecycleConfirmTitle"			"Recycle Player Card?"
 	"DOTA_PlayerCardsRecycleConfirmBody"			"This will destroy this player card in exchange for {i:card_dust_amount} card dust.<br><br>Proceed?"
-	"DOTA_PlayerCardsRecycleConfirmBodyMultiple"	"This will destroy all Common cards where you also have a Silver or Gold of that player.  It will generate {i:card_dust_amount} card dust.<br><br>Proceed?"
+	"DOTA_PlayerCardsRecycleConfirmBodyMultiple"	"This will destroy all Common cards where you also have a Silver or Gold of that player, or have multiple identical Commons.  It will generate {i:card_dust_amount} card dust.<br><br>Proceed?"
 	"DOTA_PlayerCardsRecycleConfirmBodyInUse"		"This will destroy this player card in exchange for {i:card_dust_amount} card dust.<br><br><font color='#ff0000'>This card is in use in a Fantasy Roster!</font><br><br>Proceed?"
 	"DOTA_PlayerCardsRecycleConfirmBodyInUseMultiple"	"This will destroy all Common cards where you also have a Silver or Gold of that player.  It will generate {i:card_dust_amount} card dust.<br><br><font color='#ff0000'>One or more of these cards are in use in a Fantasy Roster!</font><br><br>Proceed?"
 	"DOTA_PlayerCardsRecycleResultErrorTitle"		"Error Recycling Player Card"
@@ -5445,11 +5497,12 @@
 	"DOTA_PlayerCardsDustCountCurrent"				"Currently have {i:dust_amount} Player Card Dust"
 	"DOTA_PlayerCardsCreatePack"					"{i:dust_price} Dust for Pack"
 	"DOTA_PlayerCardsCreatePremiumPack"				"{i:premium_dust_price} Dust for Premium Pack"
+	"DOTA_PlayerCardsPurchaseSpecificPlayer"		"{i:specific_dust_price} Dust for Specific Player Card"
 	"DOTA_PlayerCardsRecycle"						"Recycle Card"
 	"DOTA_PlayerCardsRecycleQ"						"Recycle: <font color='#C899FF'>{i:dust_value} Dust</font>"
 	"DOTA_PlayerCard_FantasyLabel"					"Use Your Player Cards in your "
 	"DOTA_PlayerCard_TeamSelectionLabel"			"Select Team Effects"
-	"DOTA_PlayerCard_TeamSelectionTooltip"			"After you’ve collected a complete set of <a href=\"event:DOTAShowCompTI7PlayerCardsPage()\">Player Cards</a> for a team, you can select it as your Favorite Team.<br><br>Collecting a complete set of Silver or Gold Player Cards for a team will unlock higher-quality rewards."
+	"DOTA_PlayerCard_TeamSelectionTooltipNew"			"You can select a Favorite Team, which allows you to bind it as a spray, show up in the fan count when spectating in DotaTV, display it in your profile, and unlocks a team effigy banner. After you've collected a full set for the team, custom teleport effects are enabled, with higher-quality versions enabled after collecting a full silver or gold set for that team."
 	"DOTA_PlayerCard_Fantasy"						"Fantasy Team"
 	"DOTA_PlayerCard_Return"						"Return to All Player Cards"
 	"DOTA_PlayerCard_Dupe"							"Duplicate Card"
@@ -5457,8 +5510,11 @@
 	"DOTA_PlayerCard_PacksRemaining"				"{i:packs_remaining} Packs Remaining"
 	"DOTA_PlayerCard_OpenAnother"					"Open Another Pack"
 	"DOTA_PlayerCard_StatInfo" 						"Gold and Silver Cards always have different Stat Bonuses, even if you already own one of that player.  Recycle with care."
-	"DOTA_PlayerCard_NoTeams"						"You have {i:pack_count} Player Card Packs and {i:premium_pack_count} Premium Card Packs.\n\nThey will be available to open when the final team lineup is established for The International 2017, after the completion of the Regional Qualifiers."
+	"DOTA_PlayerCard_NoTeams"						"You have {i:pack_count} Player Card Packs and {i:premium_pack_count} Premium Card Packs.\n\nThey will be available to open when the final team lineup is established for The International 2018, after the completion of the Regional Qualifiers."
 	"DOTA_PlayerCardsRecycleCommonsButton"			"Recycle Duplicate Commons"
+	"DOTA_PlayerCardsSelectTeam"					"Select a Team..."
+	"DOTA_PlayerCardsSelectPlayer"					"Select a Player..."
+	"DOTA_PlayerCardsPurchaseSpecific"				"Purchase Card for {i:dust_cost} Dust"
 
 	"DOTA_AllStars_Header"							"At this year's International, the All-Star Game will feature a $100,000 USD prize pool and a traditional 5v5 game of Dota.<br><br>Battle Pass owners can select a player for each position -- the teams will be built from the top two vote-getters in each position."
 	"DOTA_AllStars_PositionCarry"					"Carry"
@@ -5474,6 +5530,7 @@
 	"DOTA_FavoriteTeam_EmoticonHeader"				"Emoticon"
 	"DOTA_FavoriteTeam_FanHeader"					"Fan Counter"
 	"DOTA_FavoriteTeam_EffigyHeader"				"Effigy Flag"
+	"DOTA_FavoriteTeam_Spray"						"Spray"
 
 	"DOTA_PlayerCard_RecycleDisabled"				"This card cannot be recycled. It has already been used in a locked day's fantasy roster."
 
@@ -5483,6 +5540,7 @@
 	"DOTA_FantasyMainEvent"							"Main\nEvent"
 	"DOTA_FantasyLockTime"							"Selections lock each day at 9:00 a.m. EEST"
 	"DOTA_FantasyLockTimeTI7"						"Selections lock each day at 9:00 a.m. PDT"
+	"DOTA_FantasyLockTimeTI8"						"Selections lock each day at 9:00 a.m. PDT"
 	"DOTA_FantasyCores"								"Cores"
 	"DOTA_FantasyOfflane"							"Offlane"
 	"DOTA_FantasySupports"							"Supports"
@@ -5539,11 +5597,10 @@
 	"DOTA_FantasyHelpDetailsSub3Text1"				"Matches at {g:dota_event_league_name:eventid} count towards fantasy points."
 	"DOTA_FantasyHelpDetailsSub3Text2"				"The highest scoring two games of a best-of-three count towards a player's score."
 	"DOTA_FantasyHelpDetailsSub3Text3"				"The highest scoring three games of a best-of-five count towards a player's score."
-	"DOTA_FantasyHelpDetailsSub3Text4"				"Rosters lock at the start of each day at 10:00 a.m. PDT."
+	"DOTA_FantasyHelpDetailsSub3Text4"				"Rosters lock at the start of each day at 9:00 a.m. PDT."
 	"DOTA_FantasyHelpDetailsSub4"					"Player Card Packs"
-	"DOTA_FantasyHelpDetailsSub4Text1"				"Battle Pass owners receive 12 Player Card Packs."
-	"DOTA_FantasyHelpDetailsSub4Text2"				"Additional Player Card Packs can be directly purchased from the Player Cards page."
-	"DOTA_FantasyHelpDetailsSub4Text3"				"Player cards and Player Card Packs expire with the expiration of {g:dota_event_league_name:eventid} Battle Pass."
+	"DOTA_FantasyHelpDetailsSub4Text1"				"Additional Player Card Packs are available as rewards for reaching certain Battle Pass levels."
+	"DOTA_FantasyHelpDetailsSub4Text2"				"Player cards and Player Card Packs expire with the expiration of {g:dota_event_league_name:eventid} Battle Pass."
 	"DOTA_FantasyHelpDetailsSub5"					"Rewards"
 	"DOTA_FantasyHelpDetailsSub5Text1"				"The top 10% of all scoring Fantasy Teams receive 16,000 Battle Points"
 	"DOTA_FantasyHelpDetailsSub5Text2"				"The top 25% of all scoring Fantasy Teams receive 8,000 Battle Points"
@@ -5562,7 +5619,7 @@
 	"DOTA_PreviewSounds_ExampleSounds"	"Example Sounds"
 	"DOTA_PreviewMusic"					"Preview Music"
 
-
+	"DOTA_EventName_International2013"	"The International 2013"
 	"DOTA_EventName_International2014"	"The International 2014"
 	"DOTA_EventName_International2015"	"The International 2015"
 	"DOTA_EventName_FallMajor2015"		"Fall 2015"
@@ -5751,6 +5808,49 @@
 	"DOTA_TI7_CampaignDetails_Act2_Zone11_2_Req"	"- Defeat Siltbreaker in under <font color='#DAFCD9'>7:00</font>.<br>- Your team must have no more than <font color='#DAFCD9'>2</font> deaths."
 	"DOTA_TI7_CampaignDetails_Act2_Zone11_3_Req"	"- Defeat Siltbreaker in under <font color='#DAFCD9'>4:00</font>.<br>- Your team must have <font color='#DAFCD9'>no</font> deaths."
 
+	"DOTA_TI8_Ticket_Location" "Rogers Arena - Vancouver, Canada"
+	"DOTA_TI8_Ticket_Dates" "8/20/2018 - 8/25/2018"
+
+	"DOTA_TI8_Ticket_Waves_Tooltip" "Tickets to attend the International are offered in two waves:<br>• Wave 1 sales begin at 10:00 AM PDT on Friday, March 23.<br>• Wave 2 sales begin at 10:00 PM PDT on Friday, March 23."
+	"DOTA_TI8_Ticket_Wave1" "Wave 1"
+	"DOTA_TI8_Ticket_Wave2" "Wave 2"
+	"DOTA_TI8_Ticket_SalesStart" "Ticket sales start in"
+	"DOTA_TI8_Ticket_CallToAction" "Prepare your account at TicketMaster.ca"
+	"DOTA_TI8_Ticket_CallToAction2"	"Buy tickets at Ticketmaster.ca"
+
+	"DOTA_Event2018_EventGamePointsCapLeft"		"WEEKLY POINTS TILL CAP"
+	"DOTA_Event2018_EventGameExplainPointsCap"	"Earn Battle Points for the International 2018 Battle Pass by playing The Underhollow, up to a weekly cap.  Unlock a higher cap and bigger multiplier by progressing in your Battle Pass."
+	
+	"DOTA_Underhollow_YellowTeamVictory"		"Yellow Team Victory!"
+	"DOTA_Underhollow_OrangeTeamVictory"		"Orange Team Victory!"
+	"DOTA_Underhollow_BlueTeamVictory"			"Blue Team Victory!"
+	"DOTA_Underhollow_GreenTeamVictory"			"Green Team Victory!"
+	"DOTA_Underhollow_BrownTeamVictory"			"Brown Team Victory!"
+	"DOTA_Underhollow_CyanTeamVictory"			"Cyan Team Victory!"
+	"DOTA_Underhollow_OliveTeamVictory"			"Olive Team Victory!"
+	"DOTA_Underhollow_PurpleTeamVictory"		"Purple Team Victory!"
+
+	"DOTA_Underhollow_Leaderboard"				"LEADERBOARD"
+	"DOTA_Underhollow_Kills"					"KILLS"
+	"DOTA_Underhollow_Elims"					"ELIMS"
+	"DOTA_Underhollow_Saves"					"SAVES"
+	"DOTA_Underhollow_MyRewards"				"YOUR REWARDS"
+
+	"DOTA_Underhollow_PointsMultiplier"			"Points Multiplier: "
+	"DOTA_Underhollow_BattlePointsEarned"		"Battle Points Earned: "
+	"DOTA_Underhollow_BattlePointsRemaining"	"Battle Points Remaining: "
+	"DOTA_Underhollow_TotalPoints"				"= {d:final_reward} BP"
+
+	"DOTA_Underhollow_WeeklyRemainingPoints"							"REMAINING WEEKLY"
+	"DOTA_Underhollow_WeeklyEarnedPoints"								"POINTS POSSIBLE THIS WEEK: {d:event_game_points_earned} / {d:event_game_point_cap}"
+	"DOTA_Underhollow_TotalPossiblePoints"								"POINTS FROM GAME"
+	"DOTA_Underhollow_PointsAvaiable"									"POINTS WILL BE AWARDED WHEN GAME FINISHES"
+	"DOTA_Underhollow_Elimination_RewardAmount"							"30 BP"
+	"DOTA_Underhollow_SmallCheeses_RewardAmount"						"20 BP"
+	"DOTA_Underhollow_BigCheeses_RewardAmount"							"300 BP"
+	"DOTA_Underhollow_Wins_RewardAmount"								"750 BP"
+	"DOTA_Underhollow_Points_X"											"{d:num_earned} X "		
+
 	"DOTA_DB_SeasonPass_PrizePool"     "Current Prize Pool"
 
 	"DOTA_Purchase_Popup_Title"				"{s:purchase_item_title}"
@@ -5781,6 +5881,8 @@
 	"DOTA_Home_BattlePass_Unclaimed_Plural"		"{d:unclaimed_rewards} Unclaimed Rewards"
 	"DOTA_Home_BattlePass_UnclaimedDescription"		"Click here to claim them from the reward path."
 	"DOTA_Home_BattlePass_ShortFilmContest"		"Short Film Contest"
+	"DOTA_Home_BattlePass_PredictionResetTime"	"Resets in: {i:prediction_reset_days}D {i:prediction_reset_hours}H {i:prediction_reset_minutes}M"
+	
 
 	"DOTA_Home_BattlePass_PurchaseLevels"		"Purchase Levels"
 	"DOTA_Home_BattlePass_PurchaseBP"		"Purchase Battle Pass"
@@ -5872,6 +5974,7 @@
 	"UnlockStyle_Failed_NoCompendiumLevel"	"This style cannot be unlocked. You do not own a compendium at a high enough level to meet the requirements."
 	"UnlockStyle_Failed_AlreadyUnlocked"	"This style has already been unlocked!"
 	"UnlockStyle_Succeeded"					"The style has been unlocked and may now be applied to the item."
+	"DOTA_StyleUnlock_UnlockAll"			"Unlock All"
 
 	"DOTA_SetStyle_ErrorWhileConnected"		"Cannot change style while connected to a game."
 
@@ -6075,6 +6178,9 @@
 	"FrontPage_BattlePassBundle_2017_treasure1"			"+ 4x IMMORTAL TREASURE I"
 	"FrontPage_BattlePassBundle_2017_treasure2"			"+ 4x IMMORTAL TREASURE II"
 
+	"FrontPage_BattlePassBundle_Savings_75" 			"75% off"
+	"FrontPage_BattlePassBundle_7_Treasure1" 			"<span class=\"TreasureAmount\">7x</span><br>Immortal Treasure I"
+	"FrontPage_BattlePassBundle_7_Treasure2" 			"<span class=\"TreasureAmount\">7x</span><br>Immortal Treasure II"
 
 	"FrontPage_Fall_2016_BattlePass_Desc"               "Filled with quests, treasures, and rewards, the Fall 2016 Battle Pass is your companion for the Dota 2016 fall season."
 	"FrontPage_Winter_2017_BattlePass_Desc"             "Filled with quests, treasures, and rewards, the Winter 2017 Battle Pass is your companion for the Dota 2017 winter season."
@@ -6213,6 +6319,41 @@
 
 	"Debut_Arcana_Juggernaut_Style1_Lore"		""
 	"Debut_Arcana_Juggernaut_Style2_Lore"		"Kill 10 enemies with Omnislash to unlock the <b><i>Bladeform Origins</i></b> form."
+
+	"Debut_Arcana_Pudge_Subtitle" 							"item for Pudge"
+	"Debut_Arcana_Pudge_Arcana_Subtitle" 					"Feast of Abscession"
+	"Debut_Arcana_Pudge_Equip" 							"When equipped, this item grants these custom upgrades to Pudge:"
+	"Debut_Arcana_Pudge_Feature1" 							"New base model and textures with custom Arcana pedestal"
+	"Debut_Arcana_Pudge_Feature8" 							"All-new effects for: Dismember and Hook Streak Counter"
+	"Debut_Arcana_Pudge_Feature3" 							"Custom milestone counter effects for Hook Streaks"
+	"Debut_Arcana_Pudge_Feature2" 							"Custom Dismember flesh effects for different heroes"
+	"Debut_Arcana_Pudge_Feature4" 							"Custom portrait, hero icon, ability icons, and minimap icon"
+	"Debut_Arcana_Pudge_Feature6" 							"Animated chat emoticon"
+	"Debut_Arcana_Pudge_Feature9" 							"Altered Voice with hundreds of new responses"
+	"Debut_Arcana_Pudge_Feature10" 						"All-new animations for: Loadout, Alternate Run, Rare Idles, Long- and short-range Dismember, Hook Streaks, and more"
+	"Debut_Arcana_Pudge_Feature11" 						"All-new Taunt animation"
+	"Debut_Arcana_Pudge_Feature7" 							"Celebrate Pudge's slim Arcana Vote victory over Rubick with an Alternate Unlockable <font color='#dfef4a'><i><b>Grand Abscession</b></i></font> Style — earned by defeating an enemy Rubick's team in 12 games"
+	"Debut_Arcana_Pudge_Feature5" 							"Custom Emoticon"
+	"Debut_Arcana_Pudge_Exalted"							"Purchase by May 4, 2018 to receive 'EXALTED' Quality"
+
+	"Debut_Arcana_Pudge_Title"					"Feast of Abscession"
+	"Debut_Arcana_Pudge_Lore"					"An animate mass of defiled chains has tried to putrefy Pudge's resilient heaps of flesh. Enchanted at the forge of the benevolent Crella of Vennepra, but turned to dark purpose by the rhythm of the Dirge, the Chains of Abscession have finally found a victim—and new master—impervious to their virulent decay."
+	
+	"Debut_Arcana_Pudge_Title_Front_Page"					"New Arcana"
+	"Debut_Arcana_Pudge_Title_Front_Page_foot_title"		"Feast of Abscession: Two Styles"
+	"Debut_Arcana_Pudge_Lore_FrontPage"		"An animate mass of defiled chains has tried to putrefy Pudge's resilient heaps of flesh..."
+	
+	"Debut_Arcana_Pudge_Form1" 							"Style 1"
+	"Debut_Arcana_Pudge_Form2" 							"Style 2"
+
+	"Debut_Arcana_Pudge_Style1"				"View Feast of Abscession"
+	"Debut_Arcana_Pudge_Style2"				"View Grand Abscession"
+
+	"Debut_Arcana_Pudge_Style1_Name"			"Feast of Abscession"
+	"Debut_Arcana_Pudge_Style2_Name"			"Grand Abscession"
+
+	"Debut_Arcana_Pudge_Style1_Lore"		""
+	"Debut_Arcana_Pudge_Style2_Lore"		"Win 12 games with Rubick on the enemy team to unlock the <b><i>Grand Abscession</i></b> form."
 
 	"Debut_Arcana_MonkeyKing_NewHero"			"New Hero"
 	"Debut_Arcana_MonkeyKing_BaseStyle"			"Base"
@@ -6359,6 +6500,8 @@
 	"DOTA_SeasonPass_SecondaryTabHeader_Achievements"	"Achievements"
 	"DOTA_SeasonPass_SecondaryTabHeader_BattleCup"		"Battle Cup"
 	"DOTA_SeasonPass_SecondaryTabHeader_DoubleDown"		"Rank Double Down"
+	"DOTA_SeasonPass_SecondaryTabHeader_ProCircuitPredictions"	"Pro Circuit Predictions"
+
 
 	"DOTA_Compendium_SecondaryTabHeader_Overview"		"Overview"
 	"DOTA_Compendium_SecondaryTabHeader_Recap"			"Recap"
@@ -6818,7 +6961,7 @@
 	"DOTA_SeasonPass_MMR_Leaderboard_Explanation"		""
 	"DOTA_SeasonPass_Friends_MMR_TBD"					"TBD ({d:games_remaining} Games)"
 
-	"DOTA_SeasonPass_Friends_N_Of"					    "{i:friend_rank}{s:rank_ordinal_suffix} of {i:friend_count} Friends"
+	"DOTA_SeasonPass_Friends_N_Of"					    "{i:o:friend_rank} of {i:friend_count} Friends"
 	"DOTA_SeasonPass_Wagering_Personal"					"Personal"
 	"DOTA_SeasonPass_Wagering_Friends"					"Friends"
 	"DOTA_SeasonPass_Wagering_Winnings"					"Total Winnings"
@@ -6842,6 +6985,7 @@
 	"DOTA_SeasonPass_Rewards_Very_Rare"					"Very Rare"
 	"DOTA_SeasonPass_Rewards_Extremely_Rare"			"Extremely Rare"
 	"DOTA_SeasonPass_Rewards_Ultra_Rare"				"Ultra Rare"
+	"DOTA_SeasonPass_Rewards_Cosmically_Rare"			"Cosmically Rare"
 
 	"DOTA_SeasonPass_Fall_Treasure1"					"Fall 2016 Treasure I"
 	"DOTA_SeasonPass_Fall_Treasure2"					"Fall 2016 Treasure II"
@@ -6862,8 +7006,6 @@
 
 	"DOTA_SeasonPass_Rewards_Trophies"					"Trophies"
 
-	"DOTA_SeasonPass_Rewards_Expire"					"Winter 2016 Battle Pass expires on:"
-	"DOTA_SeasonPass_Rewards_Expired"					"Winter 2016 Battle Pass expired on:"
 	"DOTA_SeasonPass_Rewards_Expire_Date"				"March 30th, 2016"
 
 	"DOTA_SeasonPass_PreviousReward"					"{s:previous_reward}"
@@ -6989,6 +7131,7 @@
 	"DOTA_TI6_BattlePass_ArcanaVoteStandings"			"View Standings"
 	"DOTA_TI6_BattlePass_ArcanaVoteMostContested"		"Most Contested"
 	"DOTA_TI6_BattlePass_ArcanaVoteCalibrating"			"Vote totals will be displayed once enough votes have been made."
+	"DOTA_TI8_BattlePass_ArcanaViewBracket"				"View Bracket"
 
 	"DOTA_TI6_BattlePass_QuestUpsell"						"Quests Require Battle Pass to Select"
 	"DOTA_TI6_BattlePass_QuestActivate"						"Activate your Battle Pass to play Quests"
@@ -6999,6 +7142,22 @@
 
 	"DOTA_TI7_BattlePass_RepeatingRewards_Title"			"Repeating Rewards"
 	"DOTA_TI7_BattlePass_RepeatingRewards_Description"		"Players who continue to level their Battle Pass will receive one Immortal Treasure every 10 Levels, three Premium Player Card Packs every 30 levels, and one Trust of the Benefactor every 50 levels."
+
+	"DOTA_TI8_BattlePass_RepeatingRewards_Title"			"Repeating Rewards"
+	"DOTA_TI8_BattlePass_RepeatingRewards_Description"		"Players who continue to level their Battle Pass will receive one Immortal Treasure every 10 Levels, three Premium Player Card Packs every 30 levels, and one Trust of the Benefactor every 50 levels."
+
+	"DOTA_TI8_EventGame_Title"					"Welcome to The Underhollow"
+	"DOTA_TI8_EventGame_Description"			"Deep below the confines of Roshan's infamous pit, a wheel of the world's rarest cheese—Roshefort—slowly comes of age. Driven into a ravenous frenzy by just a whiff of the ripening Roshefort, Roshan has descended into the labyrinth in search of this bimillennial repast.<br><br>Now it's time to journey into the Underhollow yourself to risk Roshan's wrath and battle through an eight-team dungeon clash filled with monsters, traps, and more. Navigate the treacherous caverns with your team to earn the Gold and XP needed to destroy your opponents—you'll have to step carefully and work together for any chance to be the last team standing.<br><br>For those able to outlast their enemies, or bold enough to claim the Roshefort wheel, an influx of Battle Points awaits."
+	"DOTA_TI8_EventGame_ShortDescription"		"Battle through an eight-team dungeon clash and fight to be the last ones standing! Slay monstrous hordes, sidestep cunning traps, and destroy your opponents—all for a chance to earn Battle Points."
+	
+	"DOTA_TI8_EventGame_BP_Earned"					"Battle Points Earned:"
+	"DOTA_TI8_EventGame_BP_EarnedValue"				"{d:event_game_points_earned} / {d:event_game_point_cap}"
+
+	"DOTA_TI8_EventGame_BP_PointMultiplier"			"Point Multiplier:"
+	"DOTA_TI8_EventGame_BP_PointMultiplierValue"	"{s:event_game_point_multiplier}x"
+
+	"DOTA_TI8_EventGame_PlayButton"				"Play The Underhollow"
+	"DOTA_TI8_EventGame_RefreshTime"			"Available Points Refresh in {t:d:t:time_until_reset}"
 
 	"DOTA_TI6_BattlePass_SilverTier" "Silver Tier"
 	"DOTA_TI6_BattlePass_GoldTier" "Gold Tier"
@@ -7295,7 +7454,7 @@
 	"DOTA_International2017_Achievement_Win_15000xp_Wagering_Description"		"Win 15000 points by wagering"
 
 	"DOTA_International2017_Achievement_Tip_A_Player_Name"					"Commendable Notion"
-	"DOTA_International2017_Achievement_Tip_A_Player_Description"				"Tip a player at the end of a game"
+	"DOTA_International2017_Achievement_Tip_A_Player_Description"				"Tip a player during a game"
 	"DOTA_International2017_Achievement_Tip_50_Players_Name"					"Total Conscientiousness"
 	"DOTA_International2017_Achievement_Tip_50_Players_Description"			"Tip 50 players across your games"
 
@@ -7418,6 +7577,64 @@
 	"DOTA_International2017_Achievement_Siltbreaker_Act_2_Win_Without_Artifacts_Name"		"Skinny Dipping"
 	"DOTA_International2017_Achievement_Siltbreaker_Act_2_Win_Without_Artifacts_Desc"	"Complete Siltbreaker: Act II without purchasing any Artifacts"
 
+	"DOTA_International2018_Achievement_Complete_4_Weekly_Missions_Name"		"Mission Ready"
+	"DOTA_International2018_Achievement_Complete_4_Weekly_Missions_Description" "Complete 4 weekly challenges"
+	"DOTA_International2018_Achievement_Complete_8_Weekly_Missions_Name"		"Not Such a Chore"
+	"DOTA_International2018_Achievement_Complete_8_Weekly_Missions_Description" "Complete 8 weekly challenges"
+	"DOTA_International2018_Achievement_Complete_12_Weekly_Missions_Name"		"I Do All I Can"
+	"DOTA_International2018_Achievement_Complete_12_Weekly_Missions_Description" "Complete 12 weekly challenges"
+
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Name_A"		"Told You So"
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Desc_A"		"Successfully predict 5 Pro Circuit or TI winners"
+
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Name_B"		"Believe Me Now?"
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Desc_B"		"Successfully predict 25 Pro Circuit or TI winners"
+
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Name_C"		"Time Traveler"
+	"DOTA_International2018_Achievement_ProCircuitPredictions_Desc_C"		"Successfully predict 50 Pro Circuit or TI winners"
+	
+	"DOTA_International2018_Achievement_Mutation_Name_A"		"First Mutation"
+	"DOTA_International2018_Achievement_Mutation_Desc_A"		"Win 1 Mutation Game"
+
+	"DOTA_International2018_Achievement_Mutation_Name_B"		"Third Eye Open"
+	"DOTA_International2018_Achievement_Mutation_Desc_B"		"Win 5 Mutation Games"
+
+	"DOTA_International2018_Achievement_Mutation_Name_C"		"Masterful Mutator"
+	"DOTA_International2018_Achievement_Mutation_Desc_C"		"Win 10 Mutation Games"
+
+	"DOTA_International2018_Achievement_CavernChallenge_Name_A"		"Subterranean Savant"
+	"DOTA_International2018_Achievement_CavernChallenge_Desc_A"		"Explore 10 Cavern Rooms"
+
+	"DOTA_International2018_Achievement_CavernChallenge_Name_B"		"Maze Master"
+	"DOTA_International2018_Achievement_CavernChallenge_Desc_B"		"Explore 30 Cavern Rooms"
+
+	"DOTA_International2018_Achievement_CavernChallenge_Name_C"		"Underground Wunderkind"
+	"DOTA_International2018_Achievement_CavernChallenge_Desc_C"		"Explore 87 Cavern Rooms"
+
+	"DOTA_International2018_UnderhollowChickenTreasure_Name"				"Chicken Chaser"
+	"DOTA_International2018_UnderhollowChickenTreasure_Description"			"Find a treasure full of fowl in The Underhollow"
+	
+	"DOTA_International2018_UnderhollowBigCheese_Name"						"Lactose Tolerant"
+	"DOTA_International2018_UnderhollowBigCheese_Description"				"Claim the Big Cheese in The Underhollow"
+
+	"DOTA_International2018_Underhollow10Eliminations_Name"					"Miner Threat"
+	"DOTA_International2018_Underhollow10Eliminations_Description"			"Eliminate 10 other players in The Underhollow"
+
+	"DOTA_International2018_Underhollow20Eliminations_Name"					"Cavern Crusader"
+	"DOTA_International2018_Underhollow20Eliminations_Description"			"Eliminate 20 other players in The Underhollow"
+
+	"DOTA_International2018_Underhollow30Eliminations_Name"					"Ambush Artist"
+	"DOTA_International2018_Underhollow30Eliminations_Description"			"Eliminate 30 other players in The Underhollow"
+
+	"DOTA_International2018_Underhollow_FirstWin_Name"						"Anyone Else There?"
+	"DOTA_International2018_Underhollow_FirstWin_Description"				"Be the last team standing in The Underhollow"
+
+	"DOTA_International2018_Underhollow_FiveWins_Name"						"Cave Dweller"
+	"DOTA_International2018_Underhollow_FiveWins_Description"				"Win 5 matches of The Underhollow"
+
+	"DOTA_International2018_Underhollow_TenWins_Name"						"Lord of the Hollow"
+	"DOTA_International2018_Underhollow_TenWins_Description"				"Win 10 matches of The Underhollow"
+
 	"DOTA_Siltbreaker_ArtifactCoins"												"Artifact Coins: "
 
 	"DOTA_DB_Event_CustomGame_Title1"											"Work together to defend the temple against the Dark Moon Horde."
@@ -7462,6 +7679,7 @@
 
 	"DOTA_TI2017_Arcana_Vote_1"												"Vote for the Arcana"
 	"DOTA_TI2017_Arcana_Vote_2"												"Sixteen Additional Arcana Votes"
+	"DOTA_TI2017_Arcana_Vote_3"												"Sixteen Additional Arcana Votes"
 	"DOTA_TI2017_Reward_Fountain_Effect_1"									"Fountain Effect Level 1"
 	"DOTA_TI2017_Reward_Fountain_Effect_2"									"Fountain Effect Level 2"
 	"DOTA_TI2017_Reward_Fountain_Effect_3"									"Fountain Effect Level 3"
@@ -7481,6 +7699,7 @@
 	"DOTA_TI2017_Reward_Dagon_Effect"										"Dagon Effect"
 	"DOTA_TI2017_Reward_Shivas_Effect"										"Shivas Effect"
 	"DOTA_TI2017_Reward_Deny_Effect"										"Seasonal Creep Deny Effect"
+	"DOTA_TI2018_Reward_Deny_Effect_2"										"Seasonal Creep Deny Effect 2"
 
 	"DOTA_TI2017_MMR_Wager_1"												"Rank Double Down - Token Increase"
 	"DOTA_TI2017_Chatwheel_Soundboard"										"Unlock Chat Wheel Sounds"
@@ -7508,11 +7727,26 @@
     "DOTA_TI7_Kunkka_Cell_Title"                    "Kunkka Prestige Item"
     "DOTA_TI7_Kunkka_Cell_Text"                     "Exclusive Reward - This item will never be tradeable or purchasable on the marketplace."
 
+    "DOTA_TI8_Lion_Cell_Header"                   "Level 255 Reward"
+    "DOTA_TI8_Lion_Cell_Title"                    "Lion Prestige Item & Unlockable Style"
+    "DOTA_TI8_Lion_Cell_Text"                     "Exclusive Reward - This item will never be tradeable or purchasable on the marketplace."
+
+	//"DOTA_TI8_Immortal"
+
 	"DOTA_DB_CustomGame_Intro"				"For millennia, Selemene's chosen have guarded against the advent of a Dark Moon. But as first night of the new moon falls, Nightsilver's champions have been cursed into arcane slumber, rendered helpless behind the temple walls.
 
 With Selemene's influence at its weakest, and twisted shades of the familiar creeping across her domain, the Moon Goddess beckons five new protectors to stand together against the corruption of the Dark Moon Horde."
 
 	"DOTA_Special_Event" 	"Special Event"
+
+	"DOTA_TI2018_Splash_Lion"			"Lion Prestige Item"
+	"DOTA_TI2018_Splash_Lion_Level"		"Level 255 Reward"
+	"DOTA_TI2018_Splash_Lion_Includes"	"Includes Unlockable Style"
+
+	"DOTA_TI2018_Splash_RetroImmortals"	"Promise of Eminent Revival"
+	"DOTA_TI2018_Splash_RetroImmortals_Level"	"Level 615 Reward"
+	"DOTA_TI2018_Splash_RetroImmortals_Includes"	"Includes Five Immortals with Unlockable Styles"
+	"DOTA_TI2018_Splash_RetroImmortals_Text"	"Includes Five Retro-Themed Immortals with Unlockable Styles"
 
 	// HUD
 	"DOTA_Hud_Health"			"{u:health} <span class='MaxHealthLabel'>/ {u:max_health}</span>"
@@ -7638,6 +7872,8 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 
 	"DOTA_Compendium_MainPage_Wagering_Info"	"Wager tokens to win Battle Points!<br><br>Higher Battlepass levels increase your weekly amount of tokens.<br><br>As you increase your Battle Level, you'll also earn Battle Point Tributes that let you add bonus tokens to the wagers of everyone on your team. Available in 250, 500, and 1000-token amounts.<br><br>These tributes are single-use and do not replenish each week."
 
+	"DOTA_Compendium_MainPage_ProPred_Info_Short" "Predict the outcome of Pro Circuit Matches to earn extra points towards your Battle Level."
+
 	"DOTA_Compendium_Wagering_TokensOver"      "All Tokens have been distributed for this Battle Pass"
 	"DOTA_Compendium_Wagering_TokensPopup_Title"     "Bonus 2000 Token Refresh"
 	"DOTA_Compendium_Wagering_TokensPopup"      "To mark the coming end of the Winter 2016 Battle Pass everyone has had their Wagering Tokens refreshed to 2000 tokens. Make the most of your time remaining and wager big to win big! <br><br>  The Battle Pass expires on March 30th, 2016"
@@ -7653,6 +7889,10 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 	"DOTA_Compendium_Wagering_RemainingTokensLong"	"Tokens remaining"
 	"DOTA_Compendium_Wagering_ResetsIn"	"Tokens remaining this week"
 	"DOTA_Compendium_Wagering_RemainingMMRWagers"	"Tokens remaining"
+
+	"DOTA_Compendium_ProCircuitPredictions_TokensLeft"	"Tokens remaining"
+	"DOTA_Compendium_ProCircuitPredictions_Show" 		"Show Predictions"
+	"DOTA_Compendium_ProCircuitPredictions_Starts"	"Starts in: {i:prediction_start_days}D {i:prediction_start_hours}H {i:prediction_start_minutes}M"
 
 
 	"DOTA_Profile_HeroStatsPage"			"Stats"
@@ -7730,6 +7970,7 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 	"DOTA_HeroStat_PlusStillLoadingOrUnavailable"	"Hero data is still loading or is temporarily unavailable."
 	"DOTA_HeroStat_StatsAtSkillLevel"				"Stats and Talents for {s:skill_hero_average_header} Players"
 	"DOTA_HeroStat_ChooseRankTier"					"Choose a Rank Tier for which to View Stats"
+	"DOTA_HeroStat_ImmortalsCombined"				"Due to a small sample size, stats for Immortal players are included with Divine players."
 
 	"DOTA_XPBar_Tooltip_Default"		"{s:xp_amount} Experience Points"
 	"DOTA_XPBar_Tooltip_GameCompletion"	"{s:xp_amount} Experience Points received from finishing a game"
@@ -8023,7 +8264,7 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 
 	"DOTA_BattlePass_FirstTime_Owned"		"Choose one of three Paths to begin your journey.  Complete a Quest and emerge victorious to earn Battle Points.  "
 
-	"DOTA_BattlePassRewards_Intro"					"Behold the complete gallery of rewards you can earn with the Winter 2016 Battle Pass.<br><br>New rewards will be granted as you accrue Battle Points and increase your Battle Level. Earn more points by completing Quests and Challenges, winning wagers, and stacking up achievements.<br><br>While it is the rare and valorous hero who completes the collection, all who undertake the journey can see their progress here."
+	"DOTA_BattlePassRewards_Intro"					"Behold the complete gallery of rewards you can earn with {g:dota_event_name:event_id}.<br><br>New rewards will be granted as you accrue Battle Points and increase your Battle Level. Earn more points by advancing in the Cavern Crawl, winning wagers, making correct predictions, and stacking up achievements.<br><br>While it is the rare and valorous hero who completes the collection, all who undertake the journey can see their progress here."
 
 	"DOTA_BattlePassRewards_TI6BP_Intro"	"Behold the complete gallery of rewards you can earn with <br>The International 2016 Battle Pass.<br><br><font color='#A9372E'>EARN NEW REWARDS</font> each time you increase your Battle Level.<br><br><font color='#A9372E'>INCREASE YOUR LEVEL</font> by completing Quests, winning in-game Wagers, and earning Achievements.<br><br><font color='#A9372E'>FAST-FORWARD</font> your progress—buy levels at any time while contributing to The International 2016 Prize Pool!"
 
@@ -8043,8 +8284,12 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 
 	"DOTA_BattlePassRewards_Prestige_Text"		"Level Rewards can only be acquired by increasing your Battle Level."
 
-	"DOTA_BattlePassRewards_BabyRoshan"		"<font color=\"#62BECF\"><b>Desert Sands Baby Roshan</b></font><br>An Extremely Rare Reward potentially gained by playing the <b><i>'Siltbreaker'</i></b> Campaign"
+	"DOTA_BattlePassRewards_BabyRoshan"		"<font color=\"#88FCBD\"><b>Jade Baby Roshan</b></font><br>Cosmically Rare Reward potentially gained by exploring <b><i>Cavern Crawl</i></b> rooms."
+	"DOTA_BattlePassRewards_CavernPoints"		"<font color=\"#88FCBD\"><b>Battle Points</b></font><br>There are <font color=\"#88FCBD\"><b>42x 350-point</b></font> rewards and <font color=\"#88FCBD\"><b>9x 2,000-point</b></font> rewards to be discovered in <b><i>Cavern Crawl</i></b> rooms."
+	"DOTA_BattlePassRewards_Level75"  "Level 75"
 	"DOTA_BattlePassRewards_Level225"  "Level 225"
+	"DOTA_BattlePassRewards_Level255"  "Level 255"
+ 	"DOTA_BattlePassRewards_Level615"  "Level 615"
 
 	"DOTA_BattlePassRewards_15Level_Text"		"Each treasure also has a very rare chance of instantly increasing your Battle Level by 15."
 	"DOTA_BattlePassRewards_SpinWheel_Text"		"As you increase your Battle Level, you'll earn spins on Rylai's Wheel of Winter Blessing—with Hero Sets, Couriers, and Treasures in the mix, the maiden has gone mad with munificence!"
@@ -8057,6 +8302,8 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 
 	"DOTA_BattlePassRewards_RecycleNote_winter2017"	"The contents of all Winter 2017 Battle Pass Treasures can be recycled for <b>500</b> Battle Points."
 	"DOTA_BattlePassRewards_RecycleNote_international2017"		"The contents of all the Battle Pass Treasures for the International 2017 can be recycled for <b>2000</b> Battle Points."
+	"DOTA_BattlePassRewards_RecycleNote_international2018"		"The contents of all the Battle Pass Treasures for the International 2018 can be recycled for <b>2000</b> Battle Points."
+
 
 	"DOTA_BattlePassRewards_QuestNote"			"Complete the final Quest on a Quest Path to receive that Path's reward. <br>Complete all fifteen Quests on the Path at Three-Star difficulty to unlock a special style for the reward."
 	"DOTA_BattlePassRewards_QuestNote_fall2016"			"Complete the final Quest on a Quest Path to receive that Path's reward. <br>Complete the Quest Path with at least 40 Stars to unlock a special style for the reward."
@@ -8065,6 +8312,11 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 
 	"DOTA_BattlePassRewards_QuestNote_international2017"			"Complete the Quest Paths to receive that Path's reward."
 
+	"DOTA_BattlePassRewards_Cavern_international2018"				"Explore the 3 areas of the Cavern Crawl to unlock the area's reward."
+	"DOTA_BattlePassRewards_Cavern_Rewards"							"Cavern Crawl Rewards"
+
+	"DOTA_BattlePassRewards_CosmicallyRare"							"Jade Baby Roshan"
+	"DOTA_BattlePassRewards_Cavern_international2018_CosmicallyRare"			"A Cosmically Rare courier won by exploring the Cavern Crawl."
 
 	"DOTA_BattlePassRewards_SpinWheel_Text_ti6"	"As you increase your Battle Level, you'll earn spins on Rylai's Wheel of Battle Blessing—with Hero Sets, Couriers, and Treasures in the mix, the maiden has gone mad with munificence!"
 	"DOTA_BattlePassRewards_LinaBlaze_Text_ti6"	"As Battle Pass owners collectively accomplish the Community Challenge objectives, you'll be granted additional fireballs to drop in Lina's Battle Blaze, where you can win additional Battle Points."
@@ -8093,6 +8345,7 @@ With Selemene's influence at its weakest, and twisted shades of the familiar cre
 	"DOTA_CompendiumRecap_OverviewDates"	"Dates"
 	"DOTA_CompendiumRecap_MainEvent"		"Main Event"
 	"DOTA_CompendiumRecap_PrizePool"		"Current Total Prize Pool"
+	"DOTA_CompendiumRecap_LastYearPrizePool"		"Last Year's Prize Pool: ${i:previous_prize_pool}"
 	"DOTA_CompendiumRecap_OverviewDetails"	"Main event March 2nd - March 6th, 2016"
 	"DOTA_CompendiumRecap_OverviewVenue"	"Venue"
 	"DOTA_CompendiumRecap_OverviewVenueDetails"	"Mercedes Benz Arena, Shanghai, China"
@@ -8152,7 +8405,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_CompendiumTeam_Favorite"				"Favorite"
 	"DOTA_CompendiumTeam_NewMember"				"New Member"
 	"DOTA_CompendiumTeam_SubMember"				"Sub"
-	"DOTA_CompendiumTeam_TournamentFinish"		"{i:tournament_finish}{s:tournament_finish_ordinal} Place Finish"
+	"DOTA_CompendiumTeam_TournamentFinish"		"{i:o:tournament_finish} Place Finish"
 	"DOTA_CompendiumTeam_FallMajorHeader"		"Performance in Fall Major"
 	"DOTA_CompendiumTeam_OtherTournaments"		"Other Tournament Appearances"
 	"DOTA_CompendiumTeam_Tournaments"			"Tournaments"
@@ -8203,6 +8456,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_StoreItem_InBundle"	"In Bundle"
 	"DOTA_StoreItem_InTreasure"	"In Treasure"
 	"DOTA_StoreItem_DotaPlus"	"Join"
+	"DOTA_StoreItem_AlreadyOwned"	"You already own this item."
 
 	"DOTA_SettingsHeroSelectorDefault"			"Default"
 	"DOTA_SettingsHeroSelectorNeutral"			"Neutral"
@@ -8235,6 +8489,19 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_SplashAd_TI7_CollectorsCache_Contribute_Header" "Contribute"
 	"DOTA_SplashAd_TI7_CollectorsCache_Contribute_Text" "25% of each purchase goes directly towards the prize pool for The International 2017."
 
+	"DOTA_SplashAd_TI8_CollectorsCache_Title" "The International 2018 Collector's Cache"
+	"DOTA_SplashAd_TI8_CollectorsCache_Exclusive_Header" "Contains 17 Exclusive Sets"
+	"DOTA_SplashAd_TI8_CollectorsCache_Exclusive_Text" "Cache items will not be available for purchase elsewhere after The International."
+	"DOTA_SplashAd_TI8_CollectorsCache_Alt_Header" "Earn bonus rewards"
+	"DOTA_SplashAd_TI8_CollectorsCache_Alt_Text" "Open treasures to earn up to 27 Battle Pass Levels."
+	"DOTA_SplashAd_TI8_CollectorsCache_Contribute_Header" "Contribute"
+	"DOTA_SplashAd_TI8_CollectorsCache_Contribute_Text" "25% of each purchase goes directly towards the prize pool for The International 2018."
+
+	"DOTA_SplashAd_TI8_CollectorsCache2_Title" "The International 2018 Collector's Cache II"
+	"DOTA_SplashAd_TI8_CollectorsCache2_Exclusive_Header" "Contains 14 Exclusive Sets"
+	"DOTA_SplashAd_TI8_CollectorsCache2_Alt_Text" "Open treasures to earn up to 21 Battle Pass Levels."
+	"DOTA_TI8_CollectorsCache2_Title" "Collector's Cache II"
+
 	"DOTA_SplashAd_Immortal_Gardens_Level_Label" "Level"
 	"DOTA_SplashAd_Immortal_Gardens_Reward_Label" "Reward"
 	"DOTA_SplashAd_Immortal_Gardens_ItemName" "Immortal Gardens Terrain"
@@ -8265,6 +8532,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_SplashAd_TI7_Trove_Title" "Trove Carafe 2017"
 	"DOTA_SplashAd_TI7_Trove_Sub"	"Available Autographed by your favorite Dota personalities"
 
+	"DOTA_SplashAd_TI8_Immortals_2_Text" "Featuring new Immortal items for Dark Seer, Juggernaut, Omniknight, Doom, Viper, Jakiro, Wraith King, and Outworld Devourer."
 
 	"DOTA_SplashAd_TI6_Weekend_Battle_Bundle" "Battle Level Bundle"
 	"DOTA_SplashAd_TI6_Weekend_Sale_Title" "Weekend Sale"
@@ -8283,6 +8551,9 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_SplashAd_TI7_Roshan_Title" "Level 2000 Collector's Baby Roshan Statue"
 	"DOTA_SplashAd_TI7_Roshan_Subheading" "With custom in-game Roshan"
 
+	"DOTA_SplashAd_TI8_Weekend_Levels" "<span class=\"Red\">+100</span> Battle Levels"
+	"DOTA_SplashAd_TI8_Weekend_Treasures" "<span class=\"Red\">+7x</span> Immortal Treasure I<br /><span class=\"Red\">+7x</span> Immortal Treasure II<br />"
+	"DOTA_SplashAd_TI8_Weekend_Savings" "Save 75%"
 
 	"DOTA_SplashAd_TI6_LuckvaseAndCarafe_Autographs_Title" "Autographed Treasures Now Available"
 	"DOTA_SplashAd_TI6_LuckvaseAndCarafe_Autographs_Message" "Support your favorite <a href=\"event:UIPopupButtonClicked( DOTAShowCompManila2016CastersPage() )\">broadcast talent from The International 2016</a>!"
@@ -8361,6 +8632,12 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_CompendiumRecap_OverviewFormatDetailsCont_TI6"	"Main Event: 16 teams in best-of-three double elimination playoff. Lower bracket first round is best-of-one, Grand Finals are best-of-five."
 	"DOTA_CompendiumRecap_OverviewTeamDetails_TI6"	"8 Invited teams and 8 Qualified teams."
 
+	"DOTA_CompendiumRecap_OverviewDetails_TI8"	"Open Qualifiers: June 14th - June 17th \nRegional Qualifiers: June 18th - June 25th \n\nGroup Stage: August 15th - August 18th \nMain Event: August 20th - August 25th"
+	"DOTA_CompendiumRecap_OverviewVenueDetails_TI8"	"Rogers Arena - Vancouver, Canada"
+	"DOTA_CompendiumRecap_OverviewFormatDetails_TI8"	""
+	"DOTA_CompendiumRecap_OverviewFormatDetailsCont_TI8"	""
+	"DOTA_CompendiumRecap_OverviewTeamDetails_TI8"	""
+
 	"DOTA_CompendiumRecap_OverviewDetails_Boston"	"Group Stage: December 3rd - December 4th, 2016\nMain Event: December 7th - December 10th, 2016"
 	"DOTA_CompendiumRecap_OverviewVenueDetails_Boston"	"Wang Theatre - Boston, United States"
 	"DOTA_CompendiumRecap_OverviewFormatDetails_Boston"	"16 teams in best-of-three single-elimination playoff. Grand Finals are best-of-five."
@@ -8371,7 +8648,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_CompendiumRecap_OverviewFormatDetails_Kiev"	"16 teams in best-of-three single-elimination playoff. Grand Finals are best-of-five."
 	"DOTA_CompendiumRecap_OverviewFormatDetailsCont_Kiev"	"Seeding will be determined in the group stage."
 
-	"DOTA_BattlePass_PrizePool"  					"25% of all Battle Pass sales go directly to The International 2017 prize pool."
+	"DOTA_BattlePass_PrizePool"  					"25% of all Battle Pass sales go directly to {g:dota_event_name_short:event_id} prize pool."
 
 	"DOTA_TI7BP_purchase_pool_contribution"		"25% of all Battle Pass sales go directly to The International 2017 prize pool."
 	"DOTA_TI7BP_purchase_pool_contribution_levels"	"25% of all Battle Pass Level sales go directly to The International 2017 prize pool."
@@ -8388,10 +8665,10 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_ActivateBattlePass_InProgress_Title"	"Activating Battle Pass"
 	"DOTA_ActivateBattlePass_InProgress_Text"	"Activating this Battle Pass on your account."
 
-	"DOTA_SeasonPass_Rewards_Treasure1"					"The International 2016 Treasure I"
-	"DOTA_SeasonPass_Rewards_Treasure2"					"The International 2016 Treasure II"
-	"DOTA_SeasonPass_Rewards_Treasure3"					"The International 2016 Treasure III"
-	"DOTA_SeasonPass_Rewards_TreasureCache"				"The International 2016 Collector's Cache"
+	"DOTA_SeasonPass_Rewards_Treasure1"					"{g:dota_event_name_short:event_id} Treasure I"
+	"DOTA_SeasonPass_Rewards_Treasure2"					"{g:dota_event_name_short:event_id} Treasure II"
+	"DOTA_SeasonPass_Rewards_Treasure3"					"{g:dota_event_name_short:event_id} Treasure III"
+	"DOTA_SeasonPass_Rewards_TreasureCache"				"{g:dota_event_name_short:event_id} Collector's Cache"
 
 
 	"DOTA_PurchaseBattlePassLevels"	"Purchase Battle Pass Levels"
@@ -8433,6 +8710,10 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_SeasonPass_International2017_Rewards_Ended"				"The International 2017 Battle Pass has ended."
 	"DOTA_SeasonPass_International2017_BattlePass_EndDate"			"Ends September 1st, 2017"
 
+	"DOTA_SeasonPass_Rewards_Expire"				"{g:dota_event_name:event_id} Event ends on:"
+	"DOTA_SeasonPass_Rewards_Expired"				"{g:dota_event_name:event_id} expired on:"
+	"DOTA_SeasonPass_Rewards_Ended"					"{g:dota_event_name:event_id} has ended."
+
 	"DOTA_TI7_BattlePass_EndDate_Purchase"				"Last day to purchase Battle Pass Levels is August 12, 2017"
 	"DOTA_TI7_BattlePass_Level225Reward_Soon"			"Prestige Item for Kunkka<br>and new quest path"
 	"DOTA_TI7_BattlePass_Level225Reward"				"Prestige Item for Kunkka"
@@ -8440,6 +8721,13 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_TI7_BattlePass_Level165Reward"				"Double Treasures for 3 star completion of Siltbreaker Zones"
 	"DOTA_TI7_BattlePass_Level245_Label"				"<i>Benevolent Companion</i><br>Io <font color=\"#ABE45B\">Arcana</font>"
 
+	"DOTA_TI8_BattlePass_Level255Reward_Soon"			"Prestige Item for Lion<br><font color=\"#11492b\">Coming Soon</font>"
+	"DOTA_TI8_BattlePass_Level255Reward"				"Prestige Item for Lion"
+	"DOTA_TI8_BattlePass_Level160Reward_Soon"			"Underhollow bonus<br><font color=\"#11492b\">Coming Soon</font>"
+	"DOTA_TI8_BattlePass_Level150Reward"				"Underhollow Bonuses:<br>Point Cap Raised to: 3000<br>Point Multiplier: 1.5x"
+	"DOTA_TI8_BattlePass_Level252Reward"				"Underhollow Bonuses:<br>Point Cap Raised to: 4000<br>Point Multiplier: 2x"
+	"DOTA_TI8_BattlePass_Level75Reward_Soon"			"Meepo Announcer Pack<br><font color=\"#11492b\">Coming Soon</font>"
+	"DOTA_TI8_BattlePass_Level615Reward_Soon"			"Promise of Eminent Revival<br><font color=\"#11492b\">Coming Soon</font>"
 
 	"DOTA_GoToCurrentLevel"			"Go To My Current Level"
 	"DOTA_ClaimLevelRewardsFailed"	"Failed to claim a reward at this level. This is likely due to a loss of connection to the Dota Game Coordinator. Try again later!\n\nError Code: {d:error_code}"
@@ -8555,6 +8843,61 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 
 	"dota_ti7_purchase_learn_more"						"Learn More"
 	"dota_ti7_purchase_preview"							"Preview Battle Pass"
+
+	"dota_ti8_purchase_basic_includes"			"Includes access to the following features:"
+	"dota_ti8_purchase_basic_includes2"			"And the following rewards:"
+	"dota_ti8_purchase_basic_includes3"			"Includes everything in the basic bundle"
+	"dota_ti8_purchase_basic_includes4"			"+<br>The following rewards:"
+
+	"dota_ti8_basic_bundle"			"BASIC BUNDLE"
+	"dota_ti8_mega_bundle"			"MEGA BUNDLE"
+
+	"dota_ti8_purchase_learn_more"						"Learn More"
+	"dota_ti8_purchase_preview"							"Preview Battle Pass"
+
+	"dota_ti8_purchase_basic_reward_cursor"				"The International 2018 Cursor Pack"
+	"dota_ti8_purchase_basic_reward_music_pack"			"The International 2018 Music Pack"
+	"dota_ti8_purchase_basic_reward_player_cards_ten"   "5x Player Card Packs"
+
+	"dota_ti8_purchase_basic_reward_treasure_1"	"Immortal Treasure I"
+	"dota_ti8_purchase_basic_reward_treasure_2"	"Immortal Treasure II *"
+	"dota_ti8_purchase_basic_reward_treasure_3"	"Immortal Treasure III *"
+	"dota_ti8_purchase_basic_reward_ingametipping"	"In-game Tipping"
+	"dota_ti8_purchase_basic_reward_taunt_1"	"Taunt: Phoenix - \"Cold Breakfast\""
+	"dota_ti8_purchase_feature_cavern"			"Cavern Crawl"
+	"dota_ti8_purchase_feature_trivia"			"Queue Time Trivia"
+	"dota_ti8_purchase_feature_propred"			"Pro Circuit Predictions"
+	"dota_ti8_purchase_feature_wagering"		"Token Wagering & Battle Point Tribute"
+	"dota_ti8_purchase_feature_challenge_mode"	"Team Challenge"
+	"dota_ti8_purchase_feature_arcana_vote"		"Arcana Voting"
+	"dota_ti8_purchase_basic_reward_compendium"	"The International Compendium"
+	"dota_ti8_purchase_feature_fav_team"		"Favorite Team Features"
+	"dota_ti8_purchase_feature_gamemode"		"Underhollow"
+	"dota_ti8_purchase_bundle_reward_courier_2"         "Evolving Courier Level 2"
+	"dota_ti8_purchase_bundle_reward_arcana_vote"		"+2x Arcana Vote Power Increase"
+	"dota_ti8_purchase_bundle_reward_fountain"			"Fountain Effect I"
+	"dota_ti8_purchase_bundle_reward_teleport"			"Teleport Effect I"
+	"dota_ti8_purchase_bundle_reward_blink"             "Blink Effect I"
+	"dota_ti8_purchase_bundle_reward_level"             "Level Up and Eul's Scepter Effect"
+	"dota_ti8_purchase_bundle_reward_immortal_I"        "+4x Immortal Treasure I"
+	"dota_ti8_purchase_bundle_reward_announcer"         "Meepo Announcer Pack *"
+	"dota_ti8_purchase_bundle_reward_player_cards_35"	"40x Player Card Packs"
+	"dota_ti8_purchase_bundle_reward_chrome_vial"       "Chrome River Vial"
+	"dota_ti8_purchase_bundle_reward_cm_wheel"          "5x Crystal Maiden Wheel Spins"
+	"dota_ti8_purchase_bundle_reward_taunt_2"	"Taunt: Enigma - \"Enigmatic Style\""
+	"dota_ti8_purchase_bundle_reward_taunt_3_a"	"Taunt: Weaver - \"Exterminated\""
+	"dota_ti8_purchase_bundle_reward_tribute_bonus"	    "6x 250 Battle Point Tributes"
+	"dota_ti8_purchase_bundle_reward_chat_wheel_1"		"2x Chat Wheel Spray Packs"
+	"dota_ti8_purchase_bundle_reward_chat_wheel_2"		"Chat Wheel Sound Pack"
+	"dota_ti8_purchase_bundle_reward_teamchallenge"		"+3x Team Challenge Tokens"
+	"dota_ti8_purchase_when_available"	"* When Available"
+	"dota_ti8_purchase_feature_sprays" "Favorite Team Spray*"
+	"dota_ti8_purchase_feature_mutation" "Mutation Mode"
+	"dota_ti8_purchase_feature_rolemm"	"Role Based Matchmaking"
+	"dota_ti8_purchase_feature_courierward"	"New Courier and Ward"
+	"dota_ti8_purchase_feature_taunt"		"Phoenix Taunt"
+	
+
 
 	"dota_store_battle_pass_cell_header"						"New Battle Pass"
 	"dota_store_battle_pass_points_cell_header"					"Upgrade Your Battle Pass"
@@ -8800,11 +9143,11 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_HUD_StrengthGain"		" (Gains {s:strength_per_level} per lvl)"
 	"DOTA_HUD_AgilityGain"		" (Gains {s:agility_per_level} per lvl)"
 	"DOTA_HUD_IntelligenceGain"		" (Gains {s:intelligence_per_level} per lvl)"
-	"DOTA_HUD_PrimaryAttributeStrength"	"= {d:primary_attribute_damage} Damage and {s:strength_status_resistance}% Status Resistance (Primary Role Bonus)"
-	"DOTA_HUD_PrimaryAttributeAgility"	"= {d:primary_attribute_damage} Damage and {s:agility_movement_speed}% Movement Speed (Primary Role Bonus)"
-	"DOTA_HUD_PrimaryAttributeIntelligence"	"= {d:primary_attribute_damage} Damage and {s:intelligence_magic_resistance}% Magic Resistance (Primary Role Bonus)"
-	"DOTA_HUD_StrengthDetails"  "= {d:strength_hp} HP and {s:strength_hp_regen}% HP Regen"
-	"DOTA_HUD_AgilityDetails"  "= {s:agility_armor} Armor and {d:agility_attack_speed} Attack Speed"
+	"DOTA_HUD_PrimaryAttributeStrength"	"= {d:primary_attribute_damage} Damage (Primary Role Bonus)"
+	"DOTA_HUD_PrimaryAttributeAgility"	"= {d:primary_attribute_damage} Damage (Primary Role Bonus)"
+	"DOTA_HUD_PrimaryAttributeIntelligence"	"= {d:primary_attribute_damage} Damage (Primary Role Bonus)"
+	"DOTA_HUD_StrengthDetails"  "= {d:strength_hp} HP,  {s:strength_hp_regen}% HP Regen and {s:strength_magic_resistance}% Magic Resistance"
+	"DOTA_HUD_AgilityDetails"  "= {s:agility_armor} Armor, {d:agility_attack_speed} Attack Speed and {s:agility_movement_speed}% Movement Speed"
 	"DOTA_HUD_IntelligenceDetails"	"= {d:intelligence_mana} Mana, {s:intelligence_mana_regen}% Mana Regen and {s:intelligence_spell_amp}% Spell Amp"
 
 	"DOTA_NewMusicPack"	"New Music Pack"
@@ -8819,6 +9162,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_TeamInvite_OpenQualifier7"	"Open Qualifier #7"
 	"DOTA_TeamInvite_OpenQualifier8"	"Open Qualifier #8"
 	"DOTA_TeamInvite_ChapionsCup"		"Battle Cup Champions"
+	"DOTA_TeamInvite_DirectInvite"		"Direct Invite"
 
 	"DOTA_HeroStats_Castegory_Attributes"	"Attributes"
 	"DOTA_HeroStats_Castegory_Attack"		"Attack"
@@ -8827,14 +9171,14 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_HeroStats_Castegory_HealthMana"	"Health & Mana"
 
 	"DOTA_HeroStats_Strength_Name"					"Strength"
-	"DOTA_HeroStats_Strength_Desc"					"Each point of Strength grants 20 health and 0.03 health regen per second."
-	"DOTA_HeroStats_Strength_PrimaryAttribute"		"For Strength heroes, each point of Strength also grants +0.15% Status Resistance."
+	"DOTA_HeroStats_Strength_Desc"					"Each point of Strength grants 18 Health, 0.55% Health Regen Amplification and 0.08% Magic Resistance."
+	"DOTA_HeroStats_Strength_PrimaryAttribute"		"Strength heroes gain 25% more bonuses from strength."
 	"DOTA_HeroStats_Agility_Name"					"Agility"
-	"DOTA_HeroStats_Agility_Desc"					"Each point of Agility grants one point of increased attack speed and 0.14 armor."
-	"DOTA_HeroStats_Agility_PrimaryAttribute"		"For Agility heroes, each point of Agility also grants +0.06% Movement Speed."
+	"DOTA_HeroStats_Agility_Desc"					"Each point of Agility grants 1 Attack Speed, 0.16 Armor and 0.05% Movement Speed."
+	"DOTA_HeroStats_Agility_PrimaryAttribute"		"Agility heroes gain 25% more bonuses from agility"
 	"DOTA_HeroStats_Intelligence_Name"				"Intelligence"
-	"DOTA_HeroStats_Intelligence_Desc"				"Each point of Intelligence grants 12 extra mana, 0.04 mana regen per second, and 0.07 spell amplification."
-	"DOTA_HeroStats_Intelligence_PrimaryAttribute"	"For Intelligence heroes, each point of Intelligence also grants +0.15% Magic Resistance."
+	"DOTA_HeroStats_Intelligence_Desc"				"Each point of Intelligence grants 12 Mana, 1.8% Mana Regen Amplification and 0.07% Spell Amplification."
+	"DOTA_HeroStats_Intelligence_PrimaryAttribute"	"Intelligence heroes gain 25% more bonuses from intelligence"
 
 	"DOTA_HeroStats_Damage_Name"			"Damage"
 	"DOTA_HeroStats_Damage_Desc"			"Amount of damage a hero does per attack"
@@ -8859,10 +9203,10 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 
 	"DOTA_HeroStats_MaxHealth_Name"			"Max Health"
 	"DOTA_HeroStats_HealthRegen_Name"		"Health Regen"
-	"DOTA_HeroStats_Health_Desc"			"Health determines how much damage a hero can take before dying. Each point of strength increases a hero's max health by 20 and health regen by 0.03."
+	"DOTA_HeroStats_Health_Desc"			"Health determines how much damage a hero can take before dying. Each point of strength increases a hero's max health and health regen."
 	"DOTA_HeroStats_MaxMana_Name"			"Max Mana"
 	"DOTA_HeroStats_ManaRegen_Name"			"Mana Regen"
-	"DOTA_HeroStats_Mana_Desc"				"Mana determines how many abilities a hero can use. Each point of intelligence increases a hero's max mana by 12 and mana regen by 0.04."
+	"DOTA_HeroStats_Mana_Desc"				"Mana determines how many abilities a hero can use. Each point of intelligence increases a hero's max mana and mana regen."
 
 	"DOTA_Trivia_AnswerLetterNone"			"--"
 	"DOTA_Trivia_AnswerLetter0"				"A"
@@ -8875,6 +9219,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_Trivia_Points_Tooltip_Title"	"Trivia Points"
 	"DOTA_Trivia_Points_Tooltip_Text"	"Compete with your Party to see who can earn the most Trivia Points while you're in the queue.<br><br>Each correct answer is worth 100 Trivia Points, and if less than 50% of players in the world answer correctly, then you will also receive bonus points for the question's difficulty.<br><br>Earn Battle Pass Achievements for winning enough Trivia Points over the course of the event."
 	"DOTA_Trivia_ToggleChat"			"Toggle Trivia Chat"
+	"DOTA_Trivia_ToggleAutoplaySounds"	"Trivia Sounds Play Automatically"
 
 	"DOTA_Trivia_LoadingNextQuestion"		"Loading the next question"
 	"DOTA_Trivia_ErrorDisplayingQuestion"	"Error displaying question"
@@ -8935,6 +9280,9 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 
 	"DOTA_Home_BattlePass_DoubleDown_InfoIcon"  "Double down on how much MMR you're willing to put on the line!<br><br>At the start of a Ranked match, you'll have the option to double your potential MMR loss or gain. <br><br>Higher Battlepass Levels award more weekly Tokens."
 
+	"DOTA_Home_BattlePass_ProCircuitPredictions_InfoIcon"  "Predict who will win Pro Circuit matches in the lead up to The International 2018.  Successful predictions will reward you with more Battle Points"
+
+
 	"DOTA_HUD_Pregame_Towers_TowerHeader" 		"Team Tower Showdown"
 
 	"DOTA_BattlePass_Reward_UnlockLevelTooltip"		"Unlocked at Battlepass Level {i:unlock_level}"
@@ -8965,18 +9313,16 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_Campaign_Artifacts_Desc3"			"Access Artifacts you find every time you play the campaign."
 	"DOTA_Campaign_Artifacts_Desc4"			"* Artifacts you find cannot be lost or given away. They will always be available to you in your games"
 
-	"DOTA_Compendium_Predictions_Qualifier_NA" "NA Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_NA_2" "NA Qualifiers Second Place"
-	"DOTA_Compendium_Predictions_Qualifier_EU" "EU Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_EU_2" "EU Qualifiers Second Place"
-	"DOTA_Compendium_Predictions_Qualifier_SA" "SA Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_CIS" "CIS Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_SEA" "SEA Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_SEA_2" "SEA Qualifiers Second Place"
-	"DOTA_Compendium_Predictions_Qualifier_SEA_3" "SEA Qualifiers Third Place"
-	"DOTA_Compendium_Predictions_Qualifier_China" "China Qualifiers First Place"
-	"DOTA_Compendium_Predictions_Qualifier_China_2" "China Qualifiers Second Place"
-	"DOTA_Compendium_Predictions_Qualifier_China_3" "China Qualifiers Third Place"
+	"DOTA_Compendium_Predictions_Qualifier_NA" "NA Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_NA_2" "NA Qualifiers Slot 2"
+	"DOTA_Compendium_Predictions_Qualifier_NA_3" "NA Qualifiers Slot 3"
+	"DOTA_Compendium_Predictions_Qualifier_EU" "EU Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_SA" "SA Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_CIS" "CIS Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_SEA" "SEA Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_SEA_2" "SEA Qualifiers Slot 2"
+	"DOTA_Compendium_Predictions_Qualifier_China" "China Qualifiers Slot 1"
+	"DOTA_Compendium_Predictions_Qualifier_China_2" "China Qualifiers Slot 2"
 
 	"DOTA_ExitFullscreen"		"Press ESC to Exit Fullscreen"
 
@@ -9059,6 +9405,13 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
     "DOTA_710_Update"    "7.10 Gameplay Update"
     "DOTA_711_Update"    "7.11 Gameplay Update"
     "DOTA_712_Update"    "7.12 Gameplay Update"
+    "DOTA_713_Update"    "7.13 Gameplay Update"
+    "DOTA_713b_Update"    "7.13b Gameplay Update"
+    "DOTA_714_Update"    "7.14 Gameplay Update"
+    "DOTA_715_Update"    "7.15 Gameplay Update"
+    "DOTA_716_Update"    "7.16 Gameplay Update"
+    "DOTA_717_Update"    "7.17 Gameplay Update"
+    "DOTA_718_Update"    "7.18 Gameplay Update"
 
 	"DOTA_Settings_Tooltip_NetworkLatency" "If you have a network connection with packet loss, setting this to 'LOW' will increase latency but improve overall smoothness."
 
@@ -9086,7 +9439,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_HeroRelics_About_HowToObtain_Title"					"How to Get Relics"
 	"DOTA_HeroRelics_About_HowToObtain_Description"				"Dota Plus members can spend Shards to purchase hero relics. There are two types of relics available for purchase:"
 	"DOTA_HeroRelics_About_HowToObtain_Normal"					"Common Relics"
-	"DOTA_HeroRelics_About_HowToObtain_Normal_Description"		"You may purchase a roll for a random Hero Relic for {g:dota_shards_value:random_relic_price}. These rolls will usually grant you a common Hero Relic, though rarely you may receive a Rare Hero Relic instead."
+	"DOTA_HeroRelics_About_HowToObtain_Normal_Description"		"You may purchase a roll for a random Hero Relic for {g:dota_shards_value:random_relic_price}. These rolls will usually grant you a common Hero Relic, though rarely you may receive a Rare Hero Relic instead. You may also purchase common relics directly for {g:dota_shards_value:normal_relic_price}."
 	"DOTA_HeroRelics_About_HowToObtain_Rare"					"Rare Relics"
 	"DOTA_HeroRelics_About_HowToObtain_Rare_Description"		"Rare Relics can be purchased directly for {g:dota_shards_value:rare_relic_price}, or you may sometimes receive them from random rolls."
 
@@ -9127,7 +9480,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_TalentPickRate_Help_Tooltip" 	"Pick rates are shown as grey bars behind the talent names on the left. The percentage on the right indicates how much higher the win rate is using that talent."
 	"DOTA_LastUpdated_Help_Tooltip"	"Talent stats, Average K/D/A, NW, and LH/DN Data are calculated from the 48 hours of matches prior to the \"Last Updated\" date and time."
 
-	"DOTA_KillGraph_DamageExplanation" "<span class=\"PhysicalDamageLabel\">Physical damage</span> is caused by attacks and some abilities. Reduced by Armor.<br><br><span class=\"MagicalDamageLabel\">Magical damage</span> is caused by abilities and items. Reduced by Magic Resistance.<br><br><span class=\"PureDamageLabel\">Pure damage</span> is caused by a few abilities and monkey king bar. Pure damage is not reduced."
+	"DOTA_KillGraph_DamageExplanation" "<span class=\"PhysicalDamageLabel\">Physical damage</span> is caused by attacks and some abilities. Reduced by Armor.<br><br><span class=\"MagicalDamageLabel\">Magical damage</span> is caused by abilities and items. Reduced by Magic Resistance.<br><br><span class=\"PureDamageLabel\">Pure damage</span> is caused by a few abilities. Pure damage is not reduced."
 
 	"DOTA_KillGraph_Physical_Damage"	"{i:value} Physical Damage"
 	"DOTA_KillGraph_Magical_Damage"		"{i:value} Magical Damage"
@@ -9174,9 +9527,8 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_Plus_PurchaseDialog_Self_Title" "Purchase a Membership"
 	"DOTA_Plus_PurchaseDialog_Gift_Title" "Gift a Membership"
 
-	"DOTA_Plus_PurchaseDialog_FirstTimeBonus_Line1" "20,000+ FREE SHARDS FOR FIRST TIME COMPLETION OF WELCOME QUESTS!"
-	"DOTA_Plus_PurchaseDialog_FirstTimeBonus_Line2" "FOR USE IN THE PLUS STORE"
-
+	"DOTA_Plus_PurchaseDialog_FirstTimeBonus_Line1" "Up to 20,000+ Shards earned during Welcome Quests"
+	"DOTA_Plus_PurchaseDialog_FirstTimeBonus_Line2" "For first time subscribers to purchase Plus Rewards"
 
 	"DOTA_PlusStore_MyShards"	"My Shards"
 	"DOTA_PlusStore_ExclusiveSets_Title"	"Exclusive"
@@ -9185,6 +9537,8 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_PlusStore_LegacySets_Subtitle"	"Returning Hero Sets"
 	"DOTA_PlusStore_HeroRelics_Title"	"Hero Relics"
 	"DOTA_PlusStore_HeroRelics_Subtitle"	"State Your Stats"
+	"DOTA_PlusStore_Tools_Title"	"Tools"
+	"DOTA_PlusStore_Tools_Subtitle"	"Customize Your Gear"
 
 	"DOTA_PlusStore_HeroRelicsOwned"	"Relics Owned"
 	"DOTA_PlusStore_HeroRelicsOwnedCount"	"{d:owned_relic_count} / {d:total_relic_count} Owned"
@@ -9223,6 +9577,7 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_Plus_Currency"				"Shards"
 	"DOTA_Plus_HeroBadgeInfo"			"Hero Leveling is disabled when Dota Plus is not active. If you reactivate your Dota Plus subscription, then your Hero Levels will resume from where they stopped."
 	"DOTA_Plus_RewardsLog"				"Rewards Log"
+	"DOTA_Plus_Features"				"Features"
 
 	"DOTA_PlusPostGame_HeroProgress"		"Hero Progress"
 	"DOTA_PlusPostGame_LevelProgress"		"Level Progress"
@@ -9234,6 +9589,31 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_PlusPostGame_XPValue"				"{d:xp_value}xp"
 	"DOTA_PlusPostGame_LevelUp"				"Level Up!"
 	"DOTA_PlusPostGame_RelicsProgress"		"Relics Progress"
+	"DOTA_PlusPostGame_BattlePassProgress"	"Battle Pass Progress"
+	"DOTA_PlusPostGame_ShardValue"			"+{d:shard_value}"
+	"DOTA_PlusPostGame_VictoryPrediction"	"Victory Predicted"
+
+	"DOTA_BattlePassPostGame_Progress"		"Battle Pass Progress"
+	"DOTA_BattlePassPostGame_LevelProgress"		"Level Progress"
+	"DOTA_BattlePass_BPProgress" 				"{d:current_level_bp} / {d:bp_to_next_level}"
+	"DOTA_BattlePassPostGame_CurrentLevel"		"Level {d:current_level}"
+	"DOTA_BattlePassPostGame_WagerWon"			"Wager Won"
+	"DOTA_BattlePassPostGame_TipsReceived"		"Tips Received"
+	"DOTA_BattlePassPostGame_CavernChallengeCompleted"	"Cavern Challenge Completed"
+	"DOTA_BattlePassPostGame_DailyChallengeCompleted"	"Daily Challenge Completed"
+	"DOTA_BattlePassPostGame_WeeklyChallengeCompleted"	"Weekly Challenge Completed"
+	"DOTA_BattlePassPostGame_Total"				"Total"
+	"DOTA_BattlePassPostGame_BPValue"				"{d:bp_value}"
+	"DOTA_BattlePassPostGame_LevelUp"				"Level Up!"
+
+	"DOTA_BattlePassPostGame_WagerProgress"			"Wagers"
+ 	"DOTA_BattlePassPostGame_TipProgress"			"Tips"
+ 	"DOTA_BattlePassPostGame_DailyChallengeProgress"	"Daily Challenge"
+ 	"DOTA_BattlePassPostGame_CavernCrawlProgress"		"Cavern Crawl"
+ 	"DOTA_BattlePassPostGame_WeeklyChallengeProgress"	"Weekly Challenge"
+ 	"DOTA_BattlePassPostGame_Complete"				"Complete"
+	"DOTA_BattlePassPostGame_WeeklyChallenge_Progress"			"{d:weekly_progress} / {d:weekly_complete_limit}"
+	"DOTA_BattlePassPostGame_WeeklyChallenge_Increment"	"+{d:weekly_increment}"
 
 	"DOTA_PlusUpsell_Title"							"Available to Dota Plus Subscribers"
 	"DOTA_PlusUpsell_HeroLeveling_Title"			"Hero Leveling"
@@ -9248,6 +9628,8 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_PlusUpsell_TalentPicks_Description"		"See the most popular talent picks and how successful they are. Compare your choices from those of players at all different ranks."
 	"DOTA_PlusUpsell_HeroStats_Title"				"Advanced Stats"
 	"DOTA_PlusUpsell_HeroStats_Description"			"View your winrate with this hero as an ally or as an enemy. Track your peak farm and highest damage and healing."
+	"DOTA_PlusUpsell_GlobalTrends_Title"			"Global Trends"
+	"DOTA_PlusUpsell_GlobalTrends_Description"		"Keep up to date with the latest meta. Track the currently most successful, most picked, and most banned heroes."
 
 	"DOTA_PlusUpsell_Subscribe"		"Subscribe to Dota Plus"
 	"DOTA_PlusUpsell_LearnMore"		"Learn More"
@@ -9275,7 +9657,8 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_Plus_RewardLog_RelicClaimed" "Claimed Relic: {g:dota_gem_name:relic_type_id}"
 	"DOTA_Plus_RewardLog_RandomRelicClaimed" "Randomed Relic: {g:dota_gem_name:relic_type_id}"
 	"DOTA_Plus_RewardLog_RelicRecycled" "Recycled Relic: {g:dota_gem_name:relic_type_id}"
-
+	"DOTA_Plus_RewardLog_CharmReward" "Victory Prediction Reward"
+	
 	"DOTA_PlusWelcome_Title"	"Welcome Quests"
 	"DOTA_PlusWelcome_Description"	"Explore Dota Plus and earn {g:dota_shards_value:total_reward} by completing these quests."
 	"DOTA_PlusWelcome_Part1"	"Part 1"
@@ -9284,6 +9667,12 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_PlusWelcome_ClaimFailed"	"Failed to claim this reward. Try again later. (Error Code: {d:error_code})"
 	"DOTA_PlusWelcome_Finished_Title"	"Congratulations"
 	"DOTA_PlusWelcome_Finished_Message"	"You've completed all of the Dota Plus Welcome Quests. We hope you enjoy Dota Plus!"
+	"DOTA_PlusWelcome_Part2Locked"	"Complete all of the quests in Part 1 to unlock Part 2."
+	"DOTA_PlusWelcome_Part3Locked"	"Complete all of the quests in Part 2 to unlock Part 3."
+	"DOTA_PlusWelcome_QuestsAvailable_Singular"	"{d:welcome_quests_available} Welcome Quest Available"
+	"DOTA_PlusWelcome_QuestsAvailable_Plural"	"{d:welcome_quests_available} Welcome Quests Available"
+	"DOTA_PlusWelcome_QuestsUnclaimed_Singular"	"Claim {d:welcome_quests_unclaimed} Quest Reward"
+	"DOTA_PlusWelcome_QuestsUnclaimed_Plural"	"Claim {d:welcome_quests_unclaimed} Quest Rewards"
 
 	"DOTA_PlusWelcome_SelectPlusGuide_Name"						"Select the Plus Assistant Guide"
 	"DOTA_PlusWelcome_SelectPlusGuide_Description"				"Open the shop during a match and change your selected guide to the Plus Assistant."
@@ -9339,4 +9728,248 @@ With early pressure heroes like Zeus and Death Prophet making appearances, split
 	"DOTA_PurchaseItemWithEventPoints_Quantity"	"Quantity"
 	"DOTA_PurchaseItemWithEventPoints_Price"	"Price"
 	"DOTA_PurchaseItemWithEventPoints_Total"	"Total:"
+	"DOTA_PurchaseItemWithEventPoints_Info"		"Purchased items are not tradeable or marketable."
+
+	"DOTA_TeamChallenge_Title"	"Team Challenge"
+	"DOTA_TeamChallenge_Success" "SUCCESS"
+	"DOTA_TeamChallenge_Failure" "FAILED"
+	"DOTA_TeamChallenge_Reward" "+{d:reward_amount}BP"
+
+	// TI8
+	"TI8_ChallengeMode_ButtonLabel" "Activate Team Challenge"
+	"TI8_ChallengeMode_TokenLabel"  "{d:team_challenge_tokens} Team Challenge Tokens"
+	"TI8_ChallengeMode_Desc" "Spend a team challenge token to play a more difficult ranked match than normal.<br>Your whole team will earn extra rank and {d:team_challenge_reward_amount} battle points if you win!<br>You must queue as a group of 5 to play Team Challenge and the player who selects find match will spend the token.<br><br>You have {d:team_challenge_tokens} team challenge tokens."
+	"DOTA_TI8_ChallengeMode_Tooltip" "Ranked Match Team Challenge Token"
+	"DOTA_TI8_ChallengeMode_Tooltip_x10" "Ranked Match Team Challenge Token x10"
+
+	"DOTA_TI8BP_purchase_pool_contribution"		"25% of all Battle Pass sales go directly to The International 2018 prize pool."
+	"DOTA_TI8BP_purchase_pool_contribution_levels"	"25% of all Battle Pass Level sales go directly to The International 2018 prize pool."
+	"DOTA_TI8BP_Lvl1000_Register"  			"Register for Delivery"
+	"DOTA_TI8_BattlePass_EndDate_Purchase"				"Last day to purchase Battle Pass Levels is August 26, 2018"
+	"DOTA_TI8BP_Lvl1000_Register_Soon"  			"Registration Coming Soon"
+	"DOTA_TI8_Meepo_Announcer_Pack"					"Meepo Announcer Pack"
+	"DOTA_TI8_Prestige_Item"						"Prestige Item"
+	"DOTA_TI8_Eminent_Revival"						"Promise of Eminent Revival"
+	
+	
+
+	"DOTA_TI8_PredictionToken_Tooltip" 	"Pro Circuit Predictions Unlocked"
+	"DOTA_TI8_TipUpgrade_50" 	"Tipping Upgrade: 50 Battle Points Per Tip Given"
+	"DOTA_TI8_TipUpgrade_100" 	"Tipping Upgrade: 100 Battle Points Per Tip Given"
+	"DOTA_TI8_TipUpgrade_200" 	"Tipping Upgrade: 200 Battle Points Per Tip Given"
+
+	"DOTA_LaneSelectionDescription" "Queue for a Ranked All Pick match as a specific role. Your team will include one Safe Lane, one Mid Lane, one Off Lane, and two Support players."
+	"DOTA_LaneSelectionLabel" 		"Lane Selection"
+	"DOTA_LaneSelectionSafelane"	"Safe Lane"
+	"DOTA_LaneSelectionMidlane"		"Mid Lane"
+	"DOTA_LaneSelectionOfflane"		"Off Lane"
+	"DOTA_LaneSelectionOther"		"Support"
+	"DOTA_LaneSelectionNone"		"<Select Lane>"
+	"DOTA_LaneSelection_FasterQueue" "Faster Queue Time"
+	
+	"DOTA_EventName_International2018"	"The International 2018 Battle Pass"
+	"DOTA_EventNameShort_International2018"	"The International 2018"
+
+	"DOTA_SeasonPass_International2018_Rewards_Expire_Date"			"August 26th, 2018"
+	"DOTA_SeasonPass_International2018_BattlePass_EndDate"			"Ends August 26th, 2018"
+ 	"DOTA_SeasonPass_SecondaryTabHeader_CavernCrawl"				"Cavern"
+
+	"DOTACavernCrawl_Section_Carry"								"Carry"
+	"DOTACavernCrawl_Section_Support"							"Support"
+	"DOTACavernCrawl_Section_Utility"							"Utility"
+	"DOTACavernCrawl_ZoomRegion"								"Click An Area To Zoom In"
+	"DOTACavernCrawl_ViewFullMap"								"View Full Map"
+	"DOTA_BattlePassLog_CavernCrawlSmallTreasure"				"Cavern Crawl Reward"
+	"DOTA_BattlePassLog_CavernCrawlLargeTreasure"				"Cavern Crawl Reward"
+	"DOTACavernCrawl_InventoryTitle"							"Inventory"
+	"DOTACavernCrawl_LegendTitle"								"Legend"
+	"DOTACavernCrawl_LegendCaveIn_Title"						"Cave-In"
+	"DOTACavernCrawl_LegendLockedDoor_Title"					"Locked Door"
+	"DOTACavernCrawl_LegendKey_Title"							"Key"
+	"DOTACavernCrawl_LegendTreasure_Title"						"Battle Points"
+	"DOTACavernCrawl_LegendFlare_Title"							"Rocket Flare"
+	"DOTACavernCrawl_LegendStyle_Title"							"Style Unlock"
+	"DOTACavernCrawl_LegendUltraRare_Title"						"Ultra Rare Reward"
+	"DOTACavernCrawl_LegendWand_Title"							"Netherswap Wand"
+	"DOTACavernCrawl_LegendCaveIn_Desc"							"Cave-ins block travel and cannot be cleared."
+	"DOTACavernCrawl_LegendLockedDoor_Desc"						"Locked Doors block travel but can be unlocked with Keys."
+	"DOTACavernCrawl_LegendKey_Desc"							"Keys are used to open Locked Doors."
+	"DOTACavernCrawl_LegendTreasure_Desc"						"Unearth 350- and rare 2,000-point rewards."
+	"DOTACavernCrawl_LegendFlare_Desc"							"Rocket Flares are used to scout unexplored rooms."
+	"DOTACavernCrawl_LegendWand_Desc"							"Netherswap Wands swap a hero with a random one."
+	"DOTACavernCrawl_LegendStyle_Desc"							"Unlocks a style on the final reward set."
+	"DOTACavernCrawl_LegendUltraRare_Desc"						"Grants the ultra rare <font color='#88FCBD'>Jade Baby Roshan!</font>"
+	"DOTACavernCrawl_Title"										"Cavern Crawl"
+	"DOTACavernCrawl_Description"								"Win games with the revealed heroes to explore a randomly-generated cave system in search of rare rewards. Loot rooms after winning to collect treasures and reveal heroes in new hallways. Go far enough and you'll find up to three exclusive item sets. Room treasures also include style unlocks for the sets, bonus Battle Points, and utility items to help you on your journey."
+	"DOTACavernCrawl_ClaimInstructions"							"Click Rewards To Claim"
+
+	"DOTACavernCrawl_Tooltip_LockedDoor"						"Locked Door - Use Key To Unlock"
+	"DOTACavernCrawl_Tooltip_CaveIn"							"Cave-In - Impassable"
+	"DOTACavernCrawl_Tooltip_Hero"								"Win with {g:dota_hero_name:hero_id}"
+		
+	"DOTACavernCrawl_ProgressTitle"								"Cavern Crawl Completed"
+	"DOTACavernCrawl_ProgressDescriptionTitle"					"Cavern Crawl Progress"
+	"DOTACavernCrawl_Progress_ChallengeComplete"				"Challenge Completed: {s:update_description}"
+	"DOTACavernCrawl_Progress_ChallengeAvailable"				"New Challenge: {s:update_description}"
+	"DOTACavernCrawl_Progress_ClaimingReward"					"Received Reward: {s:update_description}"
+	"DOTACavernCrawl_Progress_ClaimingItem"						"Received Cavern Item: {s:update_description}"
+ 	"DOTACavernCrawl_Progress_ChallengeRetired"					"Unnecessary Challenge: {s:update_description}"
+
+	"DOTACavernCrawl_RewardName_Key"							"Key"
+	"DOTACavernCrawl_RewardName_RocketFlare"					"Rocket Flare"
+	"DOTACavernCrawl_RewardName_NetherswapWand"				"Netherswap Wand"
+	"DOTACavernCrawl_RewardName_SmallTreasure"				"350 Battle Points"
+	"DOTACavernCrawl_RewardName_LargeTreasure"				"2000 Battle Points"
+	"DOTACavernCrawl_RewardName_CarryStyleUnlock"				"Desolate Conquest Style Unlock"
+	"DOTACavernCrawl_RewardName_SupportStyleUnlock"			"Vigil of the Penitent Scholar Style Unlock"
+	"DOTACavernCrawl_RewardName_UtilityStyleUnlock"			"Violent Precipitate Style Unlock"
+	"DOTACavernCrawl_RewardName_CarryFinalTreasure"			"Desolate Conquest Set"
+	"DOTACavernCrawl_RewardName_SupportFinalTreasure"			"Vigil of the Penitent Scholar Set"
+	"DOTACavernCrawl_RewardName_UtilityFinalTreasure"			"Violent Precipitate Set"
+	"DOTACavernCrawl_RewardName_JadeBabyRoshan"					"Jade Baby Roshan"
+	"DOTACavernCrawl_ChallengeName_LockedDoor"			"Locked Door"
+	"DOTACavernCrawl_ChallengeName_CaveIn"			"Cave-In"
+
+	"DOTA_CavernCrawl_RewardsClaimedTitle"			"Rewards Claimed"
+
+	"DOTACavernCrawl_InventoryInstructions"			"Click on an item to select it, then click on a room or hallway to use that item."
+
+	"DOTACavernCrawl_PregameTitle"			"Cavern Crawl Active"
+ 	"DOTACavernCrawl_PregameDesc"			"Win with heroes that have Cavern icons to earn rewards."
+
+ 	"DOTACavernCrawl_FailedToLoad"			"Failed to load Cavern Crawl data. Try again later."
+
+ 	"DOTACavernCrawl_ShowMap"				"Show"
+
+	"DOTACavernCrawl_Start"				"Start"
+
+	"DOTACavernCrawl_IntroTitle"			"Welcome To The Cavern Crawl"
+	"DOTACavernCrawl_IntroDesc"			"A minigame for The International 2018 Battle Pass"
+ 	"DOTACavernCrawl_DescLine1"			"Win games with heroes marked with the Cavern Crawl icon to win rewards."
+ 	"DOTACavernCrawl_DescLine2"			"Use this button to view the current state of your Cavern Crawl."
+ 	"DOTACavernCrawl_DescLine3"			"Use this button to filter out heroes which are not active Cavern Crawl heroes."
+
+	"DOTA_HeroSelectorCategory_Cavern"		"Cavern"
+
+	"DOTA_PrizeRewardMeter_FirstPrize"		"$24.78M"
+	"DOTA_PrizeRewardMeter_SecondPrize"		"$30M"
+	"DOTA_PrizeRewardMeter_Reward"			"+10,000 Pts"
+	"DOTA_CompendiumRecap_PrizePoolReward_Desc"		"10,000 Battle Points will be awarded to all players if the prize pool exceeds last year's. Another 10,000 Battle Points will be awarded if the prize pool exceeds $30,000,000."
+
+	"DOTA_ChangeLog_TI8CavernChallenge"	"Cavern Crawl For The International 2018 Battle Pass"
+	"DOTA_ChangeLog_TI8Tipping"			"New Tipping System For The International 2018"
+
+	// Spray Wheel
+
+	"dota_settings_spraywheel_show"				"Spray Wheel"
+	"dota_settings_spraywheel_page"				"Customize Spray Wheel"
+	"DOTA_Hotkeys_Tooltip_SprayWheel"  "Opens the Spray Wheel to spray images on the ground."
+	"dota_spraywheel_event_reward_title"		"Spray Wheel Images"
+	"dota_spraywheel_event_reward_title_short"		"Spray Image"
+	"dota_spraywheel_unlock_popup_title"		"You Unlocked New Spray Wheel Images!"
+	"dota_spraywheel_customize"				"Customize Spray Wheel"
+	"DOTA_FavoriteTeamSpray_Tooltip"	"Favorite Team Spray"
+
+	"DOTA_SeasonPass_SecondaryTabHeader_Underhollow"			"Underhollow"
+
+	"DOTA_SeasonPass_SecondaryTabHeader_Tipping"			"Tipping"
+	
+	"DOTA_Scoreboard_Tipping"	"Tipping"
+	"DOTA_Scoreboard_Tip"		"Tip"
+	"DOTA_Scoreboard_TipsAvailable"		"{d:tips_available} Available"
+	"DOTA_Scoreboard_TipCooldown"		"{s:tip_cooldown} Cooldown"
+
+	"DOTA_Tipping_About_Header"	"About Tipping"
+	"DOTA_Tipping_About_Line1"	"Access the in-game scoreboard to tip players in your matches whenever they do something worthy of recognition."
+	"DOTA_Tipping_About_Line2"	"Each tip is worth 25 Battle Points at the start. You can upgrade your tips along the Battle Pass rewards path to give 50, 100, or 200 Battle Points."
+	"DOTA_Tipping_About_Line3"	"Each Battle Pass owner can give ten tips per week, with a maximum of three per match."
+	"DOTA_Tipping_About_Line4"	"Tipping does not cost your own Battle Points, so try to spend all ten each week."
+
+	"DOTA_Tipping_MyTips"				"My Tips"
+	"DOTA_Tipping_Connections"			"Connections"
+	"DOTA_Tipping_TipsReceived"			"Tips Received"
+	"DOTA_Tipping_TotalTipsReceived"	"Total Tips Received"
+	"DOTA_Tipping_TipsGivenThisWeek"	"Tips Given this Week"
+	"DOTA_Tipping_RefreshTime"			"Refresh in {t:d:t:time_until_reset}"
+	"DOTA_Tipping_ReturnToStart"		"Return to Start"
+
+	"dota_mutation_tooltip_title"		"Active Mutations:"
+	
+	"DOTA_ti8_campaign"	"Multiplayer Adventure"
+	"DOTA_campaign_ti8_name"	"The Underhollow"
+	"DOTA_ti8_campaign_bp_tab_subtitle"	"Roshefort Rumble"
+	
+	"DOTA_DB_SeasonPass_International_2018" "The International 2018 Battle Pass"
+	"DOTA_TI8_BattlePass_Level225Reward_Soon"	"Prestige Item for Lion - Coming Soon"
+	"DOTA_TI8_BattlePass_Level75RewardLine_Soon"	"Meepo Announcer Pack - Coming Soon"
+	"DOTA_TI8_BattlePass_Level615RewardLine_Soon"	"Promise of Eminent Revival - Coming Soon"
+
+	"DOTA_TI8_BattlePass_PlusReward"	"These rewards are available only to Dota Plus subscribers."
+
+    "DOTA_TI8_FrontPage_CavernChallenge_Title"   "Cavern Crawl"
+    "DOTA_TI8_FrontPage_CavernChallenge_Text"    "Navigate the caverns beneath the riverlands to unearth exclusive item sets and rewards."
+    "DOTA_TI8_FrontPage_Sprays_Title"   "Reaction Sprays"
+    "DOTA_TI8_FrontPage_Sprays_Text"    "It's not what you say, but how you say it. Express yourself effectively with new reaction sprays."
+    "DOTA_TI8_FrontPage_Tipping_Title"   "In-Game Tipping"
+    "DOTA_TI8_FrontPage_Tipping_Text"    "Pull some free points from the ether of battle and bestow them upon worthy friends and foes."
+    "DOTA_TI8_FrontPage_ChatWheelSounds_Title"   "Seasonal Chat Wheel Sounds"
+    "DOTA_TI8_FrontPage_ChatWheelSounds_Text"    "Speak your mind in battle with a gaggle of new seasonal sounds."
+    "DOTA_TI8_FrontPage_TeamChallengeMode_Title"   "Team Challenge Mode"
+    "DOTA_TI8_FrontPage_TeamChallengeMode_Text"    "Party up and match against much tougher foes for a chance to earn a dramatic MMR boost."
+    "DOTA_TI8_FrontPage_ProCircuitPredictions_Title"   "Pro Circuit Predictions"
+    "DOTA_TI8_FrontPage_ProCircuitPredictions_Text"    "Make your Pro Circuit picks on the go with new web-based predictions."
+    "DOTA_TI8_FrontPage_CustomLaneCreeps_Title"   "Custom Lane Creeps"
+    "DOTA_TI8_FrontPage_CustomLaneCreeps_Text"    "Swap your standard lane creeps out for the new Cavernite Radiant and Dire creeps."
+    "DOTA_TI8_FrontPage_RankedRoles_Title"   "Ranked Roles Queue"
+    "DOTA_TI8_FrontPage_RankedRoles_Text"    "Select your lane role before matchmaking in this special queue so teammates know what you want to play."
+    "DOTA_TI8_FrontPage_Mutations_Title"   "Mutations Mode"
+    "DOTA_TI8_FrontPage_Mutations_Text"    "The laws of Dota reality are broken, and random gameplay modifiers have beset this unranked mode."
+    "DOTA_TI8_FrontPage_Underhollow_Header"   "New Game Mode"
+	"DOTA_TI8_FrontPage_Underhollow_Header_Available"   "Now Available"
+    "DOTA_TI8_FrontPage_Underhollow_Title"   "The Underhollow - Coming Soon"
+    "DOTA_TI8_FrontPage_Underhollow_Text"    "Roshan is on the rampage, driven into a frenzy and after the world's rarest cheese."
+    "DOTA_TI8_FrontPage_Terrain_Title"   "The Emerald Abyss"
+    "DOTA_TI8_FrontPage_Terrain_Text"    "Follow the river's path down into a new battlefield. Available at level 160 in the Battle Pass."
+   	"DOTA_TI8_ShardReward_Text"	"5000 Shards"
+
+	"DOTA_PlusPickBanWinStats_Hero"	"Hero"
+	"DOTA_PlusPickBanWinStats_Start"	"Start"
+	"DOTA_PlusPickBanWinStats_Trend"	"Trend"
+	"DOTA_PlusPickBanWinStats_End"	"End"
+	"DOTA_PlusPickBanWinStats_Change"	"Change"
+	"DOTA_PlusPickBanWinStats_PickPercent"	"Pick Percent"
+	"DOTA_PlusPickBanWinStats_WinPercent"	"Win Percent"
+	"DOTA_PlusPickBanWinStats_BanPercent"	"Ban Percent"
+	"DOTA_PlusPickBanWinStats_Header"		"Trends for the Last 8 Weeks"
+
+	"DOTA_BattlePass_AchievementsTooltip_Title"		"Achievements"
+	"DOTA_BattlePass_AchievementsTooltip_Completed"		"Achievements Completed"
+	"DOTA_BattlePass_AchievementsTooltip_BattlePointsEarned"		"Battle Points Earned"
+
+	"DOTA_BattlePass_DailyHero_Abbreviation"	"DH"
+
+	"DOTA_BattlePass_DPCPredictionsTooltip_Title"	"Dota Pro Circuit Predictions"
+
+	"DOTA_BattlePass_ArcanaVoteTooltip_Title"	"Arcana Vote"
+	
+	"DOTA_BattlePass_CavernCrawlTooltip_Title"	"Cavern Crawl"
+	"DOTA_BattlePass_CavernCrawlTooltip_RoomsCompleted"	"Rooms Completed"
+	"DOTA_BattlePass_CavernCrawlTooltip_BattlePointsEarned"	"Battle Points Earned"
+	"DOTA_BattlePass_CavernCrawlTooltip_SetsEarned"	"Sets Earned"
+
+	"DOTA_BattlePass_TippingTooltip_Title"	"Tipping"
+
+	"DOTA_BattlePass_UnderhollowTooltip_Title"	"Underhollow"
+	"DOTA_BattlePass_UnderhollowTooltip_BattlePointsEarned"	"Battle Points Earned This Week"
+
+	"DOTA_LiveSpectating_Error_Generic"					"Encountered server error trying to watch friend live."
+	"DOTA_LiveSpectating_Error_NoPlus"					"You must be a Dota Plus member to use this feature."
+	"DOTA_LiveSpectating_Error_NotFriends"				"You must be friends to use this feature."
+	"DOTA_LiveSpectating_Error_LobbyNotFound"			"Could not find game for friend."
+	"DOTA_LiveSpectating_Error_SpectatorInLobby"		"You must leave your current game/lobby to watch live."
+	"DOTA_LiveSpectating_Error_WrongLobbyType"			"You can only watch friends live in active matchmaking games."
+	"DOTA_LiveSpectating_Error_PlayerNotPlayer"			"Your friend must be on either Radiant or Dire to watch their game live."
+	"DOTA_LiveSpectating_Error_TooManySpectators"		"There are no more friend spectator slots available in this match."
+	"DOTA_LiveSpectating_Error_FriendsOnBothSides"		"You cannot live spectate a game if you have friends on both teams."
+
 }

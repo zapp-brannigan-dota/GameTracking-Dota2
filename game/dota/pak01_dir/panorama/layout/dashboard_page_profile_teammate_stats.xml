@@ -29,26 +29,36 @@
     <Panel id="ProfileContainer" class="ProfileTopLevel">
       <Panel id="Background" />
       <Panel id="ProfileInteractable" >
-        <Panel id="Header" class="LeftRightFlow">
-          <Panel class="HeaderNameContainer LeftRightFlow">
-            <Panel id="ProfileRankTierContainer">
-              <DOTAScenePanel id="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
-              <Panel id="RankTier" class="RankTierImage"/>
-              <Panel id="RankPips" class="RankPipImage" />
-              <DOTAScenePanel id="EliteFX" map="scenes/rank_divine_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
-              <Label id="RankLeaderboard" class="RankLeaderboardLabel" text="{d:leaderboard_rank}" />
-            </Panel>
-            <DOTAAvatarImage id="AvatarImage" />
-            <Panel class="TopBottomFlow">
-              <Panel class="LeftRightFlow">
-                <DOTABattleCupVictoryIcon id="BattleCupVictoryIcon" class="BattleCupVictoryIconLarge"/>
-                <DOTAUserName id="ProfileName" />
-                <DOTAUserName id="ProfileNickname" class="ProfileNickname"/>
-              </Panel>
-              <DOTAUserRichPresence id="UserRichPresence" class="ProfileUserRichPresence" />
-            </Panel>
-          </Panel>
-        </Panel>
+				<Panel id="Header">
+					<Panel class="HeaderNameContainer LeftRightFlow">
+						<Panel id="ProfileRankTierContainer">
+							<DOTAScenePanel id="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
+							<Panel id="RankTier" class="RankTierImage"/>
+							<Panel id="RankPips" class="RankPipImage" />
+							<DOTAScenePanel id="EliteFX" map="scenes/rank_divine_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
+							<Label id="RankLeaderboard" class="RankLeaderboardLabel" text="{d:leaderboard_rank}" />
+						</Panel>
+						<DOTAAvatarImage id="AvatarImage" />
+						<Panel class="TopBottomFlow">
+							<Panel class="LeftRightFlow">
+								<DOTABattleCupVictoryIcon id="BattleCupVictoryIcon" class="BattleCupVictoryIconLarge"/>
+								<DOTAUserName id="ProfileName" />
+								<DOTAUserName id="ProfileNickname" class="ProfileNickname"/>
+							</Panel>
+							<DOTAUserRichPresence id="UserRichPresence" class="ProfileUserRichPresence" />
+						</Panel>
+					</Panel>
+					<Panel class="ManageButtonsRow">
+						<Panel class="ManageButton ManageButton--PartyFinder" onactivate="CDOTA_DB_ProfileTeammateStats_ManageTeammates(true)">
+							<Panel class="ManageButton_Icon" />
+							<!-- <Label class="ManageButton_Label" text="#manage_favorite_player" /> -->
+						</Panel>
+						<Panel class="ManageButton ManageButton--Avoid" onactivate="CDOTA_DB_ProfileTeammateStats_ManageTeammates(false)">
+							<Panel class="ManageButton_Icon" />
+							<!-- <Label class="ManageButton_Label" text="#manage_avoid_player" /> -->
+						</Panel>
+					</Panel>
+				</Panel>
 
         <Panel id="TeammateStats">
           <Panel class="TeammateStatsHeader">

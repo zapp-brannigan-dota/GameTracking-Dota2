@@ -41,17 +41,27 @@
 
 @define PreConnectedTransitionDuration: 1s;
 
+@define winnerGreen: #88ff88;
+@define loserRed: #ff4433;
+
 @define dotaPlusGold: #B78946;
 @define dotaPlusLightGold: #DCD086;
-@define dotaPlusRed: #A63727;
-@define dotaPlusOrange: #CF5129;
-
+@define dotaPlusBrown: #433620;
 @define dotaPlusGoldGradient: gradient( linear, 0% 0%, 0% 100%, from( #B78946 ), to( #DCD086 ) );
-@define dotaPlusRedGradient: gradient( linear, 0% 0%, 0% 100%, from( #A63727 ), to( #CF5129 ) );
-@define dotaPlusBgGradient: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), color-stop( 0.5, #141b21EF), to( #141b21EF) );
+@define dotaPlusGoldGradientHover: gradient( linear, 0% 0%, 0% 100%, from( #d8a253 ), to( #ecdf90 ) );
+@define dotaPlusGoldGradientActive: gradient( linear, 0% 0%, 0% 100%, from( #ca974d ), to( #dfd388 ) );
+@define dotaPlusBgGradient: gradient( linear, 0% 0%, 0% 100%, from( dotaPlusBrown ), color-stop( 0.5, #141b21EF), to( #141b21EF) );
+
+@define dotaPlusCurrencyIcon: url("s2r://panorama/images/dota_plus/currency_icon_png.vtex");
+@define dotaPlusCurrencySmallIcon: url("s2r://panorama/images/dota_plus/currency_icon_small_png.vtex");
+@define dotaPlusLogo: url("s2r://panorama/images/dota_plus/dotaplus_logo_png.vtex");
+@define dotaPlusLogoSmall: url("s2r://panorama/images/dota_plus/dotaplus_logo_small_png.vtex");
+@define dotaPlusChallengeIcon: url("s2r://panorama/images/dota_plus/challanges_icon_png.vtex");
+@define dotaPlusChatWheelIcon: url("s2r://panorama/images/dota_plus/icon_chatwheel_plus_reward_png.vtex");
+@define dotaPlusRelicIcon: url("s2r://panorama/images/dota_plus/relic_icon_png.vtex");
+
 
 @define proVerifiedColor: #ffcc33;
-
 
 
 /* ContextMenu - used in code -- dont rename */
@@ -1074,6 +1084,65 @@ RadioButton:disabled > Label
 	color: #5d676933;
 }
 
+
+/*Dark Button with Gold Border / Hover */
+
+
+.ButtonGold
+{
+    padding: 6px 15px;
+
+    border: 2px solid rgba(201,155,88,0.8);
+
+    transition-property: background-color, opacity, border;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    box-shadow: #00000055 -2px -2px 4px 4px;
+    opacity: 0.9;
+
+}
+
+.ButtonGold:enabled:hover
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #c99b58 ), to( #f0bd74 ));
+    box-shadow: fill #11181e20 0px 4px 14px 0px;
+    opacity: 1;
+}
+
+.ButtonGold:active
+{
+    background-color: rgba(201,155,88,1);
+    opacity: 1;
+
+    border-top-color: #8b6938;
+    border-left-color: #8b6938;
+    border-bottom-color: rgba(201,155,88,1);
+    border-right-color: rgba(201,155,88,1);
+    sound: "ui_generic_button_click";
+}
+
+.ButtonGold Label
+{
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    horizontal-align: center;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+
+    transition-property: color;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+}
+
+.ButtonGold:active Label
+{
+    opacity: 0.8;
+}
+
+
 //
 // SimpleBevel - adds a very simple bevel effect to any button
 //
@@ -1163,12 +1232,10 @@ RadioButton:disabled > Label
 	border-left: 1px solid #496922;
 	border-bottom: 1px solid #294211;
 }
-
 .PopupButton.Green:enabled:hover
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #9eb46c ), to( #60823d ) );
 }
-
 .PopupButton.Green:active
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #204200 ), to( #5e842c ) );
@@ -1186,21 +1253,62 @@ RadioButton:disabled > Label
 	border-left: 1px solid #507693;
 	border-bottom: 1px solid #273a48;
 }
-
 .PopupButton.Blue:enabled:hover
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #9ccaf4 ), to( #2b4b75 ) );
 }
-
 .PopupButton.Blue:active
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2b4b75 ), to( #65a9db ) );
-
 	border-top: 1px solid #273a48;
-	border-right: 1px solid #496922;
-	border-left: 1px solid #496922;
+	border-right: 1px solid #224569;
+	border-left: 1px solid #224569;
 	border-bottom: 1px solid #567e9e;
 }
+
+.PopupButton.Red
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #db6565 ), to( #75362b ) );
+	border-top: 1px solid #eb807f;
+	border-right: 1px solid #945150;
+	border-left: 1px solid #945150;
+	border-bottom: 1px solid #472727;
+}
+.PopupButton.Red:enabled:hover
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #f5a39d ), to( #75362b ) );
+}
+.PopupButton.Red:active
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #75362b ), to( #db6565 ) );
+	border-top: 1px solid #472727;
+	border-right: 1px solid #692721;
+	border-left: 1px solid #692721;
+	border-bottom: 1px solid #9e5855;
+}
+
+
+.PopupButton.Purple
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #a265db ), to( #5d2b75 ) );
+	border-top: 1px solid #b87feb;
+	border-right: 1px solid #745094;
+	border-left: 1px solid #745094;
+	border-bottom: 1px solid #382747;
+}
+.PopupButton.Purple:enabled:hover
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #d09df5 ), to( #5d2b75 ) );
+}
+.PopupButton.Purple:active
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5d2b75 ), to( #a265db ) );
+	border-top: 1px solid #382747;
+	border-right: 1px solid #4c2069;
+	border-left: 1px solid #4c2069;
+	border-bottom: 1px solid #7d559e;
+}
+
 
 .PopupButton.Grey
 {
@@ -1852,8 +1960,7 @@ ProgressBar
 {
 	width: 320px;
 	height: 22px;
-	border: 3px solid black;
-	border-radius: 2px;
+	border-radius: 50px;
 	background-color: #000000ff;
 	box-shadow: #00000066 -3px -3px 6px 6px;
 }
@@ -2236,6 +2343,17 @@ ProgressBar
 	transition-property: wash-color, transform, opacity;
 	transition-duration: 0.24s;
 	transition-timing-function: ease-in-out;
+}
+
+.PopoutArrow
+{
+	width: 16px;
+	height: 16px;
+
+	background-image: url("s2r://panorama/images/control_icons/arrow_top_right_png.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
 }
 
 //
@@ -2918,6 +3036,12 @@ EdgeScrollBar.AtMaximum #MaxButton
 .Blue.PaginationButton:selected
 {
 	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, color-stop(0.0, #0563aa ), color-stop(0.5, #0563aa), color-stop(0.6, #00000000 ) );
+}
+
+.Teal.PaginationButton,
+.Teal.PaginationButton:selected
+{
+	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, color-stop(0.0, #05aa7d ), color-stop(0.5, #05aa7d), color-stop(0.6, #00000000 ) );
 }
 
 
@@ -3654,6 +3778,36 @@ DOTAContextMenuPlayer #BottomArrow
 	margin-top: -1px;
 }
 
+.BattlePassActivityTooltip #LeftArrow
+{
+	background-image: url("s2r://panorama/images/tooltips/tooltip_arrow_left_ti9_png.vtex");
+	wash-color: white;
+	width: 16px;
+	height: 24px;
+}
+.BattlePassActivityTooltip #RightArrow
+{
+	background-image: url("s2r://panorama/images/tooltips/tooltip_arrow_right_ti9_png.vtex");
+	wash-color: white;
+	width: 16px;
+	height: 24px;
+}
+.BattlePassActivityTooltip #BottomArrow
+{
+	background-image: url("s2r://panorama/images/tooltips/tooltip_arrow_bottom_ti9_png.vtex");
+	wash-color: white;
+	width: 24px;
+	height: 16px;
+	margin-top: -1px;
+}
+.BattlePassActivityTooltip #TopArrow
+{
+	background-image: url("s2r://panorama/images/tooltips/tooltip_arrow_top_ti9_png.vtex");
+	wash-color: white;
+	width: 24px;
+	height: 16px;
+}
+
 DOTATooltipDroppedItem
 {
 	tooltip-position: top;
@@ -3861,14 +4015,14 @@ DOTAItemImage #RecipeOutputImage
 	height: 100%;
 	contrast: .9;
 	background-color: black;
-	opacity-mask: url("s2r://panorama/images/items/recipe_opacity_mask_png.vtex");
-}
-
-DOTAShopItem:not(.CanPurchase) #RecipeContainer
-{
 	opacity-mask: url("s2r://panorama/images/items/recipe_opacity_mask_nopurchase_psd.vtex");
 }
 
+DOTAShopItem .CanPurchase #RecipeContainer,
+DOTAShopItem .AvailableAtOtherShop #RecipeContainer
+{
+	opacity-mask: url("s2r://panorama/images/items/recipe_opacity_mask_nopurchase_psd.vtex");
+}
 
 #dragImage
 {
@@ -4101,7 +4255,7 @@ DOTAShopItem:not(.CanPurchase) #RecipeContainer
 	background-repeat: no-repeat;
 }
 
-.EventPointsValueIcon.Season_PlusSubscription	{ background-image: url("s2r://panorama/images/dota_plus/currency_icon_png.vtex"); }
+.EventPointsValueIcon.Season_PlusSubscription	{ background-image: dotaPlusCurrencySmallIcon; }
 .EventPointsValue.Season_PlusSubscription		{ color: dotaPlusLightGold; }
 
 .RankTierImage {}
@@ -4113,6 +4267,10 @@ DOTAShopItem:not(.CanPurchase) #RecipeContainer
 .RankTier5 .RankTierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank5_psd.vtex"); }
 .RankTier6 .RankTierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank6_psd.vtex"); }
 .RankTier7 .RankTierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank7_psd.vtex"); }
+.RankTier8 .RankTierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank8_psd.vtex"); }
+.RankTier8.LeaderboardTop100 .RankTierImage	{ background-image: url("s2r://panorama/images/rank_tier_icons/rank8b_psd.vtex"); }
+.RankTier8.LeaderboardTop10 .RankTierImage	{ background-image: url("s2r://panorama/images/rank_tier_icons/rank8c_psd.vtex"); }
+.RankTier8.LeaderboardTop1 .RankTierImage	{ background-image: url("s2r://panorama/images/rank_tier_icons/rank8c_psd.vtex"); }
 
 .RankTier0TierImage { background-image: url("s2r://panorama/images/rank_tier_icons/rank0_psd.vtex"); opacity: 0.85; }
 .RankTier1TierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank1_psd.vtex"); }
@@ -4122,11 +4280,7 @@ DOTAShopItem:not(.CanPurchase) #RecipeContainer
 .RankTier5TierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank5_psd.vtex"); }
 .RankTier6TierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank6_psd.vtex"); }
 .RankTier7TierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank7_psd.vtex"); }
-
-.RankTier7.RankPips5 .RankTierImage { background-image: url("s2r://panorama/images/rank_tier_icons/rank7a_psd.vtex"); }
-.RankTier7.RankPips5.LeaderboardTop100 .RankTierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank7b_psd.vtex"); }
-.RankTier7.RankPips5.LeaderboardTop10 .RankTierImage { background-image: url("s2r://panorama/images/rank_tier_icons/rank7c_psd.vtex"); }
-.RankTier7.RankPips5.LeaderboardTop1 .RankTierImage { background-image: url("s2r://panorama/images/rank_tier_icons/rank7c_psd.vtex"); }
+.RankTier8TierImage {	background-image: url("s2r://panorama/images/rank_tier_icons/rank8_psd.vtex"); }
 
 .RankPipImage { }
 .RankPips0 .RankPipImage {  /*background-image: url("s2r://panorama/images/rank_tier_icons/pip_empty_psd.vtex"); opacity: 0.5;*/ }
@@ -4135,14 +4289,17 @@ DOTAShopItem:not(.CanPurchase) #RecipeContainer
 .RankPips3 .RankPipImage {	background-image: url("s2r://panorama/images/rank_tier_icons/pip3_psd.vtex"); }
 .RankPips4 .RankPipImage {	background-image: url("s2r://panorama/images/rank_tier_icons/pip4_psd.vtex"); }
 .RankPips5 .RankPipImage {	background-image: url("s2r://panorama/images/rank_tier_icons/pip5_psd.vtex"); }
-.RankTier7.RankPips5 .RankPipImage { background-image: none; }
+.RankPips6 .RankPipImage {	background-image: url("s2r://panorama/images/rank_tier_icons/pip6_psd.vtex"); }
+.RankPips7 .RankPipImage {	background-image: url("s2r://panorama/images/rank_tier_icons/pip7_psd.vtex"); }
+
+
 
 .RankDataMissing #EliteFX, .RankTier0 #EliteFX, .RankTier1 #EliteFX, .RankTier2 #EliteFX, .RankTier3 #EliteFX, .RankTier4 #EliteFX, .RankTier5 #EliteFX, .RankTier6 #EliteFX, .RankTier7 #EliteFX
 {
 	visibility: collapse;
 }
 
-.RankTier7.LeaderboardTop10 #EliteFX, .RankTier7.LeaderboardTop1 #EliteFX
+.RankTier8.LeaderboardTop10 #EliteFX, .RankTier8.LeaderboardTop1 #EliteFX
 {
 	visibility: visible;
 }
@@ -4168,7 +4325,6 @@ DOTAHeroMovie
 .Frostivus2017 #HomeFriendsList,
 .Frostivus2017 #CategoriesOptionsContainer,
 .Frostivus2017 #DOTAWatchTournamentsPage,
-.Frostivus2017 DOTATournamentDetailsPage,
 .Frostivus2017 #LeaguePassGrid,
 .Frostivus2017 #ProfileContentRightContents,
 .Frostivus2017 .ConductSummaryAvailable #PlayStyleBox,
@@ -4369,12 +4525,12 @@ DOTAHeroMovie
 	background-color: dotaPlusBgGradient;
 }
 
-.DotaPlusIconLarge		{ background-image: url("s2r://panorama/images/dota_plus/dotaplus_logo_png.vtex"); }
-.DotaPlusIconSmall		{ background-image: url("s2r://panorama/images/dota_plus/dotaplus_logo_small_png.vtex"); }
-.DotaPlusChallangeIcon	{ background-image: url("s2r://panorama/images/dota_plus/challanges_icon_png.vtex"); }
-.DotaPlusChatWheelIcon	{ background-image: url("s2r://panorama/images/dota_plus/icon_chatwheel_plus_reward_png.vtex"); }
-.DotaPlusRelicIcon		{ background-image: url("s2r://panorama/images/dota_plus/relic_icon_png.vtex"); }
-.DotaPlusCurrencyIcon	{ background-image: url("s2r://panorama/images/dota_plus/currency_icon_png.vtex"); }
+.DotaPlusIconLarge		{ background-image: dotaPlusLogo; }
+.DotaPlusIconSmall		{ background-image: dotaPlusLogoSmall; }
+.DotaPlusChallangeIcon	{ background-image: dotaPlusChallengeIcon; }
+.DotaPlusChatWheelIcon	{ background-image: dotaPlusChatWheelIcon; }
+.DotaPlusRelicIcon		{ background-image: dotaPlusRelicIcon; }
+.DotaPlusCurrencyIcon	{ background-image: dotaPlusCurrencyIcon; }
 
 .DotaPlusBrightButton
 {
@@ -4392,6 +4548,38 @@ DOTAHeroMovie
 .DotaPlusBrightButton:disabled
 {
 	saturation: 0.0;
+	brightness: 0.15;
+}
+.DotaPlusBrightButton Label
+{
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	horizontal-align: center;
+}
+
+.DotaPlusDarkButton
+{
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+
+	padding: 8px 16px 4px 16px;
+}
+.DotaPlusDarkButton:hover:enabled
+{
+	brightness: 2.0;
+}
+.DotaPlusDarkButton:active
+{
+	brightness: 1.5;
+}
+.DotaPlusDarkButton:disabled
+{
+	saturation: 0.0;
 	wash-color: #555;
 }
 .DotaPlusBrightButton Label
@@ -4401,6 +4589,41 @@ DOTAHeroMovie
 	text-align: center;
 	horizontal-align: center;
 }
+.DotaPlusDarkButton Label
+{
+	color: dotaPlusLightGold;
+	text-transform: uppercase;
+	text-align: center;
+	horizontal-align: center;
+}
+
+.DotaPlusGoldButton
+{
+	background-color: dotaPlusGoldGradient;
+	border-top: 1px solid #DCD08680;
+}
+.DotaPlusGoldButton:hover:enabled
+{
+	background-color: dotaPlusGoldGradientHover;
+}
+.DotaPlusGoldButton:active
+{
+	background-color: dotaPlusGoldGradientActive;
+}
+
+.DotaPlusGoldButton Label
+{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	padding:8px 8px 8px 8px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	horizontal-align: center;
+	text-shadow: 1px 1px 4px black;
+}
+
 
 .RequiresPlusForVisibility
 {
@@ -4448,23 +4671,25 @@ DOTAHeroMovie
 .MasterTier		.PlusHeroBadgeIconTiny, .MasterTier.PlusHeroBadgeIconTiny		{ background-image: url("s2r://panorama/images/hero_badges/hero_badge_rank_4_tiny_png.vtex"); }
 
 
+@define PhysicalDamageColor: #ae2f28;
+@define MagicalDamageColor: #5b93d1;
+@define PureDamageColor: #d8ae53;
+
 .PhysicalDamageLabel
 {
-	color: #ae2f28;
+	color: PhysicalDamageColor;
 	font-weight: bold;
 }
 .MagicalDamageLabel
 {
-	color: #5b93d1;
+	color: MagicalDamageColor;
 	font-weight: bold;
 }
 .PureDamageLabel
 {
-	color: #d8ae53;
+	color: PureDamageColor;
 	font-weight: bold;
 }
-
-
 
 .DotaPlusUpsell
 {
@@ -4587,3 +4812,41 @@ DOTAHeroMovie
 {
 	visibility: collapse;
 }
+
+
+DOTATeamImage.ImageStyleDefault		{ width: 250px; height: 150px; }
+DOTATeamImage.ImageStyleBaseLogo	{ width: 256px; height: 256px; }
+DOTATeamImage.ImageStyleSponsorLogo { width: 250px; height: 150px; }
+DOTATeamImage.ImageStyleBannerLogo	{ width: 256px; height: 256px; }
+
+#TournamentSeriesDropdownDropDownMenu .NodeGroup
+{
+	color: white;
+}
+
+#TournamentSeriesDropdownDropDownMenu .Team
+{
+	font-weight: bold;
+}
+
+
+/* Ugly and hacky, but this should work */
+#NewBloomGiftTooltip.TooltipContainer.LeftArrowVisible #LeftArrow,
+#NewBloomGiftTooltip.TooltipContainer.RightArrowVisible #RightArrow,
+#NewBloomGiftTooltip.TooltipContainer.TopArrowVisible #TopArrow,
+#NewBloomGiftTooltip.TooltipContainer.BottomArrowVisible #BottomArrow
+{
+    visibility: collapse;
+}
+
+
+.PlayerSlot0 .PlayerColor, .PlayerSlot0.PlayerColor { color: HeroSlot0Color; }
+.PlayerSlot1 .PlayerColor, .PlayerSlot1.PlayerColor { color: HeroSlot1Color; }
+.PlayerSlot2 .PlayerColor, .PlayerSlot2.PlayerColor { color: HeroSlot2Color; }
+.PlayerSlot3 .PlayerColor, .PlayerSlot3.PlayerColor { color: HeroSlot3Color; }
+.PlayerSlot4 .PlayerColor, .PlayerSlot4.PlayerColor { color: HeroSlot4Color; }
+.PlayerSlot5 .PlayerColor, .PlayerSlot5.PlayerColor { color: HeroSlot5Color; }
+.PlayerSlot6 .PlayerColor, .PlayerSlot6.PlayerColor { color: HeroSlot6Color; }
+.PlayerSlot7 .PlayerColor, .PlayerSlot7.PlayerColor { color: HeroSlot7Color; }
+.PlayerSlot8 .PlayerColor, .PlayerSlot8.PlayerColor { color: HeroSlot8Color; }
+.PlayerSlot9 .PlayerColor, .PlayerSlot9.PlayerColor { color: HeroSlot9Color; }

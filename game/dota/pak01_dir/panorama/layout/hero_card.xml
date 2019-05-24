@@ -1,6 +1,7 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/battle_pass/current_battle_pass.vcss_c" />
 		<include src="s2r://panorama/styles/hero_card.vcss_c" />
 	</styles>
 
@@ -13,6 +14,7 @@
 			</Panel>
 
 			<Label id="HeroName" text="{g:dota_hero_name:hero_id}" />
+			<Panel id="CavernCrawlStatus"	/>
 		</Panel>
 		
 		<Panel id="BannedOverlay" hittest="false" />
@@ -25,15 +27,16 @@
 		<Panel id="AllHeroChallengeOverlay" class="CardStatusOverlay" hittest="false">
 			<Label text="#DOTA_HeroCard_AllHeroChallenge"/>
 		</Panel>		
-		<!-- <Panel id="DailyHeroChallengeOverlay" class="CardStatusOverlay" hittest="false">
+		<Panel id="DailyHeroChallengeOverlay" class="CardStatusOverlay" hittest="false">
 			<Panel id="BattlePassIcon"/>
 			<Label text="#DOTA_HeroCard_DailyQuest"/>
-		</Panel> -->
-		<Panel id="BonusHero" class="CardStatusOverlay" hittest="false">
-			<Panel id="BonusHeroIcon"/>
-			<Label text="#DOTA_HeroCard_BonusHero"/>
 		</Panel>
-
+		<Panel id="RecommendHero" class="CardStatusOverlay" hittest="false">
+			<Panel id="RecommendHeroIcon"/>
+		</Panel>
+		<Panel id="AvoidHero" class="CardStatusOverlay" hittest="false">
+			<Panel id="AvoidHeroIcon"/>
+		</Panel>
 		<Panel id="NewHeroOverlay" class="CardStatusOverlay" hittest="false">
 			<Label text="#DOTA_New"/>
 		</Panel>
@@ -57,7 +60,7 @@
 				<Label id="HeroBadgeLevelExpanded" text="{d:hero_badge_level}" />
 			</Panel>
 		</Panel>
-
+		
 		<Panel id="HitTarget" acceptsinput="true" onmouseover="DOTAHeroCardSetExpanded( true )" onmouseout="DOTAHeroCardSetExpanded( false )" />
 		<Panel id="HitBlocker" hittest="true"/>
 	</DOTAHeroCard>

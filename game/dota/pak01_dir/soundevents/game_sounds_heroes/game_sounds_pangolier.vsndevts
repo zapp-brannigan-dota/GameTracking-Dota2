@@ -326,7 +326,7 @@
 		limiter_match_substring = "0.000000"
 	}}
 
-"Hero_Pangolier.HeartPiercer.Proc"
+"Hero_Pangolier.LuckyShot.Proc"
 {
 	<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 	{
@@ -336,16 +336,20 @@
 			"sounds/weapons/hero/pangolier/heart_piercer.vsnd",
 		]
 		volume = "1.000000"
-		pitch = "0.900000"
+		pitch = "1.000000"
 		pitch_rand_min = "-0.050000"
 		pitch_rand_max = "0.050000"
 		soundlevel = "81.000000"
 		mixgroup = "Weapons"
-		soundevent_layer2 = "Damage_Melee.Gore"
-		soundevent_layer2_on = "1.000000"
+		limiter_on = "1.000000"
+		limiter_event_name = "Hero_Pangolier.LuckyShot.Proc"
+		limiter_max = "0.000000"
+		limiter_match_type = "0.000000"
+		limiter_match_entity = "1.000000"
+		limiter_match_substring = "1.000000"
 	}}
 
-"Hero_Pangolier.HeartPiercer.Proc.Creep"
+"Hero_Pangolier.LuckyShot.Proc.Creep"
 {
 	<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 	{
@@ -363,8 +367,6 @@
 		pitch_rand_max = "0.050000"
 		soundlevel = "81.000000"
 		mixgroup = "Weapons"
-		soundevent_layer2 = "Damage_Melee.Gore"
-		soundevent_layer2_on = "1.000000"
 	}}
 
 "Hero_Pangolier.Gyroshell.Cast"
@@ -396,7 +398,7 @@
 		volume = "0.700000"
 		pitch = "1.000000"
 		soundlevel = "81.000000"
-		stop_at_time = "8.500000"
+		stop_at_time = "10.500000"
 		mixgroup = "Weapons"
 		volume_fade_out = "1.000000"
 		spread_radius = "100.000000"
@@ -405,14 +407,6 @@
 		volume_FOW_filter_vel = "0.800000"
 		soundevent_layer2 = "Hero_Pangolier.Gyroshell.Layer"
 		soundevent_layer2_on = "1.000000"
-		limiter_on = "1.000000"
-		limiter_event_name = "pangolin_pangolin_move_01"
-		limiter_max = "0"
-		limiter_stop_oldest = "false"
-		limiter_match_event_duration = "8.500000"
-		limiter_match_type = "1.000000"
-		limiter_match_entity = "1.000000"
-		limiter_match_substring = "0.000000"
 	}}
 
 "Hero_Pangolier.Gyroshell.Layer"
@@ -427,7 +421,7 @@
 		volume = "1.000000"
 		pitch = "1.000000"
 		soundlevel = "78.000000"
-		stop_at_time = "8.500000"
+		stop_at_time = "10.500000"
 		mixgroup = "Weapons"
 		volume_fade_out = "1.000000"
 		volume_use_FOW = "1.000000"

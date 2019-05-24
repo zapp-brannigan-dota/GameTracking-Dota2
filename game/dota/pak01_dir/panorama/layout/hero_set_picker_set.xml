@@ -9,6 +9,8 @@
 		<Label id="HeroSetName" text="{s:set_name}" />
 		<Button id="EditSavedSetButton" />
 		<Panel id="BundleIcon" />
+		<Panel id="Equipped" hittest="false" />
+		<Panel id="Shuffled" hittest="false" />
 	</DOTAHeroSetPickerSet>
 	
 </root>

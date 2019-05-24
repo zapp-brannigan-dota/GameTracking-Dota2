@@ -53,10 +53,10 @@
 			"heroID"		"113"
 			"tag"		"Arc Warden"
 		}
-		"armadillo"
+		"pangolier"
 		{
 			"heroID"		"120"
-			"tag"		    "Armadillo"
+			"tag"		    "Pangolier"
 		}
 		"axe"
 		{
@@ -225,6 +225,11 @@
 			"heroID"		"55"
 			"tag"		"Dark Seer"
 		}
+		"dark_willow"
+		{
+		    "heroID"			"119"
+			"tag"		"Dark Willow"
+		}
 		"dazzle"
 		{
 			"heroID"		"50"
@@ -376,10 +381,15 @@
 			"heroID"		"41"
 			"tag"		"Faceless Void"
 		}
-		"fairy"
+		"dark_willow"
 		{
 			"heroID"		"119"
-			"tag"		    "Fairy"
+			"tag"		    "Dark Willow"
+		}
+		"grimstroke"
+		{
+			"heroID"		"121"
+			"tag"		    "Grimstroke"
 		}
 		"gyrocopter"
 		{
@@ -917,7 +927,7 @@
 			"heroID"		"42"
 			"tag"		"Wraith King"
 		}
-		"zuus"
+		"zeus"
 		{
 			"heroID"		"22"
 			"tag"		"Zeus"
@@ -1026,6 +1036,7 @@
 			"storm_spirit"		"materials/models/heroes/storm_spirit/storm_spirit_base.vmat"
 			"sven"			"materials/models/heroes/sven/sven_color.vmat"
 			"lanaya"		"materials/models/heroes/templar_assassin/templar_assassin_base.vmat"
+			"techies"		"materials/models/heroes/techies/techies_base_color.vmat"
 			"terrorblade"		"materials/models/heroes/terrorblade/terrorblade_color.vmat"
 			"treant"		"materials/models/heroes/treant_protector/treantprotector_body_color.vmat"
 			"troll_warlord"		"materials/models/heroes/troll_warlord/troll_warlord_base.vmat"

@@ -1948,7 +1948,87 @@
 			"0"	"wplina"
 		}
 	}
-	
+	"210"
+	{
+		"image_name"	"pudge_arcana_01.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"pudgesteal"
+		}
+	}
+	"211"
+	{
+		"image_name"	"pudge_arcana_02.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"pudgestop"
+		}
+	}
+	"212"
+	{
+		"image_name"	"aegis2018.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"aegis_2018"
+		}
+	}
+	"213"
+	{
+		"image_name"	"underhollow_emote_1.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"under_win"
+		}
+	}
+	"214"
+	{
+		"image_name"	"underhollow_emote_5.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"under_champ"
+		}
+	}
+	"215"
+	{
+		"image_name"	"underhollow_emote_10.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"under_king"
+		}
+	}
+	"216"
+	{
+		"image_name"	"frostivus_2018.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"frostivus_2018"
+		}
+	}
+	"217"
+	{
+		"image_name"	"magus_cypher.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"magus_cypher"
+		}
+	}
+	"218"
+	{
+		"image_name"	"aegis2019.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"aegis_2019"
+		}
+	}
 	// ---------------------------------------------------------------------------
 	// ADD NEW EMOTICONS HERE ^^^^^^^^
 	// ---------------------------------------------------------------------------
@@ -2783,4 +2863,121 @@
 	// Unless you're adding team emoticons, you probably don't want them here. 
 	// Search for "ADD NEW EMOTICONS HERE" in this file
 	// ---------------------------------------------------------------------------
+
+	"2000"
+	{
+		"image_name"	"ranked_icons_emoticon_0.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"uncalibrated"
+		}
+	}
+
+	"2001"
+	{
+		"image_name"	"ranked_icons_emoticon_1.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"herald"
+		}
+	}
+
+	"2002"
+	{
+		"image_name"	"ranked_icons_emoticon_2.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"guardian"
+		}
+	}
+
+	"2003"
+	{
+		"image_name"	"ranked_icons_emoticon_3.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"crusader"
+		}
+	}
+
+	"2004"
+	{
+		"image_name"	"ranked_icons_emoticon_4.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"archon"
+		}
+	}
+
+	"2005"
+	{
+		"image_name"	"ranked_icons_emoticon_5.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"legend"
+		}
+	}
+
+	"2006"
+	{
+		"image_name"	"ranked_icons_emoticon_6.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"ancient"
+		}
+	}
+
+	"2007"
+	{
+		"image_name"	"ranked_icons_emoticon_7.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"divine"
+		}
+	}
+
+	"2008"
+	{
+		"image_name"	"ranked_icons_emoticon_8.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"immortal"
+		}
+	}
+
+	"2009"
+	{
+		"image_name"	"ranked_icons_emoticon_9.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"top1000"
+		}
+	}
+
+	"2010"
+	{
+		"image_name"	"ranked_icons_emoticon_10.png"
+		"ms_per_frame"	"100"
+		"aliases"
+		{
+			"0"	"top100"
+		}
+	}
+
+
+	// ---------------------------------------------------------------------------
+	// Unless you're rank mode emoticons, you probably don't want them here. 
+	// Search for "ADD NEW EMOTICONS HERE" in this file
+	// ---------------------------------------------------------------------------
+	
 }

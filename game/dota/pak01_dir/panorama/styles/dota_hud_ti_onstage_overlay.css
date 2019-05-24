@@ -1,5 +1,5 @@
 
-@define accentColor: #77e4f8;
+@define accentColor: #fff;
 
 DOTATIOnstageOverlay
 {
@@ -373,18 +373,25 @@ DOTAHeroImage
 	flow-children: right;
 	margin-left: 5px;
 	margin-bottom: 5px;
+	visibility: visible;
 }
 
 .PickMovie
 {
 	width: 180px;
-    height: 240px;
+	height: 240px;
 	margin-right: 2px;
+    visibility: collapse;
+}
+
+.PickMovie.ContainsHero
+{
+    visibility: visible;
 }
 
 .PickBGMovie
 {
-	width: 180px;
+	width: 182px;
     height: 240px;
 
 	saturation: 0.1;
@@ -425,4 +432,26 @@ DOTAHeroImage
 	margin-left: 1135px;
 	margin-top: 520px;
 	background-color: #333;
+}
+
+#minimap_bg
+{
+    background-color: black;
+    visibility: collapse;
+}
+
+.AfterHeroSelect #minimap_bg
+{
+    width: 600px;
+    height: 600px;
+    visibility: collapse;
+}
+
+#minimap
+{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    horizontal-align: left;
+    background-color: black;
 }

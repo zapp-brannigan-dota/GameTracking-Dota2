@@ -4,7 +4,6 @@
 		<include src="s2r://panorama/styles/profile_card.vcss_c" />
 		<include src="s2r://panorama/styles/dashboard_page_shared.vcss_c" />
 		<include src="s2r://panorama/styles/dashboard_page_profile.vcss_c" />
-		<include src="s2r://panorama/styles/feed.vcss_c" />
 	</styles>
 
 	<script>
@@ -32,48 +31,6 @@
 			$( '#ProfileStatsContainer' ).SetHasClass( 'ChildExpanded', false );
 			$( '#ProfileLifetimeStatsContainer' ).SetHasClass( 'Expanded', false );
 			$( '#ProfileLast20StatsContainer' ).SetHasClass( 'Expanded', false );
-		};
-
-		var RightArrowClicked = function()
-		{
-			var bHero1Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero1Selected' ));
-			var bHero2Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero2Selected' ));
-			var bHero3Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero3Selected' ));
-
-			if ( bHero1Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 2  );
-			}
-			if ( bHero2Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 3 );
-			}
-
-			if ( bHero3Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 3 );
-			}
-		};
-
-		var LeftArrowClicked = function()
-		{
-			var bHero1Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero1Selected' ));
-			var bHero2Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero2Selected' ));
-			var bHero3Active = ($( '#DOTAProfilePage' ).BHasClass( 'FeaturedHero3Selected' ));
-
-			if ( bHero1Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 1  );
-			}
-			if ( bHero2Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 1 );
-			}
-
-			if ( bHero3Active )
-			{
-				$.DispatchEvent( 'DOTAProfileSelectFeaturedHero', 2 );
-			}
 		};
 
 		var OnPlayerGamesBoxClicked = function()
@@ -106,7 +63,6 @@
 			$( '#SeeThroughButtons' ).ToggleClass( 'ChildExpanded' );
 
 			$( '#AllHeroChallengeBox' ).ToggleClass( 'Expanded' );
-			$.DispatchEvent( "DOTAProfileLoadAllHeroChallenge" );
 		};
 
 
@@ -123,18 +79,12 @@
 			$( '#ProfileLast20StatsContainer' ).ToggleClass( 'Expanded' );
 		};
 
-		var OnAllHeroChallengeEnabled = function()
-		{
-			$.DispatchEvent( "DOTAProfileLoadAllHeroChallenge" );
-		};
-
 		var OnPageSetupSuccess = function()
 		{
 			if ( $( '#RecentGamesOption' ).checked )
 			{
 				OnRecentGamesEnabled();
 			}
-			$.DispatchEvent( "DOTAProfileLoadAllHeroChallenge" );
 		};
 
 		var SetRecentGamesOptionsVisible = function( bVisible )
@@ -173,7 +123,6 @@
 
 		var ActivateAllHeroChallengeTab = function()
 		{
-			OnAllHeroChallengeEnabled();
 			SetRecentGamesOptionsVisible( false );
 		};
 
@@ -197,6 +146,36 @@
 			} );
 
 	</script>
+
+	<snippets>
+		<snippet name="FeaturedHeroDetails">
+			<Panel class="FeaturedHeroDetails">
+				<Panel class="FeaturedHeroMain">
+					<DOTAHeroImage id="FeaturedHeroImage" heroimagestyle="landscape" />
+					<Panel class="FeaturedHeroInfo">
+						<Label class="FeaturedHeroName" text="{g:dota_hero_name:hero_id}" />
+						<Panel id="FeaturedHeroRelics">
+							<DOTAHeroRelicImage id="Rare0" />
+							<DOTAHeroRelicImage id="Rare1" />
+							<DOTAHeroRelicImage id="Rare2" />
+							<DOTAHeroRelicImage id="Rare3" />
+							<DOTAHeroRelicImage id="Normal0" />
+							<DOTAHeroRelicImage id="Normal1" />
+							<DOTAHeroRelicImage id="Normal2" />
+							<DOTAHeroRelicImage id="Normal3" />
+							<DOTAHeroRelicImage id="Normal4" />
+							<DOTAHeroRelicImage id="Normal5" />
+							<DOTAHeroRelicImage id="Normal6" />
+							<DOTAHeroRelicImage id="Normal7" />
+							<DOTAHeroRelicImage id="Normal8" />
+							<DOTAHeroRelicImage id="Normal9" />
+						</Panel>
+					</Panel>
+				</Panel>
+				<DOTAHeroBadge id="FeaturedHeroBadge" badgestyle="level" />
+			</Panel>
+		</snippet>
+	</snippets>
 
 	<Panel class="DashboardPage" onpagesetupsuccess="OnPageSetupSuccess();">
 		<Panel id="UserProfileBackground" class="UserCustomBackground" hittest="false"/>
@@ -227,28 +206,22 @@
 					</Panel>
 				</Button>
 			</Panel>
-			<Panel id="ConductBox" class="LeftRightFlow" onactivate="DOTAConductScorecardShowLatest()">
-				<Panel id="BehaviorImage"/>
-				<Panel class="TopBottomFlow">
+			<Panel id="ConductBox" onactivate="DOTAConductScorecardShowLatest()">
+				<Panel id="BehaviorGradeSubContainer" class="LeftRightFlow">
+					<Panel id="BehaviorImage" />	
+					<Label id="BehaviorScoreLabel" text="{d:raw_behavior_score}" />
 					<Label id="ConductSummaryLabel" text="#DOTA_Profile_ConductSummary" />
-					<Label id="ConductSummaryDate" text="#DOTA_Profile_ConductSummary_Date"/>
 				</Panel>
+				<Label id="ConductSummaryDate" text="#DOTA_Profile_ConductSummary_Date"/>
 			</Panel>
 
 		</Panel>
 
 		<Panel id="FeaturedHeroesControl">
 			<Label id="FeaturedHeroTitle" text="#DOTA_Profile_Featured_Heroes"/>
-			<Panel id="SelectedHeroContainer" class="LeftRightFlow">
-				<Panel id="HeroLeftArrow" class="Arrow Left" onactivate="LeftArrowClicked()"/>
-				<Label id="FeaturedHeroName" text="{g:dota_hero_name:featured_hero_id}"/>
-				<Panel id="HeroRightArrow" class="Arrow Right" onactivate="RightArrowClicked()"/>
-			</Panel>
 			<Label id="EditFeaturedHeroLabel" text="#DOTA_Profile_Choose_Heroes_to_Feature"/>
-			<Panel id="FeaturedHeroesIconContainer" class="LeftRightFlow">
-				<DOTAHeroImage id="HeroIcon1" class="FeaturedHeroIcon" heroimagestyle="landscape" onactivate="DOTAProfileSelectFeaturedHero(1)"/>
-				<DOTAHeroImage id="HeroIcon2" class="FeaturedHeroIcon" heroimagestyle="landscape" onactivate="DOTAProfileSelectFeaturedHero(2)"/>
-				<DOTAHeroImage id="HeroIcon3" class="FeaturedHeroIcon" heroimagestyle="landscape" onactivate="DOTAProfileSelectFeaturedHero(3)"/>
+			<Panel id="FeaturedHeroesContainer">
+				<!-- Filled in dynamically with FeaturedHero snippets -->
 			</Panel>
 		</Panel>
 
@@ -283,21 +256,21 @@
 							</Panel>
 							<Panel id="MostSuccessfulContainer" class="LeftRightFlow">
 								<Panel class="SuccessHeroMovieContainer">
-									<DOTAHeroMovie id="SuccessHero1" class="SuccessfulHeroMovie" heroname="antimage" />
+									<DOTAHeroMovie id="SuccessHero1" class="SuccessfulHeroMovie" />
 									<Panel class="SuccessStatContainer">
 										<Label html="true" text="#DOTA_Profile_SuccessfulWinRate"/>
 										<Label html="true" text="#DOTA_Profile_SuccessfulWinStreak"/>
 									</Panel>
 								</Panel>
 								<Panel class="SuccessHeroMovieContainer CenterSuccessHero">
-									<DOTAHeroMovie id="SuccessHero2" class="SuccessfulHeroMovie" heroname="lina" />
+									<DOTAHeroMovie id="SuccessHero2" class="SuccessfulHeroMovie" />
 									<Panel class="SuccessStatContainer">
 										<Label html="true" text="#DOTA_Profile_SuccessfulWinRate"/>
 										<Label text="#DOTA_Profile_SuccessfulWinStreak"/>
 									</Panel>
 								</Panel>
 								<Panel class="SuccessHeroMovieContainer">
-									<DOTAHeroMovie id="SuccessHero3" class="SuccessfulHeroMovie" heroname="slardar" />
+									<DOTAHeroMovie id="SuccessHero3" class="SuccessfulHeroMovie" />
 									<Panel class="SuccessStatContainer">
 										<Label html="true" text="#DOTA_Profile_SuccessfulWinRate"/>
 										<Label text="#DOTA_Profile_SuccessfulWinStreak"/>
@@ -489,7 +462,7 @@
 					</Panel>
 					<Panel id="UserFeedBox" class="ProfileContentBox">
 						<Label id="RecentGamesHeader" class="ProfileBoxHeader" text="#DOTA_Profile_User_Feed"/>
-						<Panel id="SocialFeed" class="TabEnabled" />
+						<DOTAFeed id="SocialFeed" class="SocialFeed" />
 						<Panel class="MoreDetailsButton" onactivate="OnUserFeedBoxClicked()">
 							<Label class="Expand" text="+"/>
 							<Label class="Collapse" text="-"/>
@@ -498,19 +471,24 @@
 					<Panel id="AccomplishmentsBox" class="ProfileContentBox">
 						<Label id="AllHeroHeader" class="ProfileBoxHeader" text="#DOTA_TheInternational" />
 						<Panel id="PreviousBattlePasses">
+							<Panel id="TI2018" class="TIRollupContainer TopBottomFlow">
+								<Panel class="PreviousBattlePass" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTA_EventName_International2018 );"/>
+								<Panel class="TILevel">
+									<Label class="LevelLabel" text="#DOTA_Profile_Previous_BattlePass_LevelPrefix"/>
+									<Label class="BattleLevelLabel" text="{d:ti2018_level}"/>
+								</Panel>
+							</Panel>
 							<Panel id="TI2017" class="TIRollupContainer TopBottomFlow">
 								<Panel class="PreviousBattlePass" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTA_EventName_International2017 );"/>
-								<Panel class="LeftRightFlow TI2017">
-									<Label class="LevelLabel" text="Lvl"/>
+								<Panel class="TILevel">
+									<Label class="LevelLabel" text="#DOTA_Profile_Previous_BattlePass_LevelPrefix"/>
 									<Label class="BattleLevelLabel" text="{d:ti2017_level}"/>
 								</Panel>
 							</Panel>
-							<Panel id="Winter2017" class="PreviousBattlePass" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTA_Profile_Previous_BattlePass_Winter2017 );"/>
-							<Panel id="Fall2016" class="PreviousBattlePass" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTA_Profile_Previous_BattlePass_Fall2016 );"/>
 							<Panel id="TI2016" class="TIRollupContainer TopBottomFlow">
 								<Panel class="PreviousBattlePass" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTA_Profile_Previous_BattlePass_TI6 );" />
-								<Panel class="LeftRightFlow TI2016">
-									<Label class="LevelLabel" text="Lvl"/>
+								<Panel class="TILevel">
+									<Label class="LevelLabel" text="#DOTA_Profile_Previous_BattlePass_LevelPrefix"/>
 									<Label class="BattleLevelLabel" text="{d:ti2016_level}"/>
 								</Panel>
 							</Panel>
@@ -531,7 +509,7 @@
 							<Panel id="AHCHeader">
 								<DOTAHeroMovie id="AHCCurrentHero" />
 								<Panel id="AHCTopStats">
-									<Label class="BigHeroName" text="#DOTA_AHC_CurrentHeroName" />
+									<Label class="BigHeroName" text="{g:dota_hero_name:current_hero_id}" />
 									<Panel class="AHCStat">
 										<Label class="Left" text="#DOTA_AHC_InProgress" />
 										<Panel class="Middle" />
@@ -545,7 +523,7 @@
 									<Panel class="AHCStat">
 										<Label class="Left" text="#DOTA_AHC_NextHero" />
 										<Panel class="Middle" />
-										<Label class="Right" text="#DOTA_AHC_NextHeroName" />
+										<Label class="Right" text="{g:dota_hero_name:next_hero_id}" />
 									</Panel>
 									<Panel class="ProgressStat AHCStat">
 										<Label class="SubHeader" text="#DOTA_AHC_ChallengeProgress" />
@@ -678,12 +656,18 @@
 				</Panel>
 
 			</Panel>
-			<Panel id="ProfileRankTierContainer">
+			<Panel class="RankTierBadge" id="ProfileRankTierContainer">
 				<DOTAScenePanel id="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
 				<Panel id="RankTier" class="RankTierImage"/>
 				<Panel id="RankPips" class="RankPipImage" />
 				<DOTAScenePanel id="EliteFX" map="scenes/rank_divine_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
 				<Label id="RankLeaderboard" class="RankLeaderboardLabel" text="{d:leaderboard_rank}" />
+			</Panel>
+			<Panel class="RankTierBadge" id="PreviousProfileRankTierContainer">
+				<DOTAScenePanel id="BackgroundFX" map="scenes/rank_tier_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
+				<Panel id="RankTier" class="RankTierImage"/>
+				<Panel id="RankPips" class="RankPipImage" />
+				<DOTAScenePanel id="EliteFX" map="scenes/rank_divine_ambient" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
 			</Panel>
 		</Panel>
 

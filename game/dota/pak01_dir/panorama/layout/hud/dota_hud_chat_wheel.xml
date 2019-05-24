@@ -9,12 +9,14 @@
 		<snippet name="Phrase">
 			<Panel class="Phrase">
 				<Panel class="ChatWheelSoundIcon" />
+				<Image class="ChatWheelSprayImage" id="ChatWheelSprayImage" />
 				<Panel class="ChatWheelRequiredTierIcon PlusHeroBadgeIconSmall">
 					<Panel class="ChatWheelRequiredTierLockIconShadow" />
 					<Panel class="ChatWheelRequiredTierLockIcon" />
 				</Panel>
 				<Label class="ChatWheelAllPrefix" text="#dota_all_chat_label_prefix" />
 				<Label text="{s:phrase}" />
+				<DOTAEmoticon id="ChatWheelEmoticon"/>
 			</Panel>
 		</snippet>
 	</snippets>

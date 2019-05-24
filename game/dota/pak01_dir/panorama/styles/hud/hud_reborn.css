@@ -137,6 +137,21 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
     horizontal-align: center;
 }
 
+.HUDFlipped #minimap
+{
+	transform: scaleX( -1.0 );
+}
+
+.Mutation_MapFlip #minimap
+{
+	transform: scaleX( -1.0 ) scaleY( -1.0 );
+}
+
+.HUDFlipped.Mutation_MapFlip #minimap
+{
+	transform: scaleY( -1.0 );
+}
+
 #HUDSkinInventoryBG
 {
 	width: 235px;
@@ -207,13 +222,6 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
 .MinimapExtraExtraLarge #GlyphScanContainer { margin-left: 420px; }
 .MinimapExtraExtraLarge #HUDSkinMinimap { width: 458px; height: 534px; }
 .MinimapExtraExtraLarge #RoshanTimerContainer { margin-left: 420px; }
-
-
-
-.HUDFlipped #minimap
-{
-	transform: scaleX( -1.0 );
-}
 
 #GlyphScanContainer
 {
@@ -1556,9 +1564,20 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
 	brightness: 1.5;
 }
 
-.PlusSubscriber.IsLocalPlayerSpectating .UnitDead #KillGraphButton
+.PlusSubscriber .UnitDead #KillGraphButton
 {
 	visibility: visible;
+}
+
+.PlusSubscriber .NonHero.UnitDead #KillGraphButton
+{
+	visibility: collapse;
+}
+
+
+.PlusSubscriber .IsLocalHero.UnitDead #KillGraphButton
+{
+	visibility: collapse;
 }
 
 .PlusSubscriber.IsLocalPlayerSpectating .NonHero.UnitDead #KillGraphButton
@@ -1845,6 +1864,17 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
 	background-size: 100%;
 }
 
+#promo
+{
+	margin-left: 246px;
+	vertical-align: bottom;
+	z-index: 1;
+	width: 715px;
+	height: 165px;
+	background-image: url("s2r://panorama/images/hud/international_bg_png.vtex");
+	background-size: 100%;
+}
+
 #pa_gravestone
 {
 	margin-left: 246px;
@@ -1897,13 +1927,17 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
 }
 
 .HasAbilityToSpend #debuffs,
-.HasAbilityToSpend #buffs
+.HasAbilityToSpend #buffs,
+.HasSecondaryAbilities #debuffs,
+.HasSecondaryAbilities #buffs
 {
 	transform: translateY(-32px);
 }
 
 .HUDFlipped .HasAbilityToSpend #debuffs,
-.HUDFlipped .HasAbilityToSpend #buffs
+.HUDFlipped .HasAbilityToSpend #buffs,
+.HUDFlipped .HasSecondaryAbilities #debuffs,
+.HUDFlipped .HasSecondaryAbilities #buffs
 {
 	transform: translateY(-32px) scaleX(-1);
 }
@@ -1914,12 +1948,23 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
 	transform: translateY( -48px );
 }
 
+.SpectatorDVRControlsVisible .HasSecondaryAbilities #buffs,
+.SpectatorDVRControlsVisible .HasSecondaryAbilities #debuffs
+{
+	transform: translateY( -70px );
+}
+
 .HUDFlipped.SpectatorDVRControlsVisible #buffs,
 .HUDFlipped.SpectatorDVRControlsVisible #debuffs
 {
 	transform: translateY( -48px ) scaleX(-1);
 }
 
+.HUDFlipped.SpectatorDVRControlsVisible .HasSecondaryAbilities #buffs,
+.HUDFlipped.SpectatorDVRControlsVisible .HasSecondaryAbilities #debuffs
+{
+	transform: translateY( -70px ) scaleX(-1);
+}
 
 #debuffs
 {
@@ -2827,3 +2872,75 @@ DOTAHud.IsBeforeGameplay.HUDFlipped #minimap_container
     visibility: visible;
     margin-top: 50%;
 }
+
+
+#inventory_tpscroll_container
+{
+	height: 48px;
+	width: 48px;
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-bottom: 1px;
+	padding: 2px;
+	margin-right: 16px;
+}
+
+#inventory_tpscroll_slot
+{
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 2px solid #393939;
+	background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex");
+	background-size: 100%;
+	box-shadow: inset #000 2px 4px 24px 6px;
+
+}
+
+#inventory_tpscroll_HotkeyContainer
+{
+	margin-top: -6px;
+	margin-right: 16px;
+	z-index: 2;
+}
+
+.IsLocalPlayerSpectating #inventory_tpscroll_HotkeyContainer
+{
+	visibility: collapse;
+}
+
+#tpCharges
+{
+	color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+
+	vertical-align: bottom;
+	horizontal-align: right;
+
+	margin-right: 0px;
+	margin-bottom: -6px;
+	text-shadow: 0px 0px 3px 4 #000000;
+    font-family: RadianceM;
+	z-index:2;
+}
+
+/* Secondary abilities */
+#SecondaryAbilitiesBar
+{
+	margin-left: 283px;
+	margin-top: 32px;
+}
+
+.TertiaryAbilityContainer
+{
+	horizontal-align: right;
+	margin-right: 55px;
+	width: 195px;
+}
+
+#TertiaryAbilitiesBar
+{
+	margin-top: 32px;
+}
+

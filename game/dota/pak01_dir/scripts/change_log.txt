@@ -1,7 +1,223 @@
 // Use http://www.epochconverter.com/ to generate dates
 
 "change_log.txt"
-{
+{	
+
+	"change"
+	{
+		"date"			"1553467434"
+		"type"			"Default"
+		"description"	"#DOTA_721d_Update"
+		"event"			"DOTAShowPatchVersion( '7.21d' )"
+	}
+
+	"change"
+	{
+		"date"			"1551575744"
+		"type"			"Default"
+		"description"	"#DOTA_721c_Update"
+		"event"			"DOTAShowPatchVersion( '7.21c' )"
+	}
+
+	"change"
+	{
+		"date"			"1550356221"
+		"type"			"Default"
+		"description"	"#DOTA_721b_Update"
+		"event"			"DOTAShowPatchVersion( '7.21b' )"
+	}
+	"change"
+	{
+		"date"			"1550172849"
+		"expiration_date" "1551459600"
+		"type"			"Default"
+		"description"	"#DOTA_ChangeLog_NewBloomEnded"
+		"event"			"DOTAShowNewBloom2019Page()"
+	}
+	"change"
+	{
+		"date"			"1548770809"
+		"type"			"Default"
+		"description"	"#DOTA_721_Update"
+		"event"			"DOTAShowPatchVersion( '7.21' )"
+	}
+	"change"
+	{
+		"date"			"1546477200"
+		"expiration_date" "1549051200"
+		"type"			"Default"
+		"description"	"#DOTA_ChangeLog_FrosthavenExtended"
+		"event"			"DOTAShowFrostivus2018Page()"
+	}
+	"change"
+	{
+		"date"			"1544368228"
+		"type"			"Default"
+		"description"	"#DOTA_720e_Update"
+		"event"			"DOTAShowPatchVersion( '7.20e' )"
+	}
+	"change"
+	{
+		"date"			"1543601660"
+		"type"			"Default"
+		"description"	"#DOTA_720d_Update"
+		"event"			"DOTAShowPatchVersion( '7.20d' )"
+	}
+	"change"
+	{
+		"date"			"1543124708"
+		"type"			"Default"
+		"description"	"#DOTA_720c_Update"
+		"event"			"BrowserGoToURL( http://www.dota2.com/news/updates/46217/)"
+	}
+	"change"
+	{
+		"date"			"1542632432"
+		"type"			"Default"
+		"description"	"#DOTA_720_Update"
+		"event"			"ExternalBrowserGoToDOTAURL( '720' )"
+	}
+	"change"
+	{
+		"date"			"1539351937"
+		"type"			"Default"
+		"description"	"#DOTA_719d_Update"
+		"event"			"DOTAShowPatchVersion( '7.19d' )"
+	}
+	"change"
+	{
+		"date"			"1536957228"
+		"type"			"Default"
+		"description"	"#DOTA_719c_Update"
+		"event"			"DOTAShowPatchVersion( '7.19c' )"
+	}
+	"change"
+	{
+		"date"			"1535823213"
+		"type"			"Default"
+		"description"	"#DOTA_719b_Update"
+		"event"			"DOTAShowPatchVersion( '7.19b' )"
+	}
+	"change"
+	{
+		"date"			"1534789249"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_TI8PreviousPrizePoolReached"
+		"event"			"DOTAShowBPInternational2018HomePage()"
+	}
+	"change"
+	{
+		"date"			"1534176568"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_Allstars"
+		"event"			"DOTAShowCompTI8AllStarPage()"
+	}
+	"change"
+	{
+		"date"			"1532910583"
+		"type"			"Default"
+		"description"	"#DOTA_719_Update"
+		"event"			"DOTAShowPatchVersion( '7.19' )"
+	}
+	"change"
+	{
+		"date"			"1530655200"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_Predictions"
+		"event"			"DOTAShowCompTI8MainEventPredictionsPage()"
+	}
+	"change"
+	{
+		"date"			"1530655200"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_PlayerCards"
+		"event"			"DOTAShowCompTI8PlayerCardsPage()"
+	}
+	"change"
+	{
+		"date"			"1530655200"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_FavoriteTeam"
+		"event"			"DOTAShowCompTI8FavoriteTeam()"
+	}
+	"change"
+	{
+		"date"			"1529345416"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_QualifierPredictions"
+		"event"			"DOTAShowCompTI8MainEventPredictionsPage()"
+	}
+	"change"
+	{
+		"date"			"1529971902"
+		"type"			"Default"
+		"description"	"#DOTA_718_Update"
+		"event"			"DOTAShowPatchVersion( '7.18' )"
+	}
+	"change"
+	{
+		"date"			"1529345416"
+		"type"			"BattlePass"
+		"description"	"#DOTA_ChangeLog_QualifierPredictions"
+		"event"			"DOTAShowCompTI8MainEventPredictionsPage()"
+	}
+	"change"
+	{
+		"date"			"1528686047"
+		"type"			"Default"
+		"description"	"#DOTA_717_Update"
+		"event"			"DOTAShowPatchVersion( '7.17' )"
+	}
+	"change"
+	{
+		"date"			"1527462223"
+		"type"			"Default"
+		"description"	"#DOTA_716_Update"
+		"event"			"DOTAShowPatchVersion( '7.16' )"
+	}
+	"change"
+	{
+		"date"			"1525967912"
+		"type"			"Default"
+		"description"	"#DOTA_715_Update"
+		"event"			"DOTAShowPatchVersion( '7.15' )"
+	}
+	"change"
+	{
+		"date"			"1525366842"
+		"type"			"BattlePass"
+		"expiration_date" "1535785242"
+		"description"	"#DOTA_ChangeLog_TI8CavernChallenge"
+		"event"			"DOTAShowBPInternational2018CavernCrawlPage( )"
+	}
+	"change"
+	{
+		"date"			"1524755940"
+		"type"			"Default"
+		"description"	"#DOTA_714_Update"
+		"event"			"DOTAShowPatchVersion( '7.14' )"
+	}
+	"change"
+	{
+		"date"			"1523664705"
+		"type"			"Default"
+		"description"	"#DOTA_713b_Update"
+		"event"			"DOTAShowPatchVersion( '7.13b' )"
+	}
+	"change"
+	{
+		"date"			"1523542259"
+		"type"			"Default"
+		"description"	"#DOTA_713_Update"
+		"event"			"DOTAShowPatchVersion( '7.13' )"
+	}
+	"change"
+	{
+		"date"			"1522345703"
+		"type"			"Default"
+		"description"	"#DOTA_712_Update"
+		"event"			"DOTAShowPatchVersion( '7.12' )"
+	}
 	"change"
 	{
 		"date"			"1521148716"

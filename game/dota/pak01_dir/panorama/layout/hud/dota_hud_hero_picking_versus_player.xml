@@ -3,6 +3,7 @@
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
 		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
 		<include src="s2r://panorama/styles/hud/dota_hud_pregame.vcss_c" />
+		<include src="s2r://panorama/styles/hud/dota_hud_versus_screen.vcss_c" />
 	</styles>
 
 	<DOTAHudHeroPickingVersusPlayer class="HeroVSContainer">
@@ -14,7 +15,7 @@
 			<Panel class="PlayerInfoContainer">
 				<Panel id="PlayerNameContainer">
 					<DOTABattleCupVictoryIcon id="BattleCupVictoryIcon" />
-					<Label class="PlayerName" text="{s:player_name}" />
+					<Label class="PlayerName" text="{g:dota_persona:pro_short:nl:nt:player_account_id}" html="true"/>
 				</Panel>
 				<Panel id="HeroRelics">
 					<Panel id="RareRelics">
@@ -36,15 +37,23 @@
 						<Panel id="Normal9" class="NormalRelic" />
 					</Panel>
 				</Panel>
-				<Panel id="BattlePassInfo">
-					<DOTAEventCrestImage id="EventCrestImage" />
-					<Label class="BattlePassLevel" text="#DOTA_BattlePassLevel" />
-				</Panel>
 			</Panel>
 		</Panel>
+		<Panel id="BattlePassInfo">
+			<Panel id="BattlePassInfoStrip">
+				<Panel id="BattlePassInfoStripLeft" />
+				<Panel id="BattlePassInfoStripMain">
+					<Label text="#DOTA_SeasonPass_Friends_Leaderboard_BattleLevel" />
+				</Panel>
+				<Panel id="BattlePassInfoStripRight" />
+			</Panel>
+
+			<DOTAEventCrestImage id="EventCrestImage" />
+			<DOTAEventLevelShield id="EventLevelShield" />
+		</Panel>
+
 		<DOTAHeroBadge id="HeroBadge" badgestyle="level" />
 	</DOTAHudHeroPickingVersusPlayer>
-
 </root>
 
 

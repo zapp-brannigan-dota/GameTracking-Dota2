@@ -7,32 +7,97 @@
 
 	<DOTAFrontpageContents>
 
-		<DOTAFrontpageDefaultButton id="Blog" class="FrontpageCell TopLeftCell" cellheader="#DOTA_Blog" />
+
+	<!--	<DOTAFrontpageCarousel id="FeaturesCarousel" class="FrontpageCell TopMiddleCell VisibleWhenBattlePassOwned">
+
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+										   celltitle="#DOTA_TI9_FrontPage_JungleExpedition_Title"
+										   celltext="#DOTA_TI9_FrontPage_JungleExpedition_Text"
+										   cellimage="s2r://panorama/images/front_page/ads/ti9/jungle_expedition_psd.vtex"
+										   onactivate="DOTAShowBPInternational2019CavernCrawlPage()" />
+
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+										   celltitle="#DOTA_TI9_FrontPage_Coaching_Title"
+										   celltext="#DOTA_TI9_FrontPage_Coaching_Text"
+										   cellimage="s2r://panorama/images/front_page/ads/ti9/coaching_psd.vtex"
+										   onactivate="DOTAShowBPInternational2019CoachesChallengePage()" />
+
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+								 celltitle="#DOTA_TI9_FrontPage_CustomGame_Title"
+								 celltext="#DOTA_TI9_FrontPage_CustomGame_Text"
+								 cellimage="s2r://panorama/images/front_page/ads/ti9/morokai_psd.vtex"
+								 onactivate="DOTAShowBPInternational2019EventGamePage()" />
 			
-		<DOTAFrontpageCarousel id="SpectatorCarousel" class="FrontpageCell BottomLeftCell">
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+									celltitle="#DOTA_TI9_FrontPage_PartyFinder_Title"
+									celltext="#DOTA_TI9_FrontPage_PartyFinder_Text"
+									cellimage="s2r://panorama/images/front_page/ads/ti9/party_finder_psd.vtex"
+									onactivate="ExternalBrowserGoToDOTAURLAnchor( international/battlepass, PartyFinder )" />
+
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+									celltitle="#DOTA_TI9_FrontPage_AvoidPlayers_Title"
+									celltext="#DOTA_TI9_FrontPage_AvoidPlayers_Text"
+									cellimage="s2r://panorama/images/front_page/ads/ti9/avoid_players_psd.vtex"
+									onactivate="ExternalBrowserGoToDOTAURLAnchor( international/battlepass, PartyAvoidList )" />
+
+			<DOTAFrontpageDefaultButton	cellheader="#DOTA_BattlePass_WindowTitle"
+						celltitle="#DOTA_TI9_FrontPage_ArcanaVote_Title"
+						celltext="#DOTA_TI9_FrontPage_ArcanaVote_Text"
+						cellimage="s2r://panorama/images/front_page/ads/ti9/arcana_vote_psd.vtex"
+						onactivate="DOTAShowBPInternational2019ArcanaVotePage()" />
+			
+		</DOTAFrontpageCarousel> -->
+<!-- 
+		<DOTAFrontpageStoreItem id="BattlePassTreasure"
+								class="FrontpageCell TopMiddleCell VisibleWhenBattlePassOwned"
+								cellheader="#FrontPage_TI7_Treasure1_Header"
+								itemdef="12958" /> -->
+
+		<!-- <DOTALeaderboard id="BPLeaderBoard"
+						 class="FrontpageCell BottomMiddleCell"
+						 eventid="EVENT_ID_INTERNATIONAL_2019"
+						 showlevel="true"
+						 pointsheader="#DOTA_SeasonPass_Friends_Leaderboard_BattleLevel" /> -->
+
+		<CustomLayoutPanel class="FrontpageCell TopLeftCell TallCell WideCell HideWhenBattlePassOwned"
+						   layout="file://{resources}/layout/banners/front_page_battlepass_ti9.xml" />
+
+		<!-- !!! Don't comment out DOTAFrontpageLastMatch, just make it not visible in the css !!! -->
+		<DOTAFrontpageLastMatch id="LastMatch" class="FrontpageCell TopMiddleCell HideWhenBattlePassOwned" />
+		<FrontpageWeekendTourneyButton id="BattleCup" class="FrontpageCell TopRightCell HideWhenBattlePassOwned" />
+
+		<DOTAScenePanel id="PlanetfallBackgroundScene" map="backgrounds/hero_frontpage_earthshaker" renderdeferred="false" light="light_hero" camera="front_page_camera" particleonly="false" />
+        <Panel id="PlanetfallMask" />
+
+		<CustomLayoutPanel id="PlanetfallFrontpageCell" class="FrontpageCell TopRightCell TallCell"
+			layout="file://{resources}/layout/banners/front_page_debut_earthshaker.xml" />
+
+        <DOTAFrontpageInternational2019UpcomingRewards id="UpcomingRewards" class="FrontpageCell TallCell TopMiddleCell VisibleWhenBattlePassOwned" />
+		
+		<CustomLayoutPanel class="FrontpageCell TallCell TopLeftCell VisibleWhenBattlePassOwned"
+						   layout="file://{resources}/layout/banners/front_page_battlepass_ti9_ticketing.xml" 
+						   onactivate="DOTAShowCompTI9TicketsPage()" />
+
+        <DOTATriviaGame id="TriviaGame" class="FrontpageCell TopMiddleCell TallCell" />
+
+		<!-- <DOTAFrontpageDefaultButton	class="FrontpageCell TopMiddleCell VisibleWhenBattlePassOwned"
+			cellheader="#DOTA_LearnMore"
+			celltitle="#DOTA_EventName_International2019"
+			celltext="#DOTA_FrontPage_International2019_LearnMore"
+			onactivate="ExternalBrowserGoToURL( 'http://www.dota2.com/international/battlepass' )">
+
+			<MoviePanel class="FrontpageCellImage" src="file://{resources}/videos/battlepass_v2_01.webm" repeat="true" autoplay="onload"  />
+		</DOTAFrontpageDefaultButton>  -->
+
+		<!--<DOTAFrontpageDefaultButton id="Blog" class="FrontpageCell TopLeftCell" cellheader="#DOTA_Blog" />-->
+
+		<!--<DOTAFrontpageCarousel id="SpectatorCarousel" class="FrontpageCell BottomRightCell">
 			<DOTAFrontpageProCircuit id="FrontpageProCircuit"/>
 			<DOTAFrontpageProPlaying />
 			<DOTAFrontpageTopLive />
-		</DOTAFrontpageCarousel>
 
-		<!-- !!! Don't comment out DOTAFrontpageLastMatch, just make it not visible in the css !!! -->
-
-		<DOTAFrontpageLastMatch id="LastMatch" class="FrontpageCell TopMiddleCell" />
-		
-		<DOTAFrontpageGameplayPatch id="GameplayPatch" class="FrontpageCell BottomMiddleCell"
-							patchnumber="7.10"
-							patchlink="DOTAShowPatchVersion( '7.11' )" 
-							onactivate="DOTAShowPatchVersion( '7.11' )">
-							<Panel id="NumberImageContainer" class="color5">
-								<DOTAScenePanel id="700bg" class="ScenePanel" map="scenes/700_patchbg" camera="camera_1" antialias="true" hittest="false" particleonly="false"/>
-								<Panel id="GamePlayPatchNumberContainer">
-									<Panel id="Slot1"  class="7 PatchNumber"/>
-									<Panel id="Period" class="PatchNumber"/>
-									<Panel id="Slot2"  class="1 PatchNumber"/>
-									<Panel id="Slot3"  class="1 PatchNumber"/>
-								</Panel>
-							</Panel>
-		</DOTAFrontpageGameplayPatch>
+			BrowserGoToURL( http://blog.dota2.com/2017/08/the-international-2017-grand-champions/ )
+		</DOTAFrontpageCarousel>-->
 
 		<!-- itemdef for the spotlight sale is set through code -->
 		<!--
@@ -41,73 +106,36 @@
 								cellheader="#DOTA_Store_SpotlightSale" /> 
 		-->
 
-		<DOTAFrontpageDefaultButton id="TopCustomGame" class="FrontpageCell TopRightCell" cellheader="#DOTA_Custom_Game_Of_The_Day" />
+		<!--<DOTAFrontpageCarousel class="FrontpageCell BottomRightCell">
+			<DOTAFrontpageDefaultButton class="FrontpageCell BottomRightCell"
+								cellimage="s2r://panorama/images/front_page/frontpage_dota_chess_png.vtex"
+								cellheader="#FrontPage_Featured_Custom_Game_Header"
+								celltitle="#FrontPage_Custom_Game_Dota_Auto_Chess_Title"
+								celltext="#FrontPage_Custom_Game_Dota_Auto_Chess_Text"
+								onactivate="DOTAShowCustomGamePage( 1613886175 )"/>-->
 
+		<!--<DOTAFrontpageGameplayPatch id="GameplayPatch" class="FrontpageCell"
+					patchlink="DOTAShowPatchVersion( 7.21d )">
+				<Panel id="NumberImageContainer" class="color2">
+					<Panel id="GamePlayPatchNumberContainer">
+						<Panel id="Slot1"  class="7 PatchNumber"/>
+						<Panel id="Period" class="PatchNumber"/>
+						<Panel id="Slot2"  class="2 PatchNumber"/>
+						<Panel id="Slot3"  class="1 PatchNumber"/>
+						<Panel id="Slot4"  class="d PatchNumber"/>
+					</Panel>
+				</Panel>
+			</DOTAFrontpageGameplayPatch>
+		</DOTAFrontpageCarousel>-->
 
-		<DOTAFrontpageDefaultButton
-				id="LastHitTrainer"
-				class="FrontpageCell BottomRightCell"
-				cellheader="#DOTA_Play_LastHitTrainer"
-				celltitle="#DOTA_Play_LastHitTrainer_Title"
-				celltext="#DOTA_Play_LastHitTrainer_Text"
-				cellimage="s2r://panorama/images/front_page/ads/last_hit_trainer_psd.vtex"
-				onactivate="DOTAShowLastHitTrainerPage()"
-				/>
-
-		<CustomLayoutPanel 
-			id="DotaPlusDebut" 
-			class="FrontpageCell TopLeftCell TallCell WideCell"
-			layout="file://{resources}/layout/banners/front_page_dota_plus_debut.xml" />
-
-		<DOTAFrontpagePlusWelcomeQuests id="DotaPlusWelcomeQuests" class="FrontpageCell TopRightCell TallCell" />
-		
-		<!--
-		<CustomLayoutPanel 
-			id="SpringCleaning" 
-			class="FrontpageCell TopLeftCell TallCell WideCell"
-			layout="file://{resources}/layout/banners/front_page_spring_cleaning_2018.xml" />
-	-->
-
-		<!--
-		<DOTAFrontpageGameplayPatch id="GameplayPatch" class="FrontpageCell TopMiddleCell"
-							patchnumber="7.07"
-							patchlink="BrowserGoToURL( http://www.dota2.com/news/updates/35745/ )" 
-							onactivate="BrowserGoToURL( http://www.dota2.com/news/updates/35745/ )">
-							<Panel id="NumberImageContainer">
-								<DOTAScenePanel id="700bg" class="ScenePanel" map="scenes/700_patchbg" camera="camera_1" antialias="true" hittest="false" particleonly="false"/>
-								<Panel id="GamePlayPatchNumberContainer">
-									<Panel id="Slot1"  class="7 PatchNumber"/>
-									<Panel id="Period" class="PatchNumber"/>
-									<Panel id="Slot2"  class="0 PatchNumber"/>
-									<Panel id="Slot3"  class="7 PatchNumber"/>
-									<Panel id="Letter" class="d PatchNumber"/>
-								</Panel>
-							</Panel>
-		</DOTAFrontpageGameplayPatch>
-		-->
-
-		<!--
-		<DOTAFrontpageGameplayPatch id="GameplayPatch" class="FrontpageCell BottomMiddleCell"
-							patchnumber="7.06"
-							patchlink="BrowserGoToURL( http://www.dota2.com/news/updates/31846/ )" 
-							onactivate="BrowserGoToURL( http://www.dota2.com/news/updates/31846/ )">
-							<Panel id="NumberImageContainer">
-								<DOTAScenePanel id="700bg" class="ScenePanel" map="scenes/700_patchbg" camera="camera_1" antialias="true" hittest="false" particleonly="false"/>
-								<Panel id="GamePlayPatchNumberContainer">
-									<Panel id="Slot1"  class="7 PatchNumber"/>
-									<Panel id="Period" class="PatchNumber"/>
-									<Panel id="Slot2"  class="0 PatchNumber"/>
-									<Panel id="Slot3"  class="6 PatchNumber"/>
-									<Panel id="Letter" class="f PatchNumber"/>
-								</Panel>
-							</Panel>
-		</DOTAFrontpageGameplayPatch>
-		-->
 
 		<!-- =-=-=-=-=-=-=-=  PREVIOUS NON-COMMON XML STUFF BELOW,  SAVED FOR FUTURE REFERENCE AND COPY PASTA  =-=-=-=-=-=-=-= -->
 
+		<!--<DOTAFrontpageTimedEvent id="TimedEvent" class="FrontpageCell BottomLeftCell" />-->
 
-		<!--<DOTATriviaGame id="TriviaGame" class="FrontpageCell TopRightCell TallCell" />-->
+		<!--<DOTAFrontpageDefaultButton id="TopCustomGame" class="FrontpageCell TopRightCell" cellheader="#DOTA_Custom_Game_Of_The_Day" />-->
+
+		<!--<DOTAFrontpagePlusWelcomeQuests id="DotaPlusWelcomeQuests" class="FrontpageCell TopRightCell TallCell" />-->
 
 		<!--<DOTAFrontpageDefaultButton	class="FrontpageCell BottomLeftCell" 
 										cellimage="s2r://panorama/images/front_page/ads/treasure_of_the_emerald_revival_jpg.vtex"
@@ -115,26 +143,6 @@
 										celltitle="#FrontPage_Treasure_Emerald_Revival_Name"
 										celltext="#FrontPage_Treasure_Emerald_Revival_Desc"
 										onactivate="DOTAShowItemDefPage( 12159 )" />-->
-
-		<!--<DOTAFrontpageDefaultButton id="NewPlayers" class="FrontpageCell TopMiddleCell"
-								cellimage="s2r://panorama/images/battlepass/ti7/blog_meepos_png.vtex"
-								cellheader="#DOTA_International2017_NewPlayer_Header"
-								celltitle="#DOTA_International2017_NewPlayer_Title"
-								onactivate="BrowserGoToURL( http://blog.dota2.com/2017/07/welcoming-new-players/ )" />-->
-
-
-
-		<!--<DOTALeaderboard id="BPLeaderBoard" class="FrontpageCell BottomLeftCell" eventid="EVENT_ID_INTERNATIONAL_2017" showlevel="true" pointsheader="#DOTA_SeasonPass_Friends_Leaderboard_BattleLevel" />-->
-
-		<!--
-		<DOTAFrontpageCarousel id="ImmortalII" class="FrontpageCell BottomMiddleCell">
-			<DOTAFrontpageDefaultButton
-                    cellimage="s2r://panorama/images/front_page/ads/ti7_immortal_iii_psd.vtex"
-                    cellheader="#DOTA_TI7_CollectorsCache_Header"
-                    celltitle="#DOTA_SplashAd_TI6_Immortals_3_Title"
-                    celltext="#DOTA_TI7_Immortal3_Text"
-                    onactivate="DOTAShowItemDefPage( 11996 )" />
-		</DOTAFrontpageCarousel>-->
 
 		<!--<DOTAFrontpageCarousel class="FrontpageCell TopRightCell TallCell" autoscroll-delay="6s, 1.5s">
 			<DOTAFrontpageDefaultButton id="KunkkaPrestige"
@@ -165,37 +173,7 @@
 
 		</DOTAFrontpageCarousel>-->
 
-
-
-
-
-		<!--<CustomLayoutPanel id="DuelingFatesBig" class="FrontpageCell TopLeftCell WideCell TallCell" layout="file://{resources}/layout/banners/front_page_dueling_fates.xml" />-->
-
-
-
 		<!--
-		<DOTAFrontpageDefaultButton id="BattleLevelBundlePanel"
-									cellheader="#FrontPage_BattlePassBundle_Weekend"
-									celltext="" >
-				<DOTAScenePanel id="BattleBundle2017" anti-alias="true" map="scenes/battlepass_ti7/battlepass_bundle" light="hero_light" renderdeferred="false" deferredalpha="false" camera="camera_1" hittest="true" antialias="true"  particleonly="false"/>
-				<Label class="PercentOffLabel" text="#FrontPage_BattlePassBundle_Savings"/>
-				
-				<Panel class="IncludesContainer TopBottomFlow">
-					<Label class="BundleText BundleIncludes" text="#FrontPage_BattlePassBundle_Includes"/>
-					<Panel id="80Container" class="LeftRightFlow">
-						<Label class="Plus" text="+"/>
-						<Panel id="BattleLevelCircle">
-							<Label class="80Levels" text="80"/>
-						</Panel>
-						<Label class="BattleLevelsLabel" text="Battle Levels"/>
-					</Panel>
-					<Label class="BundleText" text="#FrontPage_BattlePassBundle_2017_treasure1"/>
-					<Label class="BundleText" text="#FrontPage_BattlePassBundle_2017_treasure2"/>
-					<Label id="BundleTitle" text="#DOTA_SplashAd_TI6_Weekend_Battle_Bundle"/>
-					<DOTAPurchaseButton id="BundlePurchaseButton" class="Owned" itemdef="21116" itemsource="TI7_FrontPage_Cell"/>
-				</Panel>
-				
-			</DOTAFrontpageDefaultButton>
 			<DOTAFrontpageDefaultButton id="SiltbreakerActOne"
                                         cellimage="s2r://panorama/images/front_page/ads/ti7_siltbreaker_act_one_psd.vtex"
                                         cellheader="#DOTA_ti7_campaign"
@@ -212,7 +190,7 @@
             </DOTAFrontpageDefaultButton>
 						
 						
-			<DOTAFrontpageDefaultButton id="SiltbreakerActOne" class="FrontpageCell TopRightCell TallCell"
+			<DOTAFrontpageDefaultButton id="SiltbreakerActTwo" class="FrontpageCell TopRightCell TallCell"
 									cellimage="s2r://panorama/images/front_page/ads/ti7_siltbreaker_act_two_psd.vtex"
 									cellheader="#DOTA_ti7_campaign"
 									onactivate="DOTABPInternational2017CampaignDetailsAct2Page();" >
@@ -237,15 +215,8 @@
 
             -->
 
-
-
-		<!--<DOTAFrontpageGameplayPatch id="GameplayPatch" class="FrontpageCell TopLeftCell OwnedBattlePass"
-                      patchnumber="7.06"
-                      patchlink="BrowserGoToURL( https://www.dota2.com/706 )" />-->	
-
-		<!--<FrontpageWeekendTourneyButton id="WeekendTourneyStatus" class="FrontpageCell TopMiddleCell" />-->
-
-		<!-- <DOTAFrontpageCarousel id="BattlePassTreasure" class="FrontpageCell BottomRightCell">
+		<!--
+		<DOTAFrontpageCarousel id="BattlePassTreasure" class="FrontpageCell BottomRightCell">
 		
 			<DOTAFrontpageDefaultButton class="FrontpageCell BottomLeftCell"
 						cellimage="s2r://panorama/images/front_page/ads/winter2017_treasure_3_png.vtex"
@@ -261,15 +232,13 @@
 						celltext="#FrontPage_DAC_2017_Treasure_Description"
 						onactivate="DOTAShowItemDefPage( 11994 )" />
 					
-		</DOTAFrontpageCarousel>-->
+		</DOTAFrontpageCarousel>
+		-->
 
 		<!--<DOTAFrontpageDefaultButton id="BattlePassSmall" class="FrontpageCell BottomLeftCell"
 				cellimage="s2r://panorama/images/front_page/ads/battle_pass_winter_2017_psd.vtex"
 				celltext="#FrontPage_Winter_2017_BattlePass_Desc"
 				onactivate="DOTAShowBPWinter2017HomePage()" />-->
-
-
-
 
 		<!--<DOTAFrontpageDefaultButton id="ArcanaMonkeyKing" class="FrontpageCell BottomLeftCell"
 									cellimage="s2r://panorama/images/front_page/ads/arcana_mk_01_psd.vtex"
@@ -278,44 +247,7 @@
 									celltext="#Debut_Arcana_MonkeyKing_Lore"
 									onactivate="DOTAShowReferencePage(file://{resources}/layout/leaf_pages/dashboard_page_debut_arcana_mk.xml)" />-->
 
-
-		<!--<DOTAFrontpageCarousel id="BattlePassTreasure" class="FrontpageCell BottomLeftCell">
-
-			<DOTAFrontpageDefaultButton	cellimage="s2r://panorama/images/front_page/ads/winter2017_treasure_1_png.vtex"
-										cellheader="#FrontPage_Winter_2017_Treasure1_Header"
-										celltitle="#FrontPage_Winter_2017_Treasure1_Title"
-										celltext="#FrontPage_Winter_2017_Treasure1_Description"
-										onactivate="DOTAShowItemDefPage( 11962 )" />
-
-		</DOTAFrontpageCarousel>-->
-
-		<!--<DOTAFrontpageDefaultButton id="FrontpageCellBattlePass2016"
-									class="FrontpageCell BottomLeftCell"
-									cellimage="s2r://panorama/images/front_page/ads/battle_pass_fall_2016_psd.vtex"
-									celltitle="#DOTA_EventName_FallMajor2016"
-									celltext="#FrontPage_Fall_2016_BattlePass_Desc"
-									onactivate="DOTAShowBPFall2016()" />-->
-
-		<!-- <DOTAFrontpageTrueSightButton id="MovieSeriesCell" class="FrontpageCell BottomMiddleCell"/> -->
-
-		<!-- <DOTAFrontpageDefaultButton id="MovieSeriesCell" class="FrontpageCell BottomMiddleCell"
-									cellimage="s2r://panorama/images/front_page/ads/movie_series_jpg.vtex"
-									cellheader="#FrontPage_MovieSeries_Header"
-									celltitle="#FrontPage_MovieSeries_Title"
-									celltext="#FrontPage_MovieSeries_Description"
-									onactivate="DOTAShowCompBoston2016TrueSightPage()" /> -->
-
-
-
-
-
-
-
-		<!--
-		<CustomLayoutPanel id="FrontpageCellSinglesDaySale"
-						   class="FrontpageCell TopLeftCell WideCell TallCell"
-						   layout="file://{resources}/layout/banners/front_page_singles_day_2016.xml" />
-		-->
+		<!--<DOTAFrontpageTrueSightButton id="MovieSeriesCell" class="FrontpageCell BottomMiddleCell"/>-->
 
 		<!--<DOTAFrontpageVideoStreamTwitch id="VideoStreamTwitch"
 										class="FrontpageCell TopLeftCell WideCell TallCell"
@@ -330,7 +262,7 @@
 								cellheader="#DOTA_Special_Event"
 								celltitle=""
 								celltext="#DOTA_NewBloom2017_FrontPage_NewBloom_Game_Description"
-								onactivate="DOTAOpenPlayTab( 4 )">
+								onactivate="DOTAOpenPlayTab( PLAY_TAB_SECTION_CUSTOM_GAMES )">
 
 			<Panel id="DarkMoonBackground"/>
 			<DOTAScenePanel id="DarkMoonScenePanel" class="ScenePanel" map="scenes/darkmoon_frontpage" renderdeferred="false" camera="camera_1" antialias="true" hittest="false" particleonly="false" allowrotation="true" />
@@ -338,6 +270,7 @@
 			<Label id="DarkMoonTitle" text="#DOTA_EventName_NewBloom2017" class="TitleFont"/>
 
 		</DOTAFrontpageEventCustomGame>-->
+		
 		<!-- 
 		<DOTAFrontpageEventCustomGame id="DungeonContainer" class="TopRightCell FrontpageCell TallCell"
 								cellimage=""
@@ -358,7 +291,7 @@
 			</Panel>
 		</DOTAFrontpageEventCustomGame> -->
 
-		<!--<DOTAFrontpageEventCustomGame id="DungeonContainer" 
+		<!--<DOTAFrontpageEventCustomGame id="DungeonContainer"
 								cellimage=""
 								cellheader="#FrontPage_Title_New_BP_Feature"
 								celltitle="#FrontPage_Title_Campaign_Title"
@@ -384,29 +317,12 @@
 			<Label class="ComingSoonSticker" text="#DOTA_Coming_Soon"/>
 		</DOTAFrontpageEventCustomGame>-->
 
-		<!--
-		<DOTAFrontpageDefaultButton id="706Patch"
-											cellimage=""
-											cellheader="#DOTA_ChangeLog_GameplayPatch"
-											celltitle=""
-											celltext="#DOTA_Frontpage_GameplayPatch_Button"
-											onactivate="BrowserGoToDOTAURLAnchor( battlecup, top )" >
-				<Panel id="700Container">
-				<DOTAScenePanel class="ScenePanel" map="scenes/700_frontpage" camera="camera_1" antialias="true" hittest="false" particleonly="false"/>
-				<Panel id="700Block" onactivate="BrowserGoToURL( http://www.dota2.com/706/ )">
-				<Panel id="700Logo" hittest="false"/>
-				</Panel>
-
-				</Panel>
-		</DOTAFrontpageDefaultButton>
-		-->
-		
-		<!--<DOTAFrontpageDefaultButton class="FrontpageCell TopRightCell TallCell"
+<!--		<DOTAFrontpageDefaultButton class="FrontpageCell TopRightCell TallCell"
 														cellimage="s2r://panorama/images/front_page/ti7_champions_psd.vtex"
 														cellheader="#DOTA_International2017_Champions_Header"
 														celltitle="#DOTA_International2017_Champions_Title"
 														celltext="#DOTA_International2017_Champions_Body"
-														onactivate="BrowserGoToURL( http://blog.dota2.com/2017/08/the-international-2017-grand-champions/ )" /> -->		
+														onactivate="BrowserGoToURL( http://blog.dota2.com/2017/08/the-international-2017-grand-champions/ )" />-->
 
 	</DOTAFrontpageContents>
 </root>

@@ -82,6 +82,10 @@ DOTATooltipEconItem.Seasonal .BackgroundImage
 	wash-color: #64D4CE;
 }
 
+.AutographEvent22 #AutographImage
+{
+	wash-color: #37da81;
+}
 
 #AutographDetails
 {
@@ -97,20 +101,62 @@ DOTATooltipEconItem.Seasonal .BackgroundImage
 	text-align: right;
 }
 
-#EconItemEquipped
+#Equipped, #Shuffled
 {
-	horizontal-align: right;
-	vertical-align: top;
 	width: 32px;
 	height: 32px;
+	horizontal-align: right;
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: 100%;
 	wash-color: #B3DFDC;
 	visibility: collapse;
+	background-color: gradient( linear, 100% 0%, 50% 40%, from( #000000ff ), color-stop( 0.22, #000000ff ), color-stop( 0.3, #00000000 ), to( transparent ) );
 }
 
-.Equipped #EconItemEquipped
+#Equipped
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_equipped_psd.vtex");
+}
+.ItemRarity_immortal #Equipped 
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_equipped_immortal_psd.vtex");
+	wash-color: none;
+}
+.ItemRarity_arcana #Equipped 
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_equipped_arcana_psd.vtex");
+	wash-color: none;
+}
+
+#Shuffled
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_shuffled_psd.vtex");
+}
+.ItemRarity_immortal #Shuffled 
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_shuffled_immortal_psd.vtex");
+	wash-color: none;
+}
+.ItemRarity_arcana #Shuffled 
+{
+	background-image: url("s2r://panorama/images/status_icons/econtooltip_shuffled_arcana_psd.vtex");
+	wash-color: none;
+}
+
+DOTATooltipEconItem.Equipped:not(.ShuffleEnabled) #Equipped,
+DOTATooltipEconItem.InShuffle.ShuffleEnabled #Shuffled
 {
 	visibility: visible;
 }
+
+DOTATooltipEconItem.Equipped.DisableEquipped:not(.ShuffleEnabled) #Equipped,
+DOTATooltipEconItem.InShuffle.DisableEquipped.ShuffleEnabled #Shuffled
+{
+	visibility: collapse;
+}
+
+
 
 
 #EconTooltipHeader
@@ -416,6 +462,39 @@ DOTATooltipEconItem.Seasonal.Season_PlusSubscription .SeasonalIcon
 	margin-bottom: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+#SupportMessage
+{
+	width: 100%;
+	margin-top: 8px;
+	margin-left: 16px;
+	margin-right: 16px;
+	flow-children: down;
+
+	visibility: collapse;
+}
+
+.HasSupportMessage #SupportMessage
+{
+	visibility: visible;
+}
+
+#SupportMessageText
+{
+	width: 100%;
+	font-size: 16px;
+	color: #999;
+	padding: 0px 8px 0px 8px;
+	font-weight: thin;
+	font-style: italic;
+}
+
+#SupportInstructions
+{
+	font-size: 16px;
+	color: #666;
+	padding-bottom: 8px;
 }
 
 #Description

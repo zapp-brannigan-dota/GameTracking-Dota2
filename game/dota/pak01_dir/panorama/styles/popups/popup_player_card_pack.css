@@ -641,12 +641,12 @@ DOTAPopupPlayerCardPack.PopupPanel
 	width: 100%;
 	height: 100%;
 	pre-transform-scale2d: 1;
-	border: 3px solid #03417c;
+	border: 3px solid #0a3e2b;
 	wash-color: black;
 	transform: scaleY(-1);
 	border-radius: 12px;
 	
-	background-image: url("s2r://panorama/images/playercards/cardback_ti7_png.vtex");
+	background-image: url("s2r://panorama/images/playercards/cardback_ti9_psd.vtex");
 	background-repeat: no-repeat;
 	background-size: cover;
 	
@@ -729,7 +729,7 @@ DOTAPopupPlayerCardPack.PopupPanel
 	opacity: 0;
 	horizontal-align: center;
 
-	hue-rotation: 210deg;
+	hue-rotation: 180deg;
 	
 	transition-property:  opacity;
 	transition-duration: 1.5s;

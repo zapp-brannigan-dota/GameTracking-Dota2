@@ -2,6 +2,33 @@
  A _edata
  A _end
  AssertMsg_ConditionFailed
+ CBufferString::AppendConcat(int, char const* const*, int const*, bool)
+ CBufferString::AppendFormat(char const*, ...)
+ CBufferString::ComposeFileName(char const*, char const*, char)
+ CBufferString::Concat(char const*, char const*, ...)
+ CBufferString::EnsureTrailingSlash(char)
+ CBufferString::ExtendPath(char const*, char)
+ CBufferString::ExtractFileBase(char const*)
+ CBufferString::ExtractFileExtension(char const*)
+ CBufferString::ExtractFilePath(char const*)
+ CBufferString::ExtractFirstDir(char const*)
+ CBufferString::FixSlashes(char)
+ CBufferString::FixupPathName()
+ CBufferString::Format(char const*, ...)
+ CBufferString::Insert(int, char const*, int, bool)
+ CBufferString::MakeAbsolutePath(char const*, char const*)
+ CBufferString::MakeRelativePath(char const*, char const*)
+ CBufferString::Purge(int)
+ CBufferString::Relinquish(CBufferString::EAllocationOption_t)
+ CBufferString::RemoveDotSlashes(char)
+ CBufferString::RemoveFirstDir(CBufferString*)
+ CBufferString::SetLength(int, bool, int*)
+ CBufferString::SetPtr(char*, int, int, bool, bool)
+ CBufferString::ShortenPath()
+ CBufferString::StripExtension()
+ CBufferString::StripTrailingSlash()
+ CBufferString::Swap(CBufferString&)
+ CBufferString::ToLowerFast(int)
  CMemAllocSystemInitialize
  COM_TimestampedLog
  CThread::CThread()
@@ -16,7 +43,6 @@
  CThreadEvent::Set()
  CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
  CThreadMultiWaitEvent::Set()
- CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
  CThreadRWLock::LockForWrite()
  CThreadRWLock::UnlockWrite()
  CThreadRWLock::WaitForRead()
@@ -53,10 +79,11 @@
  Plat_ExitProcess
  Plat_FileSize
  Plat_FloatTime
+ Plat_GetCurrentDirectory
  Plat_GetEnv
+ Plat_GetFileType
  Plat_GetModuleFilename
  Plat_GetOSType
- Plat_GetTime
  Plat_IsFile
  Plat_IsHighDPI
  Plat_IsInDebugSessionRaw
@@ -71,14 +98,14 @@
  Plat_TickDiffMicroSecF
  Plat_TickDiffMilliSecF
  Plat_TranslateSymbolicLinks
+ Plat_USTime
  Plat_UnloadModule
  Plat_ctime
- Plat_getwd
- Plat_localtime
  RandomInt
- SteamAPI_GetHSteamPipe
+ ReturnJobManualEventToPool
  SteamAPI_GetHSteamUser
- SteamInternal_CreateInterface
+ SteamInternal_ContextInit
+ SteamInternal_FindOrCreateUserInterface
  T BinaryProperties_GetValue
  T CreateInterface
  T GetResourceManifestCount
@@ -86,10 +113,13 @@
  T InstallSchemaBindings
  T _fini
  T _init
+ T operator delete(void*)
+ T operator delete[](void*)
+ T operator new(unsigned long)
+ T operator new[](unsigned long)
  ThreadGetCurrentId
  ThreadGetPriority
  ThreadInMainThread
- ThreadInterlockedExchange64
  ThreadSetPriority
  ThreadSleep
  V_FixDoubleSlashes
@@ -98,14 +128,14 @@
  V_GetFileExtension
  V_IsAbsolutePath
  V_IsFakePath
- V_MakeAbsoluteVPKPathName
+ V_MakeAbsolutePathBuffer
+ V_MakeAbsoluteVPKPathNameBuffer
  V_PathContainsPath
  V_RemoveDotSlashes
  V_SetErrno
  V_StrTrim
  V_StripFilename
  V_StripTrailingSlash
- V_UTF16ToUTF32
  V_UTF16ToUTF8
  V_UTF32ToUTF8
  V_UTF8CharsToUTF16
@@ -114,6 +144,7 @@
  V_UnicodeLength(char const*)
  V_UnqualifiedFileName
  V_atof
+ V_atofloat64
  V_atoi
  V_fclose
  V_fdopen
@@ -134,16 +165,19 @@
  V_qsort_s
  V_setvbuf
  V_snprintf
- V_snwprintf
+ V_snwprintf_cch
  V_sscanf
  V_stricmp_fast
  V_stristr_fast(char const*, char const*)
  V_strlower_fast
+ V_strnchr
+ V_strnlen
  V_strtod
  V_strtoi64
  V_strtoui64
  V_strupper_fast
  V_swscanf
+ V_tier0_strstr
  V_vsnprintf
  V_vsnprintfRet
  V_vsnprintfSize
@@ -153,29 +187,29 @@
  _ITM_deregisterTMCloneTable
  _ITM_registerTMCloneTable
  _Jv_RegisterClasses
- _V_AppendSlash
  _V_ComposeFileName
  _V_ExtractFileExtension
  _V_ExtractFilePath
  _V_FileBase
  _V_FixupPathName
- _V_GetFirstDir
  _V_MakeAbsolutePath
- _V_MakeRelativePath
  _V_StrSubst
  _V_StringAfterPrefix
  _V_StripExtension
  _V_StripLastDir
  _V_strncat
+ _V_strncmp
  _V_strncpy
  _V_strnicmp_fast
  _V_strnistr_fast
+ __ctype_toupper_loc@@GLIBC_2.3
  __cxa_atexit@@GLIBC_2.2.5
  __cxa_finalize@@GLIBC_2.2.5
  __cxa_guard_abort@@CXXABI_1.3
  __cxa_guard_acquire@@CXXABI_1.3
  __cxa_guard_release@@CXXABI_1.3
  __cxa_pure_virtual@@CXXABI_1.3
+ __cxa_throw_bad_array_new_length@@CXXABI_1.3.8
  __errno_location@@GLIBC_2.2.5
  __fxstat64@@GLIBC_2.2.5
  __gmon_start__
@@ -234,20 +268,16 @@
  strchr@@GLIBC_2.2.5
  strcmp@@GLIBC_2.2.5
  strcpy@@GLIBC_2.2.5
- strftime@@GLIBC_2.2.5
  strlen@@GLIBC_2.2.5
- strncpy@@GLIBC_2.2.5
- strnlen@@GLIBC_2.2.5
  strrchr@@GLIBC_2.2.5
  strstr@@GLIBC_2.2.5
  time@@GLIBC_2.2.5
- tolower@@GLIBC_2.2.5
- toupper@@GLIBC_2.2.5
  typeinfo for CThread
  typeinfo for CThreadSyncObject
  unlink@@GLIBC_2.2.5
  vtable for __cxxabiv1::__class_type_info@@CXXABI_1.3
  vtable for __cxxabiv1::__si_class_type_info@@CXXABI_1.3
  vtable for __cxxabiv1::__vmi_class_type_info@@CXXABI_1.3
+ wcscmp@@GLIBC_2.2.5
  wcslen@@GLIBC_2.2.5
  write@@GLIBC_2.2.5

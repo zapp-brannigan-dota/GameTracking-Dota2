@@ -1,9 +1,11 @@
+@import url("file://{resources}styles/battle_pass/current_battle_pass.css");
+
 DOTATopBar
 {
 	vertical-align: top;
 	horizontal-align: center;
-	height: 115px;
-	width: 940px;
+	height: 165px;
+	width: 1240px;
 
 	transform: translateY(0px);
 	transition-property: transform;
@@ -17,11 +19,6 @@ DOTAHud.HideTopBar #topbar
 	visibility: collapse;
 }
 
-DOTATopBar.TournamentGame
-{
-	width: 1072px;
-}
-
 .HIDE_TOP_BAR DOTATopBar
 {
     visibility: collapse;
@@ -32,6 +29,11 @@ DOTAHeroImage
     transition-property: wash-color, saturation, brightness, contrast;
     transition-duration: 0.4s;
     z-index: 3;
+}
+
+.Coach DOTAHeroImage
+{
+	visibility: collapse;
 }
 
 /* old pips under team kills
@@ -155,14 +157,28 @@ DOTAUGCImage
 {
 	height: 40px;
 	width: 66px;
-	horizontal-align: center;
+	horizontal-align: right;
 	background-color: #131517;
+}
+
+.TopBarProTeamInfo
+{
 	visibility: collapse;
 }
 
-.TournamentGame DOTAUGCImage
+.TournamentGame .TopBarProTeamInfo
 {
 	visibility: visible;
+}
+
+#TopBireRadiantProTeamInfo
+{
+	margin-right: -2px;
+}
+
+#TopBireDireProTeamInfo
+{
+	margin-left: -2px;
 }
 
 .FanCount
@@ -223,22 +239,35 @@ DOTAUGCImage
 	visibility: collapse;
 }
 
+#TopBarRadiantTeamContainer
+{
+	width: 620px;
+	height: 100%;
+	horizontal-align: left;
+}
+
+#TopBarDireTeamContainer
+{
+	width: 620px;
+	height: 100%;
+	horizontal-align: right;
+}
+
 #TopBarRadiantTeam,
 #TopBarDireTeam
 {
-	width: 380px;
+	width: 540px;
 	height: 100%;
-}
-
-.TournamentGame #TopBarRadiantTeam,
-.TournamentGame #TopBarDireTeam
-{
-	width: 460px;
 }
 
 #TopBarRadiantTeam
 {
-	margin-left: 52px;
+	horizontal-align: right;
+}
+
+#TopBarDireTeam
+{
+	horizontal-align: left;
 }
 
 #TopBarDireTeam .TopBarBackground
@@ -246,21 +275,20 @@ DOTAUGCImage
     transform: scaleX(-1);
 }
 
-#TopBarDireTeam
-{
-	horizontal-align: right;
-	margin-right: 52px;
-}
-
-#TopBarDirePlayers
-{
-	horizontal-align: right;
-}
-
 .TeamBackground
 {
-	width: 100%;
-	height: 40px;
+	width: 410px;
+	height: 40px;	
+}
+
+#TopBarRadiantTeam .TeamBackground
+{
+	horizontal-align: right;
+}
+
+#TopBarDireTeam .TeamBackground
+{
+	horizontal-align: left;
 }
 
 .PlayerContainer
@@ -284,6 +312,55 @@ DOTAUGCImage
 	contrast: 1;
 }
 
+.CoachImage
+{
+	width: 55px;
+	height: 30px;
+
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	margin-top: 2px;
+}
+
+.CoachIcon
+{
+	width: 20px;
+	height: 20px;
+	z-index: 10;	
+	margin-top: 20px;
+	vertical-align: top;	
+	visibility: collapse;
+}
+
+.RadiantCoach .CoachIcon
+{
+	margin-left: 14px;
+	horizontal-align: left;
+}
+
+.DireCoach .CoachIcon
+{
+	margin-right: 14px;
+	horizontal-align: right;
+}
+
+.Coach .CoachIcon
+{
+	visibility: visible;
+}
+
+.AlliedCoach .CoachImage 
+{
+	background-image: url("s2r://panorama/images/heroes/npc_dota_hero_allied_coach_psd.vtex");
+}
+
+.EnemyCoach .CoachImage
+{
+	background-image: url("s2r://panorama/images/heroes/npc_dota_hero_enemy_coach_psd.vtex");
+}
+
 .HIDE_TOP_BAR_BACKGROUND .TopBarHeroImage
 {
 	background-color: none;
@@ -299,6 +376,30 @@ DOTATopBarPlayer #HeroBadgeOverlay
 	background-repeat: no-repeat;
 
 	visibility: collapse;
+}
+
+DOTATopBarPlayer.RadiantCoach .SlantedContainer
+{
+	horizontal-align: right;
+	margin-right: 8px;
+}
+
+DOTATopBarPlayer.DireCoach .SlantedContainer
+{
+	horizontal-align: left;
+	margin-left: 8px;
+}
+
+
+DOTATopBarPlayer.Coach .SlantedContainer
+{
+	width: 55px;
+	height: 30px;
+}
+
+DOTATopBarPlayer.Coach
+{
+	width: 80px;
 }
 
 DOTATopBarPlayer.BronzeTier		#HeroBadgeOverlay { visibility: visible; background-image: url("s2r://panorama/images/hud/reborn/top_bar_hero_radiant_badge_1_psd.vtex"); }
@@ -319,7 +420,6 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 #TopBarDirePlayersContainer DOTATopBarPlayer.PlatinumTier	#HeroBadgeOverlay { visibility: visible; background-image: url("s2r://panorama/images/hud/reborn/top_bar_hero_dire_badge_4_psd.vtex"); }
 #TopBarDirePlayersContainer DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background-image: url("s2r://panorama/images/hud/reborn/top_bar_hero_dire_badge_5_psd.vtex"); }
 
-
 #BuybackIcon
 {
 	background-image: url("s2r://panorama/images/hud/reborn/buyback_topbar_alive_psd.vtex");
@@ -332,7 +432,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	horizontal-align: left;
 	vertical-align: bottom;
 	z-index: 3;
-	margin-bottom: 59px;
+	margin-bottom: 109px;
 	margin-left: 6px;
 	transform: translateY(-13px);
 
@@ -358,6 +458,18 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	opacity: 0;
 }
 
+#TopBarRadiantPlayers
+{
+	margin-left: 10px;
+	margin-right: 40px;
+}
+
+#TopBarDirePlayers
+{
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
 #TopBarRadiantPlayersContainer .SlantedContainer
 {
 	opacity-mask: url("s2r://panorama/images/masks/topbar_heroslant_left_psd.vtex");
@@ -373,7 +485,6 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 #TopBarDirePlayersContainer
 {
 	height: 100%;
-	width: 316px;
 	z-index: 2;
 }
 
@@ -382,7 +493,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	background-image: url("s2r://panorama/images/hud/reborn/top_bar_team_bg_psd.vtex");
     background-size: cover;
     background-repeat: no-repeat;
-	width: 98%;
+	width: 100%;
     height: 80px;
     z-index: -1;
 }
@@ -392,9 +503,14 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
     horizontal-align: right;
 }
 
+#TopBarRadiantTeam .TopBarBackground
+{
+    horizontal-align: left;
+}
+
 .TopBarPlayerSlot
 {
-    height: 115px;
+    height: 165px;
 }
 
 #TopBarRadiantPlayersContainer .TopBarPlayerSlot
@@ -416,33 +532,31 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	font-weight: bold;
     font-family: RadianceM;
 	height: 38px;
-	width: 50px;
+	width: 58px;
 	text-align: center;
 	margin-top: 7px;
 	z-index: 5;
 }
 #TopBarRadiantScore
 {
-    horizontal-align: left;
-    margin-left: 4px;
+    margin-right: 4px;
 }
 #TopBarDireScore
 {
-    horizontal-align: right;
-    margin-right: 4px;
+    margin-left: 4px;
 }
 
 #DireTeamScorePlayers
 {
-    horizontal-align: right;
     height: 100%;
 }
 #RadiantTeamScorePlayers
 {
     height: 100%;
     overflow: noclip;
+    flow-children: left;
+    horizontal-align: right;
 }
-
 
 .TopBarHealthBar .ProgressBarLeft
 {
@@ -536,7 +650,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 #TimeOfDay
 {
 	width: 80px;
-	height: 50px;
+	height: 45px;
 	horizontal-align: center;
 	vertical-align: top;
 	z-index: 2;
@@ -620,7 +734,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	color: white;
 	vertical-align: bottom;
 	horizontal-align: center;
-	margin-bottom: 9px;
+	margin-bottom: 4px;
 	letter-spacing: 1px;
     font-family: RadianceM;
     font-size: 14px;
@@ -761,14 +875,12 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	visibility: visible;
 }
 
-
-
 #RespawnTimer
 {
 	width: 100%;
 	height: 26px;
 	z-index: -1;
-	margin-bottom: 49px;
+	margin-bottom: 99px;
 	vertical-align: bottom;
 	horizontal-align: center;
 	opacity: 0;
@@ -780,6 +892,11 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	transition-property: transform, opacity;
 	transition-duration: .2s;
 	transition-timing-function: ease-out;
+}
+
+.Coach #RespawnTimer
+{
+	visibility: collapse;
 }
 
 #RadiantTeamScorePlayers #RespawnTimer
@@ -869,6 +986,11 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	opacity: 1;
 }
 
+.Coach #DeadLayer
+{
+	visibility: collapse;
+}
+
 .EnemyHeroMissing DOTAHeroImage
 {
 	opacity: 1.0;
@@ -890,12 +1012,6 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
     opacity: 0;
 }
 
-.Spectating #ManaBar
-{
-	opacity: 1;
-	transform: translateY(11px);
-}
-
 #GoldIcon
 {
 	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
@@ -906,7 +1022,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	vertical-align: bottom;
 	opacity: 0;
 	margin-top: 4px;
-	margin-bottom: 48px;
+	margin-bottom: 98px;
 
 	transition-property: opacity;
 	transition-duration: 0.2s;
@@ -943,6 +1059,11 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	background-repeat: no-repeat;
 }
 
+.Coach #PlayerColor
+{
+	visibility: collapse;
+}
+
 #PlayerColorShadow
 {
 	width: 100%;
@@ -950,6 +1071,11 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	margin-top: 4px;
 	z-index: 4;
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #000 ), color-stop( 0.03, #000a ), color-stop( 0.1, #0000 ), color-stop( 0.91, #0000 ), color-stop( 0.95, #0006 ),  to( #000a ) );
+}
+
+.Coach #PlayerColorShadow
+{
+	visibility: collapse;
 }
 
 .HIDE_TOP_BAR_BACKGROUND #PlayerColorShadow
@@ -963,7 +1089,8 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	background-position: 5px 0px;
 }
 
-.Disconnected DOTAHeroImage
+.Disconnected DOTAHeroImage,
+.Disconnected #CoachImage
 {
 	opacity: 0.5;
 }
@@ -981,6 +1108,11 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	opacity: 0;
 }
 
+.Coach.Disconnected #DisconnectIcon
+{
+	opacity: 0.5;
+}
+
 .Disconnected #DisconnectIcon
 {
 	opacity: 1;
@@ -992,7 +1124,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
      height: 8px;
      border: 0px;
      z-index: 2;
-     margin-bottom: 79px;
+     margin-bottom: 129px;
      vertical-align: bottom;
      border-radius: 0px;
      opacity: 0;
@@ -1003,19 +1135,20 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
      transition-timing-function: ease-in-out;
 }
 
-.AltPressed .TopBarHealthBar, .IsLocalPlayerSpectating .TopBarHealthBar
+.AltPressed .TopBarHealthBar,
+.IsLocalPlayerSpectatingAllTeams .TopBarHealthBar
 {
     opacity: 1;
     transform: translateY( 11px );
 }
 
-#ManaBar
+.TopBarManaBar
 {
     width: 60px;
 	height: 8px;
 	border: 0px;
     z-index: 1;
-    margin-bottom: 71px;
+    margin-bottom: 121px;
     vertical-align: bottom;
     box-shadow: none;
     border-radius: 0px;
@@ -1027,7 +1160,8 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
     transition-timing-function: ease-in-out;
 }
 
-.AltPressed #ManaBar
+.AltPressed .TopBarManaBar,
+.IsLocalPlayerSpectatingAllTeams .TopBarManaBar
 {
 	opacity: 1;
 	transform: translateY(11px);
@@ -1139,7 +1273,7 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
     font-size: 14px;
     font-weight: bold;
     opacity: 0;
-    margin-bottom: 14px;
+    margin-bottom: 64px;
     text-shadow: 1px 1px 0px 2.0 #00000044;
 
     transition-property: transform, opacity;
@@ -1178,11 +1312,98 @@ DOTATopBarPlayer.MasterTier		#HeroBadgeOverlay { visibility: visible; background
 	opacity: 0;
 }
 
+#TipButton
+{
+	vertical-align: bottom;
+	margin-bottom: 75px;
+
+	overflow: clip;
+	max-width: 60px;
+	max-height: 20px;
+
+	padding: 2px 4px 1px 4px;
+	min-width: 0px;
+	min-height: 0px;
+	horizontal-align: center;
+	flow-children: right;
+
+	opacity: 0;
+
+	transition-property: pre-transform-scale2d, opacity, transform;
+	transition-duration: .12s;
+	transition-timing-function: ease-in-out;
+
+	visibility: collapse;
+}
+
+.TipsAvailable #TipButton
+{
+	visibility: visible;
+}
+
+#TopBarRadiantPlayersContainer #TipButton
+{
+	margin-left: 6px;
+}
+
+#TopBarDirePlayersContainer #TipButton
+{
+	margin-right: 6px;
+}
+
+
+.AltPressed DOTATopBarPlayer.PlayerTippable #TipButton
+{
+	opacity: 0.3;
+}
+
+.AltPressed DOTATopBarPlayer.PlayerTippable:hover #TipButton
+{
+	opacity: 1;
+}
+
+.LocalPlayer #TipButton
+{
+	visibility: collapse;
+}
+
+#TipButton Label
+{
+	font-size: 14px;
+	letter-spacing: 1px;
+	vertical-align: middle;
+}
+
+#TipButton #TipIcon
+{
+	width: 16px;
+	height: 16px;
+	margin-left: 2px;
+	transform: translateY( -1px );	
+	margin-right: 4px;
+
+	background-image: bp_total_points;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.PlusShardTipping #TipButton #TipIcon
+{
+	background-image: url("s2r://panorama/images/dota_plus/currency_icon_png.vtex");
+}
+
 .TPIndicator
 {
+	margin-bottom: 40px;
 	horizontal-align: center;
 	vertical-align: bottom;
 	opacity: 0;
+}
+
+.TipsAvailable .TPIndicator
+{
+	margin-bottom: 20px;
 }
 
 .TPIndicator.HasTP

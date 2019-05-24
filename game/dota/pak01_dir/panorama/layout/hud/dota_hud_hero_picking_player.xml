@@ -12,12 +12,16 @@
 			<DOTAHeroImage id="HeroImage" >
 				<Panel class="GradientTopBottom"/>
 			</DOTAHeroImage>
+			<DOTAEventLevelShield id="EventLevelShield" />
 			<DOTAHeroBadge id="HeroBadge" badgestyle="level" />
 		</Panel>
 		<Label id="PlayerRank" text="#DOTARankTierFormat" />
 		<Panel id="HeroImagePickBar"/>
 		<Panel id="NameContainer">
-			<Label id="PlayerName" text="{s:player_name}" acceptsinput="true" allowtextselection="false" />
+			<Panel id="PlayerNameAndMVPContainer">
+				<Panel id="MVPLastGameImage" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #DOTAMVPVote_PlayerWasMVPLastGame );" />
+				<Label id="PlayerName" text="{g:dota_filtered_string:player_name}" acceptsinput="true" allowtextselection="false" />
+			</Panel>
 			<Label id="HeroName" text="{g:dota_hero_name:hero_id}"  allowtextselection="false" />
 		</Panel>
 		<Panel id="DisconnectedIcon" hittest="false"/>
@@ -31,6 +35,7 @@
 			<Panel class="InfoIcon" />
 			<Panel class="HeroGameplayUpdatePulse" />
 		</Panel>
+		<Label class="LaneSelectionLabel" text="{s:lane_selection}" />
 	</DOTAHudHeroPickingPlayer>
 </root>
 

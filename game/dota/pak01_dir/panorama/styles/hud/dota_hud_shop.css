@@ -56,12 +56,18 @@ DOTAHUDShop
 	margin-top: 14px;
 }
 
-DOTAHUDShop.ShopOpen.GuidesDisabled #GuidesButton
+DOTAHUDShop.ShopOpen.GuidesDisabled #GuidesButton,
+DOTAHUDShop.ShopOpen.ForceDefaultGuide #GuidesButton
 {
 	visibility: collapse;
 }
 
 .GuidesDisabled #GuideFlyout
+{
+	visibility: collapse;
+}
+
+.ForceDefaultGuide #GuidesButton
 {
 	visibility: collapse;
 }
@@ -86,6 +92,11 @@ DOTAHUDShop.ShopClosing
 .HUDFlipped DOTAHUDShop.ShopOpen
 {
 	transform: translateX( 0px );
+}
+
+.ForceDefault .BuildHeaderContainer
+{
+	visibility: collapse;
 }
 
 #header
@@ -324,7 +335,7 @@ DOTAHUDShop.ShowSecretShop #SecretShopButton:hover
 {
 	width: 100%;
 	height: 100%;
-	flow-children: up;
+	flow-children: down;
 }
 
 // Custom game SetHUDVisible support
@@ -345,6 +356,7 @@ DOTAHUDShop.ShowSecretShop #SecretShopButton:hover
 	visibility: visible;
 	overflow: clip squish;
     min-height: 447px;
+	vertical-align: top;
 }
 
 #MainShop

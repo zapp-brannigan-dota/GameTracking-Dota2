@@ -45,7 +45,7 @@
 				<Panel id="CaptainsModeHeroPickedDetails" class="CaptainsModeHeroPickOptionInfoBlock">
 					<DOTAAvatarImage id="CaptainsModeHeroPickAvatarImage" />
 					<Panel class="CaptainsModeHeroPickedDetailsText">
-						<Label class="CaptainsModeHeroPickedPlayerName" text="{s:player_name}" />
+						<Label class="CaptainsModeHeroPickedPlayerName" text="{g:dota_filtered_string:player_name}" />
 						<Label class="CaptainsModeHeroPickedHeroName" text="{g:dota_hero_name:hero_id}" />
 					</Panel>
 				</Panel>
@@ -85,7 +85,9 @@
 								<DOTAHeroFilters id="HeroFilters" />
 							</Panel>
 							<Panel id="HeroPickRightColumn">
-								<DOTAHeroInspect id="HeroInspect" />
+								<Panel class="HeroInspectContainer">
+									<DOTAHeroInspect id="HeroInspect" />									
+								</Panel>
 								<DOTAHeroPickingCaptainsModePicksBans id="CaptainsModePicksBans" />
 								<Panel id="AlreadyBanned" hittest="false">
 									<Panel id="BanOuter" hittest="false"/>
@@ -192,6 +194,7 @@
 					</Panel>
 					<Panel id="SelectedHeroPrimaryAttribute" />
 					<DOTALargeModelPreview id="HeroModel" />
+					<DOTAHeroModelOverlay id="HeroModelOverlay" />
 
 					<!-- These hit targets are not visible, but are above the hero model in z-order so
 					 that we can accept hover events and redirect them to the real ability panels. -->
@@ -288,6 +291,8 @@
 										<DOTAHeroPickingTeamComposition class="OneColumn" id="StrategyTeamComposition" />
 										<DOTAHeroPickingMatchDuration class="OneColumn" id="StrategyMatchDuration" />
 									</Panel>
+
+									<DOTAFriendsAndFoes id="FriendsAndFoes" class="VerticalStyle"/>
 								</Panel>
 
 								<Panel id="StartingItems" class="StrategyPanel">
@@ -404,61 +409,39 @@
 										<Panel class="GlobalLoadoutSlotCategory">
 											<Label class="LoadoutCategoryTitle SubCategory" text="#DOTA_Armory_Category_CouriersAndWards" />
 											<Panel class="GlobalLoadoutSlotCategoryItems">
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="3" />
-												<!-- Courier -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="5" />
-												<!-- Ward -->
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="courier" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="ward" />
 											</Panel>
 										</Panel>
 
 										<Panel class="GlobalLoadoutSlotCategory">
 											<Label class="LoadoutCategoryTitle SubCategory" text="#DOTA_Armory_Category_Audio" />
 											<Panel class="GlobalLoadoutSlotCategoryItems">
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="4" />
-												<!-- Music -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="1" />
-												<!-- Announcer -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="2" />
-												<!-- MegaKills -->
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="music" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="announcer" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="mega_kills" />
 											</Panel>
 										</Panel>
 
 										<Panel class="GlobalLoadoutSlotCategory">
 											<Label class="LoadoutCategoryTitle SubCategory" text="#DOTA_GlobalItems_World" />
 											<Panel class="GlobalLoadoutSlotCategoryItems">
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="15" />
-												<!-- Terrain -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="8" />
-												<!-- Weather -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="9" />
-												<!-- Effigy -->
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="terrain" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="weather" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="heroic_statue" />
 											</Panel>
 										</Panel>
 
 										<Panel class="GlobalLoadoutSlotCategory">
 											<Label class="LoadoutCategoryTitle SubCategory" text="#DOTA_GlobalItems_Interface" />
 											<Panel class="GlobalLoadoutSlotCategoryItems">
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="6" />
-												<!-- HUD Skin -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="11" />
-												<!-- Cursor Pack -->
-												<DOTAHeroSlotItemPicker heroid="1000" slotindex="7" />
-												<!-- Loading Screen -->
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="hud_skin" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="cursor_pack" />
+												<DOTAHeroSlotItemPicker heroid="1000" slottype="loading_screen" />
 											</Panel>
 										</Panel>
 									</Panel>
-									<!--<DOTAHeroSlotItemPicker heroid="1000" slotindex="0" />-->
-									<!-- Action Item -->
-									<!--<DOTAHeroSlotItemPicker heroid="1000" slotindex="10" />-->
-									<!-- Multikill Banner-->
-									<!--<DOTAHeroSlotItemPicker heroid="1000" slotindex="12" />-->
-									<!-- Teleport Effect -->
-									<!--<DOTAHeroSlotItemPicker heroid="1000" slotindex="13" />-->
-									<!-- Blink Effect -->
-									<!--<DOTAHeroSlotItemPicker heroid="1000" slotindex="14" />-->
-									<!-- ??? -->
 								</Panel>
-
 
 							</Panel>
 
@@ -515,11 +498,21 @@
 				<DOTAHudHeroPickingPlayer class="Slot3" />
 				<DOTAHudHeroPickingPlayer class="Slot4" />
 			</Panel>
+			<Panel id="RadiantCoachPlayer" class="CoachContainer">
+				<Panel class="CoachImage"/>
+				<DOTACoachRatingIcon coach-rating="0" id="RadiantCoachIcon" class="CoachIcon"/>
+			</Panel>
 			<Panel id="HeaderCenter">
 				<Label id="ClockLabel" class="MonoNumbersFont" allowtextselection="false" />
 				<Panel id="HeaderSubtitle">
 					<Panel id="PickModeSubtitle">
-						<Label id="GameModeLabel" text="{s:game_mode}" />
+						<Panel class="LeftRightFlow HorizontalCenter">
+							<Label id="GameModeLabel" text="{s:game_mode}" />
+							<Panel id="MutationInfo" onmouseover="DOTAShowMutationInfoTooltip()" onmouseout="DOTAHideMutationInfoTooltip()">
+								<Panel class="InfoIcon"/>
+								<Label text="Details" />
+							</Panel>
+						</Panel>
 						<Panel id="PickModeSubtitleInfo">
 							<Panel id="HeaderPenaltyTime">
 								<Panel id="PenaltyTimeInfoIcon" onmouseout="UIHideTextTooltip()" />
@@ -531,6 +524,10 @@
 					<Label id="StrategyTimeLabel" text="#DOTA_Hero_Selection_StrategyTime" />
 				</Panel>
 			</Panel>
+			<Panel id="DireCoachPlayer" class="CoachContainer">
+				<Panel class="CoachImage"/>
+				<DOTACoachRatingIcon coach-rating="0" id="DireCoachIcon" class="CoachIcon"/>
+			</Panel>
 			<Panel id="DireTeamPlayers" class="TeamPlayers">
 				<DOTAHudHeroPickingPlayer class="Slot5" />
 				<DOTAHudHeroPickingPlayer class="Slot6" />
@@ -538,6 +535,7 @@
 				<DOTAHudHeroPickingPlayer class="Slot8" />
 				<DOTAHudHeroPickingPlayer class="Slot9" />
 			</Panel>
+			
 			<Panel class="FillWidth" />
 		</Panel>
 		<Panel id="ConnectingLabelContainer" class="TopBottomFlow">
@@ -645,7 +643,7 @@
 		</Panel>
 
 		<Button id="DashboardButton" onactivate="DOTAHUDShowDashboard();" />
-		<Button id="SettingsButton" onactivate="DOTASettings();" />
+		<Button id="SettingsButton" onactivate="DOTAShowSettingsPopup();" />
 <!-- 		<TextButton id="vs1" text="VS" onactivate="AddStyle( PreGame, StartVersusAnim ) RemoveStyle( PreGame, VersusOutro )" />
 		<TextButton id="vs2" text="Out" onactivate="AddStyle( PreGame, VersusOutro ) RemoveStyle( PreGame, StartVersusAnim )" /> -->
 
@@ -659,43 +657,8 @@
 			<Panel class="VerticalFiller"/>
 		</Panel>
 
-		<Panel id="VersusScreen" hittest="false" hittestchildren="false">
-			<Panel id="MainLayout" class="TopBottomFlow" hittest="false">
-				<Panel id="RadiantTeamSection" class="TeamSection">
-					<Panel id="RadiantVersusPlayers" class="ClipContainer">
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer0" team="DOTA_TEAM_GOODGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer1" team="DOTA_TEAM_GOODGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer2" team="DOTA_TEAM_GOODGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer3" team="DOTA_TEAM_GOODGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer4" team="DOTA_TEAM_GOODGUYS" />
-					</Panel>
-					<Label text="#DOTA_GoodGuysShort" class="TeamTitle TitleFont"/>
-				</Panel>
-				<Panel id="DireTeamSection"  class="TeamSection">
-					<Panel id="DireVersusPlayers" class="ClipContainer">
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer5" team="DOTA_TEAM_BADGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer6" team="DOTA_TEAM_BADGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer7" team="DOTA_TEAM_BADGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer8" team="DOTA_TEAM_BADGUYS" />
-						<DOTAHudHeroPickingVersusPlayer id="VersusPlayer9" team="DOTA_TEAM_BADGUYS" />
-					</Panel>
-					<Label text="#DOTA_BadGuysShort" class="TeamTitle TitleFont"/>
-				</Panel>
-			</Panel>
-
-			<DOTAHUDBattlePassTowers id="BattlePassTowers" />
-			<DOTAScenePanel id="VersusFX" map="scenes/versus_hline" camera="shot_camera"  hittest="false" particleonly="true"/>
-			<DOTAScenePanel id="GodRays" map="scenes/versus_godrays" camera="camera_1" hittest="false" particleonly="true"/>
-
-			<Panel id="VersusContainer">
-				<Panel id="LogoContainer">
-					<Panel id="DotaLogoBackgroundHoles" hittest="false" />
-					<Panel id="DotaLogoBackground" hittest="false" />
-					<Panel id="VersusLabel" hittest="false" />
-					<Panel id="DotaLogo" hittest="false" />
-				</Panel>
-			</Panel>
-		</Panel>
+		<DOTAHudVersusScreen id="VersusScreen" hittest="false" hittestchildren="false" />
+		<DOTAHudVersusScreen2 id="VersusScreen2" hittest="false" />
 
 		<Panel id="WaitingForMapLoad" hittest="false">
 			<Panel id="ReconnectBlack"  hittest="false"/>

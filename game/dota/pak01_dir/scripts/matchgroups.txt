@@ -42,14 +42,6 @@
 		"display_name" "#dota_matchgroup_sa"
 	}
 
-//	"icn"
-//	{
-//		"channel"	"South Korea"
-//		"group"	"6"
-//		"display_name"	"#dota_matchgroup_icn"
-//		"partner"	"Nexon"
-//	}
-
 	"ru"
 	{
 		"channel"	"Russia"
@@ -161,5 +153,12 @@
 		"group" "25"
 		"display_name" "#dota_matchgroup_pw_unicom_tianjin"
 		"partner"	"PerfectWorld"
+	}
+	"gtpe"
+	{
+		"channel"	"Taiwan"
+		"group" "21"
+		"display_name" "#dota_matchgroup_taiwan"
+		"hidden"	"1"
 	}
 }

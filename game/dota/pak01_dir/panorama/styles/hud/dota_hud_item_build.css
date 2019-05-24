@@ -17,6 +17,11 @@ DOTAHUDItemBuild
     visibility: visible;
 }
 
+.ForceDefaultGuide .BuildHeaderContainer
+{
+    visibility: collapse;
+}
+
 .HUDFlipped .BuildHeaderContainer
 {
     padding-left: 46px;
@@ -210,6 +215,11 @@ DOTAHUDShop #Categories
 	height: fill-parent-flow( 1.0 );
 }
 
+DOTAHUDShop.PlusGuide #Categories
+{
+	height: fit-children;
+}
+
 DOTAHUDShop .EditMode #Categories
 {
 	box-shadow: inset #0B93BE33 6px 6px 12px 12px;
@@ -243,7 +253,7 @@ DOTAHUDShop .EditMode #Categories
 {
 	text-transform: uppercase;
 	text-overflow: shrink;
-    width: 100%;
+    width: fill-parent-flow(1.0);
     height: 18px;
     margin-bottom: 2px;
 	margin-top: 4px;
@@ -252,6 +262,7 @@ DOTAHUDShop .EditMode #Categories
     letter-spacing: 2px;
     vertical-align: center;
 }
+
 
 .EditMode .CategoryName
 {
@@ -478,16 +489,22 @@ DOTAShopItem.HasSuggestionPct:not(.Purchased)
 	transition-duration: 0.5s;
 	transition-timing-function: ease-in-out;
 
-	height: 180px;
+	height: fit-children;
 }
 
-.ItemBuildCategory.PlusSequence.NotSelected:not(.WaitingOnData),
-.ItemBuildCategory.PlusOtherOptions.NotSelected:not(.WaitingOnData)
+.ItemBuildCategory.PlusSequence.NotSelected:not(.WaitingOnPlusData)
 {
 	opacity: 0;
 	height: 0px;
 	margin-bottom: 0px;
 }
+
+.ItemBuildCategory.PlusOtherOptions.NotSelected:not(.WaitingOnPlusData)
+{
+	height: 90px;
+	margin-bottom: 0px;
+}
+
 
 .ItemBuildCategory.NoItems #SelectButton
 {
@@ -502,17 +519,18 @@ DOTAShopItem.HasSuggestionPct:not(.Purchased)
 	visibility: collapse;
 }
 
-.ItemBuildCategory.PlusOtherOptions.WaitingOnData #CategoryName
+.WaitingOnPlusData.ItemBuildCategory.PlusOtherOptions #CategoryName
 {
 	visibility: collapse;
 }
 
-.ItemBuildCategory.PlusOtherOptions.WaitingOnData #PlusWaiting
+.WaitingOnPlusData.ItemBuildCategory.PlusOtherOptions #PlusWaiting
 {
 	visibility: visible;
 }
 
-.ItemBuildCategory.PlusSequence.Selected TextButton.PlusOptionSelect
+.ItemBuildCategory.PlusSequence.Selected TextButton.PlusOptionSelect,
+.ItemBuildCategory.PlusOtherOptions.Selected TextButton.PlusOptionSelect
 {
 	visibility: collapse;
 }
@@ -547,7 +565,43 @@ TextButton.PlusOptionSelect Label
 	height: 30px;
 }
 
-#Deselect
+.ItemBuildCategory.PlusOtherOptions TextButton.PlusOptionSelect
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #a4885e ), to( #ccc6a0 ) );
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 12px;
+	height: 30px;
+}
+
+#Deselect,
+#RecalculateOptions
+{
+	color: #CCC;
+
+	margin: 5px 0px;
+	font-size: 15px;
+	horizontal-align: center;
+
+	transition-property: color;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+
+	visibility: collapse;
+}
+
+#Deselect:hover,
+#RecalculateOptions:hover
+{
+	color: white;
+}
+
+.ItemBuildCategory.PlusOtherOptions.NotSelected .ItemCategoryTitle
+{
+	visibility: collapse;
+}
+
+#Recalculate
 {
 	font-size: 15px;
 	horizontal-align: center;
@@ -561,14 +615,55 @@ TextButton.PlusOptionSelect Label
 	visibility: collapse;
 }
 
-#Deselect:hover
+#Recalculate:hover
 {
 	color: white;
 }
 
-.ItemBuildCategory.PlusSequence.Selected #Deselect
+.ItemBuildCategory.PlusSequence.Selected #Deselect,
+.ItemBuildCategory.PlusSequence.Selected #Recalculate,
+.ItemBuildCategory.PlusOtherOptions:not(.WaitingOnPlusData) #RecalculateOptions
 {
 	visibility: visible;
+}
+
+.ItemBuildCategory.PlusOtherOptions.Selected #RecalculateOptions,
+.ItemBuildCategory.PlusOtherOptions.OtherOptionSelected #RecalculateOptions
+{
+	visibility: collapse;
+}
+
+
+#SelectNothing
+{
+	horizontal-align: center;
+	visibility: collapse;
+}
+
+.PlusOtherOptions.NotSelected.NoItems:not(.WaitingOnPlusData) #SelectNothing
+{
+	visibility: visible;
+}
+
+#ShowBuildLists
+{
+	horizontal-align: center;
+	visibility: collapse;
+}
+
+.PlusOtherOptions.Selected:not(.WaitingOnPlusData) #ShowBuildLists
+{
+	visibility: visible;
+}
+
+#ShowBuildLists Label
+{
+	color: #DDD;
+}
+
+#ShowBuildLists:hover Label
+{
+	color: #FFF;
 }
 
 .PlusAssistantViolator

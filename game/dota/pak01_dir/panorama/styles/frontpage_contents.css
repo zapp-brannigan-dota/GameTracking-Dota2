@@ -1,66 +1,73 @@
 
+@define firstColumn: 0px;
+@define secondColumn: 352px;
+@define thirdColumn: 704px;
+
+@define firstRow: 0px;
+@define secondRow: 250px;
+
 .TopLeftCell
 {
-	x: 0px;
-	y: 0px;
+	x: firstColumn;
+	y: firstRow;
 }
 
 .TopMiddleCell
 {
-	x: 352px;
-	y: 0px;
+	x: secondColumn;
+	y: firstRow;
 }
 
 .TopRightCell
 {
-	x: 704px;
-	y: 0px;
+	x: thirdColumn;
+	y: firstRow;
 }
 
 .BottomLeftCell
 {
-	x: 0px;
-	y: 248px;
+	x: firstColumn;
+	y: secondRow;
 }
 
 .BottomMiddleCell
 {
-	x: 352px;
-	y: 248px;
+	x: secondColumn;
+	y: secondRow;
 }
 
 .BottomRightCell
 {
-	x: 704px;
-	y: 248px;
+	x: thirdColumn;
+	y: secondRow;
 }
 
-/* When there's an upcoming Battle Cup, swap out the BPLeaderBoard cell with the Battle Cup cell */
-/*#WeekendTourneyStatus,
+.VisibleWhenBattlePassOwned
+{
+	visibility: collapse;
+}
+.SelfEventActive .VisibleWhenBattlePassOwned
+{
+	visibility: visible;
+}
+
+.SelfEventActive .HideWhenBattlePassOwned
+{
+	visibility: collapse;
+}
+
+
+/* When there's an upcoming Battle Cup, swap out a cell with the Battle Cup cell */
+#BattleCup,
 .ShowWeekendTourneyCell #LastMatch
 {
 	visibility: collapse;
 }
-.SelfEventActive .ShowWeekendTourneyCell #WeekendTourneyStatus
-{
-	visibility: visible;
-}*/
-
-#LastMatch
-{
-		visibility: visible;
-}
-
-.UnownedBattlePass
-{
-}
-
-.OwnedBattlePass
+DOTADashboard:not(.SelfEventActive) .ShowWeekendTourneyCell #BattleCup
 {
 	visibility: collapse;
 }
-
-.SelfEventActive .UnownedBattlePass
+#LastMatch
 {
 	visibility: collapse;
 }
@@ -72,27 +79,45 @@
 	transition-property: opacity;
 	transition-duration: 0.4s;
 }
-
 .TriviaVisible #TriviaGame
 {
 	opacity: 1.0;
 }
 
-.PlusSubscriber #DotaPlusDebut
+
+.SelfEventNotActive #BPLeaderBoard,
+.SelfEventNeedsActivate #BPLeaderBoard
 {
-	visibility: collapse;
+	x: thirdColumn;
+	y: secondRow;
 }
 
-.GCStatusVisible #DotaPlusDebut
+#PlanetfallBackgroundScene
 {
-	visibility: collapse;
+	width: 800px;
+	height: 800px;
+	margin-top: -50px;
+	margin-bottom: -400px;
+	margin-right: -250px;
+	margin-left: -250px;
+	horizontal-align: right;
+	z-index: 0;
+	opacity-mask: url("s2r://panorama/images/masks/softedge_earthshaker_arcana_debut_png.vtex");
 }
 
-#DotaPlusWelcomeQuests
+#PlanetfallFrontpageCell
 {
-	visibility: collapse;
+	box-shadow: none;
 }
-.PlusSubscriber #DotaPlusWelcomeQuests:not(.FullyCompleted)
-{
-	visibility: visible;
+
+#PlanetfallMask {
+	background-image: url("s2r://panorama/images/masks/bottom_fade_png.vtex");
+	width: 100%;
+	height: 100%;
+	margin-top: -50px;
+	margin-bottom: -400px;
+	margin-right: -250px;
+	margin-left: -250px;
+	horizontal-align: right;
+	opacity: 0;
 }

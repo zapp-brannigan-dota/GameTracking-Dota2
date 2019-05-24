@@ -4,12 +4,13 @@ criterion "IsAllytusk" "nearby_ally" "npc_dota_hero_tusk" weight 5 required
 criterion "IsTuskIceShards" "abilityname" "tusk_ice_shards" weight 5 required
 criterion "IsTuskSnowball" "abilityname" "tusk_snowball" weight 5 required
 criterion "IsTuskSnowballLaunch" "abilityname" "tusk_launch_snowball" weight 5 required
-criterion "IsTuskFrozenSigil" "abilityname" "tusk_frozen_sigil" weight 5 required
+criterion "IsTuskTagTeam" "abilityname" "tusk_tag_team" weight 5 required
 criterion "IsTuskWalrusPunch" "abilityname" "tusk_walrus_punch" weight 5 required
 criterion "IsTuskWalrusPunchLevel" "skill6_level" ">0" weight 5 required
 criterion "IsTuskPunch" "punch_hero" "yes" weight 5 required
 criterion "IsTuskPunchFail" "punch_fail" "yes" weight 5 required
 criterion "IsTuskLoadoutSpawn" "special_spawn" "tusk_loadout_spawn" weight 5 required
+criterion "IsTuskFightMeTI8Taunt" "taunt_type" "fight_me" weight 5 required
 
 Response tusk_Spawn
 {
@@ -478,7 +479,7 @@ Rule tusk_CastExecuteIsTuskSnowballLaunchChance_25%_Rule
 	response tusk_CastExecuteIsTuskSnowballLaunchChance_25%
 }
 
-Response tusk_CastExecuteIsTuskFrozenSigil
+Response tusk_CastExecuteIsTuskTagTeam
 {
 	scene "scenes/tusk/tusk_tusk_frozensigil_01.vcd" nodelay noscene 
 	scene "scenes/tusk/tusk_tusk_frozensigil_02.vcd" nodelay noscene 
@@ -487,10 +488,10 @@ Response tusk_CastExecuteIsTuskFrozenSigil
 	scene "scenes/tusk/tusk_tusk_frozensigil_05.vcd" nodelay noscene 
 }
 
-Rule tusk_CastExecuteIsTuskFrozenSigil_Rule
+Rule tusk_CastExecuteIsTuskTagTeam_Rule
 {
-	criteria CastExecute Istusk IsTuskFrozenSigil
-	response tusk_CastExecuteIsTuskFrozenSigil
+	criteria CastExecute Istusk IsTuskTagTeam
+	response tusk_CastExecuteIsTuskTagTeam
 }
 
 Response tusk_CastExecuteIsTuskWalrusPunch
@@ -1466,5 +1467,20 @@ Rule tusk_EmoteIsEmoteLaugh_Rule
 {
 	criteria Emote Istusk IsEmoteLaugh
 	response tusk_EmoteIsEmoteLaugh
+}
+
+Response tusk_TauntIsTuskFightMeTI8Taunt
+{
+	scene "scenes/tusk/tusk_tusk_attack_03.vcd" nodelay noscene 
+	scene "scenes/tusk/tusk_tusk_attack_05.vcd" nodelay noscene 
+	scene "scenes/tusk/tusk_tusk_attack_11.vcd" nodelay noscene 
+	scene "scenes/tusk/tusk_tusk_attack_13.vcd" nodelay noscene 
+	scene "scenes/tusk/tusk_tusk_spawn_05.vcd" nodelay noscene 
+}
+
+Rule tusk_TauntIsTuskFightMeTI8Taunt_Rule
+{
+	criteria Taunt Istusk IsTuskFightMeTI8Taunt
+	response tusk_TauntIsTuskFightMeTI8Taunt
 }
 

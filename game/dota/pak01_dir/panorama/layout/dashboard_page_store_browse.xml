@@ -37,7 +37,7 @@
 						<Label class="SearchCategoryName" text="#DOTA_Armory_Category_All" />
 					</RadioButton>
 
-					<RadioButton class="SearchCategory" group="search_categories" searchquery="event:EVENT_ID_INTERNATIONAL_2017 NOT prefab:loading_screen" onactivate="DOTAStoreBrowseCategorySelected()">
+					<RadioButton class="SearchCategory" group="search_categories" searchquery="event:EVENT_ID_INTERNATIONAL_2019 NOT prefab:loading_screen" onactivate="DOTAStoreBrowseCategorySelected()">
 						<Label class="SearchCategoryName" text="#DOTA_Armory_Category_Event" />
 					</RadioButton>
 
@@ -100,10 +100,6 @@
 							<RadioButton text="#Store_Weather" searchquery="prefab:weather" group="search_sub_categories" onactivate="DOTAStoreBrowseUpdateSearch()" />
 							<RadioButton text="#Store_Effigies" searchquery="tool:hero_statue_forge OR tool:hero_statue_reforgeitem" group="search_sub_categories" onactivate="DOTAStoreBrowseUpdateSearch()" />
 						</Panel>
-					</RadioButton>
-
-					<RadioButton class="SearchCategory" group="search_categories" searchquery="prefab:league OR prefab:tournament_passport OR prefab:compendium" onactivate="DOTAStoreBrowseCategorySelected()">
-						<Label class="SearchCategoryName" text="#DOTA_Profile_LeaguePassesPage" />
 					</RadioButton>
 
 					<RadioButton class="SearchCategory" group="search_categories" searchquery="brand:any NOT prefab:loading_screen" onactivate="DOTAStoreBrowseCategorySelected()">

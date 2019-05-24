@@ -210,6 +210,10 @@
 										<ToggleButton class="CheckBox" id="DefaultItemQuickcastCheckBox" text="#dota_settings_enable_quickcast" onactivate="DOTASetDefaultItemQuickCast();" />
 										<Panel class="InfoIcon" onmouseover="UIShowTextTooltip( #DOTA_Hotkeys_Tooltip_Quickcast_Items )" onmouseout="UIHideTextTooltip()"/>
 									</Panel>
+									<Panel id="ItemsTPBindingContainer">
+										<DOTASettingsKeyBinder class="ItemBindButton" bind="InventoryTP" />
+									</Panel>
+									<Panel id="ItemsTPBindingImage" hittest="false"/>
 								</Panel>
 							</Panel>
 						</Panel>
@@ -244,13 +248,14 @@
 									<DOTASettingsKeyBinder text="#dota_settings_chatvoice_team" bind="ChatVoiceTeam" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ChatVoiceTeam, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 
 									<DOTASettingsKeyBinder text="#dota_settings_chatwheel_show" bind="ChatWheel" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ChatWheel, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
+									<DOTASettingsKeyBinder text="#dota_settings_chatwheel2_show" bind="ChatWheel2" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ChatWheel, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<DOTASettingsKeyBinder text="#dota_settings_herochatwheel_show" bind="HeroChatWheel" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_HeroChatWheel, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<Panel id="ChatBindDialogsContents">
 										<Button id="PhrasesButton" class="ChatDialogButton" onactivate="DOTAShowPhrasesPage();" >
 											<Image src="s2r://panorama/images/settings_phrases_png.vtex" class="ChatDialogButtonImage" />
 											<Label text="#dota_settings_phrases"	class="ChatBindDialogButtonLabel" />
 										</Button>
-										<Button id="ChatWheelButton" class="ChatDialogButton" onactivate="DOTAShowChatWheelPage();" >
+										<Button id="ChatWheelButton" class="ChatDialogButton" onactivate="DOTAShowChatWheelPage( '' );" >
 											<Image src="s2r://panorama/images/settings_chatwheel_png.vtex" class="ChatDialogButtonImage" />
 											<Label text="#dota_settings_chatwheel_page" class="ChatBindDialogButtonLabel" />
 										</Button>
@@ -311,7 +316,6 @@
 									<DOTASettingsKeyBinder text="#dota_settings_activateglyph" bind="ActivateGlyph" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ActivateGlyph, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<DOTASettingsKeyBinder text="#dota_settings_activateradar" bind="ActivateRadar" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ActivateRadar, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<DOTASettingsKeyBinder text="#dota_settings_herotaunt" bind="HeroTaunt" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_HeroTaunt, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
-									<DOTASettingsKeyBinder text="#dota_settings_useactionitem" bind="UseActionItem" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_UseActionItem, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<DOTASettingsKeyBinder text="#dota_settings_toggleautoattack" bind="ToggleAutoattack" onmouseover="UIShowTextTooltipStyled( #DOTA_Hotkeys_Tooltip_ToggleAutoattack, BindingsTooltip)" onmouseout="UIHideTextTooltip()" />
 									<Panel id="ShopActions" class="SettingsSection">
 										<Label text="#dota_settings_shopactions" class="SectionHeader"/>
@@ -684,11 +688,21 @@
 				</Panel>
 				<Panel class="HotKeyEmbeddedTab" id="ChatWheelSubTab" onactivate="DOTACancelChatWheelBind();" >
 					<Label text="#dota_settings_chatwheel_page" class="SectionHeader" />
+					<Panel id="ChatWheelTabs">
+						<TabButton id="PrimaryChatWheelButton" group="chat_wheel_tabs" text="#dota_settings_chatwheel_tab" selected="true" onactivate="DOTASelectedChatWheelTab( 0 )" />
+						<TabButton id="SecondaryChatWheelButton" group="chat_wheel_tabs" text="#dota_settings_chatwheel2_tab" onactivate="DOTASelectedChatWheelTab( 1 )" />
+					</Panel>
+						
 					<Panel id="ChatWheelContents">
 						<Panel class="TopBottomFlow" id="ChatWheelWheelPanel">
 							<Panel id="TopChatWheelPanel">
 								<Button class="ChatWheelButton" id="ChatWheelButton6" onactivate="DOTABindChatWheelButton( 6 );" oncancel="DOTACancelChatWheelBind();">
-									<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+									<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+									<Panel class="ChatWheelButtonContents">
+										<Panel class="ChatWheelSoundIcon"/>
+										<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<DOTAEmoticon id="ChatWheelEmoticon"/>
+									</Panel>
 								</Button>
 							</Panel>
 							<Panel id="MiddleChatWheelPanel">
@@ -698,39 +712,81 @@
 								<Panel id="ChatWheelLine4" class="ChatWheelLine"/>
 								<Panel id="LeftChatWheelContents">
 									<Button class="ChatWheelButton" id="ChatWheelButton5" onactivate="DOTABindChatWheelButton( 5 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+											<DOTAEmoticon id="ChatWheelEmoticon"/>
+										</Panel>
 									</Button>
 									<Button class="ChatWheelButton" id="ChatWheelButton4" onactivate="DOTABindChatWheelButton( 4 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+											<DOTAEmoticon id="ChatWheelEmoticon"/>
+										</Panel>
 									</Button>
 									<Button class="ChatWheelButton" id="ChatWheelButton3" onactivate="DOTABindChatWheelButton( 3 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+											<DOTAEmoticon id="ChatWheelEmoticon"/>
+										</Panel>
 									</Button>
 								</Panel>
 								<Panel id="ChatWheelIcon" class="ChatDialogButtonImage" />
 								<Panel id="RightChatWheelContents">
 									<Button class="ChatWheelButton" id="ChatWheelButton7" onactivate="DOTABindChatWheelButton( 7 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true"/>
+											<DOTAEmoticon id="ChatWheelEmoticon" scaling="stretch-to-fit-y-preserve-aspect"/>
+										</Panel>
 									</Button>
 									<Button class="ChatWheelButton" id="ChatWheelButton0" onactivate="DOTABindChatWheelButton( 0 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+											<DOTAEmoticon id="ChatWheelEmoticon"/>
+										</Panel>
 									</Button>
 									<Button class="ChatWheelButton" id="ChatWheelButton1" onactivate="DOTABindChatWheelButton( 1 );" oncancel="DOTACancelChatWheelBind();">
-										<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+										<Panel class="ChatWheelButtonContents">
+											<Panel class="ChatWheelSoundIcon"/>
+											<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+											<DOTAEmoticon id="ChatWheelEmoticon"/>
+										</Panel>
 									</Button>
 								</Panel>
 							</Panel>
 							<Panel id="BottomChatWheelPanel">
 								<Button class="ChatWheelButton" id="ChatWheelButton2" onactivate="DOTABindChatWheelButton( 2 );" oncancel="DOTACancelChatWheelBind();">
-									<Label text="{s:chat_wheel_sound_icon}{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+									<Image class="ChatWheelSprayImage" id="SprayWheelImage" />
+									<Panel class="ChatWheelButtonContents">
+										<Panel class="ChatWheelSoundIcon"/>
+										<Label text="{s:chat_wheel_all_prefix}{s:chat_wheel_label}" html="true" />
+										<DOTAEmoticon id="ChatWheelEmoticon"/>
+									</Panel>
 								</Button>
 							</Panel>
 						</Panel>
-						<Panel id="ChatWheelPhraseListContainer">
+						<Panel id="ChatWheelEmoticonListContainer" class="ChatWheelBindOptionsContainer">
+							<Panel class="EmoticonsContainerTitle LeftRightFlow">
+								<Panel class="BPFeatureIcon" onmouseover="UIShowTextTooltipStyled(#DOTA_TI9_BattlePass_ChatWheelEmoticonsTooltip, OptionsTooltip)" onmouseout="UIHideTextTooltip()"/>
+								<Label class="ChatWheelEmoticonListTitle" text="Emoticons"/>
+							</Panel>
+							<DOTAEmoticonPicker id="ChatWheelEmoticonPicker" class="PopupSettings" />
+						</Panel>
+						<Panel id="ChatWheelPhraseListContainer" class="ChatWheelBindOptionsContainer">
 							<Panel id="ChatWheelPhraseList" />
 						</Panel>
 					</Panel>
-					<Button id="ChatWheelClose" class="ButtonDark"  onactivate="DOTAShowChatWheelPage();" >
+					<Button id="ChatWheelClose" class="ButtonDark"  onactivate="DOTAShowChatWheelPage( '' );" >
 						<Label text="#dota_settings_returntohotkeys"/>
 					</Button>
 				</Panel>
@@ -986,6 +1042,7 @@
 										<DOTASettingsCheckbox convar="dota_default_spoilers_blocked" text="dota_settings_default_spoiler_block_on" />
 										<DOTASettingsCheckbox convar="dota_armory_automatically_add_new_item_to_collection" text="dota_settings_armory_automatically_add_new_item_to_collection" onmouseover="UIShowTextTooltipStyled( #DOTA_Settings_Tooltip_AutoAddArmory, OptionsTooltip)" onmouseout="UIHideTextTooltip()" />
 										<DOTASettingsCheckbox convar="dota_join_regional_chat_channel" text="#dota_settings_chat_join_regional" />
+										<DOTASettingsCheckbox convar="dota_dashboard_enable_mouse_history" text="#dota_settings_dashboard_enable_mouse_history" />
 										<DOTASettingsCheckbox convar="dota_match_solo_queue" text="#dota_settings_match_solo_queue" onmouseover="UIShowTextTooltipStyled( #dota_settings_match_solo_queue_tooltip, OptionsTooltip)" onmouseout="UIHideTextTooltip()" />
 									</Panel>
 								</Panel>
@@ -1104,6 +1161,7 @@
 										<DOTASettingsCheckbox convar="r_dashboard_render_quality" text="#dota_settings_dashboard_renderquality" />
 										<ToggleButton class="CheckBox" id="VSyncToggle" text="#dota_settings_vsync"	onactivate="DOTASetVSync();" />
 										<DOTASettingsCheckbox id="TreeWindToggle" convar="r_dota_allow_wind_on_trees" text="#dota_settings_tree_wind" />
+										<DOTASettingsCheckbox id="ComputeShaderToggle" convar="r_dota_bloom_compute_shader" text="#dota_settings_computeshader" onmouseover="UIShowTextTooltipStyled( #dota_settings_computeshader_tooltip, OptionsTooltip)" onmouseout="UIHideTextTooltip()"/>
 									</Panel>
 								</Panel>
 								<DOTASettingsEnum class="HorizontalEnum" convar="r_texture_stream_mip_bias" text="#dota_settings_texturequality" id="TextureEnum" >
@@ -1240,21 +1298,44 @@
 		</snippet>
 
 		<snippet name="ChatWheelCategory">
-			<Panel class="ChatWheelHeader">
-				<Panel class="CategoryIcon" />
-				<Label text="{s:chat_wheel_category_name}" />
+			<Panel class="ChatWheelCategory">
+				<Panel id="ChatWheelHeader">
+					<Panel class="CategoryIcon" />
+					<Label text="{s:chat_wheel_category_name}" />
+					<Panel class="FillWidth" />
+					<Label id="ChatWheelCategoryLink" allowtextselection="false" />
+				</Panel>
+				<Panel id="ChatWheelMessages">
+					<!-- ChatWheelMessage snippets -->
+				</Panel>
 			</Panel>
 		</snippet>
-
+		
 		<snippet name="ChatWheelMessage">
 			<Panel class="ChatWheelPhraseChoiceLine">
-				<Label class="ChatWheelUnlockLevel MonoNumbersFont" text="Level {d:unlock_event_level}" />
+				<Panel id="ChatWheelMessageUnlockInfo" />
 				<Button id="ChatWheelSoundButton" class="ChatWheelSoundIcon" />
 				<Label class="ChatWheelAllLabel" text="#dota_all_chat_label" />
 				<Label class="ChatWheelPhraseChoiceText" text="{s:chat_wheel_message}" />
+				<Image id="SprayImage" class="ChatWheelSprayImage" />
 			</Panel>
 		</snippet>
+
+		<snippet name="ChatWheelUnlockInfo_EventLevel">
+			<Panel class="ChatWheelUnlockInfo_EventLevel">
+				<Label class="ChatWheelUnlockLevel MonoNumbersFont" text="#DOTA_ChatWheelPhraseLocked_EventLevel" />
+			</Panel>
+		</snippet>
+		
+		<snippet name="ChatWheelUnlockInfo_ShardsPurchase">
+			<Panel class="ChatWheelUnlockInfo_ShardsPurchase">
+				<Panel id="LockIcon" onmouseout="UIHideTextTooltip()" onactivate="UIPopupButtonClicked( DOTAShowStorePlusChatWheelPage() )" />
+			</Panel>
+		</snippet>
+
 	</snippets>
+	
+	
 
 	<PopupSettings class="Hidden" defaultfocus="TestContainer" popupbackground="blur" onload="updateMinimapPreview()" oncancel="UIPopupButtonClicked()" >
 

@@ -17,10 +17,22 @@ CarouselNav:disabled
 	margin-right: 5px;
 }
 
-
+		 
 DOTABattlePassReward #ItemPips
 {
+	vertical-align: top;
 	horizontal-align: center;
+	flow-children: right-wrap;
+}
+
+DOTABattlePassReward .PaginationButton
+{
+	vertical-align: top;
+}
+
+DOTABattlePassReward .OverlayPips.SmallPips .PaginationButton
+{
+	margin-bottom: 2px;
 }
 
 DOTABattlePassReward CarouselNav
@@ -56,7 +68,7 @@ DOTABattlePassReward CarouselNav
 .OverlayPips .PaginationButton
 {
 	background-color: black;
-	border: 2px solid #63adc8;
+	border: 2px solid #7836D6;
 	box-shadow: -1px -1px 3px 3px fill #000;
 	margin: 8px 2px 8px 8px;
 
@@ -66,7 +78,7 @@ DOTABattlePassReward CarouselNav
 
 .OverlayPips .PaginationButton:selected
 {
-	background-color: #63adc8;
+	background-color: #B685F7;
 }
 
 /* SmallPips style that just shrinks down the pip size */
@@ -98,57 +110,57 @@ DOTABattlePassReward CarouselNav
 	background-color: #63adc8;
 }
 
-/*
-DOTACompManila2016PlayerCardDetailsPopup .Gold.PaginationButton:selected,
-DOTACompManila2016PlayerCardDetailsPopup .Gold.PaginationButton,
-DOTACompManila2016PlayerCardDetailsPopup .Silver.PaginationButton:selected,
-DOTACompManila2016PlayerCardDetailsPopup .Silver.PaginationButton,
-DOTACompManila2016PlayerCardDetailsPopup .Red.PaginationButton:selected,
-DOTACompManila2016PlayerCardDetailsPopup .Red.PaginationButton,
-DOTACompManila2016PlayerCardDetailsPopup .PaginationButton:selected,
-DOTACompManila2016PlayerCardDetailsPopup .PaginationButton
+
+/* Styling for .OnlyPips, which just shows the pips themselves but is otherwise normal*/
+.OnlyPips #PreviousItemButton, .OnlyPips #NextItemButton
 {
-	background-color: #878787;	
-	border-radius: 10%;
-	height: 42px;
-	width: 28px;
-	margin-left: 4px;
-	margin-right: 4px;
-	opacity: 1;
-	border: 1px solid black;
+	visibility: collapse;
 }
 
-DOTACompManila2016PlayerCardDetailsPopup .Gold.PaginationButton { background-color: #CC7917; }
-DOTACompManila2016PlayerCardDetailsPopup .Silver.PaginationButton {	background-color: #878787; }
-DOTACompManila2016PlayerCardDetailsPopup .Red.PaginationButton { background-color: #631F11; }
 
-DOTACompManila2016PlayerCardDetailsPopup .Gold.PaginationButton:selected { border: 1px solid #F9AB36; background-color: #F9AB36; transform: translateY(-2px); }
-DOTACompManila2016PlayerCardDetailsPopup .Silver.PaginationButton:selected { border: 1px solid #B7B7B7; background-color: #B7B7B7; transform: translateY(-2px); }
-DOTACompManila2016PlayerCardDetailsPopup .Red.PaginationButton:selected {  border: 1px solid #B72504; background-color: #B72504; transform: translateY(-2px); }
+/* -- FullWidthCarouselNav -------------------------------------------------- */
 
-DOTACompManila2016PlayerCardDetailsPopup .Gold.PaginationButton:hover { border: 1px solid #F9AB36; }
-DOTACompManila2016PlayerCardDetailsPopup .Silver.PaginationButton:hover { border: 1px solid #B7B7B7; }
-DOTACompManila2016PlayerCardDetailsPopup .Red.PaginationButton:hover { border: 1px solid #B72504; }
-
-DOTACompManila2016PlayerCardDetailsPopup .PaginationArrow
+.FullWidthCarouselNav .LeftSpacer
 {
-	vertical-align: middle;
-	width: 32px;
-	height: 32px;
-	background-size: contain;
-	border-radius: 0px;
-	background-color: transparent;
+	margin-left: 58px;
+	width: fill-parent-flow( 1.0 );
 }
 
-DOTACompManila2016PlayerCardDetailsPopup #ItemCount
+.FullWidthCarouselNav .CenterSpacer
 {
-	width: 150px;
-	text-align: center;
-	font-size: 32px;
-	padding-top: 4px;
-	margin-right: 16px;
+	width: fill-parent-flow( 1.0 );
 }
-*/
+
+/* -- DotaPlusPips -------------------------------------------------- */
+
+.OverlayPips.DotaPlusPips .PaginationButton
+{
+	border: 2px solid dotaPlusLightGold;
+}
+
+.OverlayPips.DotaPlusPips .PaginationButton:selected
+{
+	background-color: dotaPlusLightGold;
+}
+
+.OverlayPips.DotaPlusPips.SmallPips .PaginationButton
+{
+	border: 2px solid dotaPlusLightGold;
+	width: 14px;
+	height: 14px;
+	border-width: 1px;
+	margin: 2px 3px 2px 3px;
+}
+
+.OverlayPips.DotaPlusPips.SmallPips .PaginationButton:selected
+{
+	background-color: dotaPlusLightGold;
+	width: 14px;
+	height: 14px;
+	border-width: 1px;
+	margin: 2px 3px 2px 3px;
+}
+
 
 /* -- VRMode -------------------------------------------------- */
 

@@ -300,6 +300,11 @@ PopupSettings Label
 	width: 453px;
 }
 
+.HotKeySettingsColumn .SettingsSection
+{
+	margin-top: 0px;
+}
+
 #HotKeyScrollContainer
 {
 	vertical-align: bottom;
@@ -575,9 +580,28 @@ PopupSettings Label
 	z-index: 3;
 }
 
+#ChatWheelButton .ChatDialogButtonImage
+{
+	wash-color: #666;
+}
+
+#ChatWheelEmoticon
+{
+	width: 28px;
+	height: 28px;
+	margin: 8px;
+	visibility: collapse;
+}
+
+.ChatWheelButton.HasEmoticon #ChatWheelEmoticon
+{
+	visibility: visible;
+}
+
 #PhrasesButton
 {
 	//visibility: collapse;
+	margin-left: 38px;
 }
 
 #PhrasesButton:hover, #ChatWheelButton:hover
@@ -757,9 +781,14 @@ PopupSettings Label
 	height: 100%;
     width: fill-parent-flow( 0.5 );
     padding: 16px;
+}
+
+.ChatWheelBindOptionsContainer
+{
 	border: 1px solid #000000;
 	box-shadow: #00000033 -2px -2px 4px 4px;
-    background-color: #202023;
+
+	background-color: #202023;
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #202023 ), to( #202023 ) ); 
 	
 	transition-property: background-color, box-shadow, border;
@@ -767,7 +796,7 @@ PopupSettings Label
 	transition-timing-function: ease-in-out;	
 }
 
-#ChatWheelPhraseListContainer.Active 
+.ChatWheelBindOptionsContainer.Active 
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #28395C ), to( #1F2533 ) ); 
 	box-shadow: #000000dd -6px -6px 12px 12px;
@@ -815,6 +844,40 @@ PopupSettings Label
 {
 	horizontal-align: center;
 	margin-top: 16px;
+}
+
+#ChatWheelTabs
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#ChatWheelTabs TabButton
+{
+	margin: 0px 24px;
+}
+
+#ChatWheelTabs TabButton:selected
+{
+	border-bottom: 2px solid #66aadd;
+}
+#ChatWheelTabs TabButton:hover
+{
+	brightness: 2.0;
+}
+#ChatWheelTabs TabButton:active
+{
+	brightness: 1.5;
+}
+
+
+#ChatWheelTabs TabButton Label
+{
+	text-transform: uppercase;
+	text-align: center;
+	padding: 6px 0px 4px 0px;
+	//min-width: 120px;
+	color: #ccc;
 }
 
 .SectionHeaderLine
@@ -1712,14 +1775,14 @@ DOTASettingsCheckbox
 	height: 172px;
 	flow-children: right;
 	padding-top: 0px;
-	margin-top: 18px;
+	margin-top: 12px;
 	margin-bottom: 4px;
 }
 
 
 .ChatDialogButton
 {
-	width: 50%;
+	width: 33%;
 	height: 130px;
 	flow-children: down;
 }
@@ -1736,7 +1799,6 @@ DOTASettingsCheckbox
 	vertical-align: center;
 	horizontal-align: center;
 //	visibility: collapse;
-	wash-color: #666;
 }
 
 .ChatBindDialogButtonLabel
@@ -1848,12 +1910,50 @@ Slider.HorizontalSlider
 	transition-timing-function: ease-in-out;	
 }
 
+.ChatWheelButtonContents
+{
+	vertical-align: center;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.ChatWheelButton.HasEmoticon .ChatWheelButtonContents > Label
+{
+	max-width: 125px;
+}
+
 .ChatWheelButton .ChatWheelSoundIcon
 {
 	vertical-align: middle;
 	margin-right: 4px;
+	visibility: collapse;
 }
 
+.ChatWheelButton.HasSound .ChatWheelSoundIcon
+{
+	visibility: visible;
+}
+
+.ChatWheelButton .ChatWheelSprayImage
+{
+	visibility: collapse;
+	width: 64px;
+	height: 64px;
+	margin-left: 8px;
+	margin-right: 8px;
+	horizontal-align: center;
+	wash-color: #fff;
+}
+
+.ChatWheelButton.IsSpray .ChatWheelSprayImage
+{
+	visibility: visible;
+}
+
+.ChatWheelButton.IsSpray Label
+{
+	margin-right: 96px;
+}
 
 #BottomChatWheelPanel .ChatWheelButton
 {
@@ -1984,9 +2084,13 @@ Slider.HorizontalSlider
 {
 	brightness: 1.5;
 }
-.ChatWheelPhraseChoiceLine.MessageHasSound #ChatWheelSoundButton
+.ChatWheelPhraseChoiceLine.MessageHasSound:not(.IsSpray) #ChatWheelSoundButton
 {
 	visibility: visible;
+}
+.IsSpray #ChatWheelSoundButton
+{
+	vertical-align: center;
 }
 
 .ChatWheelAllLabel
@@ -2018,37 +2122,112 @@ Slider.HorizontalSlider
 	color: white;
 }
 
-.ChatWheelUnlockLevel
+.ChatWheelUnlockInfo_EventLevel > Label
 {
 	text-align: right;
 	margin-right: 6px;
 	width: 90px;
 	letter-spacing: 0px;
-	color: textColoredDarkColor;
+	color: textShadeColor;
 	text-transform: uppercase;
-
-	visibility: collapse;
 }
 
+.IsSpray .ChatWheelUnlockInfo_EventLevel > Label
+{
+	vertical-align: center;
+}
 
 .ChatWheelPhraseChoiceLine.MessageHasSound .ChatWheelPhraseChoiceText
 {
 	color: #555;
 }
 
-.MessageIsUnlocked .ChatWheelUnlockLevel
+#ChatWheelMessageUnlockInfo
 {
-	color: textColoredMediumColor;
+	vertical-align: center;
 }
 
-.MessageUnlockedByEvent .ChatWheelUnlockLevel
+.ChatWheelSprayImage
+{
+	visibility: collapse;
+
+	horizontal-align: left;
+	vertical-align: middle;
+	background-image: url("s2r://panorama/images/settings_chatwheel_png.vtex");
+	background-size: contain;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+    width: 64px;
+    height: 64px;
+	wash-color: #666;
+	margin-left: 24px;
+}
+
+.IsSpray .ChatWheelSprayImage
 {
 	visibility: visible;
-	
-	
 }
 
-.ChatWheelHeader
+.MessageHasSound.IsSpray .ChatWheelSprayImage
+{
+	margin-left: 0px;
+}
+
+.MessageIsUnlocked .ChatWheelSprayImage
+{
+	wash-color: #fff;
+}
+
+.MessageIsUnlocked .ChatWheelUnlockInfo_EventLevel > Label
+{
+	color: textAccentColor;
+}
+
+.ChatWheelUnlockInfo_ShardsPurchase
+{
+	margin-right: 8px;
+}
+
+.ChatWheelUnlockInfo_ShardsPurchase #LockIcon
+{
+	width: 20px;
+	height: 20px;
+
+	background-image: url("s2r://panorama/images/control_icons/lock_medium_png.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+
+	wash-color: dotaPlusGold;
+
+	tooltip-position: left;
+	tooltip-body-position: 50% 50%;
+
+	opacity: 1.0;
+}
+
+.ChatWheelUnlockInfo_ShardsPurchase #LockIcon:hover
+{
+	brightness: 2.0;
+}
+
+.ChatWheelUnlockInfo_ShardsPurchase #LockIcon:active
+{
+	brightness: 1.5;
+}
+
+.MessageIsUnlocked .ChatWheelUnlockInfo_ShardsPurchase #LockIcon
+{
+	opacity: 0.0;
+}
+
+.ChatWheelCategory
+{
+	width: 100%;
+	flow-children: down;
+}
+
+#ChatWheelHeader
 {
 	width: 100%;
 	border-bottom: 1px solid #3b3f40;
@@ -2057,7 +2236,7 @@ Slider.HorizontalSlider
 	flow-children: right;
 }
 
-.ChatWheelHeader > Label
+#ChatWheelHeader > Label
 {
 	color:  #939da0;
 	font-size: 20px;
@@ -2067,16 +2246,32 @@ Slider.HorizontalSlider
 	transition-duration: .32s;		
 }
 
-.ChatWheelHeader.First
+#ChatWheelHeader #ChatWheelCategoryLink
+{
+	font-size: 16px;
+	vertical-align: middle;
+	color: #999;
+	letter-spacing: 2px;
+}
+
+#ChatWheelHeader #ChatWheelCategoryLink:hover
+{
+	brightness: 2.0;
+}
+#ChatWheelHeader #ChatWheelCategoryLink:active
+{
+	brightness: 1.5;
+}
+
+#ChatWheelHeader.First
 {
     margin-top: 0px;
 }
 
-
-.ChatWheelHeader .CategoryIcon
+#ChatWheelHeader .CategoryIcon
 {
-	width: 27px;
-	height: 27px;
+	width: 22px;
+	height: 22px;
 
 	margin-right: 4px;
 
@@ -2091,22 +2286,50 @@ Slider.HorizontalSlider
 
 }
 
-.ChatWheelHeader.ActiveEventCategory
+.ChatWheelCategory.ActiveEventCategory #ChatWheelHeader
 {
-	border-bottom: 1px solid textColoredVeryBrightColor&33;
+	border-bottom: 1px solid textUltraBrightColor&33;
 }
 
-.ChatWheelHeader.ActiveEventCategory .CategoryIcon
+.ChatWheelCategory.ActiveEventCategory #ChatWheelHeader .CategoryIcon
 {
 	visibility: visible;
-	background-image: url("s2r://panorama/images/badges/international_2017_battle_pass_badge_4_png.vtex");
+	background-image: chatWheelCategoryIcon;
 }
 
-.ChatWheelHeader.ActiveEventCategory > Label
+.ChatWheelCategory.ActiveEventCategory #ChatWheelHeader > Label
 {
-	color: textColoredVeryBrightColor;
+	color: textUltraBrightColor;
+	letter-spacing: 1px;
 }
 
+
+.ChatWheelCategory.DotaPlusCategory #ChatWheelHeader
+{
+	border-bottom: 1px solid dotaPlusGold&66;
+}
+
+.ChatWheelCategory.DotaPlusCategory #ChatWheelHeader .CategoryIcon
+{
+	visibility: visible;
+	background-image: url("s2r://panorama/images/dota_plus/dotaplus_logo_small_png.vtex");
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	transform: translateY( -2px );
+}
+
+.ChatWheelCategory.DotaPlusCategory #ChatWheelHeader > Label
+{
+	margin-left: 2px;
+	color: dotaPlusGoldGradient;
+}
+
+.ChatWheelCategory #ChatWheelMessages
+{
+	flow-children: down;
+	width: 100%;
+}
 
 .AudioVideoPanelButton
 {
@@ -2547,7 +2770,7 @@ a
 	//width: 1508px;
 	flow-children: right;
 	//height: fill-parent-flow (1.0);
-	margin-top: 32px;
+	margin-top: 20px;
 }
 
 
@@ -3298,3 +3521,108 @@ DOTASettingsEnum .EnumButton
 	letter-spacing: 1px;
 }
 
+#ItemsTPBindingContainer
+{
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin-right: 106px;
+	margin-bottom: 52px;
+	overflow: noclip;
+}
+
+.AspectRatio4x3 #ItemsTPBindingContainer
+{
+	margin-right: 72px;
+}
+
+.AspectRatio4x3 #ItemsTPBindingImage
+{
+	margin-right: 88px;
+}
+
+
+#ItemsTPBindingContainer .ItemBindButton
+{
+	width: 69px;
+	height: 69px;
+	border-radius: 50%;
+}
+
+#ItemsTPBindingImage
+{
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-image: url("s2r://panorama/images/items/tpscroll_png.vtex");
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;	
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin-right: 122px;
+	margin-bottom: 66px;
+	saturation: 0;
+	brightness: 18;
+	wash-color: #2B2F30;
+	opacity: .2;
+	z-index: 20;	
+}
+
+#ChatWheelEmoticonListContainer
+{
+	margin: 8px;
+    flow-children: down;
+	height: 100%;
+    width: fill-parent-flow( 0.20 );
+    padding: 8px;
+}
+
+
+#ChatWheelEmoticonListContainer DOTAEmoticonPicker
+{
+	background-color: #00000000;
+}
+
+.ChatWheelEmoticonListTitle
+{
+	horizontal-align: center;
+	text-align: center;
+}
+
+#ChatWheelEmoticonPicker
+{
+	height: 100%;
+}
+
+
+#ChatWheelEmoticonListContainer DOTAEmoticonPicker #EmoticonDisplay
+{
+	height: 100%;
+	visibility: collapse;
+}
+
+.ChatWheelEmoticonPicker > #EmoticonsContainer
+{
+	max-width: 999px;
+    max-height: 999px;
+	height: 95%;
+}
+
+.BPFeatureIcon
+{
+	horizontal-align: left;
+	vertical-align: top;
+	width: 14px;
+	height: 14px;
+	margin: 2px;
+	margin-top: 4px;
+	margin-right: 2px;
+	background-size: 100%;
+	background-image: bp_point_log_pass_activated;
+}
+
+.EmoticonsContainerTitle
+{
+	margin-left: 4px;
+	horizontal-align: left;
+}

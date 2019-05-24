@@ -1,7 +1,7 @@
 .FrontpageCell
 {
 	width: 336px;
-	height: 232px;
+	height: 234px;
 
 	box-shadow: fill #00000055 -2px -2px 4px 4px;
 
@@ -32,7 +32,7 @@
 
 .TallCell
 {
-	height: 487px;
+	height: 484px;
 }
 
 .FrontpageCellImage
@@ -65,6 +65,11 @@
 	transition-property: color;
 	transition-duration: 0.15s;
 	transition-timing-function: ease-in; 	
+}
+
+.DotaPlusFrontpageCell .FrontpageCellHeader
+{
+	color: dotaPlusGold;
 }
 
 .FrontpageCell:hover > .FrontpageCellHeader
@@ -115,6 +120,11 @@
 	letter-spacing: 1px;
 	text-shadow: 0px 1px 3px 3.0 #000000;	
 	z-index: 1;
+}
+
+.BattlePassFrontpageCell .FrontpageCellTitle
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( #07A003 ), to( #116977 ) );
 }
 
 .FrontpageCellText
@@ -500,96 +510,8 @@
 	width: 336px;
 }
 
-
-.CampaignTitle
-{
-	font-size: 42px;
-	color: white;
-	color: gradient( linear, 0% 0%, 0% 100%, from( #ACC7CE ), color-stop( .3, #123038 ), color-stop( .3, #123038 ), color-stop( .8, #08536A ), to( #04FFD4 ) );	
-	padding: 16px;
-	padding-right: 4px;
-	padding-bottom: 0px;
-	horizontal-align: center;
-	text-align: center;
-}
-
-#CampaignTitleContainer
-{
-	horizontal-align: center;
-	vertical-align: bottom;
-	margin-bottom: 48px;
-	transform: translateY(0px);
-	
-	transition-property: transform;
-	transition-duration: .32s;
-	transition-timing-function: ease-in-out;
-}
-
-.FrontpageCell.TopRightCell.TallCell:hover #CampaignTitleContainer
-{
-	transform: translateY(-64px);
-}
-
-.FrontpageCell.TopRightCell.TallCell:hover #DungeonContainer .ComingSoonSticker
-{
-	transform: translateY(0px);
-}
-
-.TitleFx
-{
-	horizontal-align: center;
-	vertical-align: top;
-	margin-bottom: 20px;
-	z-index: -1;
-}
-
-.CampaignTitle.Rim
-{
-	transform: translateX(-1px) translateY(1px);
-	text-shadow: 0px 0px 2px 2.0 #000;
-	color: gradient( linear, 0% 0%, 0% 100%, from( #ACC7CE ), color-stop( .2, #08536A ), to( #04FFD4 ) );	
-}
-
-.CampaignTitle.Glow 
-{
-	color: transparent;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-out;
-}
-
-.CampaignBackgroundImage
-{
-	width: 100%;
-	height: 100%;
-	background-image: url("s2r://panorama/images/battlepass/ti7/campaign/frontpage_2stack_psd.vtex");	
-	background-size: contain;
-	z-index: -1;
-}
-
-.CampaignTitle.Glow1 { text-shadow: 0px -2px 6px 2 #0008; }
-.CampaignTitle.Glow2 { text-shadow: 0px -6px 12px 2 #0008; }
-.CampaignTitle.Glow3 { text-shadow: 0px -12px 18px 2 #0006; }
-.CampaignTitle.Glow4 { text-shadow: 0px -18px 26px 2 #0004; }
-
-
-.FrontPageCampaignDetails
-{
-	margin: 16px;
-	vertical-align: bottom;
-	horizontal-align: center;
-	
-}
-
-.FrontPageCampaignDetails Label
-{
-	font-size: 14px;
-	color: white;
-	
-}
-
 #KunkkaPrestigeScene,
-#IoArcanaScene,
-#BattleBundle2017
+#IoArcanaScene
 {
 	width: 100%;
 	height: 100%;
@@ -614,12 +536,6 @@
 
 .Bundle.Vignette
 {
-	z-index: -1;
-}
-
-#BattleBundle2017
-{
-	hue-rotation: -160deg;
 	z-index: -1;
 }
 
@@ -747,150 +663,12 @@
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #192229 ), to( #000000 ) );	
 }
 
-
-.PercentOffLabel
-{
-	font-size: 32px;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	horizontal-align: right;
-	transform: rotateZ(10deg);
-	margin-top: 48px;
-	margin-right: 16px;
-	
-	color: white;
-	font-weight: bold;
-	text-shadow: 0px 0px 4px 3.0 #000000;
-	background-color: #31CAFBaa;
-	padding: 0px 12px -6px 16px;
-	box-shadow: #000000 -2px -2px 4px 4px;
-	border-radius: 8px;
-	border: 2px solid #1A424Dde;
-}
-
-#BattleLevelBundlePanel .FrontpageCellImage
-{
-	background-color: gradient( radial, 50% 40%, 0% 0%, 300px 300px, from( #67A3BB ), color-stop( .5, #517A9411 ), to( #000000ff ) );	
-	z-index: -2;
-}
-
-#80Container
-{
-	vertical-align: middle;
-	margin-bottom: -10px;
-}
-
-
-.IncludesContainer
-{
-	width: 100%;
-	vertical-align: bottom;
-	margin-bottom: 16px;
-	margin-left: 16px;
-}
-
-.BattleLevelsLabel,
-.Plus
-{
-	color: #A6DAFF;
-	//font-weight: bold;
-	vertical-align: middle;
-	margin-bottom: 4px;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-}
-
-
-.Plus
-{
-	margin-bottom: 5px;
-}
-
-#BundleTitle
-{
-	font-size: 32px;
-	text-overflow: shrink;
-	height: 50px;
-	letter-spacing: 2px;
-	margin: 0px;
-	text-align: center;
-	horizontal-align: center;
-	margin-right: 16px;
-	margin-left: 0px;
-	margin-bottom: -4px;
-	color: #A6DAFF;
-	text-shadow: 0px 0px 8px 1.0 #2AAAD5ee;
-	margin-bottom: 8px;
-	font-family: Goudy Trajan Medium,FZKai-Z03,TH Sarabun New,YDYGO 540;
-	
-}
-
-#BattleLevelBundlePanel .FrontpageCellTitle	
-{
-	visibility: collapse;
-}
-
-#BattleLevelCircle
-{
-	margin-left: -4px;
-	width: 34px;
-	height: 32px;
-	vertical-align: center;
-	wash-color: #A6DAFF;
-
-	
-	padding-top: 4px;
-	padding-bottom: 4px;
-	margin-bottom: 6px;
-
-	background-image: url("s2r://panorama/images/compendium/shield_icon_shadowed_psd.vtex");
-	background-size: cover;
-}
-
-.80Levels
-{
-	horizontal-align: center;
-	text-align: center;
-	color: white;
-	padding-top: 1px;
-	letter-spacing: 1px;
-}
-
-
-.BundleText
-{
-	text-transform: uppercase;
-	color: #A6DAFF;	
-	letter-spacing: 1px;
-	line-height: 24px;
-}
-
-
-.BundleIncludes.BundleText
-{
-	font-size: 14px;
-	letter-spacing: 2px;
-	margin-bottom: 6px;
-	color: #69A4BE;
-	text-shadow: 1px 1px 1px 2.0 #000;
-}
-
-	
-#BundlePurchaseButton
-{
-	horizontal-align: center;
-	margin-left: -8px;	
-
-}
-
 #TI7Teams
 {
 	width: 100%;
 	height: 100%;
 	z-index: 0;
 }
-
-
 
 .InternationalCell .FrontpageCellHeader
 {
@@ -1121,4 +899,29 @@
 .EventPresentClaimed #FrostivusTitleCollected
 {
     visibility:visible;
+}
+
+#TerrainVideoPanel
+{
+	width: 100%;
+	height: 100%;
+}
+
+#WinnersAegisBackground
+{
+	horizontal-align:center;
+	vertical-align:bottom;
+}
+
+#WinnersAegis
+{
+	width: 300px;
+	height: 300px;
+	margin-left: 10px;
+	margin-top: 220px;
+
+	//transform: translateX( 794px ) translateY( 70px );
+
+	transition-property: opacity;
+	transition-duration: 0.4s;
 }

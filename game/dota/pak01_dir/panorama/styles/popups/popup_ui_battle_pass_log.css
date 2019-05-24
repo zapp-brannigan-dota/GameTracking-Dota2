@@ -11,7 +11,7 @@ DOTAPopupUIBattlePassLog.PopupPanel
 	margin-top: 50px;
 	animation-name: none;
 	background-color: black;
-	background-color: gradient( linear, 0% 0%, 140% 0%, from( #22282Af4 ), to( #000000 ) );
+	background-color: secondaryGradient;
 	border: 0px;
 	box-shadow: fill black -8px -8px 20px 16px;
 	padding: 0px;
@@ -27,15 +27,11 @@ DOTAPopupUIBattlePassLog.PopupPanel
 #TitleBackground
 {
 	width: 100%;
-	background-image: url("s2r://panorama/images/compendium/international2017/battlepointlog_header_psd.vtex");
+	height: 140px;
+								 
+	background-image: bp_battlepoint_popup_header;
 	background-size: 100%;
-    border-top: 1px solid #b3ff9f09;
-	
-	/* Winter 2017 */
-	border-top: 1px solid #9fdcff09;
-	
-	/* TI7 */
-	border-top: 1px solid bp_color9&09;
+	border-top: 1px solid darkColor;
 	
 	flow-children: none;
 	
@@ -57,40 +53,20 @@ DOTAPopupUIBattlePassLog.PopupPanel
 {
 	font-size: 24px;
 	margin-top: 78px;
-	color: textBrightColor;
+	color: accentColorBright;
 }
 
-DOTAPopupUIBattlePassLog #LevelWell
+#EventLevelShield
 {
-	horizontal-align: left;
-	margin-left: 0px;
-	margin-top: 32px;
-	margin-bottom: 32px;
-}
-
-DOTAPopupUIBattlePassLog #LevelCircle .TotalLevel
-{
-	text-overflow: shrink;
-	margin: 0px;
-	horizontal-align: center;
-	//border: 1px solid red;
-	text-align: center;
+	ui-scale: 110%;
+	margin-left: 20px;
 	vertical-align: middle;
-	color: white;
-	font-size: 132px;
-	width: 58px;
-	
-	opacity: 0;
-	
+
+	opacity: 0.0;
+
 	transition-duration: .6s;
 	transition-property: opacity; 
 	transition-timing-function: ease-in-out;
-}
-
-DOTAPopupUIBattlePassLog #LevelCircle
-{
-	width: 92px;
-	height: 92px;
 }
 
 .TotalPoints
@@ -103,8 +79,8 @@ DOTAPopupUIBattlePassLog #LevelCircle
 	transition-timing-function: ease-in-out;
 }
 
-.ReceivedLog #Body,
-DOTAPopupUIBattlePassLog.ReceivedLog #LevelCircle .TotalLevel,
+DOTAPopupUIBattlePassLog.ReceivedLog #Body,
+DOTAPopupUIBattlePassLog.ReceivedLog #EventLevelShield,
 DOTAPopupUIBattlePassLog.ReceivedLog .TotalPoints
 {
     opacity: 1;
@@ -143,7 +119,7 @@ DOTAPopupUIBattlePassLog.ReceivedLog .TotalPoints
 	text-transform: uppercase;
 	font-weight: thin;
 	letter-spacing: 2px;
-	color: textBrightColor;
+	color: accentColorBright;
 	text-overflow: shrink;
 
 }
@@ -155,7 +131,6 @@ DOTAPopupUIBattlePassLog.ReceivedLog .TotalPoints
 
 #Body
 {
-//    width: 100%;
     flow-children: down;
     overflow: clip scroll;
 	padding-right: 8px;

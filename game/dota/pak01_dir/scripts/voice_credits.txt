@@ -10,6 +10,10 @@
 		{
 			"invoker"		"1"
 		}
+		"Steve Blum"
+		{
+			"grimstroke"		"1"
+		}
 		"Ashly Burch"
 		{
 			"dark_willow"		"1"
@@ -34,6 +38,10 @@
 			"chaos_knight"		"1"
 			"phantom_lancer"		"1"
 			"rubick"		"1"
+		}
+		"Trevor Devall"
+		{
+			"mars"		"1"
 		}
 		"Dave Fennoy"
 		{

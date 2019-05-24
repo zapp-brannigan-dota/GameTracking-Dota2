@@ -778,6 +778,14 @@
 			"width"		"32"
 			"height"		"32"
 		}
+		"minimap_heroicon_npc_dota_hero_pudge_alt1"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"32"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}		
 		"minimap_heroicon_npc_dota_hero_pugna"
 		{
 			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
@@ -1458,6 +1466,14 @@
 			"width"		"32"
 			"height"		"32"
 		}
+		"minimap_heroicon_npc_dota_hero_arc_warden_tempest_double"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"64"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}
 		"minimap_heroicon_npc_dota_hero_abyssal_underlord"
 		{
 			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
@@ -1489,6 +1505,46 @@
 			"y"		"256"
 			"width"		"32"
 			"height"		"32"
-		}		
+		}
+		"minimap_heroicon_npc_dota_hero_grimstroke"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"96"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}
+		"minimap_heroicon_npc_dota_hero_rubick_alt1"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"128"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}
+		"minimap_heroicon_npc_dota_hero_mars"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"160"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}
+		"minimap_heroicon_npc_dota_hero_earthshaker_alt1"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"192"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}			
+		"minimap_heroicon_npc_dota_hero_earthshaker_alt2"
+		{
+			"file"		"materials/vgui/hud/minimap_hero_sheet.vmat"
+			"x"		"224"
+			"y"		"256"
+			"width"		"32"
+			"height"		"32"
+		}			
 	}
 }

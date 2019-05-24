@@ -9,9 +9,8 @@
 // Markup volumes
 //
 //--------------------------------------------------------------------------------------------------
-@SolidClass base(Targetname, Parentname, Global) = markup_volume : "Generic markup volume entity, can be queried in-game by name/type/location"
+@SolidClass base(Targetname, Parentname, Global, EnableDisable) = markup_volume : "Generic markup volume entity, can be queried in-game by name/type/location"
 [
-	// TODO: add 'EnableDisable' functionality (need to add to CMarkupVolume also)
 ]
 
 
@@ -53,8 +52,20 @@
 	navProperty_NavAttributes(tag_list) : "Nav Attributes"  =
 	[
 		"AVOID": "Avoid" : 0
+		"SPLIT": "Split" : 0
 	]
 
 	// See markup_volume_tagged
 	tagFieldNames(string) : "<internal>" : "navProperty_NavAttributes" : "<internal>"
 ]
+
+
+@SolidClass base(markup_volume_tagged) 
+	vecline_local( ref_position, 255, 255, 255 )
+	text_local( ref_position, "  Ref Pos", 255, 255, 255 )
+ = markup_volume_with_ref : "Tagged markup volume entity with a target reference point.  Points are only in volume if behind the reference point relative to a given query position."
+[
+	ref_position(local_point) : "Ref Pos" : "0 0 0" : "Reference position."
+	use_ref_position(boolean) : "Use Reference Position" : 1 : "Use the reference position when calculating validity of query positions."
+]
+

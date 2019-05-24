@@ -151,6 +151,36 @@ DOTAHeroSetPicker.EnableSaveAsCustomSet.npc_dota_hero_broodmother #ScenePanel	{ 
 	visibility: visible;
 }
 
+#Equipped, #Shuffled
+{
+	width: 32px;
+	height: 32px;
+	horizontal-align: right;
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: 100%;
+	wash-color: #B3DFDC;
+	visibility: collapse;
+}
+
+#Equipped
+{
+    background-image: url("s2r://panorama/images/status_icons/econtooltip_equipped_psd.vtex");
+}
+DOTAContextMenuHeroSetPicker:not(.HeroSetShuffleEnabled) DOTAHeroSetPickerSet.Equipped #Equipped
+{
+	visibility: visible;
+}
+
+#Shuffled
+{
+    background-image: url("s2r://panorama/images/status_icons/econtooltip_shuffled_psd.vtex");
+}
+DOTAContextMenuHeroSetPicker.HeroSetShuffleEnabled DOTAHeroSetPickerSet.InShuffle #Shuffled
+{
+	visibility: visible;
+}
+
 
 /* Slightly different styling when inside the set picker */
 

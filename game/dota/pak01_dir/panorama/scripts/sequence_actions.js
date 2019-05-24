@@ -29,23 +29,46 @@ RunSequentialActions.prototype.start = function ()
 }
 RunSequentialActions.prototype.update = function ()
 {
-	if ( this.currentActionIndex >= this.actions.length )
-		return false;
+	while ( this.currentActionIndex < this.actions.length )
+	{
+		if ( !this.currentActionStarted )
+		{
+	        this.actions[this.currentActionIndex].start();
+	        this.currentActionStarted = true;
+		}
 
-	if ( !this.currentActionStarted )
-	{
-		this.actions[this.currentActionIndex].start();
-		this.currentActionStarted = true;
+		if ( !this.actions[this.currentActionIndex].update() )
+		{
+			this.actions[this.currentActionIndex].finish();
+
+			this.currentActionIndex++;
+			this.currentActionStarted = false;
+		}
+		else
+		{
+			return true;
+		}
 	}
-	if ( !this.actions[ this.currentActionIndex ].update() )
+
+	return false;
+}
+RunSequentialActions.prototype.finish = function ()
+{
+	while ( this.currentActionIndex < this.actions.length )
 	{
+		if ( !this.currentActionStarted )
+		{
+			this.actions[this.currentActionIndex].start();
+			this.currentActionStarted = true;
+
+			this.actions[this.currentActionIndex].update();
+		}
+
 		this.actions[this.currentActionIndex].finish();
 
 		this.currentActionIndex++;
 		this.currentActionStarted = false;
 	}
-
-	return this.currentActionIndex < this.actions.length;
 }
 
 
@@ -86,6 +109,55 @@ RunParallelActions.prototype.update = function ()
 	}
 
 	return anyTicking;
+}
+RunParallelActions.prototype.finish = function ()
+{
+	for ( var i = 0; i < this.actions.length; ++i )
+	{
+		if ( !this.actionsFinished[ i ] )
+		{
+			this.actions[ i ].finish();
+			this.actionsFinished[ i ] = true;
+		}
+	}
+}
+
+// Action to rum multiple actions in parallel, but with a slight stagger start between each of them
+function RunStaggeredActions( staggerSeconds )
+{
+	this.actions = [];
+	this.staggerSeconds = staggerSeconds;
+}
+RunStaggeredActions.prototype = new BaseAction();
+RunStaggeredActions.prototype.start = function ()
+{
+	this.par = new RunParallelActions();
+
+	for ( var i = 0; i < this.actions.length; ++i )
+	{
+		var delay = i * this.staggerSeconds;
+		if ( delay > 0 )
+		{
+			var seq = new RunSequentialActions();
+			seq.actions.push( new WaitAction( delay ) );
+			seq.actions.push( this.actions[i] );
+			this.par.actions.push( seq );
+		}
+		else
+		{
+			this.par.actions.push( this.actions[i] );
+		}
+	}
+
+	this.par.start();
+}
+RunStaggeredActions.prototype.update = function ()
+{
+	return this.par.update();
+}
+RunStaggeredActions.prototype.finish = function ()
+{
+	this.par.finish();
 }
 
 
@@ -280,6 +352,20 @@ RemoveClassAction.prototype.update = function ()
 	return false;
 }
 
+// Switch a class on a panel
+function SwitchClassAction( panel, panelSlot, panelClass )
+{
+	this.panel = panel;
+	this.panelSlot = panelSlot;
+	this.panelClass = panelClass;
+}
+SwitchClassAction.prototype = new BaseAction();
+SwitchClassAction.prototype.update = function ()
+{
+	this.panel.SwitchClass( this.panelSlot, this.panelClass );
+	return false;
+}
+
 // Action to wait for a class to appear on a panel
 function WaitForClassAction( panel, panelClass )
 {
@@ -382,6 +468,52 @@ AnimateProgressBarAction.prototype.finish = function ()
 	this.progressBar.value = this.endValue;
 }
 
+
+// Action to animate a progress bar	with middle
+function AnimateProgressBarWithMiddleAction( progressBar, startValue, endValue, seconds )
+{
+	this.progressBar = progressBar;
+	this.startValue = startValue;
+	this.endValue = endValue;
+	this.seconds = seconds;
+}
+AnimateProgressBarWithMiddleAction.prototype = new BaseAction();
+AnimateProgressBarWithMiddleAction.prototype.start = function ()
+{
+	this.startTimestamp = Date.now();
+	this.endTimestamp = this.startTimestamp + this.seconds * 1000;
+}
+AnimateProgressBarWithMiddleAction.prototype.update = function ()
+{
+	var now = Date.now();
+	if ( now >= this.endTimestamp )
+		return false;
+
+	var ratio = ( now - this.startTimestamp ) / ( this.endTimestamp - this.startTimestamp );
+	this.progressBar.uppervalue = this.startValue + ( this.endValue - this.startValue ) * ratio;
+	return true;
+}
+AnimateProgressBarWithMiddleAction.prototype.finish = function ()
+{
+	this.progressBar.uppervalue = this.endValue;
+}
+
+
+// Action to play a sound effect
+function PlaySoundEffect( soundName )
+{
+	$.DispatchEvent( 'PlaySoundEffect', soundName );
+}
+function PlaySoundEffectAction( soundName )
+{
+	this.soundName = soundName;
+}
+PlaySoundEffectAction.prototype = new BaseAction();
+PlaySoundEffectAction.prototype.update = function ()
+{
+	PlaySoundEffect( this.soundName );
+	return false;
+}
 
 // ----------------------------------------------------------------------------
 

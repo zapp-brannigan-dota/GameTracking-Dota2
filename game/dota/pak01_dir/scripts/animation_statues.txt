@@ -121,7 +121,7 @@
 		}
 		"npc_dota_hero_drow_ranger"
 		{
-			"models/heroes/drow/drow.vmdl"   "#DOTA_STATUE_name_model_drow"
+			"models/heroes/drow/drow_base.vmdl"   "#DOTA_STATUE_name_model_drow"
 		}
 		"npc_dota_hero_earthshaker"
 		{
@@ -154,6 +154,10 @@
 		"npc_dota_hero_furion"
 		{
 			"models/heroes/furion/furion.vmdl"   "#DOTA_STATUE_name_model_furion"
+		}
+		"npc_dota_hero_grimstroke"
+		{
+			"models/heroes/grimstroke/grimstroke.vmdl"   "#DOTA_STATUE_name_model_grimstroke"
 		}
 		"npc_dota_hero_gyrocopter"
 		{
@@ -226,6 +230,10 @@
 		{
 			"models/heroes/lycan/lycan.vmdl"   "#DOTA_STATUE_name_model_lycan"
 			"models/heroes/lycan/lycan_wolf.vmdl"   "#DOTA_STATUE_name_model_lycan_wolf"
+		}
+		"npc_dota_hero_mars"
+		{
+			"models/heroes/mars/mars.vmdl"   "#DOTA_STATUE_name_model_mars"
 		}
 		"npc_dota_hero_magnataur"
 		{
@@ -584,6 +592,7 @@
 			"ancient_run_injured"		"1"
 			"aa_teleport"		"1"
 			"aa_teleport_end"		"1"
+			"aa_ti9_taunt_effigy"		"ti9_taunt"
 		}
 		"models/heroes/antimage/antimage.vmdl"
 		{
@@ -610,6 +619,7 @@
 			"basher_loadout"        "offhand_basher"
 			"basher_bash"           "offhand_basher"
 			"basher_cast4_mana_void"    "offhand_basher"
+			"taunt_technomage_effigy"	"taunt_antimage_cheer"
 		}
 		"models/heroes/axe/axe.vmdl"
 		{
@@ -631,6 +641,28 @@
 			"forcestaff"			"1"
 			"runN_blood_chaser"		"blood_chaser"
 			"run_injured_blood_chaser"		"blood_chaser"
+		}
+		"models/items/axe/ti9_jungle_axe/axe_bare.vmdl"
+		{
+			"ti9_axe_loadout_roar_fist_effigy"		"1"
+			"axe_taunt_01_come_get_it_effigy"		"come_get_it"
+			"ti9_axe_attack_effigy"			"1"
+			"ti9_axe_attack_left_effigy"		"1"
+			"ti9_axe_attack_smash_effigy"		"1"
+			"ti9_axe_attack_uppercut_effigy"	"1"
+			"ti9_axe_attack_kick_effigy"		"1"
+			"ti9_axe_attack_slap_effigy"		"1"
+			"ti9_axe_run_injured_effigy"		"1"
+			"ti9_axe_idle_injured_effigy"		"1"
+			"ti9_axe_victory_effigy"		"1"
+			"ti9_axe_berserkers_call_effigy"	"1"
+			"ti9_axe_counter_helix_effigy"		"1"
+			"ti9_axe_culling_blade_effigy"		"1"
+			"ti9_stun_effigy"			"1"
+			"ti9_axe_flail_effigy"			"1"
+			"ti9_runn_effigy"			"1"
+			"ti9_axe_forcestaff_effigy"		"1"
+			"ti9_axe_teleport_end_effigy"		"1"
 		}
 		"models/heroes/bane/bane.vmdl"
 		{
@@ -682,6 +714,7 @@
 			"cast2_call_hawk"		"1"
 			"beastmaster_teleport"		"1"
 			"beastmaster_teleport_end"		"1"
+			"taunt_drums_effigy"	"drum_beat"
 		}
 		"models/heroes/blood_seeker/blood_seeker.vmdl"
 		{
@@ -869,6 +902,7 @@
 			"run"		"1"
 			"phantasm"		"1"
 			"lloadout_spawn"			"1"
+			"taunt_dressage_effigy"		"ck_gesture"
 		}
 		"models/heroes/chen/chen.vmdl"
 		{
@@ -1052,6 +1086,7 @@
 			"idle_injured"		"1"
 			"disabled"		"1"
 			"flail"			"1"
+			"taunt_jazz_hands_effigy"	"ti8_taunt"
 		}
 		"models/heroes/Disruptor/disruptor.vmdl"
 		{
@@ -1133,7 +1168,7 @@
 			"dragon_run"		"1"
 			"dragon_change"		"1"
 		}
-		"models/heroes/drow/drow.vmdl"
+		"models/heroes/drow/drow_base.vmdl"
 		{
 			"idle"			"1"
 			"attack01"		"1"
@@ -1169,6 +1204,25 @@
 			"flail"			"1"
 			"spawn"			"1"
 		}
+		"models/items/earthshaker/earthshaker_arcana/earthshaker_arcana.vmdl"
+		{
+			"es_arc_loadout_effigy"		"1"
+			"es_arc_attack1_alt_effigy"	"1"
+			"es_arc_attack3_effigy"		"1"
+			"arc_run_alt_effigy"		"1"
+			"arc_run_alt_slam_effigy"	"1"
+			"es_arc_cast_enchant_totem_effigy"	"1"
+			"es_arc_forcestaff_effigy"		"1"
+			"es_arc_totem_attack_effigy"		"1"
+			"es_arc_flail_effigy"		"1"
+			"es_arc_stun_effigy"		"1"
+			"es_arc_blink_dagger_end_effigy"	"1"
+			"es_arcana_cast_fissure_effigy"		"1"
+			"es_arcana_cast_echoslam_effigy"	"1"
+			"es_arcana_victory_effigy"		"1"
+			"es_generic_channel_effigy"		"1"
+			"es_arc_teleport_effigy"		"1"
+		}
 		"models/heroes/earth_spirit/earth_spirit.vmdl"
 		{
 			"idle_staff"		"1"
@@ -1194,6 +1248,7 @@
 			"injured_idle"			"1"
 			"run_injured"			"1"
 			"ability_petrify_aghanim_effigy"	"1"
+			"taunt_hang_ten_effigy"		"hang_ten_gesture"
 		}
 		"models/heroes/elder_titan/elder_titan.vmdl"
 		{
@@ -1273,6 +1328,7 @@
 			"idle"			"1"
 			"stun"			"1"
 			"flail"			"1"
+			"enigma_ti8_effigy"	"tube_ti8"
 		}
 		"models/heroes/faceless_void/faceless_void.vmdl"
 		{
@@ -1337,6 +1393,22 @@
 			"suffer_castTeleport"           "suffer"
 			"suffer_idleAlt"                "suffer"
 			"taunt_make_it_rain_effigy"		"rain_gesture"
+		}
+		"models/heroes/grimstroke/grimstroke.vmdl"
+		{
+			"gs_idle_debut_effigy"		"1"
+			"gs_idle_versus_effigy"		"1"
+			"gs_run_haste_effigy"		"1"
+			"gs_run_effigy"		"1"
+			"gs_stun_effigy"		"1"
+			"gs_generic_channel_effigy"		"1"
+			"gs_cast1_masters_hand_effigy"		"1"
+			"gs_cast3_ink_swell_effigy"		"1"
+			"gs_cast3_ink_swell_self_effigy"		"1"
+			"gs_cast4_point_soul_chain_effigy"		"1"
+			"gs_spawn_loadout_effigy"		"1"
+			"gs_teleport_spin_effigy"		"1"
+			"gs_cast_down_taunt_effigy"		"ti9_taunt"
 		}
 		"models/heroes/gyro/gyro.vmdl"
 		{
@@ -1580,6 +1652,8 @@
 			"legion_commander_forcestaff_friendly"		"1"
 			"legion_commander_stun"			"1"
 			"legion_commander_fallen_loadout_effigy"		"fallen_legion"
+			"drum_major_taunt_effigy"		"drum_major_gesture"
+			"drum_major_taunt_arcana_effigy"	"drum_major_gesture;dualwield"
 		}
 		"models/heroes/leshrac/leshrac.vmdl"
 		{
@@ -1624,6 +1698,7 @@
 			"frostArmor"		"1"
 			"stun"				"1"
 			"flail"				"1"
+			"taunt_lich_ballplay_effigy"		"lich_ballplay"
 		}
 		"models/heroes/life_stealer/life_stealer.vmdl"
 		{
@@ -1680,6 +1755,7 @@
 			"idle_alt"			"1"
 			"spawn"			"1"
 			"taunt_hell_and_back_effigy"	"hell_gesture"
+			"ti8_finger_effigy"	"ti8_immortal"
 		}
 		"models/heroes/lone_druid/lone_druid.vmdl"
 		{
@@ -1778,6 +1854,23 @@
 			"lycan_wolf_cast2_howl"		"1"
 			"lycan_wolf_run"		"1"
 		}
+		"models/heroes/mars/mars.vmdl"
+		{
+			"mars_idle_rare_balrog_effigy"		"1"
+			"mars_idle_long_1_effigy"		"1"
+			"mars_idle_long_2_effigy"		"1"
+			"stun_effigy"				"1"
+			"flail_effigy"				"1"
+			"teleport_effigy"			"1"
+			"mars_run_aggressive_chase_effigy"	"1"
+			"mars_chase_joy_effigy"			"1"
+			"arena_shieldBashKill_run_happy_effigy"		"1"
+			"cast_arena_effigy"			"1"
+			"cast_shield_bash_effigy"		"1"
+			"attack_closest_1_poke_effigy"		"1"
+			"attack_closest_2 _shieldbash_effigy"		"1"
+			"attack_close_2_headbutt_effigy"	"1"
+		}
 		"models/heroes/magnataur/magnataur.vmdl"
 		{
 			"idle"		"1"
@@ -1851,6 +1944,7 @@
 			"stun"          "1"
 			"flail"          "1"
 			"elunes_arrow"          "1"
+			"ti8_taunt_effigy"	"ti8_taunt"
 		}
 		"models/heroes/monkey_king/monkey_king.vmdl"
 		{
@@ -2013,6 +2107,7 @@
 			"cast_purification"		"1"
 			"cast_repel"		"1"
 			"cast_guardianAngel"		"1"
+			"omni_ti8_taunt_effigy"		"ti8_taunt"
 		}
 		"models/heroes/oracle/oracle.vmdl"
 		{
@@ -2086,7 +2181,8 @@
 			"arcana_stun"          "arcana"
 			"arcana_idle_injured"          "arcana"
 			"arcana_forcestaff_end"          "arcana"
-			"arcana_loadout_spawn"          "arcana"			
+			"arcana_loadout_spawn"          "arcana"
+			"ti8_taunt_effigy"	"assassin"
 		}
 		"models/heroes/phantom_assassin/phantom_assassin.vmdl"
 		{
@@ -2102,14 +2198,15 @@
 			"phantom_assassin_run_loda"		"loda"
 			"phantom_assassin_stiflingdagger"		"1"
 			"phantom_assassin_spawn"		"1"
-						"phantom_assassin_idle"          "1"
-						"phantom_assassin_idle_injured"          "1"
-						"phantom_assassin_run_injured"          "1"
-						"phantom_assassin_run_injured_loda"          "loda"
-						"phantom_assassin_run_haste"          "1"
-						"phantom_assassin_phantomstrike"          "1"
-						"phantom_assassin_stun"          "1"
-						"phantom_assassin_flail"          "1"
+			"phantom_assassin_idle"          "1"
+			"phantom_assassin_idle_injured"          "1"
+			"phantom_assassin_run_injured"          "1"
+			"phantom_assassin_run_injured_loda"          "loda"
+			"phantom_assassin_run_haste"          "1"
+			"phantom_assassin_phantomstrike"          "1"
+			"phantom_assassin_stun"          "1"
+			"phantom_assassin_flail"          "1"
+			"ti8_taunt_effigy"		"assassin"
 		}
 		"models/heroes/Phantom_lancer/phantom_lancer.vmdl"
 		{
@@ -2154,6 +2251,8 @@
 			"flail"          "1"
 			"teleport_end"          "1"
 			"forcestaff_end"          "1"
+			"bird_taunt_01_effigy"		"ti8_taunt"
+			"bird_taunt_01_alt_effigy"	"ti8_taunt_cooked"
 		}
 		"models/heroes/puck/puck.vmdl"
 		{
@@ -2207,6 +2306,40 @@
 			"hh_teleport_end_effigy"	"harpoon"
 			"hh_taunt_money_maker"		"shake_moneymaker;harpoon"
 		}
+		"models/items/pudge/arcana/pudge_arcana_base.vmdl"
+		{
+			"hh_attack01_effigy"	"1"
+			"hh_attack02_effigy"	"1"
+			"arc_attack_alt_1_effigy"	"1"
+			"arc_attack_alt_2_effigy"	"1"
+			"arc_attack_alt_3_effigy"	"1"
+			"arc_run_haste_effigy"		"1"
+			"arc_idle_rare1_buttscratch_effigy"	"1"
+			"arc_idle_rare_groundscratch_effigy"	"1"
+			"hh_arc_idle_rare_buttscratch_effigy"	"harpoon"
+			"hh_arc_idle_rare_groundscratch_effigy"		"harpoon"
+			"arc_loadout_spawn_effigy"	"1"
+			"hh_arc_run_haste_effigy"		"harpoon"
+			"hh_victory_effigy"	"1"
+			"hh_stun_for_effigy"	"1"
+			"hh_flail01_effigy"	"1"
+			"hh_arc_forcestaff_effigy"	"1"
+			"pudge_taunt_money_maker_effigy"	"shake_moneymaker"
+			"arc_mid_walk_chainskip_effigy"	"arcana_skip"
+			"arc_mid_pudge_meathook_start_effigy"	"1"
+			"arc_mid_pudge_meathook_start_alt_1_effigy"	"1"
+			"arc_mid_pudge_meathook_start_alt_3_effigy"	"1"
+			"arc_mid_pudge_meathook_start_alt_4_effigy"	"1"
+			"arc_ftp_dendi_hook_effigy"	"ftp_dendi_back"
+			"arc_pudge_meathook_whalehook_effigy"	"whalehook"
+			"meathook_start_alt_1_effigy_whalehook"		"whalehook"
+			"meathook_start_alt_3_effigy_whalehook"		"whalehook"
+			"meathook_start_alt_4_effigy_whalehook"		"whalehook"
+			"meathook_start_alt_1_effigy_ftp_dendi"		"ftp_dendi_back"
+			"meathook_start_alt_3_effigy_ftp_dendi"		"ftp_dendi_back"
+			"meathook_start_alt_4_effigy_ftp_dendi"		"ftp_dendi_back"
+			"pugna_ti8_taunt_effigy"	"ti8_taunt"
+		}
 		"models/heroes/pugna/pugna.vmdl"
 		{
 			"attack2"		"1"
@@ -2219,6 +2352,7 @@
 			"idle_alt"          "1"
 			"stun"          "1"
 			"flail"          "1"
+			"pugna_ti8_taunt_effigy"	"ti8_taunt"
 		}
 		"models/heroes/QueenOfPain/queenofpain.vmdl"
 		{
@@ -2296,10 +2430,72 @@
 			"idle4"          "1"
 			"cast2_blink_strike"          "1"
 			"cast4_tricks_trade_effigy"	"1"
+			"ti8_taunt_effigy"	"ti8_taunt"
 		}
 		"models/heroes/rubick/rubick.vmdl"
 		{
 			"rubick_steal_brfireflyb_idle"		"1"
+			"rubick_steal_ravage"                   "1"
+			"rubick_steal_jspinb"                   "1"
+			"rubick_steal_jomni"                    "1"
+			"rubick_steal_bmwildaxesa"              "1"
+			"rubick_steal_bmprimalroar"             "1"
+			"rubick_steal_sstormhammer"		"1"
+			"rubick_steal_sbruncharge"              "1"
+			"rubick_steal_bmprimalroar"		"1"
+			"rubick_steal_esfissure"                "1"
+			"rubick_steal_esslam"                   "1"
+			"rubick_steal_estotem"                  "1"
+			"rubick_steal_sbnetherstrike"		"1"
+			"rubick_steal_npteleport"		"1"
+			"rubick_steal_npsprout"                 "1"
+			"rubick_steal_npsummon"                 "1"
+			"rubick_steal_npwrath"                  "1"
+			"rubick_attackc"		"1"
+			"rubick_steal_bbrain_sap"		"1"
+			"rubick_attack"		"1"
+			"rubick_cast_fadebolt"		"1"
+			"rubick_cast_telekinesis"		"1"
+			"rubick_forcestaff_start"		"1"
+			"rubick_steal_qopblink"         "1"
+			"rubick_steal_qopsonic_wave"    "1"
+			"rubick_steal_qopscream"        "1"
+			"rubick_steal_vstrike"          "1"
+			"rubick_steal_lslave"		"1"
+			"rubick_steal_llsa"             "1"
+			"rubick_steal_llaguna"          "1"
+			"rubick_steal_wdward"		"1"
+			"rubick_steal_ssstatic"		"1"
+			"rubick_steal_ssstaticb"		"1"
+			"rubick_steal_sassassinate"		"1"
+			"rubick_steal_sshrapnel"                "1"
+			"rubick_steal_ssvortex"         "1"
+			"rubick_teleport_start"		"1"
+			"rubick_victory"		"1"
+			"rubick_generic_castb"		"1"
+			"rubick_steal_wall"		"1"
+			"rubick_steal_nsdarkness"       "1"
+			"rubick_steal_nsfear"           "1"
+			"rubick_steal_nsvoid"           "1"
+			"rubick_steal_axeculling"       "1"
+			"rubick_steal_bfiends_grip"     "1"
+			"rubick_steal_limpale"          "1"
+			"rubick_steal_lfinger"          "1"
+			"rubick_steal_eblackhole"       "1"
+			"rubick_steal_cmnova"           "1"
+			"rubick_steal_cmfrostbite"      "1"
+			"rubick_steal_cmfreezingfield"      "1"
+			"rubick_steal_nmshadowraze"         "1"
+			"rubick_steal_okpurification"       "1"
+			"rubick_steal_okrepel"              "1"
+			"rubick_steal_wrpowershot"          "1"
+			"rubick_steal_wrwindrun"            "1"
+			"rubick_steal_vmpoison_nova"        "1"
+			"taunt_giddy_up"            "giddy_up_gesture"
+		}
+		"models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl"
+		{
+			"rubick_steal_brfireflyb_test"		"1"
 			"rubick_steal_ravage"                   "1"
 			"rubick_steal_jspinb"                   "1"
 			"rubick_steal_jomni"                    "1"
@@ -2394,6 +2590,7 @@
 			"forcestaff_effigy"			"1"
 			"defeat_effigy"				"1"
 			"victory_loop_effigy"		"1"
+			"shadowshaman_taunt_ti9_effigy"		"ti9_taunt"
 		}
 		"models/heroes/shadow_demon/shadow_demon.vmdl"
 		{
@@ -2560,6 +2757,7 @@
 			"stun"          "1"
 			"flail"          "1"
 			"idle_alt"          "1"
+			"ti9_taunt_effigy"	"ti9_taunt"
 		}
 		"models/heroes/slark/slark.vmdl"
 		{
@@ -2877,6 +3075,7 @@
 			"tiny_1_growl_tree_statue"          "1"
 			"tiny_1_toss_tree_statue"          "1"
 			"tiny_1_attack_dryad_tree"          "dryad_tree"
+			"tiny_01_taunt_effigy"		"taunt_ti9"
 		}
 		"models/heroes/tiny_02/tiny_02.vmdl"
 		{
@@ -2968,6 +3167,7 @@
 			"idle_injured"          "1"
 			"run_injured"          "1"
 			"teleport_frostiron_raider_set"          "frostiron_raider"
+			"tusk_ti8_taunt_effigy"		"ti8_taunt"
 		}
 		"models/heroes/twin_headed_dragon/twin_headed_dragon.vmdl"
 		{
@@ -3026,6 +3226,7 @@
 			"overpower_attack4"		"1"
 			"overpower_attack5"		"1"
 			"overpower_attack6"		"1"
+			"ti9_ursa_taunt_effigy"		"average_bear"
 		}
 		"models/heroes/vengeful/vengeful.vmdl"
 		{
@@ -3140,6 +3341,7 @@
 			"teleport"          "1"
 			"cast_ulti_stalker_exoskeleton"          "stalker_exo"
 			"teleport_stalkers_exoskeleton"          "stalker_exo"
+			"taunt_dead_bug_effigy"		"ti8_taunt"
 		}
 		"models/heroes/windrunner/windrunner.vmdl"
 		{
@@ -3247,6 +3449,7 @@
 			"defeat"          "1"
 			"victory"          "1"
 			"forcestaff"          "1"
+			"wk_ti8_effigy"		"dance"
 		}
 		"models/heroes/zuus/zuus.vmdl"
 		{

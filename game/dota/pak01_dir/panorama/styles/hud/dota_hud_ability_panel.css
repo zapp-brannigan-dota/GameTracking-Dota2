@@ -578,7 +578,7 @@ DOTAAbilityPanel.Hidden
 	text-overflow: shrink;
 }
 
-#Charges
+#ItemCharges
 {
 	color: #ffffff;
     font-size: 16px;
@@ -593,7 +593,7 @@ DOTAAbilityPanel.Hidden
     font-family: RadianceM;
 }
 
-.BackpackSlot #Charges
+.BackpackSlot #ItemCharges
 {
 	margin-right: 9px;
 	margin-bottom: 4px;
@@ -601,19 +601,42 @@ DOTAAbilityPanel.Hidden
 	text-shadow: 0px 0px 1px 3 #000000;
 }
 
-.QueryUnit .BackpackSlot #Charges
+.QueryUnit .BackpackSlot #ItemCharges
 {
 	margin-right: 2px;
 	margin-bottom: 2px;
 	font-size: 14px;
 }
 
-.show_charges #Charges
+.show_item_charges #ItemCharges
 {
 	visibility: visible;
 }
 
-#AltCharges
+#AbilityCharges
+{
+	vertical-align: bottom;
+	horizontal-align: left;
+	margin-bottom: 2px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #666 ), to( black ) );
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+	text-align: center;
+	padding-top: 3px;
+	z-index: 2;
+	text-overflow: shrink;
+	box-shadow: fill 2px 2px 4px black;
+	color: #fff;
+	visibility: collapse;
+}
+
+.show_ability_charges #AbilityCharges
+{
+	visibility: visible;
+}
+
+#ItemAltCharges
 {
 	color: #999999;
     font-size: 14px;
@@ -625,7 +648,7 @@ DOTAAbilityPanel.Hidden
     font-family: RadianceM;
 }
 
-.show_alt_charges #AltCharges
+.show_item_alt_charges #ItemAltCharges
 {
 	visibility: visible;
 }
@@ -1087,8 +1110,8 @@ DOTAAbilityPanel.Hidden
 
 .Reborn .InventoryItem.BackpackSlot #ManaCost,
 .Reborn .InventoryItem.BackpackSlot #ManaCostBG,
-.Reborn .InventoryItem.show_charges #ManaCost,
-.Reborn .InventoryItem.show_charges #ManaCostBG
+.Reborn .InventoryItem.show_item_charges #ManaCost,
+.Reborn .InventoryItem.show_item_charges #ManaCostBG
 {
 	visibility: collapse;
 }
@@ -1128,6 +1151,45 @@ DOTAAbilityPanel.Hidden
 	font-size: 16px;
     text-shadow: 0px 0px 3px 3.7 #000000FF;
     margin-top:1px;
+}
+
+#inventory_tpscroll_container .InventoryItem #CooldownTimer
+{
+	font-size: 14px;
+
+}
+
+.Reborn #inventory_tpscroll_container #AbilityButton
+{
+	width: 60%;
+	height: 80%;
+	horizontal-align: center;
+	vertical-align: middle;
+}
+
+.Reborn #inventory_tpscroll_container #ButtonWell
+{
+	background-image: none;
+	width: 72px;
+	height: 72px;
+}
+
+
+.Reborn #inventory_tpscroll_container #ButtonSize
+{
+	width: 76px;
+	height: 58px;
+}
+
+
+.Reborn #inventory_tpscroll_container #AbilityBevel
+{
+	visibility: collapse;
+}
+
+.Reborn #inventory_tpscroll_container #CooldownOverlay
+{
+//	background-color: rgba(145, 151, 168, 0.533);
 }
 
 .InventoryItem #ShineContainer
@@ -1423,6 +1485,32 @@ DOTAAbilityPanel.Hidden
 {
 	margin-top: 21px;
 	margin-top: 10px;
+}
+
+#RubickArcanaContainer
+{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: .12s;
+	transition-timing-function: ease-in-out;
+}
+
+.rubick_arcana_green_spell_enabled #RubickArcanaContainer
+{
+	opacity: 1;
+}
+
+#RubickArcanaWillCastGreen
+{
+	width: 100%;
+	height: 100%;
+}
+
+#inventory #RubickArcanaWillCastGreen
+{
+	visibility: collapse;
 }
 
 .Reborn #AutoCastingContainer
@@ -2249,7 +2337,7 @@ DOTAAbilityPanel.Hidden
 	visibility: collapse;
 }
 
-#InvokerSpellCard
+#InvokerSpellCardButton
 {
 	background-image: url("s2r://panorama/images/hud/invokercard_psd.vtex");
 	background-size: 100%;
@@ -2282,24 +2370,24 @@ DOTAAbilityPanel.Hidden
 	text-overflow: shrink;
 }
 
-.QueryUnit #InvokerSpellCard
+.QueryUnit #InvokerSpellCardButton
 {
 	visibility: collapse;
 }
 
-#InvokerSpellCard:hover
+#InvokerSpellCardButton:hover
 {
 	brightness: 2;
 	saturation: 1.3;
 }
 
 
-#InvokerSpellCard:hover #SpellsLabel
+#InvokerSpellCardButton:hover #SpellsLabel
 {
 	color: #cccccc;
 }
 
-#InvokerSpellCard.Hidden
+#InvokerSpellCardButton.Hidden, #SpellCardButton.Hidden
 {
 	visibility: collapse;
 }
@@ -2415,14 +2503,15 @@ DOTAAbilityPanel.Hidden
 #ADAbilityContainer #ShineContainer,
 #ADAbilityContainer #ActiveAbilityBorder,
 #ADAbilityContainer #ActiveAbility,
-#ADAbilityContainer #Charges,
-#ADAbilityContainer #AltCharges,
+#ADAbilityContainer #ItemCharges,
+#ADAbilityContainer #ItemAltCharges,
 #ADAbilityContainer #AbilityBevel,
 #ADAbilityContainer #Hotkey,
 #ADAbilityContainer #HotkeyModifier,
 #ADAbilityContainer #ManaCost,
 #ADAbilityContainer #ManaCostBG,
 #ADAbilityContainer #AutoCasting,
+#ADAbilityContainer #RubickArcanaWillCastGreen,
 #ADAbilityContainer #AutocastableBorder,
 #ADAbilityContainer #LevelUpLight,
 #ADAbilityContainer #LevelUpTab,
@@ -2430,14 +2519,15 @@ DOTAAbilityPanel.Hidden
 #TopBarUltimate #ShineContainer,
 #TopBarUltimate #ActiveAbilityBorder,
 #TopBarUltimate #ActiveAbility,
-#TopBarUltimate #Charges,
-#TopBarUltimate #AltCharges,
+#TopBarUltimate #ItemCharges,
+#TopBarUltimate #ItemAltCharges,
 #TopBarUltimate #AbilityBevel,
 #TopBarUltimate #Hotkey,
 #TopBarUltimate #HotkeyModifier,
 #TopBarUltimate #ManaCost,
 #TopBarUltimate #ManaCostBG,
 #TopBarUltimate #AutoCasting,
+#TopBarUltimate #RubickArcanaWillCastGreen,
 #TopBarUltimate #AutocastableBorder,
 #TopBarUltimate #LevelUpLight,
 #TopBarUltimate #LevelUpTab,
@@ -2445,14 +2535,15 @@ DOTAAbilityPanel.Hidden
 #TopBarTPIcon #ShineContainer,
 #TopBarTPIcon #ActiveAbilityBorder,
 #TopBarTPIcon #ActiveAbility,
-#TopBarTPIcon #Charges,
-#TopBarTPIcon #AltCharges,
+#TopBarTPIcon #ItemCharges,
+#TopBarTPIcon #ItemAltCharges,
 #TopBarTPIcon #AbilityBevel,
 #TopBarTPIcon #Hotkey,
 #TopBarTPIcon #HotkeyModifier,
 #TopBarTPIcon #ManaCost,
 #TopBarTPIcon #ManaCostBG,
 #TopBarTPIcon #AutoCasting,
+#TopBarTPIcon #RubickArcanaWillCastGreen,
 #TopBarTPIcon #AutocastableBorder,
 #TopBarTPIcon #LevelUpLight,
 #TopBarTPIcon #LevelUpTab,
@@ -2502,7 +2593,7 @@ DOTAAbilityPanel.Hidden
 	saturation: 0.25;
 }
 
-.Reborn DOTAScoreboardPlayerInventory #Charges
+.Reborn DOTAScoreboardPlayerInventory #ItemCharges
 {
 	//font-weight: normal;
 	font-size: 14px;
@@ -2541,6 +2632,29 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot
 }
 
 .Reborn .TopBarIndicator #AbilityBevel
+{
+	visibility: collapse;
+}
+
+
+#SpellCardButton
+{
+	background-image: url("s2r://panorama/images/hud/invokercard_psd.vtex");
+	background-size: 100%;
+	height: 28px;
+	width: 68px;
+	horizontal-align: center;
+	vertical-align: middle;
+	margin-top: -3px;
+	z-index: 0;
+	//transform: rotateZ(-90deg);
+	
+	transition-property: brightness, saturation;
+	transition-duration: .18s;
+	transition-timing-function: ease-in-out;	
+}
+
+#JungleSpiritSpellsContainer #LevelUpTab, #JungleSpiritSpellsContainer #LevelUpLight
 {
 	visibility: collapse;
 }

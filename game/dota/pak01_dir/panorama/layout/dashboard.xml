@@ -13,7 +13,7 @@
 			<Panel id="DashboardBackground">
 				<Panel id="DashboardBackgroundInitContainer">
 					<Panel id="BackgroundImage"/>
-					<DOTAScenePanel id="BackgroundMap" hittest="false" camera="shot_cameraA" map="backgrounds/dashboard_parallax_ti7" light="bp_light" renderdeferred="true" deferredalpha="false" particleonly="false" live-mode="high_end_only"/>
+					<DOTAScenePanel id="BackgroundMap" hittest="false" camera="shot_cameraA" map="backgrounds/dashboard_parallax_test" light="bp_light" renderdeferred="true" deferredalpha="false" particleonly="false" live-mode="high_end_only"/>
 					<Panel id="BackgroundVignette" />
 					<Panel id="TI7Glow"/>
 					<Panel id="DashboardTopBarBackgroundGradient" />
@@ -31,6 +31,11 @@
 
 				<PageManager id="DashboardPages" hittest="false" />
 
+				<Panel id="JungleOverlay" hittest="false" hittestchildren="false">
+					<Panel id="JungleOverlayFlowersLeft" />
+					<Panel id="JungleOverlayFlowersRight" />
+				</Panel>
+
 				<Panel id="ExpiredTag">
 					<Label text="#DOTA_BattlePass_Expired"/>
 				</Panel>
@@ -41,6 +46,7 @@
 
 				<!-- clicking on the dashboard pages blocker closes the play tab -->
 				<Panel id="TopBarSecondaryContainer" hittest="false" >
+					<Panel id="BattlePassLogo" onactivate="DOTAShowBPInternational2019HomePage()" />
 					<Panel id="TopBarSecondaryContent"  hittest="false" class="Hidden">
 						<Panel id="TopBarSecondaryTabs"  hittest="false" class="Hidden">
 							<!-- Added dynamically: -->
@@ -101,8 +107,15 @@
 
 							<Label id="CurrentPartyReadyCheckStatus" text="#DOTA_ReadyCheck_Responses" />
 						</Panel>
-						<DOTAParty id="CurrentParty" class="CurrentParty"/>
+
+						<Panel id="CurrentPartyMain">
+							<DOTAParty id="CurrentParty" class="CurrentParty" />
+							<Button id="PartyOpenMic" onactivate="DOTAPartyOpenMicButtonClicked()" onmouseout="UIHideTextTooltip()">
+								<Panel id="PartyOpenMicImage" />
+							</Button>
+						</Panel>
 					</Panel>
+
 					<Panel id="PendingInvitesSection">
 						<Button id="PendingInvites" onmouseover="DOTAShowPendingInvitesTooltip()" onmouseout="DOTAHidePendingInvitesTooltip()" onactivate="DOTAShowPendingInvitesContextMenu()">
 							<Label id="PendingInvitesLabel" text="+N" />
@@ -114,7 +127,11 @@
 
 				</Panel>
 
-				<Button id="PartyOpenMic" onactivate="DOTAPartyOpenMicButtonClicked()" onmouseout="UIHideTextTooltip()" />
+				<Panel id="PlusMenuContainer" hittest="false" >
+					<DOTAPlusMenu id="PlusMenu"
+						onmouseover="DOTASetPlusMenuVisible( true )"
+						onmouseout="AsyncEvent( 0.0, DOTASetPlusMenuVisible( false ) )" />
+				</Panel>
 
 				<Panel id="NotificationsContainer" hittest="false" >
 					<DOTANotificationsMenu id="NotificationsMenu"
@@ -153,7 +170,7 @@
 									<Button id="DOTAReturnToGameButton" class="TopBarSmallButton" onactivate="DOTAReturnToGame();" />
 									<Button id="DOTAReturnToPostGameButton" class="TopBarSmallButton" onactivate="DOTAReturnToPostGame();" />
 								</Panel>
-								<Button id="DOTASettingsButton" class="ControlIconButton SettingsButton" onactivate="DOTASettings();" />
+								<Button id="DOTASettingsButton" class="ControlIconButton SettingsButton" onactivate="DOTAShowSettingsPopup();" />
 								<Panel id="VerticalSeparator" />
 								<Panel id="NavigationControls">
 									<Button id="NavigateBackButton" onactivate="DOTANavigateBack()" />
@@ -187,13 +204,13 @@
 									<Button id="HideDevButtons" class="BlueButton" onactivate="AddStyle( TopBarRightButtons, HideButtons )">
 										<Label text="H" />
 									</Button>
-									<Button id="ZooButton" class="BlueButton" onactivate="DOTAShowControlsLibraryPageTab( Default );">
-										<Label text="Control Zoo" />
-									</Button>
-									<Button id="BugButton" class="DebugButton" onactivate="DOTAReportBug();" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( Report a bug! );" />
+									<Button id="ZooButton" class="DebugButton" onactivate="DOTAShowControlsLibraryPageTab( Default );" />
 									<Button id="ReloadPageButton" class="DebugButton" onactivate="DOTAReloadCurrentPage()" />
 									<Button id="GuidesButton" class="DebugButton" onactivate="ToggleStyle( DashboardPagesGuides, Visible )" />
 								</Panel>
+								<DOTAPlusButton id="PlusButton"
+									onmouseover="DOTASetPlusMenuVisible( true )"
+									onmouseout="AsyncEvent( 0.0, DOTASetPlusMenuVisible( false ) )" />
 								<Button id="DOTANotificationButton" class="TopBarSmallButton NoNotifications"
 												onmouseover="DOTASetNotificationsMenuVisible( true ); AddStyle( TopBarNotificationsHover, Hover ); UIHideTextTooltip();"
 												onmouseout="AsyncEvent( 0.0, DOTASetNotificationsMenuVisible( false ) ); RemoveStyle( TopBarNotificationsHover, Hover )" >
@@ -214,6 +231,14 @@
 
 							<DOTAScenePanel id="HomeButtonMap" camera="shot_camera" map="scenes/home_button" onload="DOTASceneFireEntityInput( ui_home_embers, start, 1 )" hittest="false" require-composition-layer="true" particleonly="true"/>
 
+							<Panel id="PlusButtonShardsOverlay">
+								<Panel id="PlusButtonShardsOverlayCenter">
+									<Panel class="ShardsIcon" />
+									<Label class="MonoNumbersFont" text="{s:current_shards}" />
+								</Panel>
+							</Panel>
+							<DOTAScenePanel id="PlusButtonParticlesOverlay" camera="shot_camera" map="scenes/dota_plus_card_fx" hittest="false" particleonly="true"/>
+							
 							<Panel id="TopBarViolators" hittest="false" hittestchildren="false">
 								<DOTAViolator id="TopBarLearnViolator" name="trainer_violator" class="TopBarViolator">
 									<Panel class="ViolatorContents">
@@ -244,6 +269,9 @@
 		<Panel id="FriendMenuContainer" hittest="false">
 			<DOTAFriendMenu id="FriendMenu" />
 		</Panel>
+
+		<!-- should appear on top of chat/friends during normal situations -->
+		<DOTAPartySearch id="PartySearch" />
 
 		<!-- Make sure these are at the bottom to get the z-order right -->
 		<DOTADashboardPopupManager id="DashboardPopupManager" onpopupsdismissed="SetInputFocus( DashboardPages )" />

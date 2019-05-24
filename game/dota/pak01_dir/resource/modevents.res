@@ -521,6 +521,12 @@
 		"target" 			"short"
 		"channel_time"		"float"	
 	}
+	"dota_holdout_revive_eliminated"
+	{
+		"caster" 			"short"
+		"target" 			"short"
+		"channel_time"		"float"	
+	}
 	"dota_player_killed"
 	{
 		"PlayerID"		"short"
@@ -1234,6 +1240,7 @@
 		"message"				"string"
 		"teamnumber"			"short"
 		"player_id"				"int"
+		"player_id2"			"int"
 		"int_value"				"int"
 		"locstring_value"		"string"
 	}
@@ -1247,6 +1254,18 @@
 	"dota_player_reconnected"
 	{
 		"player_id"				"int"
+	}
+
+	"dota_on_hero_finish_spawn"
+	{
+		"heroindex"		"int"
+		"hero"			"string"
+	}
+
+	"dota_creature_gained_level"
+	{
+		"entindex"		"short"
+		"level"			"short"
 	}
 }
 
