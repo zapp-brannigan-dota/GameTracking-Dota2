@@ -1,0 +1,399 @@
+  %s (path ID '%s')\n
+  %s bytes for token lookup; %s bytes for instance info\n
+  %s tokens; %s instances 
+  from file '%s'\n
+  has gender\n
+  has plural quantity\n
+  in hash as '%s'\n
+  language '%s'\n
+  no language associated\n
+  not from a file\n
+  string data: %s bytes in %s blocks\n
+  total memory allocated: %s bytes\n
+  value '%s'\n
+!plural: handler %s for %s does not have quantity handling
+!plural: loc token %s does not have a plural quantity
+!plural: loc token %s not found
+!plural: no variable source for %s
+!plural: unknown handler %s for %s
+!plural: variable %s is non-numeric
+!plural: variable %s not found
+!vars.GetLocVariable( "str" )->HasExternalValue()
+!vars.SetVariable( "extstr", "external string val" )
+!vars.SetVariable( "f64", 12.3456 )
+!vars.SetVariable( "i64", -1234ll )
+!vars.SetVariable( "str", "string val" )
+!vars.SetVariable( "u64", 12345ull )
+!vars2.GetLocVariable( "str" )->HasExternalValue()
+"lang"\r\n{\r\n"Language" "English"\r\n"Tokens"\r\n{\r\n
+#LOC_Date_AM
+#LOC_Date_Day%d
+#LOC_Date_DayNumFormat
+#LOC_Date_DayShort%d
+#LOC_Date_Format_DayOfWeek
+#LOC_Date_Format_DayOfWeekShort_MonthShort_Day_Hour_Minute_Second_12
+#LOC_Date_Format_DayOfWeekShort_MonthShort_Day_Hour_Minute_Second_24
+#LOC_Date_Format_DayOfWeek_Day_Month_Hour_Minute_12
+#LOC_Date_Format_DayOfWeek_Day_Month_Hour_Minute_24
+#LOC_Date_Format_DayOfWeek_Month_Day_Year
+#LOC_Date_Format_DayOfWeek_Month_Day_Year_Hour_Minute_Second_12
+#LOC_Date_Format_DayOfWeek_Month_Day_Year_Hour_Minute_Second_24
+#LOC_Date_Format_Day_Month
+#LOC_Date_Format_Day_Month_Numeric
+#LOC_Date_Format_Day_Month_Year
+#LOC_Date_Format_Day_Month_Year_Hour_Minute_12
+#LOC_Date_Format_Day_Month_Year_Hour_Minute_24
+#LOC_Date_Format_Day_Month_Year_Hour_Minute_Second_12
+#LOC_Date_Format_Day_Month_Year_Hour_Minute_Second_24
+#LOC_Date_Format_Day_Month_Year_Numeric
+#LOC_Date_Format_Econ_MonthShort_Day_Year_Hour_Minute_Second
+#LOC_Date_Format_Econ_MonthShort_Day_Year_Hour_Minute_Second_GMT
+#LOC_Date_Format_Hour_Minute_12
+#LOC_Date_Format_Hour_Minute_24
+#LOC_Date_Format_Hour_Minute_Second_12
+#LOC_Date_Format_Hour_Minute_Second_24
+#LOC_Date_Format_Month_Day_Year
+#LOC_Date_HourNumFormat
+#LOC_Date_Month%d
+#LOC_Date_MonthNumFormat
+#LOC_Date_MonthShort%d
+#LOC_Date_PM
+#LOC_Date_UnknownTime
+#LOC_Date_YearNumFormat
+#LOC_Duration_Day
+#LOC_Duration_Days
+#LOC_Duration_Hour
+#LOC_Duration_Hours
+#LOC_Duration_Minute
+#LOC_Duration_Minutes
+#LOC_Duration_Second
+#LOC_Duration_Seconds
+#LOC_Duration_d_h_m
+#LOC_Duration_d_h_m_s
+#LOC_Duration_dhhmmss
+#LOC_Duration_h_m
+#LOC_Duration_h_m_s
+#LOC_Duration_hhmmss
+#LOC_Duration_m
+#LOC_Duration_m_s
+#LOC_Duration_mmss
+#LOC_Duration_s
+$1.23
+%04d
+%language%
+%llu 
+%s failed to localize: '%s'\n
+%s(%u): Localization key '%s' has a conditional that is too long. Truncating.\n
+%s(%u): Localization key '%s' has a value that is too long. Truncating.\n
+%s(%u): Localization key '%s' is too long. Truncating.\n
+%s: :g loc tokens are no longer supported, use a MessageFormat string instead (token '%s')\n
+%s: :p loc tokens are no longer supported, use a MessageFormat string instead (token '%s')\n
+%s: contexts on loc tokens are no longer supported, use a MessageFormat string instead (token '%s')\n
+%s: invalid usage char in '%s'\n
+%s_pw
+(%s from %u files; %s not file-based)\n
+*.txt
++Inf
+-1,234
+-Inf
+.?AV?$CBaseAppSystem@VILocalize@@@@
+.?AV?$CRefCounted1@VILocalizeCompiledString@@V?$CRefCountServiceBase@VCRefMT@@@@@@
+.?AV?$CTier0AppSystem@VILocalize@@$0A@@@
+.?AV?$CTier1AppSystem@VILocalize@@$0A@@@
+.?AV?$CTier2AppSystem@VILocalize@@$0A@@@
+.?AVCAssertErrorListener@@
+.?AVCLocVariableSet@@
+.?AVCLocVariableSetBase@@
+.?AVCLocalizationEngineParseNode@@
+.?AVCLocalizationEngineParseNode_GenderSelector@@
+.?AVCLocalizationEngineParseNode_PluralSelector@@
+.?AVCLocalizationEngineParseNode_SelectorBase@@
+.?AVCLocalizationEngineParseNode_StringSelector@@
+.?AVCLocalizationEngineParseNode_TextFragment@@
+.?AVCLocalizationEngineParseNode_VariableSubstitution@@
+.?AVCLocalize@@
+.?AVCLocalizeCompiledStringBase@@
+.?AVCLocalizeCompiledStringLocVariables@@
+.?AVCLocalizeCompiledStringMessageFormat@@
+.?AVCLocalizeCompiledStringSinglePlain@@
+.?AVCSimpleErrorListener@@
+.?AVILocVariableSource@@
+.?AVILocalize@@
+.?AVILocalizeCompiledString@@
+.?AVILocalize_EconProvider@@
+.?AVbad_optional_access@std@@
+/resource/valve_
+12.3456
+12.35
+12345
+2\vp0
+:foo
+:help
+:name_ref
+:shorthelp
+<all localization info removed>
+<compatibility token '%s' does not have gender information>
+<compile request with a different syntax>
+<file-based localization reloaded>
+<floating-point value out of range>
+<invalid currency %d>
+<invalid date format %d>
+<invalid duration format %d>
+<invalid floating-point number format %d>
+<invalid integral number format %d>
+<invalid precision %d>
+<localization entry added>
+<space>
+<token value reset>
+<unable to resolve compatibility token>
+ARS$
+AllowOverrideFiles
+Bad optional access
+Badly formed loc var, format is {g:type:name} '%.*s'\n
+C:\buildworker\source2_dota_rel_2019_win64\build\_build_\localize\_vpc_localize\default\win64\_msvc_\Retail\localize.pdb
+C:\buildworker\source2_dota_rel_2019_win64\build\src\localize\loc_add.cpp
+C:\buildworker\source2_dota_rel_2019_win64\build\src\localize\loc_variables.cpp
+C:\buildworker\source2_dota_rel_2019_win64\build\src\localize\localize_imp.cpp
+CLP$
+CLocalize::AddFileImpl
+CLocalize::AddTokenMiss
+CLocalize::CompileString
+CLocalize::ConstructMFString
+CLocalize::ConstructString
+CLocalize::FindSafe
+CLocalize::InstallChangeCallback: Attempted to add the same callback twice!\n
+CLocalize::RunInternalTest_LocVariableResolve
+COL$
+CUtlLeanVectorImpl<class CUtlLeanVectorBase<struct CUtlHashMap<char const *,class LocalizeStringID_t,struct StringEqualFunctor,struct StringHashFunctor,int>::HashBucket_t,int,class CMemAllocAllocator>,struct CUtlHashMap<char const *,class LocalizeStringID_t,struct StringEqualFunctor,struct StringHashFunctor,int>::HashBucket_t,int>::AddMultipleToTail
+CUtlLeanVectorImpl<class CUtlLeanVectorBase<struct CUtlHashMap<char const *,struct CLocalize::LocTokenInfo_t,struct FastCaselessStringEqualFunctor,struct FastCaselessStringHashFunctor,class LocalizeStringIndex_t>::HashBucket_t,int,class CMemAllocAllocator>,struct CUtlHashMap<char const *,struct CLocalize::LocTokenInfo_t,struct FastCaselessStringEqualFunctor,struct FastCaselessStringHashFunctor,class LocalizeStringIndex_t>::HashBucket_t,int>::AddMultipleToTail
+CUtlLeanVectorImpl<class CUtlLeanVectorBase<struct CUtlHashMap<class CUtlStringToken,struct CLocalize::LocVariableHandler_t,class CDefEquals<class CUtlStringToken>,struct DefaultHashFunctor<class CUtlStringToken>,int>::HashBucket_t,int,class CMemAllocAllocator>,struct CUtlHashMap<class CUtlStringToken,struct CLocalize::LocVariableHandler_t,class CDefEquals<class CUtlStringToken>,struct DefaultHashFunctor<class CUtlStringToken>,int>::HashBucket_t,int>::AddMultipleToTail
+CUtlLeanVectorImpl<class CUtlLeanVectorBase<struct CUtlMemoryBlockAllocator<unsigned char,class CMemAllocAllocator>::MemPage_t,int,class CMemAllocAllocator>,struct CUtlMemoryBlockAllocator<unsigned char,class CMemAllocAllocator>::MemPage_t,int>::EnsureUnusedCapacity
+CUtlMemoryBlockAllocator<unsigned char,class CMemAllocAllocator>::AddPage
+CUtlMemoryBlockAllocator<unsigned char,class CMemAllocAllocator>::Alloc
+CheckFindLocVar
+CheckInvalidParseLocVar
+CheckLocVarConstruct
+CheckLocVarResolve
+CheckParseLocVars
+CheckValidParseLocVar
+CompileAndConstructMFString
+CompiledMFString
+Duplicate load of loc file '%s'\n
+DuplicateFileLoadFail
+DuplicateTokensAssert
+DuplicateTokensFail
+DuplicateTokensWarning
+ERROR: Duplicate load of loc file '%s'\n
+ERROR: Duplicate string token '%s' found in %s (original in %s) - new value '%s', original value '%s'\n
+Expected loc var ref %u of '%s' to be '%s', found '%s'\n
+Expecting %u loc var ref(s) in '%s', found %u\n
+Expecting to fail loc var ref parse of text '%.*s'\n
+Expecting to find %u loc var ref(s) in '%s'\n
+Expecting to find a loc variable reference in '%s'\n
+Expecting to parse loc var ref text '%s'\n
+Failed to read localization file %s\n
+Full paths not allowed in localization file specification '%s'\n
+Generic loc var missing a type in '%.*s'\n
+Generic loc var reference missing a name in '%.*s'\n
+Generic loc var reference modifiers '%s' ignored\n
+ILocalize::AddFile() failed to load file "%s".\n
+Improper termination of loc variable reference\n
+Invalid loc variable reference pointer\n
+Invalid loc variable type for '%.*s' (%c)
+LOCFAIL %s: '%s' combines :f with other flags\n
+LOCFAIL %s: '%s' has multiple parts\n
+LOCFAIL %s: '%s' has variants but does not have any token name variant flags (:g, :n, :p, etc.)\n
+LOCFAIL %s: '%s' indicates a gender specifier but doesn't provide one\n
+LOCFAIL %s: Value for '%s' does not have required gender\n
+LOCFAIL %s: Value for '%s' has a plural quantity but the token doesn't have :l\n
+LOCFAIL %s: Value for '%s' has gendered variants but the token doesn't have :g or :n\n
+LOCFAIL %s: Value for '%s' must have the same gender for each variant\n
+LOCFAIL %s: Value for '%s' uses a gender not valid for the value language\n
+LOCFAIL: Ignoring unsupported encoding in localization file '%s'\n
+LOCFAIL: Tried to add a loc token with '#' starting the token name ('%s')\n
+LOCFAIL: Tried to add empty loc token\n
+LOCFAIL: the explicit plural flag 'l' can't be specified without the gender flag 'n' (token %s in file %s)\n
+LOCWARN %s: value of '%s' matches English, possible unlocalized token\n
+LOC_Date_Today
+LOC_Date_Tomorrow
+LOC_Date_Yesterday
+LOC_Number_DecimalPoint
+LOC_Number_Grouping
+LOC_Number_InfinityShort
+LOC_Number_MinimumGroupingDigits
+LOC_Number_NegativeSign
+LOC_Number_PositiveSign
+LOC_Ordinal_Prefix_%u
+LOC_Ordinal_Prefix_Default
+LOC_Ordinal_Suffix_%u
+LOC_Ordinal_Suffix_Default
+List all loaded localization files
+List information on the given token
+Loaded localization files:\n
+Loc token '%s' not found\n
+Loc token '%s': index %d\n
+Loc var ConstructString with '%s' produced '%s' but expecting '%s'\n
+Loc var reference missing a name in '%.*s'\n
+Loc var resolve of '%s' produced '%s' but expecting '%s'\n
+Loc variable reference doesn't end with a brace\n
+Loc variable reference doesn't start with a brace\n
+Loc variable reference incomplete\n
+Loc variable reference missing ':' after type\n
+Loc variable reference too large (%u chars)\n
+LocTest_
+Localization System
+Localization stats for %s data:\n
+Localization watching these dirs for changes:\n
+Localize
+Localize_Create
+Localize_EconProvider_Create
+MFTest of '%s' failed: got '%s', expected '%s'\n
+MessageFormat %s
+Mex$
+Not expecting to find a loc variable reference in '%s'\n
+Not expecting to find any loc var refs in '%s'\n
+PERF WARNING: '%s' is in UTF-16 format, converting to UTF-8 will allow faster loading of it\n
+Tokens
+Unable to find localization token '%s'\n
+Unable to parse loc var reference '%s'\n
+Unknown loc variable number modifier '%c'\n
+Unknown loc variable string modifier '%c'\n
+Unknown loc variable time modifier '%c'\n
+Unlocalized token '%s'\n
+Usage: %s <token>\n
+V_strStartsWith( pFound, pExpected )
+WARNING: Duplicate string token '%s' found in %s (original in %s) - new value '%s', original value '%s'\n
+[!s:notavar]
+[!s:notpresent]
+[END]
+\resource\valve_
+\t_V_StringAfterPrefixCaseSensitive
+\{s:foo} {s:bar}
+\{s:foo} {} {,:} {s:} {s:bar} extra
+dump_loc_token
+dump_localization_files
+duplicate selector case
+ends_with_000
+english]
+external string val
+extstr
+file://
+foo}
+gen test
+gen test mod A
+gen test mod AB
+gen test mod B
+gender
+instance %d:\n
+invalid plural predicate after '='
+korean
+l\tV_powd
+localize.dll
+many
+missing required ',' after selection type
+missing required ',' or '}' after substitution variable (do you have unusual characters in your substitution token name?)
+missing required '=' or plural category
+missing required '{' for gender match
+missing required '{' for plural match
+missing required '{' for select
+missing required '}' for gender match
+missing required '}' for plural match
+missing required '}' for select
+missing required comparison value for select
+missing required gender category
+missing required integer or predicate after '='
+missing required selection type (ie., 'plural') after comma
+missing required substitution variable name
+money
+no vars
+no vars at all
+not used
+other
+pAfter != nullptr && pAfter > pFound && pAfter[-1] == '}'
+pCompiled->IsValid()
+pExpected == nullptr
+pLocalize->FindLocVariableReferenceText( pString ) == pFound
+parse error: %s at position %lld (context: "%s>>>%s<<<%s")
+plural
+resource/countries_%language%.txt
+resource/valve_
+resource/valve_%language%.txt
+resource\valve_
+select
+selectordinal
+string val
+three
+unknown/unimplemented selection type
+unknown/unsupported gender category
+unknown/unsupported plural category
+unmatched '}'
+var.m_nModifiers == nModifiers
+var.m_type == varType
+var.m_variableName == pName
+var.m_variableParams == pParams
+vars.Count() == expectedNames.Count()
+vars.GetLocVariable( "extstr" )->HasExternalValue()
+vars.SetTimeVariable( "time", nCurTime )
+vars.SetVariable( "f64", 12.3456 )
+vars.SetVariable( "gen", "not used" )
+vars.SetVariable( "i64", -1234ll )
+vars.SetVariable( "money", CCurrencyAmount( 123, k_ECurrencyUSD ) )
+vars.SetVariable( "str", "string val" )
+vars.SetVariable( "str", "string val", true )
+vars.SetVariable( "u64", 12345ull )
+vars.SetVariableExternal( "extstr", "external string val" )
+vars2.GetLocVariable( "extstr" )->HasExternalValue()
+vars[i].m_variableName == expectedNames[i]
+x !{q:badtype} x
+x STRING VAL external string val -1234 12345 12.346 $1.23 gen test mod AB x
+x STRING VAL external string val -1234 12345 12.346 $1.23 gen test x
+x \{s:not} {s:one}
+x string val x
+x {q:badtype} x
+x {s:one}  {t:s:two}   {g:test:abc:three} x
+x {s:str} x
+x {s:u:str} {s:extstr} {d:r:i64} {u:u64} {f:3:f64} {m:money} {g:test:ab:gen} x
+x {s:u:str} {s:extstr} {d:r:i64} {u:u64} {f:3:f64} {m:money} {g:test:gen} x
+x {{s:one} x
+{D:o:r:foo}
+{M:foo}
+{d:i64}
+{d:o:r:9:foo}
+{f:0:1:9:foo}
+{f:4:f64}
+{f:f64}
+{f:foo}
+{f:r:1:2:3:foo}
+{g:foo}
+{g:test::foo}
+{g:test:a:foo}
+{g:test:ab:foo}
+{g:test:abc:foo}
+{g:test:b:a:foo}
+{g:test:b:foo}
+{g:test:b:gen}
+{g:test:ba:foo}
+{g:test:foo}
+{g:test:gen}
+{i:foo}
+{m:money}
+{s:9:foo}
+{s:bar}
+{s:extstr}
+{s:foo}
+{s:notavar}
+{s:notpresent}
+{s:one} \"x
+{s:one} x
+{s:str}
+{s:u:foo}
+{t:9:foo}
+{t:foo}
+{t:l:time}
+{t:s:foo}
+{t:s:l:9:foo}
+{t:s:l:foo}
+{t:str}
+{u:foo}
+{u:u64}
+{zzz}

@@ -10,4 +10,15 @@
 		"product"		"VR"
 		"component"		"Content"
 	}
+	
+	"CSGO"
+	{
+		"version"		"5"
+		"owner"			"Unassigned"
+		"severity"		"A"
+		"priority"		"Unprioritized"
+		"category"		"---"
+		"product"		"CS2"
+		"component"		"Unassigned"
+	}
 }

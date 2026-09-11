@@ -1,8 +1,5 @@
 import "networkbasetypes.proto";
 
-option optimize_for = SPEED;
-option cc_generic_services = false;
-
 enum ETEProtobufIds {
 	TE_EffectDispatchId = 400;
 	TE_ArmorRicochetId = 401;
@@ -10,8 +7,6 @@ enum ETEProtobufIds {
 	TE_BeamEntsId = 403;
 	TE_BeamPointsId = 404;
 	TE_BeamRingId = 405;
-	TE_BreakModelId = 406;
-	TE_BSPDecalId = 407;
 	TE_BubblesId = 408;
 	TE_BubbleTrailId = 409;
 	TE_DecalId = 410;
@@ -28,8 +23,6 @@ enum ETEProtobufIds {
 	TE_LargeFunnelId = 421;
 	TE_SparksId = 422;
 	TE_PhysicsPropId = 423;
-	TE_PlayerDecalId = 424;
-	TE_ProjectedDecalId = 425;
 	TE_SmokeId = 426;
 }
 
@@ -79,26 +72,6 @@ message CMsgTEBeamRing {
 	optional uint32 endentity = 3;
 }
 
-message CMsgTEBreakModel {
-	optional .CMsgVector origin = 1;
-	optional .CMsgQAngle angles = 2;
-	optional .CMsgVector size = 3;
-	optional .CMsgVector velocity = 4;
-	optional uint32 randomization = 5;
-	optional fixed64 modelindex = 6;
-	optional uint32 count = 7;
-	optional float time = 8;
-	optional uint32 flags = 9;
-}
-
-message CMsgTEBSPDecal {
-	optional .CMsgVector origin = 1;
-	optional .CMsgVector normal = 2;
-	optional .CMsgVector saxis = 3;
-	optional uint32 entity = 4;
-	optional uint32 index = 5;
-}
-
 message CMsgTEBubbles {
 	optional .CMsgVector mins = 1;
 	optional .CMsgVector maxs = 2;
@@ -118,7 +91,7 @@ message CMsgTEBubbleTrail {
 message CMsgTEDecal {
 	optional .CMsgVector origin = 1;
 	optional .CMsgVector start = 2;
-	optional uint32 entity = 3;
+	optional int32 entity = 3 [default = -1];
 	optional uint32 hitbox = 4;
 	optional uint32 index = 5;
 }
@@ -128,8 +101,8 @@ message CMsgEffectData {
 	optional .CMsgVector start = 2;
 	optional .CMsgVector normal = 3;
 	optional .CMsgQAngle angles = 4;
-	optional fixed32 entity = 5;
-	optional fixed32 otherentity = 6;
+	optional fixed32 entity = 5 [default = 16777215];
+	optional fixed32 otherentity = 6 [default = 16777215];
 	optional float scale = 7;
 	optional float magnitude = 8;
 	optional float radius = 9;
@@ -142,7 +115,7 @@ message CMsgEffectData {
 	optional uint32 flags = 16;
 	optional int32 attachmentindex = 17;
 	optional uint32 effectname = 18;
-	optional uint32 attachmentname = 19;
+	optional uint32 attachmentname = 19 [default = 0];
 }
 
 message CMsgTEEffectDispatch {
@@ -156,7 +129,7 @@ message CMsgTEEnergySplash {
 }
 
 message CMsgTEFizz {
-	optional uint32 entity = 1;
+	optional int32 entity = 1 [default = -1];
 	optional uint32 density = 2;
 	optional int32 current = 3;
 }
@@ -203,14 +176,17 @@ message CMsgTEBloodStream {
 
 message CMsgTEExplosion {
 	optional .CMsgVector origin = 1;
-	optional uint32 framerate = 2;
 	optional uint32 flags = 3;
 	optional .CMsgVector normal = 4;
-	optional uint32 materialtype = 5;
 	optional uint32 radius = 6;
 	optional uint32 magnitude = 7;
-	optional float scale = 8;
 	optional bool affect_ragdolls = 9;
+	optional string sound_name = 10;
+	optional uint32 explosion_type = 11;
+	optional uint32 explosion_type_name = 15 [default = 0];
+	optional bool create_debris = 12;
+	optional .CMsgVector debris_origin = 13;
+	optional fixed32 debris_surfaceprop = 14;
 }
 
 message CMsgTEDust {
@@ -236,26 +212,16 @@ message CMsgTEPhysicsProp {
 	optional .CMsgVector origin = 1;
 	optional .CMsgVector velocity = 2;
 	optional .CMsgQAngle angles = 3;
-	optional fixed32 skin = 4;
+	optional fixed32 skin = 4 [default = 0];
 	optional uint32 flags = 5;
 	optional uint32 effects = 6;
 	optional fixed32 color = 7;
 	optional fixed64 modelindex = 8;
-	optional uint32 breakmodelsnottomake = 9;
+	optional uint32 unused_breakmodelsnottomake = 9;
 	optional float scale = 10;
-}
-
-message CMsgTEPlayerDecal {
-	optional .CMsgVector origin = 1;
-	optional uint32 player = 2;
-	optional uint32 entity = 3;
-}
-
-message CMsgTEProjectedDecal {
-	optional .CMsgVector origin = 1;
-	optional .CMsgQAngle angles = 2;
-	optional uint32 index = 3;
-	optional float distance = 4;
+	optional .CMsgVector dmgpos = 11;
+	optional .CMsgVector dmgdir = 12;
+	optional int32 dmgtype = 13;
 }
 
 message CMsgTESmoke {
@@ -268,4 +234,3 @@ message CMsgTEWorldDecal {
 	optional .CMsgVector normal = 2;
 	optional uint32 index = 3;
 }
-

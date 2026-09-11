@@ -1,7 +1,0 @@
-﻿"dota"
-{
-"InfoScreenClose"	"Fortsett"
-"[english]InfoScreenClose"	"Continue"
-"EndScreenClose"	"Avslutt"
-"[english]EndScreenClose"	"Exit"
-}

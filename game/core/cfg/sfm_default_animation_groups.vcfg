@@ -24,6 +24,10 @@ groupFile  // Now supports hierarchies
 			"control"		"eyeClosed-eyeDown"
 			"control"		"eyeDownAndUp"
 			"control"		"eyeRightAndLeft"
+
+			// HL:Alyx
+			"control"		"eye_R"
+			"control"		"eye_L"
 		}
 		"Full Face"
 		{
@@ -155,6 +159,9 @@ groupFile  // Now supports hierarchies
 			"control"		"inner_raiser"
 			"control"		"outer_raiser"
 			"control"		"lowerer"
+
+			// HL:Alyx
+			"control"		"scalpSlide"
 		}
 		"Mid Face"
 		{
@@ -195,6 +202,17 @@ groupFile  // Now supports hierarchies
 			"control"		"cheek_raiser"
 			"control"		"wrinkler"
 			"control"		"dilator"
+
+			// HL:Alyx
+			"control"		"nosePressor"
+			"control"		"nostrilCompressor"
+
+			"control"		"cheekSuckAndPuff"
+			"control"		"upperCheekDownAndUp"
+			"control"		"lowerCheekDownAndUp"
+			"control"		"upperCheekInAndOut"
+			"control"		"lowerCheekInAndOut"
+			"control"		"jowlInAndOutTweak"
 		}
 		"Lower Face"
 		{
@@ -381,6 +399,28 @@ groupFile  // Now supports hierarchies
 			"control"		"jawClosed"
 			"control"		"lowerLipNeutral"
 			"control"		"jawSidewaysLH"
+
+			// HL:Alyx
+			"control"		"innerLipPressor"
+			"control"		"outerLipPressor"
+			"control"		"upperLipRightAndLeft"
+			"control"		"lowerLipRightAndLeft"
+			"control"		"lipStickyUpperCorner"
+			"control"		"lipStickyUpperB"
+			"control"		"lipStickyUpperA"
+			"control"		"mid_lipStickyUpper"
+			"control"		"lipStickyLowerA"
+			"control"		"mid_lipStickyLower"
+			"control"		"lipStickyLowerCorner"
+			"control"		"lipStickyLowerB"
+
+			"control"		"jawDrop"
+
+			"control"		"jaw_0"
+			"control"		"jaw_end"
+
+			"control"		"neckInAndOutTweak"
+			"control"		"throatDownAndUp"
 		}
 		"Tongue"
 		{
@@ -401,11 +441,22 @@ groupFile  // Now supports hierarchies
 			"control"		"tongueUp"
 			"control"		"tongueNarrow"
 			"control"		"tongueUpThrust"
+
+			// HL:Alyx
+			"control"		"tongueUpAndDown"
+			"control"		"tongueRoll"
+			"control"		"tongueSwing"
+			"control"		"tongueInAndOut"
+			"control"		"tongueWiden"
+			"control"		"tongueTipUpAndDown"
+			"control"		"tongueTipInAndOut"
 		}
 	}
 	"Body"
 	{
 		"control"		"rootTransform"
+
+		"control"		"root_motion"
 
 		"control"		"bip_pelvis"
 		"control"		"bip_spine_0"
@@ -1601,6 +1652,8 @@ groupFile  // Now supports hierarchies
 
 	"Other"
 	{
+		"control"		"weapon_hand_R"
+		"control"		"weapon_hand_L"
 		"control"		"weapon_bone"
 		"control"		"prp_bullet_shoulder"
 		"control"		"prp_bullet_backUpper"
@@ -1667,7 +1720,45 @@ groupFile  // Now supports hierarchies
 		"control"		"attach_pvt_outerFoot_L"
 		"control"		"attach_pvt_innerFoot_L"
 	}
-		
+
+	"Helpers"
+	{
+		"visible"		0
+		"snap"			0
+
+		"control"		"object_hand_R"
+		"control"		"object_hand_L"
+		"control"		"gun_direction_accurate"
+
+		"control"		"eye_end_R"
+		"control"		"eye_end_L"
+
+		"control"		"feet_offset_ground_root"
+		"control"		"ground_root_left_foot"
+		"control"		"ground_root_right_foot"
+
+		"control"		"hand_L_IK_target"
+		"control"		"hand_R_IK_target"
+		"control"		"foot_L_IK_target"
+		"control"		"foot_R_IK_target"
+		"control"		"hand_ik_tweaker"
+		"control"		"hand_L_IK_target_childright"
+		"control"		"foot_L_IK_target_ytrans"
+		"control"		"foot_R_IK_target_ytrans"
+		"control"		"ankle_R_IK_target"
+		"control"		"ankle_L_IK_target"
+
+		"control"		"_iklockdriver_left_leg_IKChain"
+		"control"		"_iklockdriver_right_leg_IKChain"
+		"control"		"_iklockdriver_left_leg"
+		"control"		"_iklockdriver_right_leg"
+		"control"		"_iklockdriver_ik_right_arm"
+		"control"		"_iklockdriver_ik_left_arm"
+		"control"		"_iklockdriver_right_arm"
+		"control"		"_iklockdriver_left_arm"
+		"control"		"_iklockdriver_leg_L"
+		"control"		"_iklockdriver_leg_R"
+	}
 	
 	// This is a special group which will ignore controls of this name
 	"IGNORE"

@@ -36,15 +36,10 @@
 			"game" "Default"
 			"game" "Depth"
 			"game" "ProjectionDepth"
-			"game" "PrepassGBuffer"
-			"game" "FullDeferredGBuffer"
 			"game" "PrepassLight"
-			"game" "FullDeferredLight"
-			"game" "LightIrradianceSamples"			
+			"game" "FullDeferredLight"	
 			"game" "DeferredGather"			
 			"game" "Forward"
-			"game" "RSMGBuffer"	
-			"game" "ForwardDebugLightingOnly"			
 
 			"tools" "ToolsVis" // Visualization modes for all shaders (lighting only, normal maps only, etc.)
 			"tools" "ToolsWireframe" // This should use the ToolsVis mode above instead of being its own mode
@@ -73,9 +68,35 @@
 		"NavMarkupEntity"		"func_nav_markup"
 	}
 
+	SoundTool
+	{
+		"DefaultSoundEventType" "core_simple_3d"
+	}
+
 	RenderPipelineAliases
 	{
 		"Tools"			"Forward"
 		"EnvMapBake"	"Forward"
+	}
+	ResourceCompiler
+	{
+
+	}
+
+	ModelDoc
+	{
+		"models_gamedata"	"models_base.fgd"
+		"features"			"animgraph"
+	}
+
+	Memory
+	{
+		"EstimatedMaxCPUMemUsageMB"	"1"
+		"EstimatedMinGPUMemUsageMB"	"1"
+	}
+	ConVars
+	{
+		snd_envelope_rate 100
+		snd_soundmixer_update_maximum_frame_rate 0
 	}
 }

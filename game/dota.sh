@@ -7,9 +7,18 @@
 # $PWD
 
 GAMEROOT=$(cd "${0%/*}" && echo $PWD)
+SCRIPTNAME=$(basename $0)
 
 #determine platform
-UNAME=`uname`
+UNAMEPATH=`command -v uname`
+if [ -z $UNAMEPATH ]; then
+	if [ -f /usr/bin/uname ]; then
+		UNAMEPATH=/usr/bin/uname
+	elif [ -f /bin/uname ]; then
+		UNAMEPATH=/bin/uname
+	fi
+fi
+UNAME=`${UNAMEPATH}`
 if [ "$UNAME" == "Darwin" ]; then
    # Workaround OS X El Capitan 10.11 System Integrity Protection (SIP) which does not allow
    # DYLD_INSERT_LIBRARIES to be set for system processes.
@@ -19,6 +28,17 @@ if [ "$UNAME" == "Darwin" ]; then
    # prepend our lib path to LD_LIBRARY_PATH
    export DYLD_LIBRARY_PATH="${GAMEROOT}"/bin/osx64:$DYLD_LIBRARY_PATH
 elif [ "$UNAME" == "Linux" ]; then
+    # CS2 requires the sniper container runtime
+    . /etc/os-release
+    if [ "$VERSION_CODENAME" != "sniper" ]; then
+        # a dialog box (zenity?) would be nice, but at this point we do not really know what is available to us
+        echo
+        echo "FATAL: It appears $SCRIPTNAME was not launched within the Steam for Linux sniper runtime environment."
+        echo "FATAL: Please consult documentation to ensure correct configuration, aborting."
+        echo
+        exit 1
+    fi
+
    # prepend our lib path to LD_LIBRARY_PATH
    export LD_LIBRARY_PATH="${GAMEROOT}"/bin/linuxsteamrt64:$LD_LIBRARY_PATH
    USE_STEAM_RUNTIME=1
@@ -35,7 +55,7 @@ fi
 ulimit -n 2048
 
 # Set default thread size.
-ulimit -Ss 1024
+ulimit -Ss 2048
 
 # enable nVidia threaded optimizations
 export __GL_THREADED_OPTIMIZATIONS=1
@@ -53,30 +73,18 @@ if [ "$UNAME" == "Linux" ]; then
 	export ENABLE_PATHMATCH=1
 fi
 
-# Run inside of the Steam runtime if necessary and allowed.
-if [ "$STEAM_RUNTIME_ROOT" != "" ]; then
-    # Already in the runtime.
-    USE_STEAM_RUNTIME=0
-fi
-if [ "$STEAM_RUNTIME" = "0" ]; then
-    # Runtime is explicitly disabled.
-    USE_STEAM_RUNTIME=0
-fi
-
-if [ "$USE_STEAM_RUNTIME" = "1" ]; then
-    STEAM_RUNTIME_PREFIX=/valve/steam-runtime/bin/run.sh
-    if [ ! -f $STEAM_RUNTIME_PREFIX ]; then
-        STEAM_RUNTIME_PREFIX=
-    fi
-    if [ "$STEAM_RUNTIME_PREFIX" != "" ]; then
-        echo "Running with the Steam runtime SDK"
-    fi
+# There is Wayland support in SDL but a recent (5/23/2025) attempt at
+# allowing SDL to default to Wayland caused a number of customer issues so
+# keep the default at X11 for now. Don't override any user setting so
+# people can easily use Wayland if they want.
+if [ "$UNAME" == "Linux" ]; then
+	if [ -z "$SDL_VIDEO_DRIVER" ]; then
+		export SDL_VIDEO_DRIVER=x11
+	fi
 fi
 
 # Do the following for strace:
 # 	GAME_DEBUGGER="strace -f -o strace.log"
-# Do the following for tcmalloc
-#   LD_PRELOAD=../src/thirdparty/gperftools-2.0/.libs/libtcmalloc_debug.so:$LD_PRELOAD
 
 STATUS=42
 while [ $STATUS -eq 42 ]; do
@@ -88,11 +96,17 @@ while [ $STATUS -eq 42 ]; do
 		#   gameoverlayrenderer.so and the other preload objects aren't loaded in our debugger's process.
 		echo set env LD_PRELOAD=$LD_PRELOAD >> "$ARGSFILE"
 		echo show env LD_PRELOAD >> "$ARGSFILE"
-		echo set disable-randomization off >> "$ARGSFILE"
+		# Unless you are chasing a bug that is explicitly related to address space randomization..
+		#echo set disable-randomization off >> "$ARGSFILE"
 		unset LD_PRELOAD
+
+		echo set env LD_LIBRARY_PATH=$LD_LIBRARY_PATH >> "$ARGSFILE"
+		echo show env LD_LIBRARY_PATH >> "$ARGSFILE"
+		unset LD_LIBRARY_PATH
 
 		echo run $@ >> "$ARGSFILE"
 		echo show args >> "$ARGSFILE"
+
 		${GAME_DEBUGGER} "${GAMEROOT}"/${GAMEEXE} -x "$ARGSFILE"
 		rm "$ARGSFILE"
 	elif [ "${GAME_DEBUGGER}" == "lldb" ]; then

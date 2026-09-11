@@ -5,12 +5,14 @@ print( "Hero Demo game mode loaded." )
 
 _G.NEUTRAL_TEAM = 4 -- global const for neutral team int
 _G.DOTA_MAX_ABILITIES = 16
-_G.HERO_MAX_LEVEL = 25
-
-LinkLuaModifier( "lm_take_no_damage", LUA_MODIFIER_MOTION_NONE )
+_G.HERO_MAX_LEVEL = 30
 
 -- "demo_hero_name" is a magic term, "default_value" means no string was passed, so we'd probably want to put them in hero selection
 sHeroSelection = GameRules:GetGameSessionConfigValue( "demo_hero_name", "default_value" )
+-- If it hasn't been set there, check the command line
+if sHeroSelection == "default_value" then
+	sHeroSelection = GlobalSys:CommandLineStr( "-demo_hero_name", "default_value" )
+end
 print( "sHeroSelection: " .. sHeroSelection )
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -31,10 +33,14 @@ require( "utility_functions" )
 -- Precache files and folders
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 function Precache( context )
-	PrecacheUnitByNameSync( sHeroSelection, context )
-	PrecacheUnitByNameSync( "npc_dota_hero_axe", context )
-	PrecacheUnitByNameSync( "npc_dota_hero_antimage", context )
+	if sHeroSelection ~= "default_value" then
+		PrecacheUnitByNameSync( sHeroSelection, context )
+	end
 	PrecacheUnitByNameSync( "npc_dota_hero_target_dummy", context )
+
+	PrecacheResource( "soundfile", "soundevents/game_sounds_hero_demo.vsndevts", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_chen/chen_hand_of_god_aura_body.vpcf", context )
+	PrecacheResource( "particle", "particles/status_fx/status_effect_chen_handofgod_buff.vpcf", context )
 end
 
 --------------------------------------------------------------------------------
@@ -58,13 +64,17 @@ function CHeroDemo:InitGameMode()
 	GameMode:SetCustomGameForceHero( sHeroSelection ) -- sHeroSelection string gets piped in by dashboard's demo button
 	GameMode:SetTowerBackdoorProtectionEnabled( true )
 	GameMode:SetFixedRespawnTime( 4 )
+	GameMode:SetDaynightCycleDisabled( true )
 	--GameMode:SetBotThinkingEnabled( true ) -- the ConVar is currently disabled in C++
 	-- Set bot mode difficulty: can try GameMode:SetCustomGameDifficulty( 1 )
 
 	GameRules:SetUseUniversalShopMode( true )
 	GameRules:SetPreGameTime( 0 )
 	GameRules:SetCustomGameSetupTimeout( 0 ) -- skip the custom team UI with 0, or do indefinite duration with -1
-
+	GameRules:SetTimeOfDay( 0.251 )	
+	GameRules:SetSuggestAbilitiesEnabled( true )
+	GameRules:SetSuggestItemsEnabled( true )
+	
 	GameMode:SetContextThink( "HeroDemo:GameThink", function() return self:GameThink() end, 0 )
 
 	-- Events
@@ -73,27 +83,88 @@ function CHeroDemo:InitGameMode()
 	ListenToGameEvent( "dota_item_purchased", Dynamic_Wrap( CHeroDemo, "OnItemPurchased" ), self )
 	ListenToGameEvent( "npc_replaced", Dynamic_Wrap( CHeroDemo, "OnNPCReplaced" ), self )
 
+	CustomGameEventManager:RegisterListener( "RequestInitialSpawnHeroID", function(...) return self:OnRequestInitialSpawnHeroID( ... ) end )
+	CustomGameEventManager:RegisterListener( "PlayerConnected", function(...) return self:OnPlayerConnected( ... ) end )
+
+	CustomGameEventManager:RegisterListener( "ToggleDayNight", function(...) return self:OnToggleDayNight( ... ) end )
+
 	CustomGameEventManager:RegisterListener( "WelcomePanelDismissed", function(...) return self:OnWelcomePanelDismissed( ... ) end )
-	CustomGameEventManager:RegisterListener( "RefreshButtonPressed", function(...) return self:OnRefreshButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "RefreshSpellsButtonPressed", function(...) return self:OnRefreshSpellsButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "RefreshHealthButtonPressed", function(...) return self:OnRefreshHealthButtonPressed( ... ) end )
 	CustomGameEventManager:RegisterListener( "LevelUpButtonPressed", function(...) return self:OnLevelUpButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "MaxLevelButtonPressed", function(...) return self:OnMaxLevelButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "UltraMaxLevelButtonPressed", function(...) return self:OnUltraMaxLevelButtonPressed( ... ) end )
 	CustomGameEventManager:RegisterListener( "FreeSpellsButtonPressed", function(...) return self:OnFreeSpellsButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "InvulnerabilityButtonPressed", function(...) return self:OnInvulnerabilityButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "SpawnAllyButtonPressed", function(...) return self:OnSpawnAllyButtonPressed( ... ) end ) -- deprecated
+	CustomGameEventManager:RegisterListener( "AllVisionButtonPressed", function(...) return self:OnAllVisionButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "EnableXPButtonPressed", function(...) return self:OnEnableXPGainButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "EnableRegenButtonPressed", function(...) return self:OnEnableRegenButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "CombatLogButtonPressed", function(...) return self:CombatLogButtonPressed( ... ) end )
+
+	CustomGameEventManager:RegisterListener( "SelectMainHeroButtonPressed", function(...) return self:OnSelectMainHeroButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SelectSpawnHeroButtonPressed", function(...) return self:OnSelectSpawnHeroButtonPressed( ... ) end )
 	CustomGameEventManager:RegisterListener( "SpawnEnemyButtonPressed", function(...) return self:OnSpawnEnemyButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "LevelUpEnemyButtonPressed", function(...) return self:OnLevelUpEnemyButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnAllyButtonPressed", function(...) return self:OnSpawnAllyButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "ChangeTeamButtonPressed", function(...) return self:OnChangeTeamButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "RemoveHeroButtonPressed", function(...) return self:OnRemoveHeroButtonPressed( ... ) end )	
+
+	CustomGameEventManager:RegisterListener( "LevelUpHero", function(...) return self:OnLevelUpHero( ... ) end )
+	CustomGameEventManager:RegisterListener( "MaxLevelUpHero", function(...) return self:OnMaxLevelUpHero( ... ) end )
+	CustomGameEventManager:RegisterListener( "ScepterHero", function(...) return self:OnScepterHero( ... ) end )
+	CustomGameEventManager:RegisterListener( "ShardHero", function(...) return self:OnShardHero( ... ) end )
+	CustomGameEventManager:RegisterListener( "ResetHero", function(...) return self:OnResetHero( ... ) end )
+	CustomGameEventManager:RegisterListener( "ToggleInvulnerabilityHero", function(...) return self:OnSetInvulnerabilityHero( nil, ... ) end )
+	CustomGameEventManager:RegisterListener( "InvulnOnHero", function(...) return self:OnSetInvulnerabilityHero( true, ... ) end )
+	CustomGameEventManager:RegisterListener( "InvulnOffHero", function(...) return self:OnSetInvulnerabilityHero( false, ... ) end )
+
+	CustomGameEventManager:RegisterListener( "ClearGameState", function(...) return self:OnClearGameState( ... ) end )
+	CustomGameEventManager:RegisterListener( "SaveState", function(...) return self:OnSaveState( ... ) end )
+	CustomGameEventManager:RegisterListener( "RestoreState", function(...) return self:OnRestoreState( ... ) end )
+	
 	CustomGameEventManager:RegisterListener( "DummyTargetButtonPressed", function(...) return self:OnDummyTargetButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "RemoveSpawnedUnitsButtonPressed", function(...) return self:OnRemoveSpawnedUnitsButtonPressed( ... ) end )
-	CustomGameEventManager:RegisterListener( "LaneCreepsButtonPressed", function(...) return self:OnLaneCreepsButtonPressed( ... ) end )
+
 	CustomGameEventManager:RegisterListener( "ChangeHeroButtonPressed", function(...) return self:OnChangeHeroButtonPressed( ... ) end )
 	CustomGameEventManager:RegisterListener( "ChangeCosmeticsButtonPressed", function(...) return self:OnChangeCosmeticsButtonPressed( ... ) end )
+	
+	CustomGameEventManager:RegisterListener( "SpawnCreepsButtonPressed", function(...) return self:OnSpawnCreepsButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnSingleCreepWaveButtonPressed", function(...) return self:OnSpawnSingleCreepWaveButtonPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "TowersEnabledButtonPressed", function(...) return self:OnTowersEnabledButtonPressed( ... ) end )
+	
 	CustomGameEventManager:RegisterListener( "PauseButtonPressed", function(...) return self:OnPauseButtonPressed( ... ) end )
 	CustomGameEventManager:RegisterListener( "LeaveButtonPressed", function(...) return self:OnLeaveButtonPressed( ... ) end )
 
+	CustomGameEventManager:RegisterListener( "SpawnRuneDoubleDamagePressed", function(...) return self:OnSpawnRuneDoubleDamagePressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneHastePressed", function(...) return self:OnSpawnRuneHastePressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneIllusionPressed", function(...) return self:OnSpawnRuneIllusionPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneInvisibilityPressed", function(...) return self:OnSpawnRuneInvisibilityPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneRegenerationPressed", function(...) return self:OnSpawnRuneRegenerationPressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneArcanePressed", function(...) return self:OnSpawnRuneArcanePressed( ... ) end )
+	CustomGameEventManager:RegisterListener( "SpawnRuneShieldPressed", function(...) return self:OnSpawnRuneShieldPressed( ... ) end )
+
+	CustomGameEventManager:RegisterListener( "SpawnUnitButtonPressed", function(...) return self:OnSpawnUnitButtonPressed( ... ) end )
+
+	CustomGameEventManager:RegisterListener( "ChangeSpeedStep", function(...) return self:OnChangeSpeedStep( ... ) end )
+	
 	SendToServerConsole( "sv_cheats 1" )
 	SendToServerConsole( "dota_hero_god_mode 0" )
 	SendToServerConsole( "dota_ability_debug 0" )
-	SendToServerConsole( "dota_creeps_no_spawning 0" )
+	SendToServerConsole( "dota_taunt_base_cooldown 0" )
+	SendToServerConsole( "dota_taunt_second_cooldown 0" )
+	if Convars:GetInt("dota_hero_demo_spawn_creeps_enabled") == 1 then
+		--print("Starting demo mode with creeps spawning")
+		SendToServerConsole( "dota_creeps_no_spawning 0" )
+	else 
+		--print("Starting demo mode with no creeps spawning")
+		SendToServerConsole( "dota_creeps_no_spawning 1" )
+	end
+
+	self:FindTowers()
+	if Convars:GetInt("dota_hero_demo_towers_enabled") == 1 then
+		--print("Starting demo mode with towers")
+		self:SetTowersEnabled( true )
+	else 
+		--print("Starting demo mode with no towers")
+		self:SetTowersEnabled( false )
+	end
+
 	SendToServerConsole( "dota_easybuy 1" )
 	--SendToServerConsole( "dota_bot_mode 1" )
 
@@ -104,17 +175,15 @@ function CHeroDemo:InitGameMode()
 
 	--self.m_nHeroLevelBeforeMaxing = 1 -- unused now
 	--self.m_bHeroMaxedOut = false -- unused now
+
+	self.m_nPlayerEntIndex = -1
 	
 	self.m_nALLIES_TEAM = 2
-	self.m_tAlliesList = {}
-	self.m_nAlliesCount = 0
-
 	self.m_nENEMIES_TEAM = 3
-	self.m_tEnemiesList = {}
+	self.m_nNEUTRALS_TEAM = 6 -- first custom team, couldn't use the actual neutrals team due to an assert
 
 	self.m_bFreeSpellsEnabled = false
 	self.m_bInvulnerabilityEnabled = false
-	self.m_bCreepsEnabled = true
 
 	local hNeutralSpawn = Entities:FindByName( nil, "neutral_caster_spawn" )
 	if ( hNeutralSpawn == NIL ) then
@@ -122,7 +191,13 @@ function CHeroDemo:InitGameMode()
 	end
 
 	self._hNeutralCaster = CreateUnitByName( "npc_dota_neutral_caster", hNeutralSpawn:GetAbsOrigin(), false, nil, nil, NEUTRAL_TEAM )
-	
+
+	CustomNetTables:SetTableValue( "game_global", "ui_defaults", 
+		{ 
+			SpawnCreepsEnabled=Convars:GetInt("dota_hero_demo_spawn_creeps_enabled"),
+			TowersEnabled=Convars:GetInt("dota_hero_demo_towers_enabled") 
+		} 
+	)
 
 	PlayerResource:SetCustomTeamAssignment( self.m_nPlayerID, self.m_nALLIES_TEAM ) -- put PlayerID 0 on Radiant team (== team 2)
 end
@@ -131,7 +206,5 @@ end
 -- Main Think
 --------------------------------------------------------------------------------
 function CHeroDemo:GameThink()
-	--print( "#self.m_tEnemiesList == " .. #self.m_tEnemiesList .. " | GameTime == " .. tostring( string.format( "%.0f", GameRules:GetGameTime() ) ) )
-
 	return 0.5
 end

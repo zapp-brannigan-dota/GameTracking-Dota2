@@ -1,24 +1,25 @@
 #!/bin/bash
+set -euo pipefail
 
 cd "${0%/*}"
 . ../common.sh
 
 echo "Processing Dota 2..."
 
-ProcessDepot ".so"
+set +e
+../tools/dump_source2.sh DOTA
+DUMPER_EXIT_CODE=$?
+set -e
+
+ProcessDepot ".dll" ".exe"
+DeduplicateStringsFrom ".dll" ".exe" -- "game/bin/win64/engine2_strings.txt" "game/bin/win64/tier0_strings.txt" "DumpSource2/.stringsignore"
 ProcessVPK
-
-while IFS= read -r -d '' file
-do
-	baseFile="${file%.*}.txt"
-	
-	echo "> VPK $baseFile"
-	
-	../.support/vpktool "$file" > "$baseFile"
-done <   <(find "game/dota/maps/" -type f -name "*.vpk" -print0)
-
-./dump.sh
+ProcessToolAssetInfo
 
 FixUCS2
 
-CreateCommit "$(grep "ClientVersion=" game/dota/steam.inf | grep -o '[0-9\.]*')" "$1"
+CreateCommit "$(grep "ClientVersion=" game/dota/steam.inf | grep -o '[0-9\.]*')" "$(grep -o '[0-9\.]*' steam_buildid.txt)"
+
+echo "Done"
+
+exit "$DUMPER_EXIT_CODE"

@@ -1,7 +1,9 @@
 "GameInfo"
 {
-	game 		"Dota 2"
-	title 		"Dota 2"
+	//
+	// gameinfo.gi is the non-branch-varying content and can be integrated between branches.
+	// Branch-varying info, such as the game/title and app IDs, is in gameinfo_branchspecific.gi.
+	//
 
 	gamelogo 1
 	type		multiplayer_only
@@ -10,16 +12,11 @@
 	nohimodel 1
 	nocrosshair 0
 	GameData	"dota.fgd"
-	SupportsDX8	0
 	nodegraph 0
 	tonemapping 0 // Hide tonemapping ui in tools mode
 
 	FileSystem
 	{
-		SteamAppId				570
-		BreakpadAppId			373300	// Report crashes under beta DLC, not the S1 game.  Delete this when all clients are switched to S2
-		BreakpadAppId_Tools		375360  // Use a separate bucket of buckets for "-tools" crashes so that they don't get drowned out by game crashes. Falls back to BreakpadAppId/SteamAppId if missing
-		
 		//
 		// The code that loads this file automatically does a few things here:
 		//
@@ -47,13 +44,22 @@
 
 			Mod					dota
 
+			Write				dota
+
+			// These are optional language paths. They must be mounted first, which is why there are first in the list.
+			// *LANGUAGE* will be replaced with the actual language name. If not running a specific language, these paths will not be mounted
+			AddonRoot_Language	dota_*LANGUAGE*_addons
+
 			AddonRoot			dota_addons
 
 			// Note: addon content is included in publiccontent by default.
 			PublicContent		dota_core
 			PublicContent		core
 		}
-
+		
+		"UserSettingsPathID"	"USRLOCAL"
+		"LegacyUserSettingsPathID"	"MOD"
+				
 		AddonsChangeDefaultWritePath 0
 	}
 
@@ -71,35 +77,22 @@
 			"tools" "ToolsUtil" // Meant to be used to render tools sceneobjects that are mod-independent, like the origin grid
 		}
 	}
-	 
+
 	Engine2
 	{
 		"HasModAppSystems" "1"
 		"Capable64Bit" "1"
-		"UsesVGui" "0"
-		"UsesScaleform" "1"
-		"UsesPanorama" "1"
 		"PanoramaUIClientFromClient" "1" // IPanoramaUIClient is implemented by client.dll
-		"HasGameUI" "1" // dota uses gameui
-		"GameUIFromClient" "1"  // AND that gameui comes from client.dll
+		"HasLegacyGameUI" "1" // dota uses some legacy gameui systems
 		"URLName" "dota2"
 		"MsaaOverrideType" "0"
-		"UsesBink" "0"
         "MaxNetworkableEntities" "10000"
         "MaxNonNetworkableEntities" "10000"
-        "DefaultDXVersion" "9"
-        // The shader binary cache on Linux can be over 100MB so
-        // we have to allow very large allocations.
-		"AllocWarnMB_linuxsteamrt64" "200"
-		// Also currently demo files are loaded entirely into
-		// memory for 64-bit binaries so they can use well
-		// over 100MB at load time.  Zoid is looking at
-		// converting that to streaming.
-		"AllocWarnMB_osx64" "200"
-		"AllocWarnMB_pc64" "200"
-		"AllocWarnMB" "100"
-		// There are some known large virtual reservations, such as the SBH, which
-		// bypass this limit so we can be fairly conservative.
+        // The shader binary cache on non-Windows can be over 500MB.
+		// Also currently demo files are loaded entirely into memory for
+		// 64-bit binaries so they can easily use 100's of MB at load time.
+        // Go ahead and allow very large allocations, essentially removing this warning.
+		"AllocWarnMB" "2000"
 		"ReserveWarnMB" "64"
 
 		"RenderingPipeline"
@@ -107,17 +100,19 @@
 			"SkipPostProcessing" "1"
 			"SupportsMSAA" "0"
 		}
-		
+
 		"BugBait"
 		{
 			// Used by 'bug:' in chat to normalize report settings during playtests
-			"Owner" "triage*" 
+			"Owner" "triage*"
 			"Severity" "high"
 			"Priority" "none"
 			"Category" "---"
 			"Product" "dota"
 			"Component" "dota"
 		}
+
+		"NoResetInputOnGameOverlay" "1"
 	}
 
 	SceneFileCache
@@ -127,17 +122,25 @@
 
 	SceneSystem
 	{
-		"NoSunLightManager" "1"
-		"TransformTextureRowCount" "256"
-		"CMTAtlasWidth" "512"
+		"SunLightManagerCount" "0"
+		"TransformTextureRowCount" "2048"
+		"CMTAtlasWidth" "1024"
 		"CMTAtlasHeight" "512"
 		"CMTAtlasChunkSize" "128"
 		"DrawParticleChildrenSeparateFromParents" "1"
+		"MaxAutoPartitions" "8"
+		"TBDRLayerBatchThreshold" "512" // Apple M1 - increase sc_layer_batch_threshold from 128 -> 512. Reduces TBDR memory bandwidth.
 	}
-	
+
 	SoundSystem
 	{
-		"DisableSteamAudio" "1"
+		"SteamAudioEnabled" "1"
+		"snd_event_browser_default_stack" "dota_update_default"
+	}
+
+	NetworkSystem
+	{
+		"SkipRedundantChangeCallbacks"	"1"
 	}
 
 	ToolsEnvironment
@@ -146,27 +149,32 @@
 		"ToolsDir"	"../sdktools"	// NOTE: Default Tools path. This is relative to the mod path.
 		"DeveloperHelpURL" "https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools"
 		"ToolsProductName" "Dota2 Workshop Tools"
+		"HideCoreMod"	"1"
+		"SupportsActivities"	"1"
 	}
-	
+
 	Hammer
 	{
-		"fgd"					"dota.fgd"	// NOTE: This is relative to the 'mod' path.
-		"GameFeatureSet"		"Dota"
-		"LoadScriptEntities"	"0"
-		"DefaultTextureScale"	"0.250000"
-		"DefaultSolidEntity"	"trigger_dota"
-		"DefaultPointEntity"	"info_player_start_dota"
-		"NavMarkupEntity"		"func_nav_markup"
-		"EnableDotaTools"		"1"
-		"DefaultGridTileSet"	"/maps/tilesets/radiant_basic.vmap"
-		"DefaultGridTileSet2"	"/maps/tilesets/dire_basic.vmap"
-		"DotaMaxTrees"			"8000"
-		"AddonMapCommand"		"dota_launch_custom_game"
-		"PostMapLoadCommands"	"jointeam good" // Commands sent to the console by hammer after it finishes building a map and loads it
-		"RequiredGameEntities"	"info_player_start_goodguys|info_player_start_dota; info_player_start_badguys|info_player_start_dota; env_global_light; ent_dota_game_events"
-		"UnitsFiles"			"scripts/npc/npc_units.txt; scripts/npc/npc_units_custom.txt; scripts/npc/npc_heroes.txt"
-		"ItemsFiles"			"scripts/npc/items.txt; scripts/npc/npc_items_custom.txt"
-		"OverlayBoxSize"		"16"
+		"fgd"						"dota.fgd"	// NOTE: This is relative to the 'mod' path.
+		"GameFeatureSet"			"Dota"
+		"LoadScriptEntities"		"0"
+		"DefaultTextureScale"		"0.250000"
+		"DefaultSolidEntity"		"trigger_dota"
+		"DefaultPointEntity"		"info_player_start_dota"
+		"NavMarkupEntity"			"func_nav_markup"
+		"EnableDotaTools"			"1"
+		"DefaultGridTileSet"		"/maps/tilesets/radiant_basic.vmap"
+		"DefaultGridTileSet2"		"/maps/tilesets/dire_basic.vmap"
+		"DotaMaxTrees"				"8000"
+		"AddonMapCommand"			"dota_launch_custom_game"
+		"PostMapLoadCommands"		"jointeam good" // Commands sent to the console by hammer after it finishes building a map and loads it
+		"RequiredGameEntities"		"info_player_start_goodguys|info_player_start_dota; info_player_start_badguys|info_player_start_dota; env_global_light; ent_dota_game_events"
+		"UnitsFiles"				"scripts/npc/npc_units.txt; scripts/npc/npc_units_staging.txt; scripts/npc/npc_units_custom.txt; scripts/npc/npc_heroes.txt; scripts/npc/npc_heroes_staging.txt"
+		"ItemsFiles"				"scripts/npc/items.txt; scripts/npc/items_staging.txt; scripts/npc/npc_items_custom.txt"
+		"OverlayBoxSize"			"16"
+		"TileGridBlendOrderBGRA"	"1"
+		"TileGridBlendDefaultColor"	"0 255 0"
+		"UseFirstAnimationAsDefault" "1"
 	}
 
 	MaterialEditor
@@ -174,19 +182,58 @@
 		"DefaultShader"			"global_lit_simple"
 		"ExpressionHelpUrl"		"https://intranet.valvesoftware.com/index.php/Source_2.0/Shader_Format#Shader.2FMaterial_Expression_Syntax"
 	}
+
+	ModelCompile
+	{
+	}
 	
+	ModelDoc
+	{
+		"models_gamedata"			"models_gamedata.fgd"
+		"features"					"econitems;editorconfig"
+	}
+
 	ResourceCompiler
 	{
 		// Overrides of the default builders as specified in code, this controls which map builder steps
 		// will be run when resource compiler is run for a map without specifiying any specific map builder
 		// steps. Additionally this controls which builders are displayed in the hammer build dialog.
 		DefaultMapBuilders
-		{			
+		{
 			"light"		"0"	// Dota does not use baked lighting
 			"envmap"	"0"	// Dota doesn't generate environment maps from the map
 			"gridnav"	"1"	// Dota generates its grid navigation data by default
 		}
 		"DotaTileGrid"	"1"
+
+		"DeprecatedBehaviorVersionsAllowed"	"1"
+
+		MeshCompiler
+		{
+			EncodeVertexBuffer      "1"
+			EncodeIndexBuffer       "1"
+            EncodeVertexBufferVersion   "1"
+            EncodeVertexBufferLevel     "3"
+		}
+
+		WorldRendererBuilder
+		{
+			UseAggregateInstances       	    "1"
+			VisibilityGuidedMeshClustering      "1"
+			MinimumTrianglesPerClusteredMesh    "512"
+			MinimumVerticesPerClusteredMesh     "512"
+			MinimumVolumePerClusteredMesh       "1024"
+			MaxPrecomputedVisClusterMembership  "16"
+		}
+		SoundStackScripts
+		{
+		}
+
+		VDataLocalization
+		{
+			GameOutputPath	"resource/localization/vdata"
+			TokenPrefix		"DOTA_VData_"
+		}
 	}
 
 	RenderPipelineAliases
@@ -194,4 +241,49 @@
 		"Tools"			"Dota:Forward"
 		"EnvMapBake"	"Dota"
 	}
+	
+	Particles
+	{
+		"GameSupportsLegacyShaders"			"1"
+		"features"							"no_gpu_blobs"
+	}
+
+	RenderSystem
+	{
+		"LowLatency"						"1"
+	}
+
+	vdata_editor
+	{
+		"fgd"				"vdata_dota.fgd"
+	}
+
+	ConVars
+	{
+		"dota_enable_spatial_audio"						"1"
+		"snd_steamaudio_enable_perspective_correction"	"1"
+		"snd_steamaudio_perspective_correction_factor"	"0.8"
+		"r_size_cull_threshold"		"0.4"
+		"cl_predict"				"0"
+		"cl_usesocketsforloopback" "1"
+		"sv_early_network_message_processing" "1"
+		"disable_source_soundscape_trace" "1"
+		"cl_buffer_incoming_net_messages" "0"
+		"voice_in_process"				"1"
+	}
+
+	pulse
+	{
+		"pulse_enabled"					"1"
+	}
+
+	Memory
+	{
+		"EstimatedMaxCPUMemUsageMB"	"1"
+		"EstimatedMinGPUMemUsageMB"	"1"
+
+		"ShowInsufficientPageFileMessageBox" "1"
+		"ShowLowAvailableVirtualMemoryMessageBox" "1"
+	}
 }
+

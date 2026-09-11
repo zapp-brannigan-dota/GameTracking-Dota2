@@ -466,5 +466,49 @@
 			name = "Custom Color"
 			value = [ 241, 236, 213 ]
 		},
+		{
+			name = "Custom Color"
+			value = [ 0, 165, 255 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 255, 204, 0 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 25, 128, 25 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 135, 206, 250 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 182, 163, 154 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 182, 163, 154 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 255, 222, 161 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 189, 228, 255 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 255, 213, 155 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 145, 117, 93 ]
+		},
+		{
+			name = "Custom Color"
+			value = [ 70, 76, 71 ]
+		},
 	]
 }

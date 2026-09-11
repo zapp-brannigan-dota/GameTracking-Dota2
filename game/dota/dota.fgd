@@ -42,6 +42,43 @@
 	OptimizedHeightFieldName(string) : "Optimized Heightfield Name" : "" : "Optional name of an optimized heightfield to use for ground traces. An example is maps/someheightfield.bin."
 ]
 
+@OverrideClass = prop_dynamic_base
+[
+	StartingAnim(sequence) { is_preview_animation=true preview_animation_priority = 2 } : "Starting Animation" : "" : "The name of a starting animation that this prop will start with when it spawns. After completion, it will switch to the Idle sequence, if it is specified."
+	StartingAnimationLoopMode(choices) : "Start Animation Loop Mode" : "ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS" =
+	[
+		"ANIM_LOOP_MODE_NOT_LOOPING" : "Do Not Loop"
+		"ANIM_LOOP_MODE_LOOPING" : "Loop"
+		"ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS" : "Use Sequence Settings"
+	]
+
+	IdleAnim(sequence) { is_preview_animation=true } : "Idle Animation" : "" : "The name of the idle animation that this prop will revert to whenever it finishes a random or forced animation."
+	AnimationLoopMode(choices) : "Animation Loop Mode" : "ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS" =
+	[
+		"ANIM_LOOP_MODE_NOT_LOOPING" : "Do Not Loop"
+		"ANIM_LOOP_MODE_LOOPING" : "Loop"
+		"ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS" : "Use Sequence Settings"
+	]
+
+	RandomAnimation(boolean) : "Randomly Animate" : 0 : "If set, this prop will randomly choose and play animations, based upon the times specified in 'Min/Max Random Anim Time'. Inbetween the random animations, it will revert to playing the 'Default Animation'."
+	MinAnimTime(float) : "Min Random Anim Time" : "5" : "Minimum time between random animations."
+	MaxAnimTime(float) : "Max Random Anim Time" : "10" : "Maximum time between random animations."
+
+	// Inputs
+	input SetAnimationLooping(string)			: "Force the prop to play an animation and force it to loop. The parameter should be the name of the animation."
+	input SetAnimationNoResetLooping(string)	: "Force the prop to play an animation and force it to loop unless the prop is already playing the animation. The parameter should be the name of the animation."
+	input SetIdleAnimationLooping(string)		: "Changes the Idle Animation to the one specified in the parameter and force it to loop."
+
+	input SetAnimationNotLooping(string)		: "Force the prop to play an animation and force it to not loop. The parameter should be the name of the animation."
+	input SetAnimationNoResetNotLooping(string) : "Force the prop to play an animation and force it to not loop unless the prop is already playing the animation. The parameter should be the name of the animation."
+	input SetIdleAnimationNotLooping(string)	: "Changes the Idle Animation to the one specified in the parameter and force it to not loop."
+
+	input SetAnimation(string)					: "[OBSOLETE] Force the prop to play an animation. The parameter should be the name of the animation."
+	input SetAnimationNoReset(string)			: "[OBSOLETE] Force the prop to play an animation unless the prop is already playing the animation. The parameter should be the name of the animation."
+	input SetDefaultAnimation(string)			: "[OBSOLETE] Set the Default Animation to the one specified in the parameter."
+]
+
+
 @PointClass base(Targetname) = ent_dota_game_events : 
 	"An entity that fires outputs based on game events."
 [
@@ -66,26 +103,25 @@
 [
 ]
 
-@PointClass base(Targetname) = npc_dota_roshan_spawner: 
+@PointClass base(Targetname) editormodel("models/creeps/roshan/roshan.vmdl") = npc_dota_roshan_spawner: 
 	"Spawns Roshan, the big boss in the standard Dota2 PvP map."
 [
+]	
+
+@PointClass base(Targetname, teamnumber) editormodel("models/props_gameplay/divine_sentinel/divine_sentinel_cube.vmdl") = npc_dota_miniboss_spawner: 
+	"Spawns Tormentor, the small side lane boss in the standard Dota2 PvP map."
+[
+	VisualTeam(choices) : "Rune Team" : 2 =
+	[
+		2: "DOTA_TEAM_GOODGUYS"
+		3: "DOTA_TEAM_BADGUYS"
+	]
 ]	
 
 @PointClass base(Targetname) = ent_sugar_rush: 
 	"Sugar Rush spot for Roshan."
 [
 ]
-
-@PointClass base(prop_dynamic_base, Targetname) studioprop() = ent_dota_radiant_candybucket: 
-	"(used in Diretide event) Spawns a Radiant candy bucket."
-[
-]	
-
-@PointClass base(prop_dynamic_base, Targetname) studioprop() = ent_dota_dire_candybucket: 
-	"(used in Diretide event) Spawns a Dire candy bucket."
-[
-]	
-	
 
 @PointClass base(Targetname) sphere(inner_radius) sphere(outer_radius) dotaLightInfoHelper() = ent_dota_lightinfo: 
 	"Localized lighting settings to control lighting parameters in a radius."
@@ -100,6 +136,8 @@
 	ambient_scale_night(float) : "Ambient Scale - Night" : "0" : "Ambient Nighttime scale."
 	shadow_color_day(color255) : "Shadow Color - Day" : "0 0 0" : "Shadow Daytime color."
 	shadow_color_night(color255) : "Shadow Color - Night" : "0 0 0" : "Shadow Nighttime color."
+	shadow_secondary_color_day(color255) : "Shadow Secondary Color - Day" : "0 0 0" : "Shadow Daytime color."
+	shadow_secondary_color_night(color255) : "Shadow Secondary Color - Night" : "0 0 0" : "Shadow Nighttime color."
 	shadow_scale_day(float) : "Shadow Scale - Day" : "0" : "Shadow Daytime scale."
 	shadow_scale_night(float) : "Shadow Scale - Night" : "0" : "Shadow Nighttime scale."
 	shadow_ground_scale_day(float) : "Shadow Ground Scale - Day" : "0" : "Shadow Daytime ground scale."
@@ -110,14 +148,14 @@
 	specular_power_night(float) : "Specular Power - Night" : "-1" : "Night Specular Power."
 	specular_independence_day(float) : "Specular Independence - Day" : "0" : "Daytime specular light independence from diffuse."
 	specular_independence_night(float) : "Specular Independence - Night" : "0" : "Night specular light independence from diffuse."
-	specular_direction_day(vector) : "Specular Direction - Day" : "90 0 0" : "Daytime specular light direction."
-	specular_direction_night(vector) : "Specular Direction - Night" : "90 0 0" : "Nighttime specular light direction."
-	inspector_specular_direction_day(vector) : "Inspector View Specular Direction - Day" : "90 0 0" : "Inspector View daytime specular light direction."
-	inspector_specular_direction_night(vector) : "Inspector View Specular Direction - Night" : "90 0 0" : "Inspector View nighttime specular light direction."
-	light_direction_day(vector) : "Light Direction - Day" : "0 0 0" : "Light Daytime direction."
-	light_direction_night(vector) : "Light Direction - Night" : "0 0 0" : "Light Nighttime direction."
-	ambient_direction_day(vector) : "Ambient Direction - Day" : "0 0 0" : "Ambient Daytime direction."
-	ambient_direction_night(vector) : "Ambient Direction - Night" : "0 0 0" : "Ambient Nighttime direction."
+	specular_direction_day(angle) : "Specular Direction - Day" : "90 0 0" : "Daytime specular light direction."
+	specular_direction_night(angle) : "Specular Direction - Night" : "90 0 0" : "Nighttime specular light direction."
+	inspector_specular_direction_day(angle) : "Inspector View Specular Direction - Day" : "90 0 0" : "Inspector View daytime specular light direction."
+	inspector_specular_direction_night(angle) : "Inspector View Specular Direction - Night" : "90 0 0" : "Inspector View nighttime specular light direction."
+	light_direction_day(angle) : "Light Direction - Day" : "0 0 0" : "Light Daytime direction."
+	light_direction_night(angle) : "Light Direction - Night" : "0 0 0" : "Light Nighttime direction."
+	ambient_direction_day(angle) : "Ambient Direction - Day" : "0 0 0" : "Ambient Daytime direction."
+	ambient_direction_night(angle) : "Ambient Direction - Night" : "0 0 0" : "Ambient Nighttime direction."
 	ambient_shadow_amount(float) : "Ambient Shadow Amount" : "0" : "Ambient Shadow Amount"
 	fog_color_day(color255) : "Fog Color - Day" : "0 0 0" : "Fog Daytime color."
 	fog_color_night(color255) : "Fog Color - Night" : "0 0 0" : "Fog Nighttime color."
@@ -146,6 +184,7 @@
 
 	weather_type(choices) :"Client Weather Type" : -1 =
 	[
+		-2: "Dynamic Weather - On"
 		-1: "All - Always On"
 		0: "Default Weather Only"
 		1: "Snow Weather Only"
@@ -267,8 +306,22 @@
 	visionrange(integer) : "Vision Range" : 500 : "Radius of vision to reveal"
 ]
 
-@PointClass base(Targetname) = npc_dota_neutral_spawner: 
-	"Spawns neutral units."
+@PointClass base(Targetname) 
+editormodel
+{
+	model_from_key =
+	{
+		source_key = "NeutralType"
+		value_to_vmdl =
+		{
+			"0" = "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl"
+			"1" = "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"
+			"2" = "models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl"
+			"3" = "models/creeps/neutral_creeps/n_creep_satyr_spawn_a/n_creep_satyr_spawn_a.vmdl"
+		}
+	}
+}
+= npc_dota_neutral_spawner: "Spawns neutral units."
 [
 	NeutralType(choices) :"Camp Type" : 0 =
 	[
@@ -283,6 +336,9 @@
 		0: "Normal"
 		1: "Fast"
 		2: "Slow"
+		3: "Sorta Fast"
+		4: "Small Lane Camp"
+		5: "Just Enough"
 	]
 
 	AggroType(choices) :"Aggro Type" : 0 =
@@ -291,15 +347,40 @@
 		1: "Always"
 	]
 
-	ForcedSubType(choices) :"Force Spawn Type" : -1 =
+	ForcedSubType(choices) :"Force Spawn Type" : 0 =
 	[
 		0: "Random (Normal Gamerules)"
 		1: "Kobolds (E), Ogres (M), Centaurs (H), Drakes (A)"
 		2: "Gnolls (E), Wolves (M), Troll Warlord (H), Rock Golems (A)"
 		3: "Troll Priest (E), Mud Golems (M), Ursa (H), Lizards (A)"
-		4: "Trolls & Kobold (E), Satyrs (M), Satyrs (H)"
-		5: "Ghosts (E), Centaurs (M), Wildkin (H)"
-		6: "Harpies (E)"
+		4: "Trolls & Kobold (E), Satyrs (M), Satyrs (H), Frostbitten Golems (A)"
+		5: "Ghosts (E), Centaurs (M), Wildkin (H), Prowlers (A)"
+		6: "Harpies (E), Warpine (H)"
+		7: "Tadpoles (E), Froglets (M), Grown Frog (H), Ancient Frogs (A)"
+	]
+
+	MaxUpgradeCount(integer): "Max Upgrade Count" : 0 : "Amount of times a camp can upgrade if it is upgradable"
+
+	MinSpawnType(choices) : "Min Spawn Type" : 1 = 
+	[
+		1: "Kobolds (E), Ogres (M), Centaurs (H), Drakes (A) - (Normal Gamerules)"
+		2: "Gnolls (E), Wolves (M), Troll Warlord (H), Rock Golems (A)"
+		3: "Troll Priest (E), Mud Golems (M), Ursa (H), Lizards (A)"
+		4: "Trolls & Kobold (E), Satyrs (M), Satyrs (H), Frostbitten Golems (A)"
+		5: "Ghosts (E), Centaurs (M), Wildkin (H), Prowlers (A)"
+		6: "Harpies (E), Warpine (H)"
+		7: "Tadpoles (E), Froglets (M), Grown Frog (H), Ancient Frogs (A)"
+	]
+	
+	MaxSpawnType(choices) : "Max Spawn Type" : 6 = 
+	[
+		1: "Kobolds (E), Ogres (M), Centaurs (H), Drakes (A)"
+		2: "Gnolls (E), Wolves (M), Troll Warlord (H), Rock Golems (A)"
+		3: "Troll Priest (E), Mud Golems (M), Ursa (H), Lizards (A)"
+		4: "Trolls & Kobold (E), Satyrs (M), Satyrs (H), Frostbitten Golems (A)"
+		5: "Ghosts (E), Centaurs (M), Wildkin (H), Prowlers (A)"
+		6: "Harpies (E), Warpine (H)"
+		7: "Tadpoles (E), Froglets (M), Grown Frog (H), Ancient Frogs (A)"
 	]
 
 	BatchLimit(integer) : "Spawn Limit" : 0 : "The max number of times this spawner is allowed to spawn its creeps. If 0, will spawn infinitely."
@@ -375,21 +456,37 @@
 @PointClass base(Targetname) = dota_item_rune_spawner :
 	"A marker for where runes spawn, pre 7.0 behavior."
 [
-
+	
 ]
 
 @PointClass base(Targetname) = dota_item_rune_spawner_powerup :
 	"A marker for where powerup runes spawn."
 [
-
+	RunePosition(string) : "Rune Position" : "" : "Name of the position of the rune ( top or bot )"
 ]
 
 @PointClass base(Targetname) = dota_item_rune_spawner_bounty :
 	"A marker for where bounty runes spawn."
 [
-
+	RunePosition(string) : "Rune Position" : "" : "Name of the position of the rune ( top or bot )"
+	RuneTeam(choices) : "Rune Team" : 4 =
+	[
+		2: "DOTA_TEAM_GOODGUYS"
+		3: "DOTA_TEAM_BADGUYS"
+		4: "DOTA_TEAM_NEUTRALS"
+	]
 ]
 
+@PointClass base(Targetname) = dota_item_rune_spawner_xp :
+	"A marker for where xp runes spawn."
+[
+	RunePosition(string) : "Rune Position" : "" : "Name of the position of the rune ( top or bot )"
+	RuneTeam(choices) :"Rune Team" : 2 =
+	[
+		2: "DOTA_TEAM_GOODGUYS"
+		3: "DOTA_TEAM_BADGUYS"
+	]
+]
 
 @BaseClass = DotaPlayerStart
 [
@@ -402,19 +499,19 @@
 	output OnDisabled(void) : "Called when the player start is disabled."
 ]
 
-@PointClass base(PlayerClass, DotaPlayerStart) studio("models/editor/playerstart.mdl") = info_player_start_goodguys :
+@PointClass base(PlayerClass, DotaPlayerStart) studio("models/heroes/axe/axe.vmdl") = info_player_start_goodguys :
 	"Spawn point for Radiant heroes."
 [
 
 ]
 
-@PointClass base(PlayerClass, DotaPlayerStart) studio("models/editor/playerstart.mdl") = info_player_start_badguys :
+@PointClass base(PlayerClass, DotaPlayerStart) studio("models/heroes/axe/axe.vmdl") = info_player_start_badguys :
 	"Spawn point for Dire heroes."
 [
 
 ]
 
-@PointClass base(PlayerClass, Targetname, teamnumber, DotaPlayerStart) studio("models/editor/playerstart.mdl") = info_player_start_dota :
+@PointClass base(PlayerClass, Targetname, teamnumber, DotaPlayerStart) studio("models/heroes/axe/axe.vmdl") = info_player_start_dota :
 	"Spawn point for heroes of any team."
 [
 ]
@@ -493,16 +590,28 @@
 	]
 	
 	show_in_fog(boolean) : "Show in Fog of War" : "0"
+
+	show_during_dynamic_weather(choices) :"Show only during dynamic weather" : 0 =
+	[
+		0: "No"
+		1: "Yes"
+	]
 ]
 
 @PointClass base(prop_dynamic_base, Targetname, teamnumber) studioprop() = prop_dynamic_clientside: 
 	"Client-side dynamic prop."
 [
+	suppress_anim_event_sounds(boolean) : "Supress Animation Event Sounds" : 0
 	is_banner(choices) :"Replaceable Player Banner?" : 0 =
 	[
 		0: "No"
 		1: "Yes"
 	]
+]
+
+@PointClass base(prop_dynamic_base, Targetname, teamnumber) studioprop() = dota_guild_banner_dynamic: 
+	"guild banner, ultimately spawns different vmdls based on guild config."
+[
 ]
 
 @PointClass base(prop_dynamic_base, Targetname, teamnumber) studioprop() vecline_local( fade_origin_offset, 255, 200, 200 ) = prop_dynamic_client_fadeout:
@@ -557,9 +666,11 @@
 ]
 
 
-@PointClass base(prop_dynamic_base, Targetname) studioprop() = ambient_creatures: 
+@PointClass base( Parentname, CanBeClientOnly, Global, Studiomodel, RenderFields, Targetname) studioprop() = ambient_creatures: 
 	"Client-side dynamic prop."
 [
+	DefaultAnim(sequence) : "Default Animation" : "" : "The name of the idle animation that this prop will revert to whenever it finishes a random or forced animation."
+
 	showatday(choices) :"Show during day" : 0 =
 	[
 		0: "No"
@@ -593,19 +704,23 @@
 
 @PointClass size(-8 -8 -8, 8 8 8) wirebox(min, max) = world_bounds
 [
-	min(vecline) : "Min" : "-7232 -7488 0" : "World min bounds (Z currently ignored)."
-	max(vecline) : "Max" : "7168 6656 0" : "World max bounds (Z currently ignored)."
+	min(vecline) : "Min" : "-8256 -8512 0" : "World min bounds (Z currently ignored)."
+	max(vecline) : "Max" : "8192 7680 0" : "World max bounds (Z currently ignored)."
 ]
 
-@BaseClass base(teamnumber) = dota_building
+@BaseClass base( Targetname, Parentname, CanBeClientOnly, Global, Studiomodel, RenderFields, teamnumber) = dota_building
 [ 
-	link(string) : "Linked" : " " : "The Linked Unit."	
-	 
 	vulnerableoncreepspawn(choices) :"Vulnerable On Creep Spawn" : 0 =
 	[
 		0: "No"
 		1: "Yes"
-	]	
+	]
+
+	direside(choices) : "Dire Side" : 0 =
+	[
+		0: "No"
+		1: "Yes"
+	]
 
 	invuln_count(integer):"Invulnerability Link Count" : 0 : "The number of entities linked to this to trigger to remove invulnerability."
 
@@ -637,7 +752,7 @@
 	input	ReduceInvulnCount(void) : "Reduces the invulnerable count by one on this build. When the count goes to 0 or lower, backdoor protection is disabled."
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building, teamnumber) studioprop() = npc_dota_barracks: 
+@PointClass base( dota_building ) studioprop() = npc_dota_barracks: 
 	"Creates a barracks, which spawns creeps at regular intervals and can be destroyed by enemy teams."
 [
 	upgrade_level(choices) :"Upgrade Category" : 0 =
@@ -658,37 +773,94 @@
 	]
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_tower: 
+@PointClass base( dota_building) studioprop() = npc_dota_tower: 
 	"Creates a Dota tower that attacks enemy units, provides vision of invisible enemies, and allows allies to teleport to it."
 [
 	output OnTowerKilled(void) : "Fired whenever the tower is destroyed."
 ]
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_building: 
+@PointClass base( dota_building ) studioprop() = npc_dota_building: 
 	"Creates a simple building."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_fort: 
+@PointClass base( dota_building) studioprop() = npc_dota_fort: 
 	"Creates an ancient. In standard Dota2 PvP, the win condition is to destroy the enemy team's ancient."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_holdout_tower_lightfast: 
+@PointClass base( dota_building) studioprop() = npc_dota_holdout_tower_lightfast: 
 	"(used in Frostivus event) Creates a lightly-damaging, fast-attacking tower.  This can also be edited in the npc_units.txt file."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_holdout_tower_heavyslow: 
+@PointClass base( dota_building) studioprop() = npc_dota_holdout_tower_heavyslow: 
 	"(used in Frostivus event) Creates a heavily-damaging, slowly-attacking tower.  This can also be edited in the npc_units.txt file."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_holdout_tower_reducespeed: 
+@PointClass base( dota_building) studioprop() = npc_dota_holdout_tower_reducespeed: 
 	"(used in Frostivus event) Creates a tower that reduces enemy movespeed.  This can also be edited in the npc_units.txt file."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname) studioprop() = ent_dota_shop: 
+@PointClass base( dota_building) studioprop() = npc_dota_watch_tower: 
+	"Creates a watch tower building which either team can capture."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_lotus_pool: 
+	"Creates a lotus pool that creates lotuses every now and then."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_unit_underlord_portal: 
+	"Creates one portal out of a pair that you can traverse through."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_unit_twin_gate: 
+	"Creates one portal out of a pair that you can traverse through."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_unit_templar_gate: 
+	"Creates one portal out of a pair that you can traverse through."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studio("models/props_structures/gate_entrance002.vmdl")= npc_dota_base_blocker:
+	"A blocker which only one team can go past."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_lantern:
+	"A lantern that can be lit by either team."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_unit_item_stone_of_recall:
+	"A recall stone."
+[
+]
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) studioprop() = npc_dota_xp_fountain:
+	"An XP fountain that grants experience to a unit that stands near it for long enough."
+[
+]
+
+
+@PointClass base(prop_dynamic_base, Targetname, dota_building) line(255 255 255, Targetname, link) studioprop() = npc_dota_launchpad:
+	"Launches the hero to the paired landing pad."
+[
+	CurrentStrength(choices) :"Current Strength" : 2 :"The movement speed bonus that the unit receives." =
+	[
+		0: "Slow"
+		1: "Moderate"
+		2: "Fast"
+	]
+]
+
+@PointClass base( dota_building ) studioprop() = ent_dota_shop: 
 	"Creates a Dota item shop."
 [
 	shoptype(choices) :"Shop Type" : 0 =
@@ -700,12 +872,22 @@
 	]
 ]
 
-@PointClass base(prop_dynamic_base, Targetname) studioprop() = ent_dota_halloffame: 
+@PointClass base( dota_building ) studioprop() = ent_dota_neutral_item_stash: 
+	"Creates a Dota neutral item stash."
+[
+]
+
+@PointClass base( dota_building ) studioprop() = ent_dota_halloffame: 
 	"[TOOLTIP NEEDS IMPROVEMENT] The Hall of Fame."
 [
 ]
 
-@PointClass base(prop_dynamic_base, Targetname, dota_building, teamnumber) studioprop() = ent_dota_fountain: 
+@PointClass base( dota_building ) studioprop() = ent_dota_promo: 
+	"[TOOLTIP NEEDS IMPROVEMENT] Promo Entity."
+[
+]
+
+@PointClass base( dota_building ) studioprop() = ent_dota_fountain: 
 	"The Fountain"
 [
 ]
@@ -728,6 +910,11 @@
 [
 ]
 
+@PointClass base(Targetname) = info_ofrenda_statue_spawn: 
+	"Spawns a Ofrenda Statue."
+[
+]
+
 @PointClass base(Targetname, teamnumber) = info_courier_spawn: 
 	"Spawns a team courier."
 [
@@ -747,7 +934,12 @@
 	output OnTrigger(void) : "Fired whenever the trigger is activated."
 ]
 
-@SolidClass base(Trigger) = trigger_no_wards : 
+@SolidClass base(Trigger) 
+	metadata
+	{
+		auto_apply_material = "materials/tools/tools_no_wards.vmat"
+	}
+	= trigger_no_wards : 
 	"Wards disallowed here."
 [
 ]
@@ -889,6 +1081,7 @@
 	ModelScale(float) : "Model Scale" : "1"
 	suppress_intro_effects(boolean) : "Suppress Intro Effects" : "1"
 	spawn_background_models(boolean) : "Spawn Background Models" : "0"
+	skip_background_entities(boolean) : "Spawn unit only" : "0" : "Don't spawn any background entities (camera, lights, pets, particles, models, etc)"
 	rare_loadout_anim_chance(float) : "Rare Loadout Animation Chance" : "-1" : "Use range 0 - 1 to set the likelihood that the rare loadout animation will be played after a loadout animation completes. Negative numbers means use default."
 	suppress_anim_event_sounds(boolean) : "Suppress Anim Event Sounds" : "0"
 	skip_pet_spawn(boolean) : "Skip Pet Spawn" : "0"
@@ -898,13 +1091,21 @@
 	activity_modifier(string) : "Activity Modifier" : "" : "An activity modifier to add to the unit to change its animations"
 
 	item_def0(integer) : "Wearable Item Def 0" : : "If set, specifies an item def to wear on the unit."
+	style_index0(integer) : "Style Index 0" : : "If set, specifies the style index for Wearable Item Def 0."
 	item_def1(integer) : "Wearable Item Def 1" : : "If set, specifies an item def to wear on the unit."
+	style_index1(integer) : "Style Index 1" : : "If set, specifies the style index for Wearable Item Def 1."
 	item_def2(integer) : "Wearable Item Def 2" : : "If set, specifies an item def to wear on the unit."
+	style_index2(integer) : "Style Index 2" : : "If set, specifies the style index for Wearable Item Def 2."
 	item_def3(integer) : "Wearable Item Def 3" : : "If set, specifies an item def to wear on the unit."
+	style_index3(integer) : "Style Index 3" : : "If set, specifies the style index for Wearable Item Def 3."
 	item_def4(integer) : "Wearable Item Def 4" : : "If set, specifies an item def to wear on the unit."
+	style_index4(integer) : "Style Index 4" : : "If set, specifies the style index for Wearable Item Def 4."
 	item_def5(integer) : "Wearable Item Def 5" : : "If set, specifies an item def to wear on the unit."
+	style_index5(integer) : "Style Index 5" : : "If set, specifies the style index for Wearable Item Def 5."
 	item_def6(integer) : "Wearable Item Def 6" : : "If set, specifies an item def to wear on the unit."
+	style_index6(integer) : "Style Index 6" : : "If set, specifies the style index for Wearable Item Def 6."
 	item_def7(integer) : "Wearable Item Def 7" : : "If set, specifies an item def to wear on the unit."
+	style_index7(integer) : "Style Index 7" : : "If set, specifies the style index for Wearable Item Def 7."
 ]
 
 
@@ -912,18 +1113,19 @@
 // Global Light
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname, EnableDisable) iconsprite("editor/shadow_control.vmt") dotaGlobalLightHelper() = env_global_light : 
+@PointClass base(Targetname, EnableDisable) editormodel( "models/editor/spot", lightModeTint, "255 255 157", "255 64 64" ) dotaGlobalLightHelper() = env_global_light : 
 	"Control the global light that casts shadows in a Dota map."
 [
 	angles(string) : "Pitch Yaw Roll (Y Z X)" : "45 20 180" : "This is the light cast direction. Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, and roll is the rotation around the X axis."
 	ambientangles(angle) : "Ambient Angle ( Y Z X )" : "0 100 0" : ""
-	
+
 	color(color255) : "Color" : "255 255 255 1" : "This is the color of the global light."
 	lightscale(float) : "Light Scale" : "1.0" : "This controls the overall intensity of the light."
 	ambientcolor1(color255) : "Ambient Color" : "128 128 128 1" : "This is the ambient color of the world."
 	ambientscale1(float) : "Ambient Scale" : "1.0" : "This controls how much ambient there is."
 	ambientcolor2(color255) : "Shadow Color" : "24 24 24 1" : "This is the shadow color of the world."
 	ambientscale2(float) : "Shadow Scale" : "1.0" : "This controls how much shadow on entities there are."
+	ambientcolor3(color255) : "Shadow Secondary Color" : "24 24 24 1" : "This is the shadow color for downward facing surfaces."
 	groundscale(float) : "Shadow Ground Scale" : "1.0" : "This controls how much shadow on the ground there is."
 	
 	specularangles(angle) : "Specular Angle ( Y Z X )" : "90 0 0" : ""
@@ -935,7 +1137,8 @@
 	enableshadows(boolean) : "Enable Shadows" : "1" : "Enables/disables shadows from this projected texture."
 	fow_darkness(float) : "FoW Darkness" : "2.7" : "Controls how dark the fog of war is, 0 is black, larger values are lighter"
 	background_clear_not_required(boolean) : "Clear Not Required" : "0" : "Specifies that a clear of the background is not required, set this to true if the edge map can never be seen to improve performance."
-
+	dota_no_clouds(boolean) : "Disable clouds" : "0" : ""
+	
 	// Inputs
 	input LightColor(color255) : "Set the light color."
 	input SetAngles(string) : "Set the global light direction."
@@ -975,20 +1178,6 @@
 	height_fog_caustic_speed_scale(float) [ group="Height Fog" ] : "Caustics Speed Scale" : "1"
 	height_fog_caustic_amplitude_scale(float) [ group="Height Fog" ] : "Caustics Amplitude Scale" : "0.1"
 ]
-
-
-//-------------------------------------------------------------------------
-// Ambient light control
-//-------------------------------------------------------------------------
-//@PointClass base(Targetname, EnableDisable, SpatialEntity) sphere(minfalloff) sphere(maxfalloff) iconsprite("editor/color_correction.vmt") = env_ambient_light : 
-//	"An entity to control the color correction in the map."
-//[
-//	color(color255) : "Color (R G B)" : "255 255 255"
-//	
-//	// Inputs
-//	input SetColor(color255) : "Sets the color."
-//]
-
 
 
 @PointClass base(Targetname, Parentname) sphere(radius) externalHelper("ToolObjects/env_deferred_light") = env_deferred_light : 
@@ -1038,7 +1227,7 @@
 
 
 
-@PointClass base(Targetname, Parentname) studio("models/editor/cone_helper.mdl") = env_deferred_spot_light : 
+@PointClass base(Targetname, Parentname) editormodel( "models/editor/spot", lightModeTint, "124 255 157", "255 64 64" ) lightcone( spot_fov, spot_fov, lightcolor ) externalHelper("ToolObjects/env_deferred_light") = env_deferred_spot_light : 
 	"[TOOLTIP NEEDS IMPROVEMENT] Deferred spot light."
 [
 	spawnflags(flags) =
@@ -1051,13 +1240,21 @@
 	lightcolor(color255)			: "Light Color" : "255 255 255 200" : "Light Color RGB-Intensity"
 	intensity(float)				: "Intensity" : "1.0" : "Intensity of the light"	
 	
-	spot_light_distance(float)		: "Spot Light Distance" : "0.0" : "Distance if it is a spot light"	
-	spot_light_size(float)			: "Spot Light Size" : "0.0" : "Size at the end of the spot light"	
+	range(float)					: "Spot Light Range" : "512.0" : "Farthest range for the spot light"	
+	spot_fov(float)					: "Spot Light FOV" : "45.0" : "Cone half-angle for the spot light"
+	start_falloff(float)			: "Start of Cone Angle Falloff" : "0.5" : "Start of falloff for inner cone"
+	distance_falloff(float)			: "Start of Range Falloff" : "0.5" : "Start of falloff along spot light range"
+	texturename(resource:texture)	: "Projected Texture" : "" : "Projected vtex texture"
 
 	// Inputs
 	input TurnOn(void)				: "Turn on the texture"
 	input TurnOff(void)				: "Turn off the texture"
 	input LightColor(color255)		: "Change the light color/brightness"
+]
+
+@PointClass base(env_deferred_spot_light) editormodel( "models/editor/spot", lightModeTint, "124 255 157", "255 64 64" ) lightcone( spot_fov, spot_fov, lightcolor ) externalHelper("ToolObjects/env_deferred_light") = env_deferred_spot_light_client_only : 
+	"Deferred spot light entity whose state is not networked."
+[
 ]
 
 @PointClass base(npc_dota_baseclass) gameUnitModel( MapUnitName ) = npc_dota_base : "Used to place a dota NPC."
@@ -1135,7 +1332,12 @@
 ]
 
 // NOTE: We don't inherit directly from trigger_multiple here because we don't want the confusing spawnflags
-@SolidClass base(Targetname, Parentname, EnableDisable,dota_entity_filter_flags) = trigger_dota : "Dota-specific Trigger."
+@SolidClass base(Targetname, Parentname, EnableDisable, dota_entity_filter_flags) 
+	metadata
+	{
+		physics_only_model = true
+	}
+	= trigger_dota : "Dota-specific Trigger."
 [
 	wait(integer) : "Delay Before Reset" : 1 : "Amount of time, in seconds, after the trigger_multiple has triggered before it can be triggered again. If set to -1, it will never trigger again."
 	filtername(filterclass) : "Filter Name" : : "Filter to use to see if activator triggers me. See filter_activator_name for more explanation."
@@ -1161,12 +1363,6 @@
 [
 ]
 
-@PointClass base(Targetname, Parentname) size(-4 -4 -4, 4 4 4) = point_hmd_anchor : 
-	"Default room anchor location"
-[
-	
-]
-
 @OverrideClass = prop_static
 [
 	grass_exclusion_radius(float) : "Grass Exclusion Radius" : 0 : "Don't grow grass within this radius."
@@ -1180,6 +1376,12 @@
 @OverrideClass = point_camera
 [
 	override_shadow_farz(float) : "Shadow Far Z Override" : 0
+	dof_enabled(boolean) : "Depth of Field Enabled" : "0"
+	dof_near_blurry(float) : "Depth of Field Near Blurry Distance" : "250"
+	dof_near_crisp(float) : "Depth of Field Near Crisp Distance" : "550"
+	dac_dof_far_crisp(float) : "Depth of Field Far Crisp Distance" : "1200"
+	dac_dof_far_blurry(float) : "Depth of Field Far Blurry Distance" : "1600"
+	dac_dof_tilt_to_ground(float) : "Depth of Field Tilt Lens to Align With Ground Plane" : "0.75"
 ]
 
 @PointClass base(Targetname) = dota_particle_relay :
@@ -1201,4 +1403,70 @@
 
 	trap_target( local_point ) : "Trap Target" : "0 0 0"
 	DefaultAnim(sequence) : "Default Animation" : "" : "The name of the idle animation that this prop will revert to whenever it finishes a random or forced animation."
+]
+
+@PointClass base(Targetname) gameUnitModel( MapUnitName ) = npc_dota_creature_spawner: 
+	"Spawns creatures."
+[
+	MapUnitName(gameunitclass) : "Unit Name" : "" : "Name of the NPC script used to spawn this character."
+	SpawnEffectName(resource:particle) : "Spawn Effect" : "" : "Effect to play when spawning."
+	RespawnTime(float) : "Respawn Time" : 0
+	SpawnOnActivate(boolean) : "Spawn on Activate" : 1
+]
+
+@PointClass base(portrait_world_unit) gameUnitModel( MapUnitName ) = crownfall_shmup_enemy :
+	"Crownfall shmup enemy."
+[
+	target(target_destination) : "Follow Path" : : "The path this enemy will follow through the level"
+]
+
+
+@PathNodeClass
+	metadata
+	{
+		editor_only = true
+	}
+= dota_movespeed_path_node
+[
+	radius_scale(float) : "Radius" : "50.0" : "Radius"
+	MoveSpeedType(choices) { write_to_path_key = "pathNodeMoveSpeedTypes" } : "Move Speed Type" : 2 :"The movement speed bonus that the unit receives." =
+	[
+		1: "Moderate"
+		2: "Fast"
+	]
+]
+
+@PathClass base(Targetname) tags( PathLogical )
+	metadata
+	{
+		path_node_class = "dota_movespeed_path_node"
+		entity_tool_name = "Dota Move Speed Path"
+		entity_tool_tip = "Specifies a path along which applies move speed modifier to NPCs"
+		entity_tool_group = "DotaMoveSpeedPath"
+		default_interpolation = "linear"
+		hide_interpolation_type = true
+	}
+	accompany() = dota_movespeed_modifier_path
+[
+]
+
+@PointClass base(Targetname) = dota_whack_a_mole_effects :
+	"Effects entity for the Whack a Mole game"
+[
+]
+
+@PointClass base(Targetname) = dota_crate_drop_effects :
+	"Effects entity for the Crate Drop game"
+[
+]
+
+@PointClass base(Targetname) = dota_dc_murder_of_crows :
+	"Crows for the Dark Carnival act 1 overworld map"
+[
+	model(studio) : "Crow model"
+	crow_explosion_vfx(resource:vpcf) : "Crow Explosion Particle System"
+	crow_explosion_sound(sound) : "Crow Explosion Sound"
+	number_of_crows(integer) : "Number of Crows" : 10 : "How many crows in the murder"
+	crow_speed(float) : "Crow Speed" : 80 : "How fast are the crows"
+	crow_scale(float) : "Crow Scale" : 1 : "What should the crow model be scaled by"
 ]
